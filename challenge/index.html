@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 2-Day Micro Resort Training | Gideon Spencer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --dark: #0A0A0A;
+      --dark-card: #111111;
+      --dark-border: #1E1E1E;
+      --text: #E8E8E8;
+      --muted: #888888;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
+    }
+
+    /* UTILITY */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .gold { color: var(--gold); }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 48px 0; }
+    hr.divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--gold);
+      color: #000;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top center, #1a1508 0%, var(--dark) 70%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-subtitle {
+      font-size: 19px;
+      color: #BBBBBB;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero-meta span strong { color: var(--text); }
+    .hero-cta-group { margin-top: 8px; }
+
+    /* CTA BUTTON */
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      padding: 18px 48px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* SOCIAL PROOF BAR */
+    .proof-bar {
+      background: #111;
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 32px 0;
+    }
+    .proof-bar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .proof-stat .number {
+      font-size: 36px;
+      font-weight: bold;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .proof-stat .label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'Arial', sans-serif;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* TRAINING OVERVIEW */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    @media (max-width: 700px) {
+      .challenge-grid { grid-template-columns: 1fr; }
+    }
+    .day-card {
+      background: var(--dark-card);
+      padding: 36px 28px;
+      border: 1px solid var(--dark-border);
+    }
+    .day-card .day-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .day-card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .day-card p {
+      font-size: 14px;
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+    .day-card .module-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .day-card .module-list li {
+      font-size: 13px;
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .day-card .module-list li::before {
+      content: "→";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+    }
+    .day-card .outcome {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--dark-border);
+      font-size: 13px;
+      color: var(--gold-light);
+      font-family: 'Arial', sans-serif;
+    }
+    .day-card .outcome::before {
+      content: "✓ You leave with: ";
+      font-weight: bold;
+    }
+
+    /* FOR YOU / NOT FOR YOU */
+    .qualifier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .qualifier-grid { grid-template-columns: 1fr; }
+    }
+    .qual-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 36px 28px;
+    }
+    .qual-box h3 {
+      font-size: 17px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .qual-box ul { list-style: none; }
+    .qual-box ul li {
+      font-size: 14px;
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+      padding: 8px 0;
+      border-bottom: 1px solid #1a1a1a;
+      padding-left: 24px;
+      position: relative;
+    }
+    .qual-box.yes ul li::before { content: "✓"; color: #4CAF50; position: absolute; left: 0; }
+    .qual-box.no ul li::before { content: "✗"; color: #e74c3c; position: absolute; left: 0; }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-photo {
+      width: 200px;
+      height: 240px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content h2 { font-size: 28px; margin-bottom: 16px; }
+    .about-content p {
+      font-size: 15px;
+      color: #BBBBBB;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 16px;
+    }
+    .about-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .badge {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 8px 16px;
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      color: var(--gold);
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+    .testimonial-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 28px;
+    }
+    .testimonial-card blockquote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #CCCCCC;
+      margin-bottom: 16px;
+    }
+    .testimonial-card blockquote::before { content: '"'; color: var(--gold); font-size: 24px; }
+    .testimonial-author {
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      color: var(--muted);
+    }
+    .testimonial-author strong { color: var(--text); display: block; }
+
+    /* REGISTRATION SECTION */
+    .reg-section {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 60px 48px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .reg-section { padding: 40px 24px; }
+    }
+    .reg-section h2 { font-size: 32px; margin-bottom: 12px; }
+    .reg-section .reg-subtitle {
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 36px;
+      font-size: 16px;
+    }
+    .reg-details {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .reg-detail {
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+    }
+    .reg-detail .rd-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .reg-detail .rd-value {
+      font-size: 18px;
+      color: var(--gold);
+      font-weight: bold;
+      display: block;
+    }
+    .reg-form {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .form-row input {
+      background: #0A0A0A;
+      border: 1px solid #333;
+      color: var(--text);
+      padding: 14px 18px;
+      font-size: 15px;
+      font-family: 'Arial', sans-serif;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-row input:focus { border-color: var(--gold); }
+    .form-row input::placeholder { color: #555; }
+
+    /* FAQ */
+    .faq-list { margin-top: 48px; }
+    .faq-item {
+      border-bottom: 1px solid var(--dark-border);
+      padding: 24px 0;
+    }
+    .faq-item h3 {
+      font-size: 17px;
+      margin-bottom: 12px;
+      color: var(--gold-light);
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .section-header h2 { font-size: 34px; margin-bottom: 12px; }
+    .section-header p {
+      font-size: 16px;
+      color: #AAAAAA;
+      font-family: 'Arial', sans-serif;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    FREE 2-Day Live Training — Micro Resort Mastermind — Limited Spots Available
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Free 2-Day Live Training</span>
+      <h1>From STR Investor to<br /><em>Micro Resort Developer</em><br />in 2 Days</h1>
+      <p class="hero-subtitle">
+        A free 2-day live training for serious short-term rental investors — walk away with a buy box, a deal analysis model, and a Letter of Intent ready to send.
+      </p>
+      <div class="hero-meta">
+        <span>📅 <strong>[DATE — DAY 1]</strong> &amp; <strong>[DATE — DAY 2]</strong></span>
+        <span>🕐 <strong>10:00 AM ET</strong> each day</span>
+        <span>📍 <strong>Live on Zoom</strong></span>
+        <span>💰 <strong>100% Free</strong></span>
+      </div>
+      <div class="hero-cta-group">
+        <button class="btn-primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+          Reserve My Free Spot →
+        </button>
+        <p class="cta-note">No credit card required. Spots are limited.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-bar-inner">
+        <div class="proof-stat">
+          <span class="number">38</span>
+          <span class="label">Hotels in Portfolio</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">$300M+</span>
+          <span class="label">Assets Under Mgmt</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">500+</span>
+          <span class="label">STR Investors Trained</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">$15M+</span>
+          <span class="label">Student Deal Volume</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU'LL LEARN -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The 2-Day Curriculum</span>
+        <h2>From Airbnb Host to Resort Developer</h2>
+        <p>Two focused days. Eight modules. The complete framework to take a micro resort deal from idea to LOI — and the financing structure to close it.</p>
+      </div>
+      <div class="challenge-grid">
+        <div class="day-card">
+          <span class="day-label">Day 1 — The Foundation</span>
+          <h3>Know What You Want &amp; Find the Deal</h3>
+          <p>Most STR investors never scale because they're looking at the wrong deals with the wrong criteria. Day 1 locks in your exact buy box, builds your deal analysis model, and shows you exactly where to find off-market micro resort opportunities that never hit the MLS.</p>
+          <ul class="module-list">
+            <li><strong>Module 1:</strong> Defining Your Buy Box — market, property type, deal size, return targets</li>
+            <li><strong>Module 2:</strong> Micro Resort Deal Analysis — RevPAR modeling, ADR benchmarking, pro forma construction</li>
+            <li><strong>Module 3:</strong> Finding Off-Market Deals — direct outreach, broker relationships, sourcing systems</li>
+            <li><strong>Module 4:</strong> Writing Your Letter of Intent — structure, key terms, negotiating position</li>
+          </ul>
+          <p class="outcome">a buy box document, a deal analysis model, and a live LOI framework</p>
+        </div>
+        <div class="day-card">
+          <span class="day-label">Day 2 — The Close</span>
+          <h3>Negotiate the Deal &amp; Finance the Project</h3>
+          <p>Knowing what to buy is only half the equation. Day 2 is about closing — how to negotiate at commercial scale, how to structure seller conversations, and how to finance a micro resort without your W-2 income as the primary qualifier.</p>
+          <ul class="module-list">
+            <li><strong>Module 5:</strong> Negotiating Tactics — anchoring, counteroffers, concession sequencing</li>
+            <li><strong>Module 6:</strong> Seller Psychology — what sellers actually care about and how to use it</li>
+            <li><strong>Module 7:</strong> Financing Structures — DSCR loans, SBA 7(a), seller carry-backs, JV equity</li>
+            <li><strong>Module 8:</strong> Closing the Deal — due diligence checklist, timeline, deal-killers to avoid</li>
+          </ul>
+          <p class="outcome">a financing strategy, a negotiation playbook, and your first LOI ready to send</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FOR YOU / NOT FOR YOU -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Is This For You?</span>
+        <h2>This Training Is Built For a Specific Investor</h2>
+      </div>
+      <div class="qualifier-grid">
+        <div class="qual-box yes">
+          <h3>✓ This IS for you if...</h3>
+          <ul>
+            <li>You own 2–5 short-term rentals and have proven the model — now you want to scale it</li>
+            <li>You're tired of adding more individual Airbnbs and want a branded asset that anchors your portfolio</li>
+            <li>You want to build generational wealth through a real asset — not just cash flow from rentals</li>
+            <li>You're stuck in a W-2 and your STR income isn't quite enough to replace your salary — yet</li>
+            <li>You want the exact deal framework, not theory — a buy box, a model, and an LOI you can actually send</li>
+            <li>You're ready to move from Airbnb host to resort operator — and you want the credential to match</li>
+          </ul>
+        </div>
+        <div class="qual-box no">
+          <h3>✗ This is NOT for you if...</h3>
+          <ul>
+            <li>You don't own any short-term rentals yet — this training assumes you've already proven the STR model</li>
+            <li>You're looking for "passive income" with no operational involvement — micro resorts are businesses</li>
+            <li>You want a 10-step system instead of real deal fundamentals grounded in actual transactions</li>
+            <li>You're not willing to commit two full mornings to learn a framework that could change your financial trajectory</li>
+            <li>You've already built and sold a micro resort portfolio — this is built for the next stage of STR investors</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT GIDEON -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Your Host</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <!-- REPLACE: Add your headshot here -->
+          <!-- <img src="YOUR_HEADSHOT_URL" alt="Gideon Spencer" /> -->
+          [ADD HEADSHOT]
+        </div>
+        <div class="about-content">
+          <h2>Gideon Spencer</h2>
+          <p>Gideon is a hotel investor and operator with a portfolio spanning 38 properties and over $300M in assets under management. He started where most of the people on this training start — with a small portfolio of short-term rentals and a conviction that there was a bigger play available to serious operators.</p>
+          <p>His Incredible Hospitality Mastermind has trained 500+ STR investors in the hospitality acquisition process, with students collectively closing over $15M in deals. His own portfolio includes boutique hotels, micro resorts, and branded hospitality experiences — built deal by deal using the exact frameworks he teaches in this training.</p>
+          <p>The 2-Day Micro Resort Training is the most concentrated version of what he teaches — the buy box, the deal analysis model, the LOI framework, and the financing structures that make micro resort acquisitions work — delivered live, in two days, for free.</p>
+          <div class="about-badges">
+            <span class="badge">38-Property Portfolio</span>
+            <span class="badge">$300M+ AUM</span>
+            <span class="badge">500+ Investors Trained</span>
+            <span class="badge">Incredible Hospitality</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What People Are Saying</span>
+        <h2>Real Results From Real STR Investors</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <blockquote>After years of adding Airbnbs one at a time, Gideon's framework showed me exactly how to think about the next stage. The buy box exercise alone was worth more than every real estate course I've ever taken.</blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            STR investor, 4 properties → micro resort pipeline, [State]
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>I was making $280K at my job and felt more trapped than ever. My STRs were doing great but I couldn't close the gap. Gideon showed me the exact financing structure that made it work without my W-2 as the qualifier. Game changer.</blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            Left W-2, now operating micro resort, [State]
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>I've been in real estate for 10 years. This is the most tactical, actionable training I've seen on hospitality acquisitions. The deal analysis model is something I use on every property now. It's not theory — it's a working tool.</blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            10-year real estate investor, [State]
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>The LOI framework from Day 1 gave me the confidence to actually send offers. Within 3 weeks of the training I had a real back-and-forth with a seller on a 6-unit property. That doesn't happen without knowing what to put in the letter.</blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            First micro resort LOI sent, [State]
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- REGISTRATION -->
+  <section class="section" id="register">
+    <div class="container">
+      <div class="reg-section">
+        <h2>Reserve Your Free Spot</h2>
+        <p class="reg-subtitle">2 days. 8 modules. A buy box, a deal model, and an LOI ready to send. Zero cost.</p>
+        <div class="reg-details">
+          <div class="reg-detail">
+            <span class="rd-label">Day 1</span>
+            <span class="rd-value">[DATE]</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Day 2</span>
+            <span class="rd-value">[DATE]</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Time</span>
+            <span class="rd-value">10:00 AM ET</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Platform</span>
+            <span class="rd-value">Zoom</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Cost</span>
+            <span class="rd-value">FREE</span>
+          </div>
+        </div>
+        <div class="reg-form">
+          <!-- REPLACE THIS FORM WITH GHL EMBED OR FORM ACTION -->
+          <div class="form-row">
+            <input type="text" placeholder="First Name" name="firstName" required />
+          </div>
+          <div class="form-row">
+            <input type="email" placeholder="Email Address" name="email" required />
+          </div>
+          <div class="form-row">
+            <input type="tel" placeholder="Phone Number (for SMS reminders)" name="phone" required />
+          </div>
+          <button class="btn-primary" style="width:100%; margin-top:8px;" onclick="alert('Connect this button to your GHL form or registration system.')">
+            YES — Reserve My Free Spot →
+          </button>
+          <p class="cta-note">Your information is private and will never be shared or sold.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FAQ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Common Questions</span>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Is this really free?</h3>
+          <p>Yes, completely free. No upsell during the training, no credit card required, no catch. After Day 2, there is an opportunity to learn about the Micro Resort Mastermind community for those who want to implement — but that is entirely optional and never the focus of the training itself.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need to already own short-term rentals?</h3>
+          <p>Yes. This training is built for STR investors who have proven the model and are ready to scale into micro resort development. If you own 2–5 properties and are generating real cash flow, this is built for you. If you're brand new to real estate entirely, you'd want to start with STR fundamentals first.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I can't attend live?</h3>
+          <p>Replays will be available for 48 hours after each session. That said, the live experience is dramatically better — the deal analysis, the Q&A, and the accountability of building your LOI in real time is what makes this training stick. We strongly encourage attending live.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need hospitality experience to build a micro resort?</h3>
+          <p>No. You need STR operational knowledge — and you already have that. You understand guests, dynamic pricing, occupancy, and reviews. The training fills the commercial deal gap: how to underwrite, acquire, structure, and finance at micro resort scale. Day 2 specifically addresses how to close deals without hospitality development experience.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What do I need to participate?</h3>
+          <p>A Zoom account (free), a laptop or tablet, and two mornings of focused time. We'll provide the deal analysis templates, buy box framework, and LOI structure during the training — everything you need is delivered live.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What happens after Day 2?</h3>
+          <p>You'll have a buy box, a deal analysis model, and an LOI framework ready to deploy on your first micro resort acquisition. You'll receive an invitation to learn about the Mastermind community — the ongoing implementation environment for STR investors who are actively working toward their first deal. No pressure, no pitch — just a decision point.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How many spots are available?</h3>
+          <p>We keep this training intentionally small to ensure real engagement, real Q&A, and a real live experience. Once spots fill, registration closes. If you're considering it, register now — you can always decide later whether to attend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section" style="background: radial-gradient(ellipse at bottom center, #1a1508 0%, var(--dark) 70%); text-align: center;">
+    <div class="container">
+      <span class="eyebrow">Don't Wait</span>
+      <h2 style="font-size:38px; margin-bottom: 16px;">Your STRs Proved the Model.<br />Now Build the Asset.</h2>
+      <p style="font-size:17px; color:#AAAAAA; font-family:'Arial',sans-serif; max-width:540px; margin: 0 auto 36px;">Two days. Eight modules. The exact framework to take your short-term rental portfolio to the next level — and the financing structure to make it happen without your W-2 as a crutch.</p>
+      <button class="btn-primary" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+        Reserve My Free Spot →
+      </button>
+      <p class="cta-note" style="margin-top:16px;">Free. Live on Zoom. [DATE] &amp; [DATE].</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Gideon Spencer | Incredible Hospitality</p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com" style="color:var(--gold);">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
