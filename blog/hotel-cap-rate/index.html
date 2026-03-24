@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Cap Rates: What They Mean and How to Use Them | Incredible Hospitality Co</title>
+  <meta name="description" content="Hotel cap rates explained for investors. What they are, how to calculate them, current benchmarks, and how to use cap rates in hotel and micro resort deal analysis." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/hotel-cap-rate/" />
+  <meta property="og:title" content="Hotel Cap Rates: What They Mean and How to Use Them" />
+  <meta property="og:description" content="Hotel cap rates explained for investors. What they are, how to calculate them, current benchmarks, and how to use cap rates in hotel and micro resort deal analysis." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/hotel-cap-rate/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hotel Cap Rates: What They Mean and How to Use Them" />
+  <meta name="twitter:description" content="Hotel cap rates explained for investors. What they are, how to calculate them, current benchmarks, and how to use cap rates in hotel and micro resort deal analysis." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { margin-bottom: 24px; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h3 { margin-top: 0; font-size: 18px; color: var(--gold-light); }
+    .faq-item p { margin-bottom: 0; }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Hotel Cap Rates: What They Mean and How to Use Them",
+    "description": "Hotel cap rates explained for investors. What they are, how to calculate them, current benchmarks, and how to use cap rates in hotel and micro resort deal analysis.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/blog/hotel-cap-rate/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a hotel cap rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A hotel cap rate (capitalization rate) is a metric that expresses the relationship between a hotel's Net Operating Income (NOI) and its market value or purchase price. It is calculated by dividing annual NOI by the property price. A 8% cap rate means the property generates 8 cents of NOI for every dollar of value. Cap rates are used to value hotels, compare investment opportunities, and assess risk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good cap rate for a hotel investment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hotel cap rates vary by segment. Economy hotels typically trade at 8-10%, midscale at 7-9%, boutique hotels at 6-8%, and luxury properties at 4-6%. A 'good' cap rate depends on your strategy. Higher cap rates (8-10%) often signal value-add opportunities where you can improve operations and compress the cap rate. Lower cap rates (4-6%) indicate stabilized, lower-risk assets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is cap rate different from cash-on-cash return?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cap rate measures property-level yield (NOI / Property Value) regardless of financing. Cash-on-cash return measures your actual return on the cash you invested after debt service (Annual Cash Flow After Debt / Total Cash Invested). With leverage, your cash-on-cash return can be much higher than the cap rate. A property with an 8% cap rate financed at 70% LTV might produce a 15%+ cash-on-cash return."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does cap rate compression mean in hotel investing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cap rate compression means the cap rate decreases, which increases the property value for the same NOI. This can happen through market-wide trends (more buyer demand pushing values up) or through property-level improvements (rebranding, renovating, improving operations) that reduce perceived risk. Buying at a 9% cap rate and operating to a 6% cap rate is a forced appreciation strategy that can create significant equity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When are hotel cap rates misleading?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cap rates can be misleading when: the NOI used is not stabilized (trailing NOI may be artificially high or low), the property needs significant capital expenditure not reflected in the cap rate, the NOI includes one-time revenue or excludes normal expenses, or when comparing properties across very different markets. Always verify the NOI behind a quoted cap rate and understand what it includes and excludes."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Hotel Metrics</span>
+      <h1>Hotel Cap Rates: What They Mean and How to Use Them</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p><strong>A cap rate (capitalization rate)</strong> is the ratio between a hotel's Net Operating Income (NOI) and its value or purchase price. It is the most common metric used to value commercial real estate, including hotels, boutique properties, and micro resorts. If you are going to invest in hospitality real estate, you need to understand cap rates inside and out.</p>
+
+      <p>This guide breaks down what cap rates are, how to calculate them, what current hotel cap rate benchmarks look like across segments, and how to use cap rates as an investor to find deals, negotiate purchases, and build wealth through forced appreciation.</p>
+
+      <h2>The Cap Rate Formula</h2>
+
+      <p>The formula is straightforward:</p>
+
+      <p><strong>Cap Rate = Net Operating Income (NOI) / Property Value (or Purchase Price)</strong></p>
+
+      <p>Example: A hotel generates $280,000 in annual NOI and is priced at $3,500,000.</p>
+
+      <p>Cap Rate = $280,000 / $3,500,000 = <strong>8.0%</strong></p>
+
+      <p>You can also rearrange the formula to solve for value:</p>
+
+      <p><strong>Property Value = NOI / Cap Rate</strong></p>
+
+      <p>This is how hotels are actually valued. If a property generates $280,000 in NOI and the market cap rate for comparable properties is 7%, the implied value is $280,000 / 0.07 = $4,000,000.</p>
+
+      <div class="callout">
+        <h4>The Two Uses of Cap Rate</h4>
+        <p><strong>As a valuation tool:</strong> Value = NOI / Cap Rate. This tells you what a property is worth based on its income and market conditions.<br><br>
+        <strong>As a return metric:</strong> Cap Rate = NOI / Price. This tells you the unlevered yield on the purchase price, before financing.</p>
+      </div>
+
+      <h2>What Cap Rates Tell You (And What They Do Not)</h2>
+
+      <p>A cap rate tells you the unlevered, property-level return on the purchase price. It is a snapshot of the relationship between income and value at a point in time.</p>
+
+      <p><strong>What cap rates tell you:</strong></p>
+      <ul>
+        <li>The property-level yield relative to purchase price</li>
+        <li>How the market perceives the risk and quality of the asset</li>
+        <li>A basis for comparing different investment opportunities</li>
+        <li>The implied valuation for a given income stream</li>
+      </ul>
+
+      <p><strong>What cap rates do not tell you:</strong></p>
+      <ul>
+        <li>Your actual cash return after financing (that is cash-on-cash return)</li>
+        <li>The total return including appreciation (that is IRR)</li>
+        <li>Whether the NOI is sustainable or inflated</li>
+        <li>The capital expenditure needed to maintain the property</li>
+        <li>The quality of the revenue mix (seasonal vs. year-round, OTA-dependent vs. direct)</li>
+      </ul>
+
+      <p>Cap rate is one tool in your analysis toolkit. It is an important one, but it should never be the only metric you look at when <a href="/blog/micro-resort-deal-analysis/">analyzing a deal</a>.</p>
+
+      <h2>Current Hotel Cap Rate Ranges by Segment</h2>
+
+      <p>Cap rates vary significantly based on property type, quality, location, and market conditions. Here are general ranges as of early 2026:</p>
+
+      <table>
+        <tr>
+          <th>Hotel Segment</th>
+          <th>Cap Rate Range</th>
+          <th>What It Signals</th>
+        </tr>
+        <tr>
+          <td>Economy / Budget Motels</td>
+          <td>8% - 10%</td>
+          <td>Higher risk, more management-intensive, greater value-add potential</td>
+        </tr>
+        <tr>
+          <td>Midscale / Select-Service</td>
+          <td>7% - 9%</td>
+          <td>Moderate risk, stable demand, franchise support</td>
+        </tr>
+        <tr>
+          <td>Boutique / Micro Resort</td>
+          <td>6% - 8%</td>
+          <td>Experience-driven, brand premium, stronger ADR growth</td>
+        </tr>
+        <tr>
+          <td>Upper Upscale</td>
+          <td>5% - 7%</td>
+          <td>Institutional quality, major market locations</td>
+        </tr>
+        <tr>
+          <td>Luxury</td>
+          <td>4% - 6%</td>
+          <td>Lowest risk, premium markets, highest barriers to entry</td>
+        </tr>
+      </table>
+
+      <p>Lower cap rates mean higher prices relative to income. But they also typically mean lower risk, more stable cash flows, and stronger locations. Higher cap rates mean higher yields but also more operational risk, lower barriers to entry, and often more deferred maintenance.</p>
+
+      <p>For micro resort investors, the sweet spot is typically buying in the 8-9% cap rate range (economy or midscale quality) and operating to a 6-7% cap rate (boutique quality) through value-add improvements. This is the <strong>cap rate compression strategy</strong> that creates forced appreciation.</p>
+
+      <h2>Cap Rate Compression Through Value-Add: The Core Wealth Play</h2>
+
+      <p>This is where cap rates become a wealth-building tool, not just an analysis metric. The strategy is simple in concept:</p>
+
+      <ol>
+        <li><strong>Buy</strong> a property at a high cap rate (8-10%) because it is underperforming</li>
+        <li><strong>Improve</strong> the property through operational tweaks, renovations, rebranding, and revenue management</li>
+        <li><strong>Increase NOI</strong> through higher <a href="/blog/hotel-revpar/">RevPAR</a> and better expense management</li>
+        <li><strong>Reposition</strong> the property so it trades at a lower cap rate (6-7%) due to improved quality and lower perceived risk</li>
+        <li><strong>The result</strong>: both the NOI increases AND the cap rate compresses, creating a double effect on valuation</li>
+      </ol>
+
+      <div class="callout">
+        <h4>Cap Rate Compression Example</h4>
+        <p><strong>Purchase:</strong> 10-unit motel, $280,000 NOI, 9% cap rate = $3.1M purchase price<br><br>
+        <strong>After value-add:</strong> Rebrand as boutique micro resort, improve operations, add amenities. NOI grows to $380,000.<br><br>
+        <strong>New valuation:</strong> $380,000 NOI at a 6.5% cap rate = $5.85M<br><br>
+        <strong>Equity created:</strong> $5.85M - $3.1M = $2.75M in forced appreciation, plus cash flow along the way.</p>
+      </div>
+
+      <p>This is the same play we walk through in the <a href="/challenge/">5-Day Micro Resort Buyer Challenge</a>, where you learn to identify properties with cap rate compression potential and model the returns in a deal analysis spreadsheet.</p>
+
+      <p>The key is buying a property where the current cap rate reflects poor management, not poor fundamentals. If the market is strong (good <a href="/blog/micro-resort-market-analysis/">market fundamentals</a>, solid demand drivers, limited new supply) but the property is underperforming, the gap between the going-in cap rate and the stabilized cap rate is your opportunity.</p>
+
+      <h2>How Hotel Cap Rates Differ from Residential Real Estate</h2>
+
+      <p>If you are coming from the residential STR world, cap rates in hotel investing work differently in several important ways:</p>
+
+      <h3>Hotels Are Valued on Income, Not Comps</h3>
+      <p>Residential properties are typically valued by comparable sales (what did the house next door sell for?). Hotels are valued on their income stream. Two identical buildings in the same location will have different values if one generates more NOI. This is why operational excellence matters so much in hotel investing.</p>
+
+      <h3>Cap Rates Are More Variable</h3>
+      <p>Residential cap rates (for rental properties) tend to cluster in a tighter range within a market. Hotel cap rates can vary widely based on property quality, brand, management, and guest profile. A tired motel and a boutique hotel on the same street might trade at cap rates 300-400 basis points apart.</p>
+
+      <h3>You Can Manufacture Cap Rate Compression</h3>
+      <p>In residential, forced appreciation comes primarily from physical renovations. In hotels, you can compress cap rates through operational improvements, rebranding, revenue management, and experience design, often with less capital investment than a full renovation. This is the <a href="/blog/hotel-value-add-strategy/">value-add approach</a> that makes hotel investing so compelling for operators.</p>
+
+      <h2>Using Cap Rates in Offers and Negotiations</h2>
+
+      <p>Cap rates give you a framework for making and defending offers. Here is how to use them:</p>
+
+      <h3>Anchor to Current Performance, Not Potential</h3>
+      <p>When making an offer, base your price on the property's current NOI (trailing 12 months) at a cap rate appropriate for its current condition. If the seller wants you to pay for potential future performance, that is their upside to give up, not yours to pay for.</p>
+
+      <h3>Use the Comp Set Cap Rate</h3>
+      <p>Research what comparable properties in the market have sold for recently and at what cap rates. This gives you a defensible basis for your offer. Brokers and sellers respond better to data-driven offers than arbitrary numbers.</p>
+
+      <h3>Negotiate on Cap Rate, Not Just Price</h3>
+      <p>Framing the conversation around cap rate can be more productive than arguing about price. "The trailing NOI supports an 8.5% cap rate, which puts the value at $X" is a more professional conversation than "I want to pay $X."</p>
+
+      <h3>Factor in Capital Expenditure</h3>
+      <p>If the property needs $200,000 in deferred maintenance or renovations, that should be reflected in your offer. Either reduce the offer price or negotiate a seller credit. The cap rate should be applied to the sustainable NOI after accounting for normal reserves.</p>
+
+      <p>We cover negotiation tactics in detail in our guide to <a href="/blog/negotiating-hotel-purchase/">negotiating a hotel purchase</a>.</p>
+
+      <h2>Cap Rate vs. Cash-on-Cash Return</h2>
+
+      <p>This is one of the most common points of confusion for new hotel investors. Cap rate and cash-on-cash (CoC) return are not the same thing.</p>
+
+      <table>
+        <tr>
+          <th>Metric</th>
+          <th>Formula</th>
+          <th>What It Measures</th>
+        </tr>
+        <tr>
+          <td>Cap Rate</td>
+          <td>NOI / Property Value</td>
+          <td>Unlevered property yield (no financing)</td>
+        </tr>
+        <tr>
+          <td>Cash-on-Cash</td>
+          <td>Annual Cash Flow After Debt / Total Cash Invested</td>
+          <td>Return on your actual cash investment</td>
+        </tr>
+      </table>
+
+      <p>With leverage, your cash-on-cash return will typically be higher than the cap rate (assuming the cost of debt is lower than the cap rate). This is positive leverage, and it is why most hotel investors use financing.</p>
+
+      <p>Example:</p>
+      <ul>
+        <li>Purchase at 8% cap rate: $3.5M property, $280,000 NOI</li>
+        <li>70% LTV financing at 6.5% interest, 25-year amortization: ~$198,000 annual debt service</li>
+        <li>Cash flow after debt: $280,000 - $198,000 = $82,000</li>
+        <li>Cash invested (30% down + closing): ~$1,100,000</li>
+        <li>Cash-on-cash return: $82,000 / $1,100,000 = 7.5%</li>
+      </ul>
+
+      <p>With <a href="/blog/dscr-loan-hotel/">DSCR financing</a> and value-add improvements, the cash-on-cash return grows over time as NOI increases while debt service stays relatively fixed. Target CoC of 15%+ is achievable within 12-24 months of stabilization on well-underwritten deals.</p>
+
+      <h2>Market Cap Rate Trends</h2>
+
+      <p>Cap rates are not static. They move with interest rates, capital flows, and market sentiment. Several trends to be aware of:</p>
+
+      <ul>
+        <li><strong>Interest rate environment:</strong> When interest rates rise, cap rates tend to expand (increase), pushing values down. When rates fall, cap rates compress, pushing values up. However, this relationship is not perfect or immediate in hotel real estate.</li>
+        <li><strong>Capital availability:</strong> When more capital is chasing hotel deals, competition drives cap rates down. When capital retreats, cap rates widen, creating buying opportunities.</li>
+        <li><strong>Segment rotation:</strong> Investor interest shifts between hotel segments over time. The experiential/micro resort segment has seen cap rate compression over the past several years as more capital recognizes the opportunity.</li>
+        <li><strong>Supply dynamics:</strong> Markets with limited new supply and growing demand tend to see cap rate compression. Markets with oversupply see the opposite.</li>
+      </ul>
+
+      <p>Track cap rate trends through CoStar, CBRE, and JLL hotel investment reports. Understanding where cap rates are heading helps you time acquisitions and model realistic exit assumptions.</p>
+
+      <h2>When Cap Rates Are Misleading</h2>
+
+      <p>Cap rates can mislead you if you do not look behind the numbers. Watch for these situations:</p>
+
+      <h3>1. Inflated NOI</h3>
+      <p>The seller may present a pro forma NOI that excludes normal operating expenses, understates reserves, or includes one-time revenue. Always underwrite based on your own NOI estimate using verified trailing financials, not the seller's pro forma.</p>
+
+      <h3>2. Deferred Maintenance</h3>
+      <p>A property with a low price and attractive cap rate might have $500,000 in deferred maintenance that wipes out your returns. The cap rate looks good on paper until you account for the capital needed to keep the property operational.</p>
+
+      <h3>3. Unsustainable Revenue</h3>
+      <p>COVID-era pent-up demand created temporarily elevated revenue for many hotels. If the trailing 12-month NOI reflects a one-time demand surge, the cap rate on that NOI overstates the true yield. Look at 3-year trends, not just the most recent year.</p>
+
+      <h3>4. Market Dislocation</h3>
+      <p>A very high cap rate in a declining market is not automatically a good deal. If the market is losing demand (e.g., a factory closed, a military base relocated), the NOI may decline, and the "high cap rate" was actually the market pricing in future income loss.</p>
+
+      <h3>5. Cross-Market Comparisons</h3>
+      <p>Comparing cap rates across different markets without adjusting for local conditions is misleading. A 7% cap rate in a growing Texas market and a 7% cap rate in a flat Midwest market represent very different risk profiles and growth prospects.</p>
+
+      <p>The antidote to all of these is thorough <a href="/blog/hotel-due-diligence-checklist/">due diligence</a>. Verify the NOI. Inspect the property. Understand the market. Cap rates are a starting point for analysis, not the endpoint.</p>
+
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What is a hotel cap rate?</h3>
+          <p>A hotel cap rate (capitalization rate) is a metric that expresses the relationship between a hotel's Net Operating Income (NOI) and its market value or purchase price. It is calculated by dividing annual NOI by the property price. A 8% cap rate means the property generates 8 cents of NOI for every dollar of value. Cap rates are used to value hotels, compare investment opportunities, and assess risk.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is a good cap rate for a hotel investment?</h3>
+          <p>Hotel cap rates vary by segment. Economy hotels typically trade at 8-10%, midscale at 7-9%, boutique hotels at 6-8%, and luxury properties at 4-6%. A "good" cap rate depends on your strategy. Higher cap rates (8-10%) often signal value-add opportunities where you can improve operations and compress the cap rate. Lower cap rates (4-6%) indicate stabilized, lower-risk assets.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How is cap rate different from cash-on-cash return?</h3>
+          <p>Cap rate measures property-level yield (NOI / Property Value) regardless of financing. Cash-on-cash return measures your actual return on the cash you invested after debt service (Annual Cash Flow After Debt / Total Cash Invested). With leverage, your cash-on-cash return can be much higher than the cap rate. A property with an 8% cap rate financed at 70% LTV might produce a 15%+ cash-on-cash return.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What does cap rate compression mean in hotel investing?</h3>
+          <p>Cap rate compression means the cap rate decreases, which increases the property value for the same NOI. This can happen through market-wide trends (more buyer demand pushing values up) or through property-level improvements (rebranding, renovating, improving operations) that reduce perceived risk. Buying at a 9% cap rate and operating to a 6% cap rate is a forced appreciation strategy that can create significant equity.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>When are hotel cap rates misleading?</h3>
+          <p>Cap rates can be misleading when: the NOI used is not stabilized (trailing NOI may be artificially high or low), the property needs significant capital expenditure not reflected in the cap rate, the NOI includes one-time revenue or excludes normal expenses, or when comparing properties across very different markets. Always verify the NOI behind a quoted cap rate and understand what it includes and excludes.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

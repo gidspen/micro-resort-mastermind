@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding RevPAR: The Metric Every Hotel Investor Needs to Know | Incredible Hospitality Co</title>
+  <meta name="description" content="What is RevPAR and why does it matter for hotel investors? Complete guide to Revenue Per Available Room, how to calculate it, benchmarks, and how to use it in deal analysis." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/hotel-revpar/" />
+  <meta property="og:title" content="Understanding RevPAR: The Metric Every Hotel Investor Needs to Know" />
+  <meta property="og:description" content="What is RevPAR and why does it matter for hotel investors? Complete guide to Revenue Per Available Room, how to calculate it, benchmarks, and how to use it in deal analysis." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/hotel-revpar/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Understanding RevPAR: The Metric Every Hotel Investor Needs to Know" />
+  <meta name="twitter:description" content="What is RevPAR and why does it matter for hotel investors? Complete guide to Revenue Per Available Room, how to calculate it, benchmarks, and how to use it in deal analysis." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { margin-bottom: 24px; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h3 { margin-top: 0; font-size: 18px; color: var(--gold-light); }
+    .faq-item p { margin-bottom: 0; }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Understanding RevPAR: The Metric Every Hotel Investor Needs to Know",
+    "description": "What is RevPAR and why does it matter for hotel investors? Complete guide to Revenue Per Available Room, how to calculate it, benchmarks, and how to use it in deal analysis.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/blog/hotel-revpar/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is RevPAR in hotel investing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RevPAR stands for Revenue Per Available Room. It measures a hotel's ability to fill its rooms at an average rate. It is calculated by dividing total room revenue by the total number of available rooms, or by multiplying Average Daily Rate (ADR) by occupancy rate. RevPAR is the single most important performance metric in hotel investing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate RevPAR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There are two methods. Method 1: Total Room Revenue divided by Total Available Rooms (e.g., $500,000 revenue / 3,650 available room-nights = $136.99 RevPAR). Method 2: ADR multiplied by Occupancy Rate (e.g., $180 ADR x 72% occupancy = $129.60 RevPAR). Both methods give you the same result when the inputs are consistent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good RevPAR for a boutique hotel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Boutique hotel RevPAR typically ranges from $100 to $200+, depending on market and positioning. Economy hotels average $40-$70, midscale $60-$100, and luxury $200-$400+. For micro resorts in affluent secondary markets, a RevPAR of $120-$180 is a strong target. Always benchmark against your specific comp set rather than national averages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is RevPAR better than ADR or occupancy alone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ADR only tells you what occupied rooms earn. Occupancy only tells you how full you are. A hotel with $300 ADR and 40% occupancy ($120 RevPAR) is underperforming compared to a hotel with $180 ADR and 80% occupancy ($144 RevPAR). RevPAR combines both metrics to give you the complete picture of revenue performance per available room."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between RevPAR and TRevPAR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RevPAR only measures room revenue. TRevPAR (Total Revenue Per Available Room) includes all revenue sources: rooms, food and beverage, spa, event space, parking, and ancillary income. TRevPAR is more relevant for full-service hotels and resorts with significant non-room revenue. For most micro resorts where rooms are the primary revenue source, RevPAR is the more useful metric."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Hotel Metrics</span>
+      <h1>Understanding RevPAR: The Metric Every Hotel Investor Needs to Know</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p><strong>RevPAR (Revenue Per Available Room)</strong> is the single most important performance metric in hotel investing. It measures a hotel's ability to fill its available rooms at an average rate, combining both pricing power and occupancy into one number. If you only learn one hotel metric, make it RevPAR.</p>
+
+      <p>Whether you are evaluating your first boutique hotel acquisition or analyzing a micro resort deal, RevPAR is the metric that tells you the most about a property's revenue performance. It is the common language of hotel investors, lenders, brokers, and operators. Understanding it deeply gives you an edge in deal analysis, negotiations, and operations.</p>
+
+      <h2>How to Calculate RevPAR: Two Methods</h2>
+
+      <p>RevPAR can be calculated two ways. Both give you the same result.</p>
+
+      <h3>Method 1: Total Revenue Divided by Available Rooms</h3>
+
+      <p><strong>RevPAR = Total Room Revenue / Total Available Room-Nights</strong></p>
+
+      <p>Example: A 10-room hotel generates $500,000 in room revenue over a year. Total available room-nights = 10 rooms x 365 nights = 3,650.</p>
+
+      <p>RevPAR = $500,000 / 3,650 = <strong>$136.99</strong></p>
+
+      <h3>Method 2: ADR Multiplied by Occupancy</h3>
+
+      <p><strong>RevPAR = ADR x Occupancy Rate</strong></p>
+
+      <p>Example: The same hotel has an ADR (Average Daily Rate) of $190 and occupancy of 72%.</p>
+
+      <p>RevPAR = $190 x 0.72 = <strong>$136.80</strong></p>
+
+      <p>Method 2 is useful for quick mental math and for understanding the two levers you can pull to improve RevPAR: raise your rate or fill more rooms. Both methods should yield the same result when inputs are consistent.</p>
+
+      <div class="callout">
+        <h4>Quick Reference</h4>
+        <p>RevPAR = Total Room Revenue / Total Available Room-Nights<br>
+        RevPAR = ADR x Occupancy Rate<br><br>
+        Available Room-Nights = Number of Rooms x Number of Days in Period</p>
+      </div>
+
+      <h2>Why RevPAR Matters More Than ADR or Occupancy Alone</h2>
+
+      <p>This is where many first-time hotel investors get tripped up. They focus on ADR or occupancy in isolation, and it gives them an incomplete picture.</p>
+
+      <p>Consider two hotels in the same market:</p>
+
+      <table>
+        <tr>
+          <th>Metric</th>
+          <th>Hotel A</th>
+          <th>Hotel B</th>
+        </tr>
+        <tr>
+          <td>ADR</td>
+          <td>$300</td>
+          <td>$180</td>
+        </tr>
+        <tr>
+          <td>Occupancy</td>
+          <td>40%</td>
+          <td>80%</td>
+        </tr>
+        <tr>
+          <td><strong>RevPAR</strong></td>
+          <td><strong>$120</strong></td>
+          <td><strong>$144</strong></td>
+        </tr>
+      </table>
+
+      <p>Hotel A has the higher rate. Hotel B has the higher occupancy. But Hotel B is generating more revenue per available room. Hotel B is the better-performing asset from a revenue standpoint.</p>
+
+      <p>This is why RevPAR is the great equalizer. It forces you to evaluate rate and occupancy together, which is how revenue actually works in a hotel.</p>
+
+      <h2>RevPAR Benchmarks by Hotel Segment</h2>
+
+      <p>RevPAR varies significantly by property type, market, and positioning. Here are general benchmarks to use as a starting point:</p>
+
+      <table>
+        <tr>
+          <th>Segment</th>
+          <th>Typical RevPAR Range</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Economy</td>
+          <td>$40 - $70</td>
+          <td>Budget motels, limited service</td>
+        </tr>
+        <tr>
+          <td>Midscale</td>
+          <td>$60 - $100</td>
+          <td>Select-service hotels</td>
+        </tr>
+        <tr>
+          <td>Boutique / Micro Resort</td>
+          <td>$100 - $200+</td>
+          <td>Experience-driven, design-forward</td>
+        </tr>
+        <tr>
+          <td>Upper Upscale</td>
+          <td>$150 - $300</td>
+          <td>Full-service, major markets</td>
+        </tr>
+        <tr>
+          <td>Luxury</td>
+          <td>$200 - $400+</td>
+          <td>Premium markets, high ADR</td>
+        </tr>
+      </table>
+
+      <p>These are national ranges. Your comp set in a specific market will be more useful than national averages. Always pull market-level RevPAR data from CoStar or STR reports when <a href="/blog/micro-resort-deal-analysis/">analyzing a deal</a>.</p>
+
+      <h2>How RevPAR Drives Property Valuation</h2>
+
+      <p>In hotel investing, property value is typically derived from Net Operating Income (NOI) divided by a <a href="/blog/hotel-cap-rate/">cap rate</a>. RevPAR is the primary driver of the revenue line, which is the biggest input to NOI.</p>
+
+      <p>Here is how the math flows:</p>
+
+      <ol>
+        <li><strong>RevPAR</strong> determines total room revenue (RevPAR x Available Room-Nights)</li>
+        <li><strong>Total revenue</strong> minus operating expenses = NOI</li>
+        <li><strong>NOI</strong> divided by cap rate = property value</li>
+      </ol>
+
+      <p>A small increase in RevPAR can have a massive impact on property valuation. If you increase RevPAR by $20 on a 15-room property, that adds approximately $109,500 in annual revenue ($20 x 15 rooms x 365 days). At a 60% operating margin and a 7% cap rate, that RevPAR increase adds roughly $938,000 in property value.</p>
+
+      <p>This is why RevPAR growth is the most powerful lever for <a href="/blog/hotel-value-add-strategy/">value-add strategies</a> in hotel investing.</p>
+
+      <h2>Using RevPAR in Underwriting and Deal Analysis</h2>
+
+      <p>When you underwrite a hotel acquisition, RevPAR is the foundation of your revenue projections. Here is how to use it:</p>
+
+      <h3>Step 1: Establish Current RevPAR</h3>
+
+      <p>Pull the trailing-12-month (T12) room revenue and calculate current RevPAR. Compare this to the market comp set. If the property is underperforming the comp set, there is upside. If it is at or above market, the value-add opportunity is more limited on the revenue side.</p>
+
+      <h3>Step 2: Model Stabilized RevPAR</h3>
+
+      <p>Based on your value-add plan (renovations, rebranding, revenue management improvements), project what RevPAR should look like in 12-24 months. Be conservative. Use the comp set as your ceiling, not aspirational numbers.</p>
+
+      <h3>Step 3: Build Revenue from RevPAR</h3>
+
+      <p>Multiply your projected RevPAR by available room-nights to get projected room revenue. Add any ancillary revenue (parking, vending, event space) to get total revenue.</p>
+
+      <h3>Step 4: Stress Test</h3>
+
+      <p>Model scenarios at 80%, 90%, and 100% of your projected RevPAR to see how the deal performs under different conditions. If the deal only works at 100% of projected RevPAR, it is too tight.</p>
+
+      <p>This is the underwriting approach we teach in the <a href="/challenge/">5-Day Micro Resort Buyer Challenge</a>, where you build a complete deal analysis model from scratch.</p>
+
+      <h2>RevPAR Growth as a Market Health Indicator</h2>
+
+      <p>When screening markets for investment, RevPAR growth trends are one of the most reliable indicators of market health. A market with 10+ years of consistent RevPAR growth signals strong and durable demand.</p>
+
+      <p>Look for:</p>
+      <ul>
+        <li><strong>Consistent year-over-year growth</strong> of 3-6% annually</li>
+        <li><strong>Resilience during downturns</strong> (how did RevPAR perform in 2008-2009 and 2020-2021?)</li>
+        <li><strong>Growth driven by ADR, not just occupancy</strong> (ADR-driven growth is more sustainable)</li>
+        <li><strong>Limited new supply</strong> relative to demand growth</li>
+      </ul>
+
+      <p>Markets where RevPAR is growing primarily through ADR increases are typically healthier than markets where RevPAR is growing through occupancy gains alone. ADR growth means the market has pricing power, which is what you want as an owner.</p>
+
+      <p>CoStar is the primary data source for market-level RevPAR trends. It is non-negotiable for serious hotel underwriting, as we cover in our guide to <a href="/blog/micro-resort-market-analysis/">micro resort market analysis</a>.</p>
+
+      <h2>TRevPAR: When to Look Beyond Room Revenue</h2>
+
+      <p><strong>TRevPAR (Total Revenue Per Available Room)</strong> expands the RevPAR concept to include all property revenue, not just room revenue. This includes food and beverage, spa services, event space rental, parking, retail, and any other income streams.</p>
+
+      <p>TRevPAR = Total Property Revenue / Total Available Room-Nights</p>
+
+      <p>For full-service hotels and larger resorts with significant non-room revenue, TRevPAR gives a more complete picture. But for most micro resorts and boutique hotels where rooms are the primary revenue driver (often 85-95% of total revenue), RevPAR is the more useful and comparable metric.</p>
+
+      <p>Use TRevPAR when:</p>
+      <ul>
+        <li>The property has meaningful non-room revenue (event space, F&B, activities)</li>
+        <li>You are comparing properties with different amenity levels</li>
+        <li>You are modeling the impact of adding revenue streams beyond rooms</li>
+      </ul>
+
+      <h2>How to Improve RevPAR</h2>
+
+      <p>Since RevPAR = ADR x Occupancy, there are two paths to improvement. The best operators work on both simultaneously.</p>
+
+      <h3>Improving ADR</h3>
+      <ul>
+        <li><strong>Dynamic pricing</strong> that adjusts rates based on demand, day of week, and season</li>
+        <li><strong>Renovation and repositioning</strong> to justify higher rates (the <a href="/blog/micro-resort-branding/">Hospitality Value Stack</a>)</li>
+        <li><strong>Direct booking incentives</strong> that allow you to offer perceived value without reducing rate</li>
+        <li><strong>Length-of-stay requirements</strong> during peak periods</li>
+        <li><strong>Premium amenity packages</strong> that increase per-night spend</li>
+      </ul>
+
+      <h3>Improving Occupancy</h3>
+      <ul>
+        <li><strong>Channel diversification</strong> across multiple OTAs and direct booking</li>
+        <li><strong>Shoulder season programming</strong> (events, packages, promotions) to fill soft periods</li>
+        <li><strong>Corporate and group bookings</strong> for midweek occupancy</li>
+        <li><strong>Review generation</strong> to improve listing rankings and conversion rates</li>
+        <li><strong>Photography and listing optimization</strong> on OTA platforms</li>
+      </ul>
+
+      <p>The most common mistake is discounting rates to fill rooms. This increases occupancy but can crater ADR, leaving RevPAR flat or even lower. Revenue management is about finding the optimal balance between rate and occupancy that maximizes RevPAR, which we cover in detail in our <a href="/blog/micro-resort-revenue-management/">revenue management guide</a>.</p>
+
+      <h2>RevPAR Comp Set Analysis</h2>
+
+      <p>Your RevPAR does not exist in a vacuum. It only means something relative to your competitive set (comp set). A comp set is typically 4-6 properties in your market that are similar in size, quality, and guest profile.</p>
+
+      <p>Two key metrics to track against your comp set:</p>
+
+      <ul>
+        <li><strong>RevPAR Index (RPI)</strong>: Your RevPAR divided by the comp set average RevPAR, times 100. An RPI of 100 means you are performing at market average. Above 100 means you are outperforming. Below 100 means there is upside to capture.</li>
+        <li><strong>RevPAR penetration by segment</strong>: Are you winning on rate (ADR) or occupancy? This tells you where to focus improvement efforts.</li>
+      </ul>
+
+      <p>When evaluating an acquisition, a property with an RPI below 80-90 is often an opportunity. It signals that the current operator is underperforming the market, which means a better operator can unlock RevPAR growth without the market needing to improve.</p>
+
+      <h2>Common Mistakes with RevPAR</h2>
+
+      <h3>1. Comparing RevPAR Across Different Markets</h3>
+      <p>A $150 RevPAR in rural Tennessee is a very different proposition than a $150 RevPAR in Scottsdale. Operating costs, land values, and cap rates vary dramatically by market. Always evaluate RevPAR in the context of the local market and cost structure.</p>
+
+      <h3>2. Ignoring Seasonality</h3>
+      <p>Annual RevPAR can mask extreme seasonal swings. A property with $200 RevPAR in summer and $40 RevPAR in winter has very different cash flow dynamics than a property with $120 RevPAR year-round. Monthly or seasonal RevPAR matters for operational planning and debt service coverage.</p>
+
+      <h3>3. Using RevPAR as the Only Metric</h3>
+      <p>RevPAR tells you about revenue. It tells you nothing about expenses. A property with high RevPAR but bloated operating costs can have lower NOI than a simpler property with moderate RevPAR and lean operations. Always pair RevPAR analysis with expense analysis when <a href="/blog/hotel-investment-returns/">evaluating hotel investment returns</a>.</p>
+
+      <h3>4. Projecting RevPAR Growth That Exceeds Market Trends</h3>
+      <p>If the market is growing RevPAR at 4% annually and your pro forma assumes 15% growth, you need a very clear and specific plan for why your property will outperform. "We will renovate and raise rates" is not specific enough. Quantify the comp set gap and the specific improvements that will close it.</p>
+
+      <h3>5. Forgetting That RevPAR Is Backward-Looking</h3>
+      <p>Historical RevPAR tells you what happened. It does not guarantee future performance. New supply entering the market, shifts in travel patterns, or economic downturns can all impact future RevPAR. Build these risks into your underwriting with sensitivity analysis.</p>
+
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What is RevPAR in hotel investing?</h3>
+          <p>RevPAR stands for Revenue Per Available Room. It measures a hotel's ability to fill its rooms at an average rate. It is calculated by dividing total room revenue by the total number of available rooms, or by multiplying Average Daily Rate (ADR) by occupancy rate. RevPAR is the single most important performance metric in hotel investing.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do you calculate RevPAR?</h3>
+          <p>There are two methods. Method 1: Total Room Revenue divided by Total Available Rooms (e.g., $500,000 revenue / 3,650 available room-nights = $136.99 RevPAR). Method 2: ADR multiplied by Occupancy Rate (e.g., $180 ADR x 72% occupancy = $129.60 RevPAR). Both methods give you the same result when the inputs are consistent.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is a good RevPAR for a boutique hotel?</h3>
+          <p>Boutique hotel RevPAR typically ranges from $100 to $200+, depending on market and positioning. Economy hotels average $40-$70, midscale $60-$100, and luxury $200-$400+. For micro resorts in affluent secondary markets, a RevPAR of $120-$180 is a strong target. Always benchmark against your specific comp set rather than national averages.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why is RevPAR better than ADR or occupancy alone?</h3>
+          <p>ADR only tells you what occupied rooms earn. Occupancy only tells you how full you are. A hotel with $300 ADR and 40% occupancy ($120 RevPAR) is underperforming compared to a hotel with $180 ADR and 80% occupancy ($144 RevPAR). RevPAR combines both metrics to give you the complete picture of revenue performance per available room.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is the difference between RevPAR and TRevPAR?</h3>
+          <p>RevPAR only measures room revenue. TRevPAR (Total Revenue Per Available Room) includes all revenue sources: rooms, food and beverage, spa, event space, parking, and ancillary income. TRevPAR is more relevant for full-service hotels and resorts with significant non-room revenue. For most micro resorts where rooms are the primary revenue source, RevPAR is the more useful metric.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
