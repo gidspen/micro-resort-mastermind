@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2-Day Hotel Deal Workshop | Gideon Spencer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
+    }
+
+    /* UTILITY */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .gold { color: var(--gold); }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 48px 0; }
+    hr.divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* TOP BAR */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: radial-gradient(ellipse at top center, #173d36 0%, var(--dark) 70%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-subtitle {
+      font-size: 19px;
+      color: #c0bdb8;
+      max-width: 620px;
+      margin: 0 auto 40px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 300;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero-meta span strong { color: var(--text); }
+    .hero-cta-group { margin-top: 8px; }
+
+    /* CTA BUTTON */
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 18px 48px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* SOCIAL PROOF BAR */
+    .proof-bar {
+      background: var(--dark-card);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 32px 0;
+    }
+    .proof-bar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .proof-stat .number {
+      font-size: 36px;
+      font-weight: bold;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .proof-stat .label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'Arial', sans-serif;
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* WORKSHOP OVERVIEW */
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    @media (max-width: 700px) {
+      .workshop-grid { grid-template-columns: 1fr; }
+    }
+    .day-card {
+      background: var(--dark-card);
+      padding: 36px 28px;
+      border: 1px solid var(--dark-border);
+    }
+    .day-card .day-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .day-card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .day-card p {
+      font-size: 14px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+    .day-card .module-list {
+      list-style: none;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .day-card .module-list li {
+      font-size: 13px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .day-card .module-list li::before {
+      content: "→";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+    }
+    .day-card .outcome {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--dark-border);
+      font-size: 13px;
+      color: var(--gold-light);
+      font-family: 'Arial', sans-serif;
+    }
+    .day-card .outcome::before {
+      content: "✓ You leave with: ";
+      font-weight: bold;
+    }
+
+    /* DELIVERABLES STRIP */
+    .deliverables-strip {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 48px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .deliverables-strip h3 {
+      font-size: 20px;
+      margin-bottom: 28px;
+      color: var(--gold-light);
+    }
+    .deliverables-list {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .deliverable-item {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: #c0bdb8;
+      text-align: center;
+      max-width: 160px;
+    }
+    .deliverable-item .di-icon {
+      font-size: 24px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+      .deliverables-strip { padding: 32px 24px; }
+    }
+
+    /* FOR YOU / NOT FOR YOU */
+    .qualifier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .qualifier-grid { grid-template-columns: 1fr; }
+    }
+    .qual-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 36px 28px;
+    }
+    .qual-box h3 {
+      font-size: 17px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .qual-box ul { list-style: none; }
+    .qual-box ul li {
+      font-size: 14px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--dark-border);
+      padding-left: 24px;
+      position: relative;
+    }
+    .qual-box.yes ul li::before { content: "✓"; color: #4CAF50; position: absolute; left: 0; }
+    .qual-box.no ul li::before { content: "✗"; color: #e74c3c; position: absolute; left: 0; }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+    .about-photo {
+      width: 200px;
+      height: 240px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content h2 { font-size: 28px; margin-bottom: 16px; }
+    .about-content p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 16px;
+    }
+    .about-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .badge {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 8px 16px;
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      color: var(--gold);
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+    .testimonial-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 28px;
+    }
+    .testimonial-card blockquote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #d8d5d0;
+      margin-bottom: 16px;
+    }
+    .testimonial-card blockquote::before { content: '"'; color: var(--gold); font-size: 24px; }
+    .testimonial-author {
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      color: var(--muted);
+    }
+    .testimonial-author strong { color: var(--text); display: block; }
+
+    /* REGISTRATION SECTION */
+    .reg-section {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 60px 48px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .reg-section { padding: 40px 24px; }
+    }
+    .reg-section h2 { font-size: 32px; margin-bottom: 12px; }
+    .reg-section .reg-subtitle {
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 36px;
+      font-size: 16px;
+    }
+    .reg-details {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .reg-detail {
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+    }
+    .reg-detail .rd-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .reg-detail .rd-value {
+      font-size: 18px;
+      color: var(--gold);
+      font-weight: bold;
+      display: block;
+    }
+
+    /* FAQ */
+    .faq-list { margin-top: 48px; }
+    .faq-item {
+      border-bottom: 1px solid var(--dark-border);
+      padding: 24px 0;
+    }
+    .faq-item h3 {
+      font-size: 17px;
+      margin-bottom: 12px;
+      color: var(--gold-light);
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .section-header h2 { font-size: 34px; margin-bottom: 12px; }
+    .section-header p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    Free 2-Day Working Session — You'll Leave With a Real Deal Analysis &amp; a Live LOI
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Free 2-Day Live Working Session</span>
+      <h1>Find It. Analyze It.<br /><em>Make the Offer.</em></h1>
+      <p class="hero-subtitle">
+        A free 2-day hands-on working session for STR investors ready to step into hotels and micro resorts. You're not watching a presentation — you're building your buy box, running deal analysis on a real property, and writing a live LOI. You leave with work you did, not notes from someone else's slides.
+      </p>
+      <div class="hero-meta">
+        <span>📅 <strong>March 26</strong> &amp; <strong>March 27</strong></span>
+        <span>🕐 <strong>2:00 PM CT / 3:00 PM ET</strong> each day</span>
+        <span>📍 <strong>Live on Zoom</strong></span>
+        <span>💰 <strong>100% Free</strong></span>
+      </div>
+      <div class="hero-cta-group">
+        <a href="https://us06web.zoom.us/webinar/register/WN_Q6pXZ9J4QP29DRfx06TDgg" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Register for Free →
+        </a>
+        <p class="cta-note">No credit card required. Seats are limited.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-bar-inner">
+        <div class="proof-stat">
+          <span class="number">38</span>
+          <span class="label">Properties in Community</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">$6.5M+</span>
+          <span class="label">Gideon's Personal Portfolio</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">200+</span>
+          <span class="label">STR Investors Trained</span>
+        </div>
+        <div class="proof-stat">
+          <span class="number">$23M+</span>
+          <span class="label">Student Deal Volume</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT THIS IS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What This Workshop Is</span>
+        <h2>You Don't Watch. You Do the Work.</h2>
+        <p>Most STR investors spend years wondering if they could buy a hotel. This workshop compresses that uncertainty into two working sessions — and you leave with deliverables you built yourself, not a notebook full of someone else's ideas.</p>
+      </div>
+
+      <div class="workshop-grid">
+        <div class="day-card">
+          <span class="day-label">Day 1 — Find &amp; Analyze</span>
+          <h3>You Build Your Buy Box. You Run the Deal Analysis. Live.</h3>
+          <p>Day 1 is a working session, not a lecture. You'll define your own buy box — your market, your property type, your return targets — and then run a deal analysis on a real hotel property using Gideon's model. You don't observe. You build.</p>
+          <ul class="module-list">
+            <li><strong>Build Your Buy Box:</strong> You'll fill in your own criteria — market, property type, unit count, price range, return targets — and leave with a document you can act on immediately</li>
+            <li><strong>Where Real Deals Come From:</strong> Off-market sourcing, hotel broker relationships, direct seller outreach — the sourcing channels that produce actual deals, not MLS leftovers</li>
+            <li><strong>Live Deal Analysis:</strong> Gideon walks through a real property. You run the numbers alongside him — RevPAR modeling, ADR benchmarking, pro forma construction — using a template you keep</li>
+            <li><strong>Deal Filter Criteria:</strong> What separates a deal worth pursuing from a time sink — and how to know in under 20 minutes</li>
+          </ul>
+          <p class="outcome">a completed buy box document (yours, specific to your situation) and a working deal analysis model you built during the session</p>
+        </div>
+        <div class="day-card">
+          <span class="day-label">Day 2 — Offer &amp; Close</span>
+          <h3>You Write the LOI. You Build the Financing Plan. Live.</h3>
+          <p>Day 2 picks up where Day 1 ends. You'll structure an actual Letter of Intent using the deal you analyzed — Gideon walks through his LOI term by term, and you customize yours in real time. Then the session closes with a financing deep-dive specific to your situation: deal size, cash available, and income structure.</p>
+          <ul class="module-list">
+            <li><strong>Write Your LOI:</strong> Work through the term sheet structure with Gideon — offer price, earnest money, due diligence period, contingencies — and leave with a draft ready to send</li>
+            <li><strong>Negotiating Commercial Deals:</strong> How to anchor, respond to counters, and maintain leverage through the LOI stage without blowing the relationship</li>
+            <li><strong>Build Your Financing Stack:</strong> DSCR loans, SBA 7(a), seller carry-backs, JV equity — work through which structures apply to your deal and your balance sheet</li>
+            <li><strong>Live Deal Clinic:</strong> Bring a real property you're looking at. Gideon reviews the numbers and offer structure with you on camera.</li>
+          </ul>
+          <p class="outcome">a customized LOI draft and a financing strategy built around your actual deal — not a hypothetical</p>
+        </div>
+      </div>
+
+      <!-- DELIVERABLES STRIP -->
+      <div class="deliverables-strip">
+        <h3>What You'll Have When You Leave</h3>
+        <div class="deliverables-list">
+          <div class="deliverable-item">
+            <span class="di-icon">🎯</span>
+            A defined buy box — exactly what you're looking for and where
+          </div>
+          <div class="deliverable-item">
+            <span class="di-icon">📊</span>
+            A working deal analysis model built on a real property
+          </div>
+          <div class="deliverable-item">
+            <span class="di-icon">📝</span>
+            An LOI framework ready to customize and send
+          </div>
+          <div class="deliverable-item">
+            <span class="di-icon">🏦</span>
+            A financing strategy that doesn't depend on W-2 income
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FOR YOU / NOT FOR YOU -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Is This For You?</span>
+        <h2>This Workshop Is Built For a Specific Investor</h2>
+      </div>
+      <div class="qualifier-grid">
+        <div class="qual-box yes">
+          <h3>✓ This IS for you if...</h3>
+          <ul>
+            <li>You own 2+ short-term rentals and have proven the model — now you want to scale into something bigger</li>
+            <li>You've looked at hotels or micro resorts but don't know how to analyze the deal or what an offer even looks like</li>
+            <li>You're tired of adding individual Airbnbs and want a branded asset you actually own as a business</li>
+            <li>You want out of your W-2 and need to know how to finance a commercial acquisition without your salary as the anchor</li>
+            <li>You want to build something that generates real cash flow and creates lasting equity — not just monthly income</li>
+            <li>You're ready to make an actual move — and you need the framework to do it with confidence</li>
+          </ul>
+        </div>
+        <div class="qual-box no">
+          <h3>✗ This is NOT for you if...</h3>
+          <ul>
+            <li>You don't own any short-term rentals yet — this assumes you've already proven the STR model</li>
+            <li>You're looking for truly passive income with no operational involvement — hotels are businesses</li>
+            <li>You want theory over execution — this workshop produces real deliverables, not just concepts</li>
+            <li>You want to sit back and watch — this is a working session, not a webinar. You'll be building in real time.</li>
+            <li>You've already closed multiple hotel deals — this is built for the investor making the jump from STRs for the first time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT GIDEON -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Your Host</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="../images/gideon-headshot.jpeg" alt="Gideon Spencer" style="width:100%; border-radius:4px; display:block;" />
+        </div>
+        <div class="about-content">
+          <h2>Gideon Spencer</h2>
+          <p>Gideon is a hotel investor and operator who started exactly where most people on this workshop start — with a small portfolio of short-term rentals and a belief that there was a bigger play for serious operators.</p>
+          <p>He's personally acquired $6.5M+ in hospitality assets across 6 hotels and 30 units, and built a community of 38 operators with over $300M in assets under management. His Incredible Hospitality Mastermind has trained 200+ STR investors in the hotel acquisition process, with members closing over $23M in deals.</p>
+          <p>The 2-Day Hotel Deal Workshop is the most direct version of his deal framework — find a deal, run the numbers, write the LOI — delivered live in two sessions, for free. No pitch deck. No theory. Just the process he uses to find and close hotel acquisitions, taught in real time.</p>
+          <div class="about-badges">
+            <span class="badge">$6.5M+ Acquired</span>
+            <span class="badge">6 Hotels, 30 Units</span>
+            <span class="badge">200+ Investors Trained</span>
+            <span class="badge">Incredible Hospitality</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What Investors Are Saying</span>
+        <h2>From STR Investors Who Made the Jump</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <blockquote>
+            I had been looking at hotels for over a year and couldn't get clarity on how to underwrite a deal. After one session with Gideon's framework, I had a working model and submitted my first LOI within three weeks.
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            STR investor, 3 properties → first hotel LOI submitted
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>
+            The financing session alone was worth everything. I had no idea DSCR loans applied to hospitality — that one conversation removed the biggest blocker I had to making an offer.
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            W-2 corporate job, 2 STRs → hotel acquisition under contract
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>
+            I spent months telling myself I needed more experience before I could look at a hotel deal. Gideon's buy box framework showed me I already had what I needed — I just needed the structure to apply it at the next level.
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            5 short-term rentals → 8-unit micro resort under LOI
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <blockquote>
+            What I appreciated most was how real it felt. We weren't working through hypothetical deals — we were analyzing actual properties with actual numbers. I left with something I could actually use.
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>[STUDENT NAME]</strong>
+            4 STRs → first commercial hotel deal closed
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- REGISTRATION -->
+  <section class="section" id="register">
+    <div class="container">
+      <div class="reg-section">
+        <h2>Reserve Your Free Seat</h2>
+        <p class="reg-subtitle">Two days. The complete framework to find, analyze, and offer on your first hotel or micro resort. Zero cost.</p>
+        <div class="reg-details">
+          <div class="reg-detail">
+            <span class="rd-label">Day 1</span>
+            <span class="rd-value">March 26</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Day 2</span>
+            <span class="rd-value">March 27</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Time</span>
+            <span class="rd-value">2:00 PM CT / 3:00 PM ET</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Platform</span>
+            <span class="rd-value">Zoom</span>
+          </div>
+          <div class="reg-detail">
+            <span class="rd-label">Cost</span>
+            <span class="rd-value">FREE</span>
+          </div>
+        </div>
+        <a href="https://us06web.zoom.us/webinar/register/WN_Q6pXZ9J4QP29DRfx06TDgg" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Register for Free on Zoom →
+        </a>
+        <p class="cta-note" style="margin-top:16px;">Click to register on Zoom. Your join link will be emailed immediately.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- FAQ -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Common Questions</span>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Is this really free?</h3>
+          <p>Yes, completely free. No upsell during the workshop, no credit card required. After Day 2, there is an opportunity to learn about the Mastermind community for those who want ongoing implementation support — but that is entirely optional and never the point of the workshop itself.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need to already own short-term rentals?</h3>
+          <p>Yes. This workshop is built for investors who have proven the STR model and are ready to step into commercial hospitality. If you own 2+ properties and are generating real cash flow, this is built for you. If you're brand new to real estate entirely, start with STR fundamentals first.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is this the same as the 3-Day Micro Resort Buyer Challenge?</h3>
+          <p>Different content, different format. The Challenge is a broader introduction to the micro resort development framework. The 2-Day Workshop is more hands-on and deal-specific — you'll analyze a real property and build a Letter of Intent during the sessions. If you've done the Challenge, this goes deeper into execution.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I can't attend live?</h3>
+          <p>Replays will be available for a limited window after each session. That said, the deal analysis and Q&A components are dramatically more valuable live — if you have a specific property you're looking at, you can bring it to the session and get real feedback. We strongly encourage attending live if at all possible.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do I need hospitality or commercial real estate experience?</h3>
+          <p>No. You need STR experience — and you already have that. You know guests, dynamic pricing, occupancy, and reviews. This workshop fills the commercial deal gap: how to underwrite a hotel, source the deal, structure the offer, and finance the acquisition at commercial scale.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What do I need to participate?</h3>
+          <p>A Zoom account (free) and two focused sessions. The deal analysis templates and LOI framework will be provided during the workshop. Optionally: if you have a specific property you're considering, bring the listing and the numbers — we may be able to analyze it live.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What happens after the workshop?</h3>
+          <p>You'll have a buy box, a deal analysis model, an LOI framework, and a financing strategy — the complete toolkit to evaluate and offer on your first hotel or micro resort. You'll receive an invitation to learn about the Mastermind community for investors actively working toward their first deal. No pressure, no pitch — just a decision point.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How many spots are available?</h3>
+          <p>This workshop is kept intentionally small to allow for live deal analysis, real Q&A, and a genuine working session. Once seats fill, registration closes. If you're considering it, register now — you can always decide whether to attend closer to the date.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section" style="background: radial-gradient(ellipse at bottom center, #173d36 0%, var(--dark) 70%); text-align: center;">
+    <div class="container">
+      <span class="eyebrow">Two Days. One Deal Framework.</span>
+      <h2 style="font-size:38px; margin-bottom: 16px;">Your Next Hotel Deal Starts<br />With Two Days of Real Work.</h2>
+      <p style="font-size:17px; color:#c0bdb8; font-family:'Arial',sans-serif; max-width:560px; margin: 0 auto 36px;">You don't need more content to watch. You need to sit down, build your buy box, run the numbers on a real deal, and write the offer. That's exactly what this is. Two working sessions. Deliverables you built yourself. A deal framework you can use the moment we're done.</p>
+      <a href="https://us06web.zoom.us/webinar/register/WN_Q6pXZ9J4QP29DRfx06TDgg" class="btn-primary" target="_blank" rel="noopener noreferrer">
+        Register for Free →
+      </a>
+      <p class="cta-note" style="margin-top:16px;">Free. Live on Zoom. March 26 &amp; March 27.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Gideon Spencer | Incredible Hospitality</p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com" style="color:var(--gold);">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
