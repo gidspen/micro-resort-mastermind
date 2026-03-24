@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Management for Micro Resorts: ADR, Occupancy, and RevPAR Optimization | Incredible Hospitality Co</title>
+  <meta name="description" content="Revenue management strategies for micro resorts and boutique hotels. How to optimize ADR, occupancy, and RevPAR through dynamic pricing, direct bookings, and experience-based premiums." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/micro-resort-revenue-management/" />
+  <meta property="og:title" content="Revenue Management for Micro Resorts: ADR, Occupancy, and RevPAR Optimization" />
+  <meta property="og:description" content="Revenue management strategies for micro resorts and boutique hotels. How to optimize ADR, occupancy, and RevPAR through dynamic pricing, direct bookings, and experience-based premiums." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/micro-resort-revenue-management/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Revenue Management for Micro Resorts: ADR, Occupancy, and RevPAR Optimization" />
+  <meta name="twitter:description" content="Revenue management strategies for micro resorts and boutique hotels. How to optimize ADR, occupancy, and RevPAR through dynamic pricing, direct bookings, and experience-based premiums." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .faq-section { margin-top: 48px; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; color: var(--gold-light); }
+    .faq-item p { margin-bottom: 0; }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Revenue Management for Micro Resorts: ADR, Occupancy, and RevPAR Optimization",
+    "description": "Revenue management strategies for micro resorts and boutique hotels. How to optimize ADR, occupancy, and RevPAR through dynamic pricing, direct bookings, and experience-based premiums.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://incrediblehospitalityco.com/blog/micro-resort-revenue-management/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is RevPAR and why does it matter for micro resorts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RevPAR (Revenue Per Available Room) is calculated by multiplying your Average Daily Rate by your occupancy rate. It is the single most important top-line metric because it captures both pricing power and demand. A micro resort with $250 ADR and 70% occupancy has a RevPAR of $175. Tracking RevPAR over time tells you whether your revenue strategy is working better than tracking ADR or occupancy alone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does dynamic pricing work for a small hotel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dynamic pricing software (PriceLabs, Wheelhouse, Beyond Pricing) automatically adjusts your nightly rates based on demand signals, competitor pricing, day of week, seasonality, local events, and booking pace. You set minimum and maximum rate guardrails, and the algorithm optimizes within those bounds. Most micro resort operators see a 10-20% RevPAR improvement within the first 30 days of implementation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good ADR for a micro resort or boutique hotel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ADR varies significantly by market, season, and property quality. Rather than targeting a specific dollar amount, aim to be in the top 25% of your competitive set. Use CoStar data, AirDNA, or STR reports to identify your comp set ADR, then use The Hospitality Value Stack framework to push your rates above the median through brand, experience, and amenity layering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I reduce OTA commission costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Build a direct booking channel through your own website with a booking engine, offer a 5-10% direct booking discount (still cheaper than 15-20% OTA commissions), collect guest emails for repeat booking campaigns, optimize your Google Business Profile for organic traffic, and implement a post-stay email sequence that drives future direct bookings. A realistic target is shifting from 10% direct to 30% direct within the first year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I prioritize higher ADR or higher occupancy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Prioritize ADR. A property at 70% occupancy with premium rates is almost always more profitable than one at 95% occupancy with discounted rates. Higher occupancy means more turnovers (higher cleaning costs), more wear and tear, and less pricing power. The goal is to maximize RevPAR, and in most micro resort markets, the ADR lever has more upside than the occupancy lever."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Revenue Strategy</span>
+      <h1>Revenue Management for Micro Resorts: ADR, Occupancy, and RevPAR Optimization</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>Revenue management is the difference between a micro resort that generates modest cash flow and one that builds real wealth. The operators who master pricing, channel strategy, and guest experience design consistently outperform their comp set by 20-40% in RevPAR. And RevPAR is what drives NOI, which is what drives property value.</p>
+
+      <p>This guide covers the key metrics, strategies, and tools you need to optimize revenue at a micro resort or boutique hotel, whether you are preparing for your first acquisition or looking to improve performance on a property you already own.</p>
+
+      <h2>The Key Metrics You Need to Know</h2>
+
+      <p>Before you can optimize revenue, you need to understand how it is measured. There are four metrics that every micro resort operator should track weekly.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Formula</th>
+            <th>What It Tells You</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ADR</strong> (Average Daily Rate)</td>
+            <td>Total Room Revenue / Rooms Sold</td>
+            <td>Your pricing power per occupied night</td>
+          </tr>
+          <tr>
+            <td><strong>Occupancy Rate</strong></td>
+            <td>Rooms Sold / Rooms Available</td>
+            <td>Demand for your property as a percentage</td>
+          </tr>
+          <tr>
+            <td><strong>RevPAR</strong> (Revenue Per Available Room)</td>
+            <td>ADR x Occupancy Rate</td>
+            <td>Top-line revenue efficiency combining price and demand</td>
+          </tr>
+          <tr>
+            <td><strong>TRevPAR</strong> (Total Revenue Per Available Room)</td>
+            <td>Total Revenue (rooms + ancillary) / Rooms Available</td>
+            <td>Full revenue picture including non-room income</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>RevPAR is the most important of these four. It captures both your ability to set premium rates and your ability to fill rooms. An operator with $300 ADR and 50% occupancy ($150 RevPAR) is underperforming one with $220 ADR and 75% occupancy ($165 RevPAR), even though the first has a much higher nightly rate.</p>
+
+      <p>TRevPAR adds another dimension by including ancillary revenue (experience packages, pet fees, equipment rentals, event hosting). For well-operated micro resorts, ancillary revenue can add 5-15% on top of room revenue, all of which drops almost entirely to the bottom line.</p>
+
+      <h2>Dynamic Pricing: The Highest-ROI Revenue Tool</h2>
+
+      <p>If you are setting rates manually or using a flat seasonal pricing calendar, you are leaving money on the table every single night. Dynamic pricing software is the single most impactful revenue tool available to micro resort operators.</p>
+
+      <h3>How Dynamic Pricing Works</h3>
+
+      <p>Dynamic pricing tools analyze dozens of demand signals in real time and adjust your nightly rates automatically. The inputs include:</p>
+
+      <ul>
+        <li><strong>Local demand signals:</strong> Events, holidays, school breaks, weather patterns</li>
+        <li><strong>Competitor pricing:</strong> What comparable properties are charging tonight, next week, next month</li>
+        <li><strong>Day of week patterns:</strong> Weekend vs. weekday demand curves</li>
+        <li><strong>Booking pace:</strong> How far in advance guests are booking for a given date</li>
+        <li><strong>Seasonality:</strong> Historical demand patterns by month</li>
+        <li><strong>Occupancy thresholds:</strong> As your property fills up for a date, rates increase to capture remaining demand at a premium</li>
+      </ul>
+
+      <p>You set minimum and maximum rate guardrails, define your base pricing preferences, and the algorithm handles the rest. Most operators see a 10-20% RevPAR lift within the first 30 days.</p>
+
+      <h3>Top Dynamic Pricing Tools</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Best For</th>
+            <th>Starting Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PriceLabs</td>
+            <td>Multi-unit properties, customization depth</td>
+            <td>$20-30/unit/month</td>
+          </tr>
+          <tr>
+            <td>Wheelhouse</td>
+            <td>Market data and comp set analysis</td>
+            <td>1% of booking revenue</td>
+          </tr>
+          <tr>
+            <td>Beyond Pricing</td>
+            <td>Ease of setup, Airbnb integration</td>
+            <td>1% of booking revenue</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>For a 10-unit micro resort generating $400,000 in room revenue, dynamic pricing software costs $2,400-$4,000/year and typically generates $40,000-$80,000 in additional revenue. That is a 10-30x return on investment.</p>
+
+      <h2>Channel Management: OTA vs. Direct</h2>
+
+      <p>Where your bookings come from matters as much as how many you get. OTA platforms (Airbnb, Booking.com, VRBO, Expedia) charge 15-20% commission on each booking. Direct bookings through your own website cost you almost nothing beyond the payment processing fee.</p>
+
+      <h3>The Channel Mix Strategy</h3>
+
+      <p>The goal is not to eliminate OTAs. They provide visibility, credibility, and demand you cannot replicate on day one. The goal is to progressively shift your mix toward direct bookings over time.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>OTA %</th>
+            <th>Direct %</th>
+            <th>Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Month 1-6 (new acquisition)</td>
+            <td>80-90%</td>
+            <td>10-20%</td>
+            <td>Maximize OTA visibility, build reviews, launch direct site</td>
+          </tr>
+          <tr>
+            <td>Month 6-12</td>
+            <td>60-70%</td>
+            <td>30-40%</td>
+            <td>Email marketing, Google presence, repeat guest campaigns</td>
+          </tr>
+          <tr>
+            <td>Year 2+</td>
+            <td>40-50%</td>
+            <td>50-60%</td>
+            <td>Brand-driven demand, referral programs, SEO</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>How to Build Your Direct Booking Channel</h3>
+
+      <ul>
+        <li><strong>Direct booking website</strong> with an integrated booking engine (Cloudbeds, Lodgify, or your PMS's built-in engine)</li>
+        <li><strong>Direct booking discount:</strong> Offer 5-10% off OTA rates for direct bookings. You still save money compared to OTA commissions.</li>
+        <li><strong>Guest email capture:</strong> Collect email addresses from every guest (OTA and direct) for post-stay marketing</li>
+        <li><strong>Post-stay email sequence:</strong> Thank-you email, review request, and "book direct next time" offer with a discount code</li>
+        <li><strong>Google Business Profile:</strong> Fully optimized with photos, reviews, booking link, and regular posts. This drives organic direct traffic at zero cost.</li>
+      </ul>
+
+      <p>On $400,000 in annual room revenue, shifting from 10% direct to 40% direct saves $36,000-$48,000 per year in OTA commissions. That goes straight to your bottom line.</p>
+
+      <h2>The Hospitality Value Stack Applied to Pricing</h2>
+
+      <p>Dynamic pricing optimizes revenue within your current rate ceiling. The Hospitality Value Stack raises that ceiling by giving guests reasons to pay more than your competitors charge.</p>
+
+      <p>Here is how each layer of the Value Stack translates to pricing power:</p>
+
+      <h3>Layer 1: Base Accommodation</h3>
+      <p>Clean, functional, well-maintained. This is where your comp set prices cluster. If you are only operating at this layer, your pricing is dictated by the market, and you compete on availability and discounts.</p>
+
+      <h3>Layer 2: Brand Identity</h3>
+      <p>A distinctive name, cohesive visual identity, professional direct booking site, and active social media presence. Brand transforms a "place to stay" into a "place to visit." Pricing premium: 10-15% above base comp set. Cost to implement: $2,000-$5,000 and ongoing content effort.</p>
+
+      <h3>Layer 3: Curated Experiences</h3>
+      <p>Welcome packages, local partnerships, guided activities, seasonal programming, and personalized touches. These are the things guests mention in reviews and share on social media. Pricing premium: 15-25% above base comp set. Cost to implement: $500-$2,000 and partnership development.</p>
+
+      <h3>Layer 4: Premium Amenities</h3>
+      <p>Hot tubs, fire pits, outdoor kitchens, game rooms, EV chargers, luxury linens, and premium toiletries. These are capital investments that justify sustained rate increases. Pricing premium: 25-40% above base comp set. Cost to implement: $5,000-$50,000+ depending on scope.</p>
+
+      <p>A micro resort operating at all four layers of the Hospitality Value Stack typically commands ADR 30-60% above comparable properties in the same market that operate at Layer 1 only. On a 10-unit property, that premium can translate to $100,000-$200,000 in additional annual revenue. For the full breakdown, see our guide on <a href="/blog/micro-resort-operations/">micro resort operations</a>.</p>
+
+      <h2>Seasonal Revenue Strategies</h2>
+
+      <p>Even in non-seasonal markets (which is what <a href="/blog/hotel-buy-box/">The Buy Box Blueprint</a> recommends), there are still demand variations throughout the year. Smart operators use seasonal strategies to maximize revenue during peaks and minimize vacancy during troughs.</p>
+
+      <h3>Peak Season (High Demand)</h3>
+      <ul>
+        <li>Let dynamic pricing push rates to their maximum</li>
+        <li>Implement minimum stay requirements (2-3 night minimums on weekends)</li>
+        <li>Add premium experience packages at the highest margin</li>
+        <li>Reduce or eliminate OTA discounts and promotions</li>
+        <li>Offer early booking incentives for the next peak season</li>
+      </ul>
+
+      <h3>Shoulder Season (Moderate Demand)</h3>
+      <ul>
+        <li>Introduce themed packages (wellness weekends, culinary experiences, adventure packages)</li>
+        <li>Target specific guest segments (couples, remote workers, small groups)</li>
+        <li>Run mid-week promotions to fill weekday gaps</li>
+        <li>Partner with local businesses for cross-promotional events</li>
+      </ul>
+
+      <h3>Low Season (Soft Demand)</h3>
+      <ul>
+        <li>Use this period for property improvements and renovations</li>
+        <li>Offer extended-stay discounts (7+ nights) to maintain base occupancy</li>
+        <li>Target corporate retreats, team offsites, and small events</li>
+        <li>Run "locals" promotions for drive-to guests</li>
+        <li>Never discount below your minimum rate floor. It is better to have an empty room than to train the market that your property is cheap.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>The Minimum Rate Floor</h4>
+        <p>Set a rate floor below which you will never discount, regardless of occupancy. This protects your brand positioning and prevents the race-to-the-bottom pricing trap. Your minimum rate should cover your variable costs per room night (cleaning, supplies, amenity wear) plus a margin. If a night cannot be sold above this floor, it is better left vacant.</p>
+      </div>
+
+      <h2>Benchmarking Against Your Comp Set</h2>
+
+      <p>You cannot manage what you do not measure, and you cannot measure without a benchmark. Identifying and tracking your competitive set is essential for effective revenue management.</p>
+
+      <h3>How to Build Your Comp Set</h3>
+
+      <ol>
+        <li><strong>Identify 5-8 properties</strong> in your market that match your unit count, quality level, and guest profile</li>
+        <li><strong>Use data sources:</strong> CoStar for hotel comps, AirDNA for STR comps, manual research on OTA platforms for direct rate comparison</li>
+        <li><strong>Track monthly:</strong> ADR, occupancy, RevPAR, and review scores for each comp</li>
+        <li><strong>Set your target:</strong> Top 25% of comp set in RevPAR. If you are below the median, something in your pricing, guest experience, or channel strategy needs attention.</li>
+      </ol>
+
+      <p>CoStar is the gold standard for hotel-level competitive data. For micro resorts that operate more like premium STRs, supplement CoStar with AirDNA market reports. If you are in the <a href="/blog/micro-resort-deal-analysis/">deal analysis</a> phase, building your comp set during underwriting gives you the data you need for both acquisition pricing and post-close revenue management.</p>
+
+      <h2>Package and Experience Pricing</h2>
+
+      <p>Packaging transforms your property from a place to sleep into a destination. Guests pay more for curated experiences than they pay for the sum of the individual components, and packages increase your TRevPAR without requiring more rooms.</p>
+
+      <h3>Package Types That Work for Micro Resorts</h3>
+
+      <ul>
+        <li><strong>Romance package:</strong> Room + champagne + late checkout + local restaurant gift card. Guest pays $400. Your cost: $320 room + $40 extras = $360 value delivered for a $40 premium plus the room night is booked.</li>
+        <li><strong>Adventure package:</strong> Room + guided hiking or kayaking + packed lunch + equipment. Partner with local outfitters at a wholesale rate and mark up 30-50%.</li>
+        <li><strong>Wellness retreat package:</strong> Room + yoga class + spa credit + healthy breakfast. Multi-night packages at premium rates.</li>
+        <li><strong>Family package:</strong> Room + s'mores kit + activity passes + kids welcome amenity. Low cost, high perceived value.</li>
+        <li><strong>Extended stay package:</strong> 5+ nights at a slight per-night discount. Reduces turnover costs and guarantees occupancy.</li>
+      </ul>
+
+      <p>The key principle: packages should increase total revenue per booking, not just shift existing revenue into a different line item. Every package should have a margin above what you would earn from the room night alone.</p>
+
+      <h2>Technology Tools for Revenue Management</h2>
+
+      <p>The minimum tech stack for effective revenue management at a micro resort:</p>
+
+      <ul>
+        <li><strong>PMS with reporting:</strong> Your property management system should give you real-time data on ADR, occupancy, RevPAR, and booking pace. If it does not, switch to one that does.</li>
+        <li><strong>Dynamic pricing software:</strong> PriceLabs, Wheelhouse, or Beyond Pricing. Non-negotiable.</li>
+        <li><strong>Channel manager:</strong> Syncs rates and availability across all platforms in real time. Prevents double bookings and ensures pricing consistency.</li>
+        <li><strong>Comp set tracker:</strong> A simple spreadsheet or AirDNA dashboard where you monitor your competitive set monthly.</li>
+        <li><strong>Review management:</strong> Track review scores across platforms and respond within 24 hours. Review scores directly impact booking conversion rates.</li>
+      </ul>
+
+      <p>Total cost for this stack: $400-$800/month for a 10-unit property. The revenue lift from dynamic pricing alone typically covers this investment 10x over.</p>
+
+      <h2>Real Numbers: Revenue Optimization in Practice</h2>
+
+      <p>Here is what revenue optimization looks like on a real property with 10 units.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Before (Manual Pricing)</th>
+            <th>After (Optimized)</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ADR</td>
+            <td>$195</td>
+            <td>$245</td>
+            <td>+26%</td>
+          </tr>
+          <tr>
+            <td>Occupancy</td>
+            <td>72%</td>
+            <td>68%</td>
+            <td>-4%</td>
+          </tr>
+          <tr>
+            <td>RevPAR</td>
+            <td>$140</td>
+            <td>$167</td>
+            <td>+19%</td>
+          </tr>
+          <tr>
+            <td>Annual Room Revenue</td>
+            <td>$511,000</td>
+            <td>$609,000</td>
+            <td>+$98,000</td>
+          </tr>
+          <tr>
+            <td>OTA Commission Savings</td>
+            <td>$0</td>
+            <td>$24,000</td>
+            <td>+$24,000</td>
+          </tr>
+          <tr>
+            <td>Ancillary Revenue</td>
+            <td>$5,000</td>
+            <td>$25,000</td>
+            <td>+$20,000</td>
+          </tr>
+          <tr>
+            <td><strong>Total Revenue Impact</strong></td>
+            <td></td>
+            <td></td>
+            <td><strong>+$142,000</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Notice that occupancy actually decreased slightly. That is intentional. Higher ADR with slightly lower occupancy produces better RevPAR, lower operating costs (fewer turnovers), and higher NOI. This is the mindset shift most STR investors need to make when transitioning to <a href="/blog/str-to-micro-resort/">micro resort operations</a>.</p>
+
+      <p>Revenue management is not a one-time setup. It is an ongoing discipline. Review your metrics weekly, adjust your pricing strategy seasonally, and continuously layer in The Hospitality Value Stack to raise your ADR ceiling. The operators who treat revenue management as a core competency, not a set-it-and-forget-it tool, are the ones who build portfolios that generate real wealth.</p>
+
+      <p>For the full operational playbook including staffing, technology, and systems that support revenue optimization, read our <a href="/blog/micro-resort-operations/">micro resort operations guide</a>. And for the complete <a href="/blog/hotel-value-add-strategy/">value-add strategy</a> covering both revenue and expense optimization, start with The 90-Day Takeover Playbook.</p>
+
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>What is RevPAR and why does it matter for micro resorts?</h3>
+          <p>RevPAR (Revenue Per Available Room) is calculated by multiplying your Average Daily Rate by your occupancy rate. It is the single most important top-line metric because it captures both pricing power and demand. A micro resort with $250 ADR and 70% occupancy has a RevPAR of $175. Tracking RevPAR over time tells you whether your revenue strategy is working better than tracking ADR or occupancy alone.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How does dynamic pricing work for a small hotel?</h3>
+          <p>Dynamic pricing software (PriceLabs, Wheelhouse, Beyond Pricing) automatically adjusts your nightly rates based on demand signals, competitor pricing, day of week, seasonality, local events, and booking pace. You set minimum and maximum rate guardrails, and the algorithm optimizes within those bounds. Most micro resort operators see a 10-20% RevPAR improvement within the first 30 days of implementation.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is a good ADR for a micro resort or boutique hotel?</h3>
+          <p>ADR varies significantly by market, season, and property quality. Rather than targeting a specific dollar amount, aim to be in the top 25% of your competitive set. Use CoStar data, AirDNA, or STR reports to identify your comp set ADR, then use The Hospitality Value Stack framework to push your rates above the median through brand, experience, and amenity layering.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I reduce OTA commission costs?</h3>
+          <p>Build a direct booking channel through your own website with a booking engine, offer a 5-10% direct booking discount (still cheaper than 15-20% OTA commissions), collect guest emails for repeat booking campaigns, optimize your Google Business Profile for organic traffic, and implement a post-stay email sequence that drives future direct bookings. A realistic target is shifting from 10% direct to 30% direct within the first year.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Should I prioritize higher ADR or higher occupancy?</h3>
+          <p>Prioritize ADR. A property at 70% occupancy with premium rates is almost always more profitable than one at 95% occupancy with discounted rates. Higher occupancy means more turnovers (higher cleaning costs), more wear and tear, and less pricing power. The goal is to maximize RevPAR, and in most micro resort markets, the ADR lever has more upside than the occupancy lever.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

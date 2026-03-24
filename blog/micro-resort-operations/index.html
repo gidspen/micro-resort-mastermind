@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro Resort Operations: How to Run a Small Hospitality Property | Incredible Hospitality Co</title>
+  <meta name="description" content="How to operate a micro resort or small boutique hotel. Covers staffing, technology, guest experience, revenue management, and building systems that run without you." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/micro-resort-operations/" />
+  <meta property="og:title" content="Micro Resort Operations: How to Run a Small Hospitality Property" />
+  <meta property="og:description" content="How to operate a micro resort or small boutique hotel. Covers staffing, technology, guest experience, revenue management, and building systems that run without you." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/micro-resort-operations/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Micro Resort Operations: How to Run a Small Hospitality Property" />
+  <meta name="twitter:description" content="How to operate a micro resort or small boutique hotel. Covers staffing, technology, guest experience, revenue management, and building systems that run without you." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* ARTICLE CONTAINER */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ARTICLE HEADER */
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    /* ARTICLE BODY */
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    /* TABLES */
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    /* CTA BAND */
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* FAQ */
+    .faq-section { margin-top: 48px; }
+    .faq-item { margin-bottom: 24px; }
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; color: var(--gold-light); }
+    .faq-item p { margin-bottom: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Micro Resort Operations: How to Run a Small Hospitality Property",
+    "description": "How to operate a micro resort or small boutique hotel. Covers staffing, technology, guest experience, revenue management, and building systems that run without you.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://incrediblehospitalityco.com/blog/micro-resort-operations/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many staff do I need to run a micro resort?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most micro resorts with 5-15 units operate with 2-4 team members: a general manager, one or two housekeeping staff, and a part-time maintenance person. Smart locks, automated messaging, and a good PMS reduce the need for a front desk entirely, keeping your labor costs between 25-35% of gross revenue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What technology does a micro resort need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "At minimum, you need a property management system (PMS) like Cloudbeds or Guesty, a channel manager to sync OTA listings, dynamic pricing software like PriceLabs or Wheelhouse, smart locks for keyless entry, and an automated guest messaging platform. This stack eliminates most manual tasks and lets you operate semi-actively."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I run a micro resort without being on-site every day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The goal is semi-active ownership where you oversee a small team and automated systems rather than handling day-to-day tasks yourself. With the right technology stack, SOPs, and a capable general manager, most operators check in a few hours per week rather than working on-site daily."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is The Hospitality Value Stack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Hospitality Value Stack is a framework for increasing ADR (Average Daily Rate) by layering brand identity, curated guest experiences, and premium amenities on top of the base accommodation. Each layer adds pricing power, allowing micro resorts to command rates 30-60% above generic STR comps in the same market."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I build SOPs for a small hotel or micro resort?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with the three processes that touch guests most: check-in, turnover cleaning, and maintenance response. Document each as a step-by-step checklist with photos. Use a shared platform like Google Drive or Notion so your team can access them on any device. Add SOPs for pricing updates, guest communication, and vendor management over the first 90 days."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Operations Guide</span>
+      <h1>Micro Resort Operations: How to Run a Small Hospitality Property</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>Buying a micro resort is one thing. Running it profitably without chaining yourself to the front desk is something else entirely. The operators who build real wealth in hospitality are the ones who design their operations around systems, not around themselves.</p>
+
+      <p>After acquiring 6 hotels and 30 units, I can tell you that operational design is the single biggest lever between a property that generates freedom and one that becomes a second job. This guide covers the staffing models, technology, guest experience frameworks, and revenue management basics you need to run a micro resort that works whether you are on-site or not.</p>
+
+      <h2>The Staffing Model: Lean, Not Cheap</h2>
+
+      <p>The biggest misconception new hotel owners carry over from STR investing is that fewer staff always means more profit. In micro resort operations, the goal is not to eliminate people. The goal is to put the right people in the right roles and let technology handle everything else.</p>
+
+      <h3>Core Team for a 5-15 Unit Property</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Responsibilities</th>
+            <th>Full-Time or Part-Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>General Manager</td>
+            <td>Oversee daily ops, guest escalations, vendor management, team leadership</td>
+            <td>Full-time</td>
+          </tr>
+          <tr>
+            <td>Housekeeping (1-2)</td>
+            <td>Turnover cleaning, restocking, quality control</td>
+            <td>Full-time or scheduled per turnover</td>
+          </tr>
+          <tr>
+            <td>Maintenance</td>
+            <td>Preventive maintenance, repairs, groundskeeping</td>
+            <td>Part-time or on-call</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Notice there is no front desk agent. That is intentional. With smart locks and automated check-in messaging, you can eliminate the front desk role entirely at a small property. This alone saves $30,000-$45,000 per year in labor costs.</p>
+
+      <p>Your General Manager is the most important hire you will make. A good GM turns your micro resort into a semi-passive asset. A bad one turns it into your full-time problem. Pay well, set clear KPIs (guest review scores, occupancy targets, expense budgets), and give them decision-making authority within defined guardrails.</p>
+
+      <h3>When to Hire vs. Automate</h3>
+
+      <p>The rule of thumb: if a task is repetitive and rule-based, automate it. If it requires judgment, empathy, or physical presence, hire for it.</p>
+
+      <ul>
+        <li><strong>Automate:</strong> Guest messaging, pricing updates, booking confirmations, review requests, lock codes, payment processing</li>
+        <li><strong>Hire:</strong> Cleaning, maintenance, guest experience curation, problem resolution, vendor negotiations</li>
+      </ul>
+
+      <p>This framework keeps your labor costs between 25-35% of gross revenue, which is the target range for a well-operated micro resort.</p>
+
+      <h2>The Technology Stack</h2>
+
+      <p>Technology is what separates a micro resort that requires 60 hours a week from one that requires 6. Here is the minimum viable tech stack every micro resort operator needs.</p>
+
+      <h3>Property Management System (PMS)</h3>
+
+      <p>Your PMS is the central nervous system of the operation. It handles reservations, guest profiles, housekeeping schedules, and reporting. For micro resorts, the best options balance power with simplicity: Cloudbeds, Guesty, or Hostaway are all strong choices for properties under 30 units.</p>
+
+      <h3>Channel Manager</h3>
+
+      <p>A channel manager syncs your availability and rates across Airbnb, Booking.com, VRBO, and your direct booking site in real time. Without one, you are either manually updating four dashboards every day or risking double bookings. Most PMS platforms include a built-in channel manager, which is the cleanest setup.</p>
+
+      <h3>Dynamic Pricing Software</h3>
+
+      <p>Tools like PriceLabs, Wheelhouse, or Beyond Pricing use market data, demand signals, and competitor rates to adjust your nightly pricing automatically. This is not optional. <a href="/blog/micro-resort-revenue-management/">Dynamic pricing</a> is one of the fastest ways to increase revenue without spending a dollar on improvements. Most operators see a 10-20% RevPAR lift within the first 90 days of implementation.</p>
+
+      <h3>Smart Locks and Keyless Entry</h3>
+
+      <p>Smart locks (August, Yale, Schlage Encode) let you generate unique access codes for each guest, delivered automatically via your messaging platform. No key handoffs. No lockouts at 2 AM. No front desk needed.</p>
+
+      <h3>Automated Guest Messaging</h3>
+
+      <p>Platforms like Hospitable (formerly Smartbnb) or the messaging features built into your PMS can send pre-arrival instructions, check-in codes, mid-stay check-ins, and post-checkout review requests on autopilot. This creates a consistent guest experience without requiring someone to sit at a computer all day.</p>
+
+      <div class="callout">
+        <h4>The Minimum Viable Tech Stack</h4>
+        <p>PMS with channel manager + dynamic pricing + smart locks + automated messaging. Total cost: $300-$600/month for a 10-unit property. That investment replaces at least one full-time salary while delivering better consistency than a human could.</p>
+      </div>
+
+      <h2>Guest Experience Design: The Hospitality Value Stack</h2>
+
+      <p>The Hospitality Value Stack is a framework for building premium pricing power through layered guest experiences. Instead of competing on price with every Airbnb in your market, you build value layers that justify rates 30-60% above generic STR comps.</p>
+
+      <h3>Layer 1: The Base Accommodation</h3>
+
+      <p>Clean, well-maintained, functional. This is table stakes. Every property in your comp set offers this. If you are only operating at this layer, you are a commodity competing on price.</p>
+
+      <h3>Layer 2: Brand Identity</h3>
+
+      <p>A cohesive brand story, visual identity, and property personality that makes your micro resort memorable and referable. This includes a name that resonates, consistent design language across units, a direct booking website, and social media presence. Brand is what turns a "nice place to stay" into a destination.</p>
+
+      <h3>Layer 3: Curated Experiences</h3>
+
+      <p>Guided activities, welcome packages, local partnerships, seasonal programming. These are the things guests talk about in their reviews and tell their friends about. A partnership with a local outfitter for guided hikes. A s'mores kit waiting at the fire pit. A curated local restaurant guide. These cost almost nothing to implement but add significant perceived value.</p>
+
+      <h3>Layer 4: Premium Amenities</h3>
+
+      <p>Hot tubs, fire pits, outdoor kitchens, game rooms, EV chargers, high-end linens and toiletries. These are capital investments that pay for themselves through higher ADR. A hot tub addition at $5,000-$8,000 can justify a $30-$50/night rate increase, paying for itself in 3-6 months.</p>
+
+      <p>Each layer you add increases your ADR ceiling. Most micro resort operators who implement all four layers of the Hospitality Value Stack see ADR improvements of 30-60% compared to bare-bones STR operations in the same market. For a deeper look at how this drives revenue, see our guide on <a href="/blog/micro-resort-revenue-management/">micro resort revenue management</a>.</p>
+
+      <h2>Revenue Management Basics</h2>
+
+      <p>You do not need a revenue management degree to operate a profitable micro resort. But you do need to understand three numbers and manage them actively.</p>
+
+      <h3>The Three Numbers That Matter</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>What It Measures</th>
+            <th>Target Range</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ADR</strong> (Average Daily Rate)</td>
+            <td>Average revenue per occupied room per night</td>
+            <td>Market-dependent; aim for top 25% of comp set</td>
+          </tr>
+          <tr>
+            <td><strong>Occupancy</strong></td>
+            <td>Percentage of available rooms sold</td>
+            <td>65-80% annually for most markets</td>
+          </tr>
+          <tr>
+            <td><strong>RevPAR</strong> (Revenue Per Available Room)</td>
+            <td>ADR x Occupancy Rate</td>
+            <td>The single best measure of top-line performance</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The key insight: you want to maximize RevPAR, not occupancy. A property running at 95% occupancy with deeply discounted rates is almost always less profitable than one at 70% occupancy with premium pricing. This is where dynamic pricing and the Hospitality Value Stack work together. You build the experience that justifies higher rates, then use pricing software to capture maximum revenue on every night.</p>
+
+      <p>For the full breakdown on revenue optimization strategies, read our dedicated guide: <a href="/blog/micro-resort-revenue-management/">Revenue Management for Micro Resorts</a>.</p>
+
+      <h2>Maintenance and Upkeep</h2>
+
+      <p>Deferred maintenance is the silent killer of micro resort profitability. Small issues compound into expensive emergencies. The operators who protect their NOI are the ones who build preventive maintenance into their weekly and monthly routines.</p>
+
+      <h3>Preventive Maintenance Schedule</h3>
+
+      <ul>
+        <li><strong>Weekly:</strong> HVAC filter checks, hot tub chemical balance, common area inspection, landscaping touch-ups</li>
+        <li><strong>Monthly:</strong> Plumbing inspection, appliance checks, exterior lighting audit, pest prevention treatment</li>
+        <li><strong>Quarterly:</strong> Roof and gutter inspection, fire safety equipment check, deep clean of all units, paint and trim touch-ups</li>
+        <li><strong>Annually:</strong> HVAC servicing, water heater flush, major landscaping projects, capital improvement planning</li>
+      </ul>
+
+      <p>Budget 4-6% of gross revenue for maintenance reserves. This keeps you ahead of problems rather than reacting to them. When you are <a href="/blog/hotel-due-diligence-checklist/">conducting due diligence</a> on a potential acquisition, one of the first things to assess is how much deferred maintenance the previous owner left behind.</p>
+
+      <h2>Building SOPs That Scale</h2>
+
+      <p>Standard Operating Procedures are what make your operation transferable. Without SOPs, your micro resort depends on institutional knowledge trapped in one person's head. With SOPs, any trained team member can execute any process to the same standard.</p>
+
+      <h3>The First Five SOPs to Build</h3>
+
+      <ol>
+        <li><strong>Guest Check-In Process:</strong> From booking confirmation through arrival, including automated messages, code delivery, and welcome procedures</li>
+        <li><strong>Unit Turnover Cleaning:</strong> Step-by-step checklist with photos, quality standards, restocking requirements, and inspection sign-off</li>
+        <li><strong>Maintenance Request Response:</strong> How guests report issues, response time targets, escalation procedures, vendor contact list</li>
+        <li><strong>Pricing and Revenue Updates:</strong> How often to review dynamic pricing rules, seasonal adjustment calendar, competitor monitoring cadence</li>
+        <li><strong>Guest Communication Templates:</strong> Pre-arrival, mid-stay, post-checkout, and complaint response templates</li>
+      </ol>
+
+      <p>Store your SOPs in a shared digital workspace (Google Drive, Notion, or your PMS knowledge base) so your team can access them from any device. Update them quarterly based on team feedback and guest review themes.</p>
+
+      <div class="callout">
+        <h4>The SOP Test</h4>
+        <p>If you disappeared for 30 days, could your team run the property to the same standard? If the answer is no, you do not have a business. You have a job. SOPs are the bridge between those two realities.</p>
+      </div>
+
+      <h2>Operations That Do Not Require You Every Day</h2>
+
+      <p>This is the part that matters most if you are building a micro resort portfolio rather than buying yourself a job. The goal is semi-active ownership: you oversee strategy, review performance dashboards, and handle the decisions that require owner-level judgment. Everything else runs through your team and your systems.</p>
+
+      <h3>The Semi-Active Owner's Weekly Routine</h3>
+
+      <ul>
+        <li><strong>Monday:</strong> Review weekend performance (occupancy, ADR, RevPAR) and upcoming week's booking pace</li>
+        <li><strong>Wednesday:</strong> 30-minute check-in call with your GM (guest feedback, maintenance issues, staffing needs)</li>
+        <li><strong>Friday:</strong> Review guest reviews from the week, respond to any that need owner-level attention</li>
+        <li><strong>Monthly:</strong> Full P&L review, vendor contract review, capital improvement planning</li>
+      </ul>
+
+      <p>That is roughly 3-5 hours per week per property. This is achievable when your technology stack handles the repetitive work and your GM handles the daily decisions. It is not achievable when you skip the systems-building phase and try to run everything through text messages and spreadsheets.</p>
+
+      <p>If you are still working a W-2 and building toward full-time hospitality investing, this operating model is what makes the transition possible. You do not need to quit your job on day one. You need operations that run without you being present every day. For the complete first-90-days blueprint, see <a href="/blog/first-90-days-hotel-owner/">The First 90 Days as a Hotel Owner</a>.</p>
+
+      <h2>Common Operational Mistakes to Avoid</h2>
+
+      <ul>
+        <li><strong>Over-hiring early:</strong> Start lean and add staff as occupancy grows. It is easier to add than to cut.</li>
+        <li><strong>Skipping dynamic pricing:</strong> Manual pricing leaves money on the table every single night. This is the highest-ROI technology investment you will make.</li>
+        <li><strong>Ignoring direct bookings:</strong> OTA commissions of 15-20% destroy margins. Build your direct booking channel from day one.</li>
+        <li><strong>No maintenance reserves:</strong> A failed HVAC system in peak season is a revenue emergency. Budget for it before it happens.</li>
+        <li><strong>Treating guest experience as a cost:</strong> Every dollar spent on the Hospitality Value Stack comes back as higher ADR. It is an investment, not an expense.</li>
+      </ul>
+
+      <p>The operators who avoid these mistakes are usually the ones who learned from experienced owners before making their first acquisition. That is exactly what the <a href="/">Incredible Hospitality Mastermind</a> is designed for: weekly deal reviews, expert calls, and a community of 200+ STR investors scaling into hospitality.</p>
+
+      <h2>Putting It All Together</h2>
+
+      <p>Micro resort operations come down to three systems working together: the right team, the right technology, and the right guest experience. When all three are dialed in, you get a property that generates strong cash flow, earns premium rates, and does not require you to be the bottleneck.</p>
+
+      <p>The operators who build real wealth in this space treat operations as a value-creation lever, not a chore to minimize. Every <a href="/blog/hotel-value-add-strategy/">value-add improvement</a> you make to operations directly increases your NOI, and NOI is what drives property value in commercial hospitality.</p>
+
+      <p>Start with the technology stack. Hire a strong GM. Build your first five SOPs. Layer in the Hospitality Value Stack. Then step back and let the system run.</p>
+
+      <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <h3>How many staff do I need to run a micro resort?</h3>
+          <p>Most micro resorts with 5-15 units operate with 2-4 team members: a general manager, one or two housekeeping staff, and a part-time maintenance person. Smart locks, automated messaging, and a good PMS reduce the need for a front desk entirely, keeping your labor costs between 25-35% of gross revenue.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What technology does a micro resort need?</h3>
+          <p>At minimum, you need a property management system (PMS) like Cloudbeds or Guesty, a channel manager to sync OTA listings, dynamic pricing software like PriceLabs or Wheelhouse, smart locks for keyless entry, and an automated guest messaging platform. This stack eliminates most manual tasks and lets you operate semi-actively.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I run a micro resort without being on-site every day?</h3>
+          <p>Yes. The goal is semi-active ownership where you oversee a small team and automated systems rather than handling day-to-day tasks yourself. With the right technology stack, SOPs, and a capable general manager, most operators check in a few hours per week rather than working on-site daily.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is The Hospitality Value Stack?</h3>
+          <p>The Hospitality Value Stack is a framework for increasing ADR (Average Daily Rate) by layering brand identity, curated guest experiences, and premium amenities on top of the base accommodation. Each layer adds pricing power, allowing micro resorts to command rates 30-60% above generic STR comps in the same market.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I build SOPs for a small hotel or micro resort?</h3>
+          <p>Start with the three processes that touch guests most: check-in, turnover cleaning, and maintenance response. Document each as a step-by-step checklist with photos. Use a shared platform like Google Drive or Notion so your team can access them on any device. Add SOPs for pricing updates, guest communication, and vendor management over the first 90 days.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
