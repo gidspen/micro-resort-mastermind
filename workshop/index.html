@@ -126,10 +126,11 @@
       padding: 32px 0;
     }
     .proof-bar-inner {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 60px;
+      max-width: 640px;
+      margin: 0 auto;
       text-align: center;
     }
     .proof-stat .number {
@@ -522,7 +523,7 @@
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">What This Workshop Is</span>
-        <h2>You Don't Watch. You Do the Work.</h2>
+        <h2>You Don't Just Learn. We Do the Work.</h2>
         <p>Most STR investors spend years wondering if they could buy a hotel. This workshop compresses that uncertainty into two working sessions — and you leave with deliverables you built yourself, not a notebook full of someone else's ideas.</p>
       </div>
 
