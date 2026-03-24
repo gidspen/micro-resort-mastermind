@@ -424,6 +424,10 @@
       margin-bottom: 12px;
     }
 
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr !important; }
+    }
+
     /* FOOTER */
     footer {
       padding: 40px 0;
@@ -560,7 +564,10 @@
 
   <!-- TOP BAR -->
   <div class="topbar">
-    38 Properties. $304M+ AUM. The Mastermind Where STR Operators Build Resort Portfolios.
+    <a href="/" style="color:var(--gold); text-decoration:none;">Home</a> &nbsp;|&nbsp;
+    <a href="/blog/" style="color:var(--gold); text-decoration:none;">Blog</a> &nbsp;|&nbsp;
+    <a href="/challenge/" style="color:var(--gold); text-decoration:none;">Free Challenge</a> &nbsp;|&nbsp;
+    <a href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none;">Book a Call</a>
   </div>
 
   <!-- HERO -->
@@ -569,7 +576,7 @@
       <span class="hero-eyebrow">Incredible Hospitality Mastermind</span>
       <h1>Stop Adding Airbnbs.<br /><em>Build the Micro-Resort.</em></h1>
       <p class="hero-subtitle">
-        A private operator community for STR investors ready to acquire their first (or next) micro resort, boutique hotel, or small hospitality property. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.
+        The private operator community for STR investors scaling into micro resorts and boutique hotels.
       </p>
       <div class="hero-cta-group">
         <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
@@ -605,27 +612,12 @@
     </div>
   </div>
 
-  <hr class="divider" />
-
-  <!-- WHAT IS A MICRO RESORT -->
-  <section class="section-sm">
-    <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">The Opportunity</span>
-        <h2>What Is a Micro Resort?</h2>
-        <p style="max-width:680px;">A micro resort is a small-scale hospitality property, typically 4-20 units, that combines the operational model of short-term rentals with the asset value of a commercial hotel. Think boutique cabins, glamping sites, container hotels, or small lodge properties in high-demand leisure markets.</p>
-        <p style="max-width:680px; margin-top:16px;">Unlike adding another Airbnb to your portfolio, a micro resort is a branded, appreciating commercial asset. You own the land, the brand, and the guest experience. It can be acquired as an existing property or developed from raw land. The financing structures (DSCR, SBA 7(a), seller carry) are different from residential STR loans, and the returns profile is fundamentally different: forced appreciation, higher ADR, and an asset you can sell as a going concern.</p>
-        <p style="max-width:680px; margin-top:16px;">The Mastermind exists because this transition, from STR investor to hospitality operator, requires a deal framework, a financing strategy, and a network of people who have done it. That is what we built.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- WHAT YOU GET -->
   <section class="section">
     <div class="container">
       <div class="section-header">
         <span class="eyebrow">What's Included</span>
-        <h2>Everything You Need to Close Your Next Hospitality Deal</h2>
+        <h2>Everything You Need to Close Your Next Micro Resort Deal</h2>
         <p>Not a course. Not a coaching call. An active operator community with the deal flow, expert access, and accountability to make acquisitions happen.</p>
       </div>
       <div class="feature-grid">
@@ -739,7 +731,7 @@
         </div>
         <div class="about-content">
           <h2>Gideon Spencer</h2>
-          <p>Gideon Spencer has personally acquired $6.5M in hospitality assets across 6 hotels and 30 units, starting from the same position most Mastermind members start: a handful of STRs and the conviction there was a bigger play. He hosts the The Hunt for Incredible podcast (86+ episodes, 5 stars, 98 ratings) and takes every application call personally.</p>
+          <p>Gideon Spencer has personally acquired $6.5M in hospitality assets across 6 hotels and 30 units, starting from the same position most Mastermind members start: a handful of STRs and the conviction there was a bigger play. He hosts The Hunt for Incredible podcast (86+ episodes, 5 stars, 98 ratings) and takes every application call personally.</p>
           <p>The Mastermind is not his coaching program. It is the high-accountability environment he built because the peer group he wanted did not exist. Every Tuesday, a different expert joins the call: operators, lenders, lawyers, brokers. Every Thursday, members put their live deals on the table for group feedback. The community collectively spans 38 properties and $304M+ in assets under management.</p>
           <div class="about-badges">
             <span class="badge">38 Properties in Community</span>
@@ -861,6 +853,21 @@
     </div>
   </section>
 
+  <hr class="divider" />
+
+  <!-- WHAT IS A MICRO RESORT -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Opportunity</span>
+        <h2>What Is a Micro Resort?</h2>
+        <p style="max-width:680px;">A micro resort is a small-scale hospitality property, typically 4-20 units, that combines the operational model of short-term rentals with the asset value of a commercial hotel. Think boutique cabins, glamping sites, container hotels, or small lodge properties in high-demand leisure markets.</p>
+        <p style="max-width:680px; margin-top:16px;">Unlike adding another Airbnb to your portfolio, a micro resort is a branded, appreciating commercial asset. You own the land, the brand, and the guest experience. It can be acquired as an existing property or developed from raw land. The financing structures (DSCR, SBA 7(a), seller carry) are different from residential STR loans, and the returns profile is fundamentally different: forced appreciation, higher ADR, and an asset you can sell as a going concern.</p>
+        <p style="max-width:680px; margin-top:16px;">The Mastermind exists because this transition, from STR investor to hospitality operator, requires a deal framework, a financing strategy, and a network of people who have done it. That is what we built.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- BOTTOM HERO CTA -->
   <section class="section" style="background: radial-gradient(ellipse at bottom center, #173d36 0%, var(--dark) 70%); text-align: center;">
     <div class="container">
@@ -873,6 +880,37 @@
       <p class="cta-note" style="margin-top:16px;">15 minutes. No pitch. Just a real conversation about your next deal.</p>
     </div>
   </section>
+
+<!-- FEATURED ARTICLES -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Learn More</span>
+      <h2>From the Micro Resort Investing Blog</h2>
+    </div>
+    <div class="blog-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-top:36px;">
+      <a href="/blog/what-is-a-micro-resort/" style="background:var(--dark-card); border:1px solid var(--dark-border); padding:24px; text-decoration:none; display:block;">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:var(--gold); font-family:Arial,sans-serif;">Fundamentals</span>
+        <h3 style="font-size:17px; color:var(--text); margin-top:8px; line-height:1.3;">What Is a Micro Resort? The Complete Guide</h3>
+      </a>
+      <a href="/blog/how-to-buy-a-micro-resort/" style="background:var(--dark-card); border:1px solid var(--dark-border); padding:24px; text-decoration:none; display:block;">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:var(--gold); font-family:Arial,sans-serif;">Acquisition Guide</span>
+        <h3 style="font-size:17px; color:var(--text); margin-top:8px; line-height:1.3;">How to Buy a Micro Resort: Step-by-Step</h3>
+      </a>
+      <a href="/blog/micro-resort-financing/" style="background:var(--dark-card); border:1px solid var(--dark-border); padding:24px; text-decoration:none; display:block;">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:var(--gold); font-family:Arial,sans-serif;">Financing</span>
+        <h3 style="font-size:17px; color:var(--text); margin-top:8px; line-height:1.3;">How to Finance a Micro Resort</h3>
+      </a>
+      <a href="/blog/str-to-micro-resort/" style="background:var(--dark-card); border:1px solid var(--dark-border); padding:24px; text-decoration:none; display:block;">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.15em; color:var(--gold); font-family:Arial,sans-serif;">Scaling Strategy</span>
+        <h3 style="font-size:17px; color:var(--text); margin-top:8px; line-height:1.3;">From STR Investor to Micro Resort Owner</h3>
+      </a>
+    </div>
+    <p style="text-align:center; margin-top:24px;"><a href="/blog/" style="color:var(--gold); font-family:Arial,sans-serif; font-size:14px;">See all 50 articles &rarr;</a></p>
+  </div>
+</section>
+
+<hr class="divider" />
 
   <!-- FOOTER -->
   <footer>
