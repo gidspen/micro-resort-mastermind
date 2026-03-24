@@ -328,8 +328,168 @@
     "mainEntityOfPage": "https://incrediblehospitalityco.com/ai/build-a-claw-bot-with-claude/"
   }
   </script>
+  <style>
+    /* EMAIL GATE OVERLAY */
+    #email-gate {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 26, 22, 0.97);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #email-gate.hidden { display: none; }
+    .gate-box {
+      background: #173d36;
+      border: 1px solid #2a5a4a;
+      max-width: 460px;
+      width: 100%;
+      padding: 40px 36px;
+      text-align: center;
+    }
+    .gate-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #e8d5b0;
+      font-family: Arial, sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .gate-box h2 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      color: #f0ebe3;
+    }
+    .gate-box p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .gate-input {
+      width: 100%;
+      background: #0d1a16;
+      border: 1px solid #2a5a4a;
+      color: #f0ebe3;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .gate-input:focus { border-color: #e8d5b0; }
+    .gate-input::placeholder { color: rgba(240,235,227,0.35); }
+    .gate-btn {
+      width: 100%;
+      background: #e8d5b0;
+      color: #0d1a16;
+      border: none;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .gate-btn:hover { background: #f0ebe3; }
+    .gate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .gate-note {
+      font-size: 12px;
+      color: rgba(240,235,227,0.4);
+      font-family: Arial, sans-serif;
+      margin-top: 12px;
+    }
+    .gate-error {
+      font-size: 13px;
+      color: #f0a080;
+      font-family: Arial, sans-serif;
+      margin-top: 8px;
+      display: none;
+    }
+    body.gated { overflow: hidden; }
+  </style>
 </head>
-<body>
+<body class="gated">
+
+  <!-- EMAIL GATE -->
+  <div id="email-gate">
+    <div class="gate-box">
+      <span class="gate-eyebrow">Free Guide</span>
+      <h2>Get the Full Claw Bot Setup Guide</h2>
+      <p>Enter your email to unlock the step-by-step breakdown - every link, every command, copy-paste ready.</p>
+      <input type="text" class="gate-input" id="gate-name" placeholder="First name" autocomplete="given-name" />
+      <input type="email" class="gate-input" id="gate-email" placeholder="Email address" autocomplete="email" />
+      <button class="gate-btn" id="gate-submit">Send Me the Guide</button>
+      <div class="gate-error" id="gate-error">Something went wrong - please try again.</div>
+      <p class="gate-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Check if already unlocked
+      if (localStorage.getItem('ck_gate_unlocked')) {
+        document.getElementById('email-gate').classList.add('hidden');
+        document.body.classList.remove('gated');
+        return;
+      }
+
+      document.getElementById('gate-submit').addEventListener('click', function() {
+        var email = document.getElementById('gate-email').value.trim();
+        var name = document.getElementById('gate-name').value.trim();
+        var btn = document.getElementById('gate-submit');
+        var err = document.getElementById('gate-error');
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          err.textContent = 'Please enter a valid email address.';
+          err.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        err.style.display = 'none';
+
+        var formData = new FormData();
+        formData.append('email_address', email);
+        if (name) formData.append('fields[first_name]', name);
+
+        fetch('https://app.convertkit.com/forms/9166974/subscriptions', {
+          method: 'POST',
+          body: formData
+        })
+        .then(function(res) {
+          if (res.ok || res.status === 200) {
+            localStorage.setItem('ck_gate_unlocked', '1');
+            document.getElementById('email-gate').classList.add('hidden');
+            document.body.classList.remove('gated');
+            // Fire pixel Lead event
+            if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
+          } else {
+            throw new Error('Bad response');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Me the Guide';
+          err.textContent = 'Something went wrong - please try again.';
+          err.style.display = 'block';
+        });
+      });
+
+      // Allow enter key on email field
+      document.getElementById('gate-email').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('gate-submit').click();
+      });
+    })();
+  </script>
 
   <div class="topbar">
     <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
@@ -346,22 +506,22 @@
 
     <div class="article-body">
 
-      <p>I posted a Reel showing how to spin up a fully functional AI claw bot in under 60 seconds using Claude and a Mac mini. This is the promised follow-up — the exact step-by-step breakdown with every link you need.</p>
+      <p>I posted a Reel showing how to spin up a fully functional AI claw bot in under 60 seconds using Claude and a Mac mini. This is the promised follow-up - the exact step-by-step breakdown with every link you need.</p>
 
       <p>No prior coding experience required. You will be talking to an AI agent that builds the bot for you. Your only job is to tell it what to build.</p>
 
       <div class="callout">
         <h4>What You're Building</h4>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">A "claw bot" — an AI agent that can reach out, grab information, interact with services, and execute tasks automatically. Think of it as a digital claw machine: you point it at something, and it retrieves it for you.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">A "claw bot" - an AI agent that can reach out, grab information, interact with services, and execute tasks automatically. Think of it as a digital claw machine: you point it at something, and it retrieves it for you.</p>
       </div>
 
       <h2>What You Need</h2>
 
       <ul>
-        <li><strong>A Mac mini</strong> (or any Mac — the Mac mini is the best value for running Claude Code continuously)</li>
-        <li><strong>The Claude app</strong> — download from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a></li>
-        <li><strong>Claude Code</strong> — the terminal-based coding agent built into the Claude app</li>
-        <li><strong>The Superpowers skills framework</strong> — a free, open-source library of AI skills that dramatically upgrades what Claude can do</li>
+        <li><strong>A Mac mini</strong> (or any Mac - the Mac mini is the best value for running Claude Code continuously)</li>
+        <li><strong>The Claude app</strong> - download from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a></li>
+        <li><strong>Claude Code</strong> - the terminal-based coding agent built into the Claude app</li>
+        <li><strong>The Superpowers skills framework</strong> - a free, open-source library of AI skills that dramatically upgrades what Claude can do</li>
         <li>15 minutes of setup time (most of it is downloading)</li>
       </ul>
 
@@ -383,13 +543,13 @@
       <div class="step-box">
         <span class="step-number">Step 3</span>
         <h3>Open Claude Code</h3>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Inside the Claude app, open a terminal window and launch Claude Code by typing <code>claude</code> at the command line. This is where you talk to the agent. Claude Code can read files, write code, run commands, and build entire projects — all from a conversation.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Inside the Claude app, open a terminal window and launch Claude Code by typing <code>claude</code> at the command line. This is where you talk to the agent. Claude Code can read files, write code, run commands, and build entire projects - all from a conversation.</p>
       </div>
 
       <div class="step-box">
         <span class="step-number">Step 4</span>
         <h3>Install the Superpowers Skills Framework</h3>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">Superpowers is an open-source framework that gives Claude a set of pre-built "skills" — structured workflows for planning, building, debugging, and more. Installing it transforms Claude Code from a capable assistant into a highly disciplined agent that plans before it acts.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">Superpowers is an open-source framework that gives Claude a set of pre-built "skills" - structured workflows for planning, building, debugging, and more. Installing it transforms Claude Code from a capable assistant into a highly disciplined agent that plans before it acts.</p>
         <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">GitHub repository: <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">github.com/obra/superpowers</a></p>
         <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Follow the installation instructions in the repo's README. The short version:</p>
         <pre>git clone https://github.com/obra/superpowers.git ~/.claude/skills</pre>
@@ -419,7 +579,7 @@ Come up with a clear plan first, then build it step by step.</pre>
       <p>You can instruct Claude to use any installed skill mid-conversation:</p>
 
       <pre>Use the brainstorming skill to come up with 5 ways to extend this bot.</pre>
-      <pre>Use the systematic-debugging skill — the bot isn't running correctly.</pre>
+      <pre>Use the systematic-debugging skill - the bot isn't running correctly.</pre>
 
       <p>As the skills ecosystem grows, so does what your bot can do. You can add new skills to your <code>~/.claude/skills</code> directory at any time and they become available immediately in your next Claude Code session.</p>
 
@@ -429,14 +589,14 @@ Come up with a clear plan first, then build it step by step.</pre>
       <div class="warning-box">
         <span class="warning-label">Security Warning</span>
         <h3>Only Install Skills From Sources You Trust</h3>
-        <p>Skills are code files that execute inside your Claude Code environment. A malicious skill could instruct Claude to take harmful actions, exfiltrate data, or behave in ways you didn't intend — and you might not notice until damage is done.</p>
+        <p>Skills are code files that execute inside your Claude Code environment. A malicious skill could instruct Claude to take harmful actions, exfiltrate data, or behave in ways you didn't intend - and you might not notice until damage is done.</p>
         <p><strong>Before installing any skill:</strong></p>
         <ul>
-          <li>Read the skill's <code>SKILL.md</code> file before installing — legitimate skills are transparent about what they do</li>
+          <li>Read the skill's <code>SKILL.md</code> file before installing - legitimate skills are transparent about what they do</li>
           <li>Only install from repositories with clear authorship, public history, and community use</li>
           <li>Stick to well-known sources: the official <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">obra/superpowers</a> repo, <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a>, or creators you personally know</li>
           <li>Be suspicious of skills that claim unusually broad capabilities or request permissions to access external services</li>
-          <li>Treat a random skill from a new GitHub repo the same way you'd treat a random browser extension — with caution</li>
+          <li>Treat a random skill from a new GitHub repo the same way you'd treat a random browser extension - with caution</li>
         </ul>
         <p>The skills themselves are plain text files, so you can always open and read them before installation. If a skill's instructions are obfuscated or confusing, don't install it.</p>
       </div>
@@ -455,7 +615,7 @@ Come up with a clear plan first, then build it step by step.</pre>
           <li><strong>Client financial data or personally identifiable information (PII)</strong></li>
           <li><strong>Legal documents containing confidential terms</strong></li>
         </ul>
-        <p>Treat Claude like a highly capable contractor working in a shared office space. You'd give them the brief and the technical specs — you wouldn't hand them your banking login.</p>
+        <p>Treat Claude like a highly capable contractor working in a shared office space. You'd give them the brief and the technical specs - you wouldn't hand them your banking login.</p>
       </div>
 
       <h3>Additional Security Practices</h3>
@@ -472,13 +632,13 @@ Come up with a clear plan first, then build it step by step.</pre>
 
       <p>This isn't just a tech experiment. We're building claw bots specifically to accelerate <strong>micro resort and boutique hotel acquisitions</strong>.</p>
 
-      <p>Finding and underwriting micro resort deals is tedious, repetitive work — exactly the kind of task AI agents are built for. Here's what our bots are doing in the real estate acquisition pipeline:</p>
+      <p>Finding and underwriting micro resort deals is tedious, repetitive work - exactly the kind of task AI agents are built for. Here's what our bots are doing in the real estate acquisition pipeline:</p>
 
       <ul>
         <li><strong>Deal sourcing:</strong> Bots that scan listing databases, broker sites, and off-market sources for micro resort and small hotel properties that match our buy box</li>
         <li><strong>Initial underwriting:</strong> Agents that pull ADR data, occupancy rates, and comp sets from short-term rental platforms and run a first-pass NOI analysis automatically</li>
         <li><strong>Lead qualification:</strong> Bots that research property history, ownership records, and market dynamics before we spend time on a live call</li>
-        <li><strong>Market analysis:</strong> Automated competitive landscape pulls for any market we're evaluating — RevPAR trends, supply pipeline, drive-to distance from major metros</li>
+        <li><strong>Market analysis:</strong> Automated competitive landscape pulls for any market we're evaluating - RevPAR trends, supply pipeline, drive-to distance from major metros</li>
       </ul>
 
       <p>The result: our team can evaluate 10x more <strong>micro resort deals</strong> in the same amount of time. The bot does the boring leg work. We do the relationship and the close.</p>
@@ -487,7 +647,7 @@ Come up with a clear plan first, then build it step by step.</pre>
 
       <div class="callout">
         <h4>Want to Learn the Micro Resort Investing Model?</h4>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">I've acquired $6.5M in hotels and micro resorts across 6 properties, 30 units. Take the free 5-day challenge to learn exactly how the deal model works — before you build a bot to find them. <a href="/challenge/">Start the free challenge →</a></p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">I've acquired $6.5M in hotels and micro resorts across 6 properties, 30 units. Take the free 5-day challenge to learn exactly how the deal model works - before you build a bot to find them. <a href="/challenge/">Start the free challenge →</a></p>
       </div>
 
       <h2>Quick Reference: The Full Setup Checklist</h2>
@@ -506,22 +666,22 @@ Come up with a clear plan first, then build it step by step.</pre>
       <p>That's it. The bot will be running before your coffee gets cold.</p>
 
       <blockquote>
-        "The goal isn't to learn to code. The goal is to get a result. Claude Code with Superpowers is the fastest path from idea to working bot I've found."<br/>— Gideon Spencer
+        "The goal isn't to learn to code. The goal is to get a result. Claude Code with Superpowers is the fastest path from idea to working bot I've found."<br/>- Gideon Spencer
       </blockquote>
 
     </div>
 
     <div class="article-cta">
       <h3>Want to See What Else AI Can Build?</h3>
-      <p>Follow along as I run three AI agents through the AI Hunger Games — each given $100 to build and sell something. Real money, real results.</p>
+      <p>Follow along as I run three AI agents through the AI Hunger Games - each given $100 to build and sell something. Real money, real results.</p>
       <a href="https://instagram.com/gideonspencer_" class="btn-primary" target="_blank" rel="noopener">Follow on Instagram</a>
-      <p class="cta-note">@gideonspencer_ &mdash; micro resort investing + AI experiments</p>
+      <p class="cta-note">@gideonspencer_ - micro resort investing + AI experiments</p>
     </div>
 
   </article>
 
   <footer>
-    <p>&copy; 2026 Incredible Hospitality Co &mdash; <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
+    <p>&copy; 2026 Incredible Hospitality Co - <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
   </footer>
 
 </body>
