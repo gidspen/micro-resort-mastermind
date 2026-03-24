@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools for Hospitality Investors | Incredible Hospitality Co</title>
+  <meta name="description" content="Practical AI tools, guides, and automations for micro resort and boutique hotel investors. Built by Gideon Spencer." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/ai/" />
+  <meta property="og:title" content="AI Tools for Hospitality Investors | Incredible Hospitality Co" />
+  <meta property="og:description" content="Practical AI tools, guides, and automations for micro resort and boutique hotel investors. Built by Gideon Spencer." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/ai/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Tools for Hospitality Investors | Incredible Hospitality Co" />
+  <meta name="twitter:description" content="Practical AI tools, guides, and automations for micro resort and boutique hotel investors. Built by Gideon Spencer." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* PAGE CONTAINER */
+    .page-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      margin-bottom: 56px;
+      text-align: center;
+    }
+    .page-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .page-subtitle {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CATEGORY SECTIONS */
+    .category-section {
+      margin-bottom: 48px;
+    }
+    .category-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .article-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .article-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(42,90,74,0.3);
+    }
+    .article-list li:last-child {
+      border-bottom: none;
+    }
+    .article-list a {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    .article-list a:hover {
+      color: var(--gold-light);
+      text-decoration: underline;
+    }
+    .article-desc {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+      margin-top: 3px;
+    }
+
+    /* CTA BAND */
+    .blog-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .blog-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .blog-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/ai/">AI Tools</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <div class="page-container">
+    <header class="page-header">
+      <h1>AI Tools for Hospitality Investors</h1>
+      <p class="page-subtitle">Practical guides for using AI to automate, build, and move faster as a micro resort and boutique hotel investor.</p>
+    </header>
+
+    <!-- Automation and Bots -->
+    <section class="category-section">
+      <span class="category-eyebrow">Automation and Bots</span>
+      <ul class="article-list">
+        <li>
+          <a href="/ai/build-a-claw-bot-with-claude/">Build a Claw Bot in 60 Seconds Using Claude AI</a>
+          <span class="article-desc">Step-by-step guide to building an AI-powered claw bot using Claude Code and the Superpowers skill framework.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <div class="blog-cta">
+      <h3>Follow for More AI Tools</h3>
+      <p>New guides drop on Instagram. Follow along as we build AI automations live.</p>
+      <a href="https://instagram.com/gideonspencer_" class="btn-primary" target="_blank" rel="noopener">Follow @gideonspencer_</a>
+      <p class="cta-note">New tools added regularly</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Incredible Hospitality Co &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
+  </footer>
+
+</body>
+</html>
