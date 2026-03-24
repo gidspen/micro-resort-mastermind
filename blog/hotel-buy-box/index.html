@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Build a Hotel Buy Box: The Framework That Eliminates Bad Deals | Incredible Hospitality Co</title>
+  <meta name="description" content="How to build a hotel buy box using The Buy Box Blueprint. Define your market, property type, deal size, and return targets to eliminate bad deals before you waste time on them." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/hotel-buy-box/" />
+  <meta property="og:title" content="How to Build a Hotel Buy Box: The Framework That Eliminates Bad Deals" />
+  <meta property="og:description" content="How to build a hotel buy box using The Buy Box Blueprint. Define your market, property type, deal size, and return targets to eliminate bad deals before you waste time on them." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/hotel-buy-box/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Build a Hotel Buy Box: The Framework That Eliminates Bad Deals" />
+  <meta name="twitter:description" content="How to build a hotel buy box using The Buy Box Blueprint. Define your market, property type, deal size, and return targets to eliminate bad deals before you waste time on them." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Build a Hotel Buy Box: The Framework That Eliminates Bad Deals",
+    "description": "How to build a hotel buy box using The Buy Box Blueprint. Define your market, property type, deal size, and return targets to eliminate bad deals before you waste time on them.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co",
+      "url": "https://incrediblehospitalityco.com"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/blog/hotel-buy-box/",
+    "image": "https://incrediblehospitalityco.com/images/gideon-headshot.jpeg"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a hotel buy box?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A hotel buy box is a defined set of investment criteria that specifies your target markets, property types, deal size range, return targets, involvement level, and timeline. It acts as a filter that eliminates properties that do not fit your strategy before you spend time analyzing them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I include in my buy box?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your buy box should include six categories: market criteria (geography, seasonality, demand drivers), property type (boutique hotel, micro resort, cabins, glamping), deal size (purchase price range), return targets (cap rate, cash-on-cash, IRR), involvement level (hands-on, semi-active, passive), and timeline (when you want to close your first deal)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I choose which markets to target?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Screen markets using six criteria: non-seasonal demand (reduces cash flow swings), drive-to proximity from a major metro (1.5 hours or less), affluent secondary or tertiary location (higher ADR at lower entry costs), recession resilience (validated via historical performance), strong fundamentals (10+ years of RevPAR growth in CoStar), and zoning/permitting clarity for potential unit additions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should my buy box be narrow or broad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start narrow and expand only if deal flow is insufficient. A focused buy box (3 markets, one property type, defined price range) lets you become an expert in a niche quickly. A broad buy box spreads your attention too thin and makes it harder to develop the market knowledge needed to spot great deals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change my buy box over time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, your buy box should evolve as you gain experience, close deals, and build capital. Many investors start with a conservative first-deal buy box ($2-5M, day-one cash flow required) and expand into larger or more complex assets for subsequent acquisitions. Review your buy box quarterly and adjust based on your results and goals."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Investment Strategy</span>
+      <h1>How to Build a Hotel Buy Box: The Framework That Eliminates Bad Deals</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+      <p>The fastest way to waste six months in hospitality investing is to look at everything. Every listing, every market, every property type. You end up paralyzed by options, unable to pull the trigger because you never developed the conviction that comes from focused expertise.</p>
+
+      <p>The fix is a buy box. A defined, written set of investment criteria that tells you exactly what you are looking for before you start looking. It is the single most important document an aspiring hotel investor can create, and most people skip it entirely.</p>
+
+      <p>I call this framework <strong>The Buy Box Blueprint</strong>, and it is the first thing we build inside the <a href="/challenge/">5-Day Micro Resort Buyer Challenge</a>. It is Module 1 for a reason: everything else (deal sourcing, underwriting, LOIs, financing) depends on having a clear buy box first.</p>
+
+      <h2>What Is The Buy Box Blueprint?</h2>
+
+      <p>The Buy Box Blueprint is a framework for defining your investment criteria across six categories. When you complete it, you have a one-page document that acts as a filter. Every property you encounter gets measured against your buy box. If it fits, you analyze it. If it does not, you pass immediately.</p>
+
+      <p>This saves hundreds of hours and eliminates emotional decision-making. Instead of asking "do I like this property?" you ask "does this property meet my criteria?" Those are very different questions, and only the second one leads to consistent, profitable investing.</p>
+
+      <h2>The Six Categories of a Complete Buy Box</h2>
+
+      <h3>1. Market Criteria</h3>
+
+      <p>Where you invest matters more than what you buy. A mediocre property in a great market will outperform a great property in a bad market over a 5 to 7 year hold.</p>
+
+      <p>Your market criteria should define:</p>
+
+      <ul>
+        <li><strong>Geographic focus.</strong> Select 3 target markets to start. Trying to cover 10 markets means you are expert in none of them.</li>
+        <li><strong>Demand characteristics.</strong> Non-seasonal markets reduce cash flow volatility. Drive-to proximity from a major metro (1.5 hours or less) ensures resilient demand.</li>
+        <li><strong>Economic profile.</strong> Affluent secondary and tertiary markets offer higher ADR potential at lower entry costs compared to primary markets.</li>
+        <li><strong>Growth trajectory.</strong> Confirm 10+ years of RevPAR growth in CoStar data. This validates that the market is not just stable but improving.</li>
+      </ul>
+
+      <p>We use a specific market screening toolkit inside the <a href="/">Incredible Hospitality Mastermind</a>. Here is the full criteria set:</p>
+
+      <table>
+        <tr>
+          <th>Criterion</th>
+          <th>What It Means</th>
+          <th>Why It Matters</th>
+        </tr>
+        <tr>
+          <td>Non-seasonal</td>
+          <td>Steady demand year-round</td>
+          <td>Stabilizes NOI, reduces cash flow swings</td>
+        </tr>
+        <tr>
+          <td>Drive-to metro (1.5 hrs)</td>
+          <td>Short-stay demand without urban premiums</td>
+          <td>Resilient demand; easy for oversight visits</td>
+        </tr>
+        <tr>
+          <td>Affluent secondary/tertiary</td>
+          <td>Higher ADR at lower entry costs</td>
+          <td>Fits $2-5M price range; value plays reposition for IRR</td>
+        </tr>
+        <tr>
+          <td>Recession resilience</td>
+          <td>Validated via 2008 performance data</td>
+          <td>De-risks capital-raising conversations</td>
+        </tr>
+        <tr>
+          <td>Strong fundamentals</td>
+          <td>10+ year RevPAR growth confirmed in CoStar</td>
+          <td>Validates underwriting assumptions</td>
+        </tr>
+        <tr>
+          <td>Zoning/permitting clarity</td>
+          <td>Ability to add 2-6 units (ADUs/casitas)</td>
+          <td>Optional lever for revenue and IRR boost</td>
+        </tr>
+      </table>
+
+      <h3>2. Property Type</h3>
+
+      <p>Hospitality is a broad category. Your buy box should specify exactly what type of asset you are targeting:</p>
+
+      <ul>
+        <li><strong>Boutique hotels</strong> (8-30 rooms, independent, experiential)</li>
+        <li><strong>Micro resorts</strong> (mixed-use properties with lodging, outdoor recreation, and experiential elements)</li>
+        <li><strong>Cabin resorts</strong> (individual cabin or cottage clusters)</li>
+        <li><strong>Glamping operations</strong> (tents, treehouses, domes, yurts)</li>
+        <li><strong>Motor courts / historic motels</strong> (repositioning opportunities)</li>
+      </ul>
+
+      <p>For your first deal, I recommend focusing on cash-flowing boutique hotels or micro resorts with day-one NOI. Avoid speculative ground-up builds. The learning curve is steep enough without adding construction risk.</p>
+
+      <h3>3. Deal Size</h3>
+
+      <p>Your purchase price range determines your financing options, your equity requirements, and the competitive landscape you are entering.</p>
+
+      <table>
+        <tr>
+          <th>Price Range</th>
+          <th>Typical Profile</th>
+          <th>Financing Options</th>
+          <th>Competition Level</th>
+        </tr>
+        <tr>
+          <td>Under $1M</td>
+          <td>Small B&B, cabin cluster</td>
+          <td>Conventional, seller financing</td>
+          <td>Low-medium</td>
+        </tr>
+        <tr>
+          <td>$1M - $2M</td>
+          <td>Small inn, motor court</td>
+          <td>SBA 7(a), DSCR, seller carry</td>
+          <td>Medium</td>
+        </tr>
+        <tr>
+          <td>$2M - $5M</td>
+          <td>Boutique hotel, micro resort</td>
+          <td>SBA, DSCR, JV equity, seller carry</td>
+          <td>Medium (sweet spot)</td>
+        </tr>
+        <tr>
+          <td>$5M - $10M</td>
+          <td>Larger boutique, branded select-service</td>
+          <td>Commercial loans, syndications</td>
+          <td>Higher</td>
+        </tr>
+        <tr>
+          <td>$10M+</td>
+          <td>Full-service hotels, resort properties</td>
+          <td>Institutional debt, large JV</td>
+          <td>Institutional</td>
+        </tr>
+      </table>
+
+      <p>The $2M to $5M range is what I call the sweet spot for first-time hospitality investors. Large enough to generate meaningful cash flow and acquisition fees, but small enough to avoid institutional competition. This is the range where relationship-based sourcing and operational value-add give individual investors a real edge.</p>
+
+      <h3>4. Return Targets</h3>
+
+      <p>Your buy box should specify minimum return thresholds. If a deal does not meet these, you do not pursue it.</p>
+
+      <ul>
+        <li><strong>Entry cap rate:</strong> 8 to 8.5% on current NOI</li>
+        <li><strong>Cash-on-cash return:</strong> 15%+ at stabilization</li>
+        <li><strong>IRR:</strong> 18%+ over a 5 to 7 year hold</li>
+        <li><strong>DSCR:</strong> 1.35x or higher on day-one NOI</li>
+      </ul>
+
+      <p>These are the targets we use for deals inside our community, based on real performance across $23M in member deal volume. They are achievable in the right markets with solid operational execution, but they are also high enough to provide a meaningful margin of safety. For a deeper dive on these metrics, see our <a href="/blog/micro-resort-deal-analysis/">deal analysis guide</a>.</p>
+
+      <h3>5. Involvement Level</h3>
+
+      <p>This is the category most investors overlook. How involved do you want to be in day-to-day operations?</p>
+
+      <ul>
+        <li><strong>Hands-on operator:</strong> You run the property. You hire staff, manage revenue, handle guest issues. Maximum control, maximum time commitment.</li>
+        <li><strong>Semi-active:</strong> You oversee a general manager or management company. Strategic decisions are yours; daily execution is delegated. This is the model most of our members target.</li>
+        <li><strong>Passive:</strong> You invest capital and collect returns. Someone else runs everything. This requires strong partnerships and typically lower returns.</li>
+      </ul>
+
+      <p>Your involvement level affects what you buy. A hands-on operator can take on a property that needs significant turnaround. A semi-active investor should target properties with existing operational infrastructure that can be improved, not rebuilt from scratch.</p>
+
+      <h3>6. Timeline</h3>
+
+      <p>When do you want to close your first deal? This determines how aggressively you need to source, how quickly you need to build your team, and whether you can afford to be selective.</p>
+
+      <ul>
+        <li><strong>Exploring (6-12 months):</strong> Focus on education, market research, and relationship building. No urgency on deal flow.</li>
+        <li><strong>Active (3-6 months):</strong> Buy box is defined, financing is in place, actively sourcing and making offers.</li>
+        <li><strong>Aggressive (0-3 months):</strong> Ready to close now. Need deal flow immediately. <a href="/blog/how-to-find-micro-resorts-for-sale/">The 10-Deal Funnel</a> should be running at full capacity.</li>
+      </ul>
+
+      <h2>The Operator's Buy Box: Gideon's Personal Example</h2>
+
+      <p>Here is my actual buy box, which I use for acquisitions through Stonemont Capital. I share this as a reference point, not as a template to copy. Your buy box should be customized to your goals, capital, and life situation.</p>
+
+      <div class="callout">
+        <h4>The Operator's Buy Box</h4>
+        <p><strong>Markets:</strong> Non-seasonal, affluent secondary markets within 1.5-hour drive of a major metro. Strong fundamentals with 10+ years of RevPAR growth. Recession-resilient.<br><br>
+        <strong>Property type:</strong> Cash-flowing boutique hotels and micro resorts with day-one NOI. No speculative ground-up builds.<br><br>
+        <strong>Deal size:</strong> $2M to $5M purchase price.<br><br>
+        <strong>Return targets:</strong> 8-8.5% entry cap rate. 15%+ cash-on-cash at stabilization. 18%+ IRR over 5-7 years.<br><br>
+        <strong>Involvement:</strong> Semi-active. Oversee GM/management team. Strategic oversight without daily operations.<br><br>
+        <strong>Value-add thesis:</strong> Buy poorly operated assets. Unlock NOI through operational improvements, revenue management, and light renovations. Optional unit additions (2-6 casitas/ADUs) where zoning permits.</p>
+      </div>
+
+      <p>Notice how specific this is. It immediately eliminates thousands of properties. That is the point. Every property I do look at has already passed through this filter, which means my time goes toward deep analysis on deals that have a real chance of closing.</p>
+
+      <h2>Customizing Your Buy Box for Your Goals</h2>
+
+      <p>Your buy box should reflect your personal situation. The two most common investor profiles we see in our community have very different buy boxes:</p>
+
+      <h3>Profile 1: The Legacy Builder</h3>
+
+      <p>This investor has capital, a stable income (or successful business), and is building long-term wealth through hospitality assets. They care about:</p>
+
+      <ul>
+        <li>Asset appreciation and IRR over 5-10 year holds</li>
+        <li>Building a portfolio of branded, distinctive properties</li>
+        <li>Creating a business that can be passed down or sold as a platform</li>
+        <li>Quality of the guest experience and brand reputation</li>
+      </ul>
+
+      <p>Their buy box tends to be slightly larger ($3M to $7M), with more emphasis on brand potential and market positioning than on immediate cash flow.</p>
+
+      <h3>Profile 2: The W-2 Escapee</h3>
+
+      <p>This investor is building toward replacing their salary with hospitality cash flow. They need:</p>
+
+      <ul>
+        <li>Strong day-one cash flow to bridge income</li>
+        <li>Acquisition fees to create a financial cushion (5% of deal value at closing)</li>
+        <li>Properties that generate income quickly without a long stabilization period</li>
+        <li>Proof of concept before scaling</li>
+      </ul>
+
+      <p>Their buy box is tighter ($2M to $4M), with strict requirements on day-one NOI and a focus on properties where value-add can be executed quickly to boost cash flow within 6 to 12 months.</p>
+
+      <h2>Common Buy Box Mistakes</h2>
+
+      <h3>Mistake 1: Making It Too Broad</h3>
+
+      <p>"I am looking at hotels, glamping, cabins, and RV parks in 15 states." This is not a buy box. This is a wish list. Narrow your criteria until you can become genuinely expert in a specific niche and a handful of markets.</p>
+
+      <h3>Mistake 2: Ignoring Involvement Level</h3>
+
+      <p>If you have a full-time W-2 and two kids, buying a property that requires hands-on turnaround management is a recipe for burnout. Be realistic about how much time you can commit, and buy accordingly.</p>
+
+      <h3>Mistake 3: No Return Targets</h3>
+
+      <p>"I just want a good deal" is not a criteria. Define your minimum cap rate, cash-on-cash, and DSCR thresholds in writing. Without numbers, you will talk yourself into bad deals because they "feel" right.</p>
+
+      <h3>Mistake 4: Targeting Ultra-Rural Locations</h3>
+
+      <p>Properties in extremely remote areas are easy to buy and hard to sell. They also tend to have limited demand, limited labor pools, and limited exit options. Affluent secondary markets near metros offer much better risk-adjusted returns.</p>
+
+      <h3>Mistake 5: Chasing Trophy Properties</h3>
+
+      <p>The best deal is not the most beautiful property. It is the poorly operated one with strong market fundamentals. Remember: <em>buy poorly operated assets to unlock NOI quickly</em>. The value is in the gap between current performance and what is possible under competent management.</p>
+
+      <h2>How to Use Your Buy Box in Practice</h2>
+
+      <p>Once your buy box is defined, it becomes an operational tool:</p>
+
+      <ol>
+        <li><strong>Share it with brokers.</strong> Give every hospitality broker in your target markets a one-page summary of your buy box. This turns them into sourcing agents who bring you relevant deals proactively.</li>
+        <li><strong>Use it for direct outreach.</strong> When you <a href="/blog/how-to-find-micro-resorts-for-sale/">call hotel owners</a>, your buy box tells you exactly which properties to target and which to skip.</li>
+        <li><strong>Screen deals in 60 seconds.</strong> When a new opportunity comes across your desk, measure it against your buy box. If it fails on market, price, or property type, pass immediately.</li>
+        <li><strong>Communicate with partners and investors.</strong> When raising capital or building a team, your buy box communicates your strategy clearly and professionally. It shows that you are disciplined and focused, which builds credibility.</li>
+        <li><strong>Review quarterly.</strong> Your buy box should evolve as you gain experience. After closing your first deal, you will have much better clarity on what works for you. Adjust accordingly.</li>
+      </ol>
+
+      <p>The <a href="/challenge/">5-Day Micro Resort Buyer Challenge</a> walks you through building your complete buy box in Module 1, along with deal analysis, <a href="/blog/letter-of-intent-hotel/">LOI writing</a>, and financing strategy. You walk out with a finished buy box document and a clear plan for sourcing your first deal.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What is a hotel buy box?</h3>
+      <p>A hotel buy box is a defined set of investment criteria that specifies your target markets, property types, deal size range, return targets, involvement level, and timeline. It acts as a filter that eliminates properties that do not fit your strategy before you spend time analyzing them.</p>
+
+      <h3>What should I include in my buy box?</h3>
+      <p>Your buy box should include six categories: market criteria (geography, seasonality, demand drivers), property type (boutique hotel, micro resort, cabins, glamping), deal size (purchase price range), return targets (cap rate, cash-on-cash, IRR), involvement level (hands-on, semi-active, passive), and timeline (when you want to close your first deal).</p>
+
+      <h3>How do I choose which markets to target?</h3>
+      <p>Screen markets using six criteria: non-seasonal demand (reduces cash flow swings), drive-to proximity from a major metro (1.5 hours or less), affluent secondary or tertiary location (higher ADR at lower entry costs), recession resilience (validated via historical performance), strong fundamentals (10+ years of RevPAR growth in CoStar), and zoning/permitting clarity for potential unit additions.</p>
+
+      <h3>Should my buy box be narrow or broad?</h3>
+      <p>Start narrow and expand only if deal flow is insufficient. A focused buy box (3 markets, one property type, defined price range) lets you become an expert in a niche quickly. A broad buy box spreads your attention too thin and makes it harder to develop the market knowledge needed to spot great deals.</p>
+
+      <h3>Can I change my buy box over time?</h3>
+      <p>Yes, your buy box should evolve as you gain experience, close deals, and build capital. Many investors start with a conservative first-deal buy box ($2M to $5M, day-one cash flow required) and expand into larger or more complex assets for subsequent acquisitions. Review your buy box quarterly and adjust based on your results and goals.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

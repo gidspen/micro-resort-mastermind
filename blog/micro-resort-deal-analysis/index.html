@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Analyze a Micro Resort Deal: The Underwriting Framework | Incredible Hospitality Co</title>
+  <meta name="description" content="Step-by-step framework for analyzing micro resort and boutique hotel deals. Learn how to underwrite hospitality acquisitions using RevPAR, NOI, cap rate, and cash-on-cash return." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/blog/micro-resort-deal-analysis/" />
+  <meta property="og:title" content="How to Analyze a Micro Resort Deal: The Underwriting Framework" />
+  <meta property="og:description" content="Step-by-step framework for analyzing micro resort and boutique hotel deals. Learn how to underwrite hospitality acquisitions using RevPAR, NOI, cap rate, and cash-on-cash return." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/blog/micro-resort-deal-analysis/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Analyze a Micro Resort Deal: The Underwriting Framework" />
+  <meta name="twitter:description" content="Step-by-step framework for analyzing micro resort and boutique hotel deals. Learn how to underwrite hospitality acquisitions using RevPAR, NOI, cap rate, and cash-on-cash return." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+    }
+    .article-body th {
+      background: var(--dark-card);
+      color: var(--gold);
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--dark-border);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .article-body td {
+      padding: 12px 16px;
+      border: 1px solid var(--dark-border);
+      color: #c0bdb8;
+    }
+    .article-body tr:nth-child(even) td { background: rgba(23,61,54,0.3); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Analyze a Micro Resort Deal: The Underwriting Framework",
+    "description": "Step-by-step framework for analyzing micro resort and boutique hotel deals. Learn how to underwrite hospitality acquisitions using RevPAR, NOI, cap rate, and cash-on-cash return.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co",
+      "url": "https://incrediblehospitalityco.com"
+    },
+    "datePublished": "2026-03-23",
+    "dateModified": "2026-03-23",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/blog/micro-resort-deal-analysis/",
+    "image": "https://incrediblehospitalityco.com/images/gideon-headshot.jpeg"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What metrics do I need to underwrite a micro resort deal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The core metrics are RevPAR (Revenue Per Available Room), ADR (Average Daily Rate), occupancy rate, NOI (Net Operating Income), cap rate, cash-on-cash return, and DSCR (Debt Service Coverage Ratio). Together, these tell you how much the property earns, what it is worth, and whether it can service debt while generating returns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good cap rate for a micro resort?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For acquisitions, target an 8-8.5% entry cap rate. This provides enough spread above your debt cost to generate cash flow from day one. On exit (after value-add improvements), you can model a compressed cap rate of 7-7.5%, which creates equity through appreciation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I build a pro forma for a hotel acquisition?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with revenue modeling using ADR multiplied by occupancy multiplied by room count multiplied by 365 days. Then subtract operating expenses (typically 55-65% of revenue for small hotels). The result is your projected NOI. Layer in your debt service to calculate cash flow, then divide by your equity investment for cash-on-cash return."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What DSCR do lenders require for hotel loans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most lenders require a minimum DSCR of 1.25x, meaning the property's NOI must be at least 1.25 times the annual debt service. For conservative underwriting and stronger loan terms, target 1.35x or higher. DSCR loans are particularly valuable because they qualify on the property's income rather than your personal W-2."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the biggest red flags in hotel deal analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Key red flags include declining RevPAR trends over 3+ years, deferred maintenance exceeding 10% of purchase price, single-source revenue dependency (one OTA channel or one corporate account), environmental issues, zoning restrictions that limit value-add plans, and a seller who cannot provide at least 2 years of clean financial statements."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">Deal Analysis</span>
+      <h1>How to Analyze a Micro Resort Deal: The Underwriting Framework</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a>, hospitality investor ($6.5M acquired, 6 hotels, 30 units) · Last updated March 23, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+      <p>The difference between a good micro resort investment and a money pit comes down to one skill: underwriting. Not gut feelings, not excitement about the property, not how beautiful the listing photos are. The numbers either work or they do not.</p>
+
+      <p>After acquiring $6.5M in hospitality assets across 6 hotels and 30 units, I have refined this underwriting framework through real deals, real mistakes, and real returns. This is the same framework our community of 200+ STR investors uses inside the <a href="/">Incredible Hospitality Mastermind</a> to evaluate micro resort and boutique hotel acquisitions.</p>
+
+      <p>Whether you are analyzing your first deal or your tenth, this guide walks you through every metric, every step of the pro forma, and the red flags that should stop you cold.</p>
+
+      <h2>The Key Metrics You Need to Know</h2>
+
+      <p>Before you can analyze a deal, you need to speak the language. Here are the metrics that matter in hospitality underwriting, along with the targets we use for micro resort acquisitions in the $2M to $5M range.</p>
+
+      <table>
+        <tr>
+          <th>Metric</th>
+          <th>What It Measures</th>
+          <th>Target</th>
+        </tr>
+        <tr>
+          <td><strong>ADR</strong> (Average Daily Rate)</td>
+          <td>Average rental income per paid occupied room per day</td>
+          <td>Market-dependent; validate with CoStar</td>
+        </tr>
+        <tr>
+          <td><strong>Occupancy Rate</strong></td>
+          <td>Percentage of available rooms sold</td>
+          <td>60-75% for stabilized boutique properties</td>
+        </tr>
+        <tr>
+          <td><strong>RevPAR</strong> (Revenue Per Available Room)</td>
+          <td>Total room revenue / total available rooms</td>
+          <td>10+ years of growth in target market</td>
+        </tr>
+        <tr>
+          <td><strong>NOI</strong> (Net Operating Income)</td>
+          <td>Revenue minus operating expenses (before debt)</td>
+          <td>Must be positive from day one</td>
+        </tr>
+        <tr>
+          <td><strong>Cap Rate</strong></td>
+          <td>NOI / Property Value</td>
+          <td>8-8.5% entry; 7-7.5% exit</td>
+        </tr>
+        <tr>
+          <td><strong>Cash-on-Cash (CoC)</strong></td>
+          <td>Annual cash flow / total cash invested</td>
+          <td>15%+</td>
+        </tr>
+        <tr>
+          <td><strong>DSCR</strong> (Debt Service Coverage Ratio)</td>
+          <td>NOI / annual debt service</td>
+          <td>1.35x or higher</td>
+        </tr>
+        <tr>
+          <td><strong>IRR</strong> (Internal Rate of Return)</td>
+          <td>Annualized total return including appreciation</td>
+          <td>18%+ over 5-7 years</td>
+        </tr>
+        <tr>
+          <td><strong>LTV</strong> (Loan-to-Value)</td>
+          <td>Loan amount as percentage of property value</td>
+          <td>70%</td>
+        </tr>
+      </table>
+
+      <p>These are not abstract concepts. Each one tells you something specific about whether a deal will generate the returns you need while maintaining a margin of safety.</p>
+
+      <h2>Step 1: Revenue Modeling</h2>
+
+      <p>Revenue is the foundation of every hospitality underwriting model. Get this wrong and nothing downstream will be accurate.</p>
+
+      <h3>The Revenue Formula</h3>
+
+      <p><strong>Total Room Revenue = ADR x Occupancy Rate x Room Count x 365</strong></p>
+
+      <p>Start by establishing the property's current performance. Request at least 2 years (ideally 3) of monthly P&L statements from the seller. You want to see:</p>
+
+      <ul>
+        <li>Monthly ADR trends (is it growing, flat, or declining?)</li>
+        <li>Monthly occupancy (are there seasonal patterns?)</li>
+        <li>Revenue by channel (what percentage comes from OTAs vs. direct bookings?)</li>
+        <li>Ancillary revenue (event space, food and beverage, activities, retail)</li>
+      </ul>
+
+      <p>Then validate the seller's numbers against market data. CoStar is the gold standard here. Pull RevPAR trends, ADR benchmarks, and occupancy rates for the submarket. If the seller claims a $200 ADR but CoStar shows the submarket averaging $140, you have a gap that needs explaining.</p>
+
+      <div class="callout">
+        <h4>Pro Tip</h4>
+        <p>Underwrite to market averages for your base case, not the seller's claimed performance. If you can beat market averages through better operations, that upside is your margin of safety, not your assumption.</p>
+      </div>
+
+      <h3>Projecting Revenue After Acquisition</h3>
+
+      <p>For your pro forma, model three scenarios:</p>
+
+      <ul>
+        <li><strong>Conservative:</strong> Current performance continues as-is. No improvements.</li>
+        <li><strong>Base case:</strong> Moderate operational improvements (better revenue management, channel optimization, direct booking push) lift ADR by 5-10% and occupancy by 3-5 points within 12 months.</li>
+        <li><strong>Upside:</strong> Full value-add execution (renovations, rebranding, unit additions) achieves stabilized performance within 18-24 months.</li>
+      </ul>
+
+      <p>Your purchase decision should be based on the conservative case. If the deal only works in the upside scenario, it is too risky.</p>
+
+      <h2>Step 2: Expense Analysis</h2>
+
+      <p>Expenses in hospitality are higher and more complex than in residential real estate. Typical operating expenses for a small boutique hotel or micro resort run between 55% and 65% of gross revenue.</p>
+
+      <h3>Major Expense Categories</h3>
+
+      <table>
+        <tr>
+          <th>Category</th>
+          <th>Typical Range (% of Revenue)</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Labor / Staffing</td>
+          <td>25-35%</td>
+          <td>Largest single expense; varies by service level</td>
+        </tr>
+        <tr>
+          <td>Property Management</td>
+          <td>5-8%</td>
+          <td>Third-party; model at 7% (or capture this yourself)</td>
+        </tr>
+        <tr>
+          <td>OTA Commissions</td>
+          <td>8-15%</td>
+          <td>Booking.com, Expedia, Airbnb take 15-20% per booking</td>
+        </tr>
+        <tr>
+          <td>Utilities</td>
+          <td>4-6%</td>
+          <td>Higher for resorts with pools, hot tubs, laundry</td>
+        </tr>
+        <tr>
+          <td>Insurance</td>
+          <td>3-5%</td>
+          <td>Commercial hospitality policies are expensive</td>
+        </tr>
+        <tr>
+          <td>Property Taxes</td>
+          <td>2-4%</td>
+          <td>Verify reassessment risk at acquisition</td>
+        </tr>
+        <tr>
+          <td>Maintenance / FF&E Reserve</td>
+          <td>4-6%</td>
+          <td>Budget 4% minimum for furniture, fixtures, equipment</td>
+        </tr>
+        <tr>
+          <td>Marketing</td>
+          <td>3-5%</td>
+          <td>Direct booking strategy reduces OTA dependency over time</td>
+        </tr>
+      </table>
+
+      <p>One of the biggest value-add levers in micro resort acquisitions is bringing property management in-house. If you model a 7% PM fee paid to yourself instead of a third party, you capture that revenue and boost your cash-on-cash return significantly.</p>
+
+      <blockquote>
+        "Boost CoC by bringing property management in-house, capturing ~7% of gross revenue. Underwrite as a PM fee to yourself, not an asset-management fee."
+      </blockquote>
+
+      <h2>Step 3: Calculate NOI</h2>
+
+      <p><strong>NOI = Total Revenue - Total Operating Expenses</strong></p>
+
+      <p>This is the number that drives everything: your property valuation (via cap rate), your debt capacity (via DSCR), and your cash flow (NOI minus debt service).</p>
+
+      <p>For a first deal, we require day-one positive NOI. No speculative ground-up builds. No properties that only work "once we renovate." The property must cash flow from the day you close.</p>
+
+      <h3>Current NOI vs. Stabilized NOI</h3>
+
+      <p>The gap between current NOI and stabilized NOI is where your value-add opportunity lives. This is the core investment thesis for micro resort acquisitions:</p>
+
+      <blockquote>
+        "Buy poorly operated assets to unlock NOI quickly."
+      </blockquote>
+
+      <p>If a property is generating $200k in NOI under current management, but your underwriting shows it should be generating $320k with basic operational improvements (dynamic pricing, reduced OTA dependency, better staffing), that $120k gap is your value creation opportunity. At a 7.5% exit cap rate, that NOI increase translates to $1.6M in additional property value.</p>
+
+      <h2>Step 4: Valuation and Cap Rate Analysis</h2>
+
+      <p>In hospitality, properties are valued based on their income, not comparable sales. The formula:</p>
+
+      <p><strong>Property Value = NOI / Cap Rate</strong></p>
+
+      <p>For acquisitions, we target an entry cap rate of 8 to 8.5%. This means a property generating $280k in NOI would be valued at $3.3M to $3.5M.</p>
+
+      <p>On exit (after value-add improvements), model a compressed cap rate of 7 to 7.5%. The compression happens because a stabilized, well-operated property commands a premium from buyers. Using the example above, if you stabilize NOI to $380k and exit at a 7% cap rate, the property is now worth $5.4M.</p>
+
+      <h2>Step 5: Debt Service and Cash Flow</h2>
+
+      <p>Once you have NOI, layer in your financing to calculate actual cash flow:</p>
+
+      <p><strong>Annual Cash Flow = NOI - Annual Debt Service</strong></p>
+
+      <p>For a typical deal structure at 70% LTV:</p>
+
+      <table>
+        <tr>
+          <th>Line Item</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <td>Purchase Price</td>
+          <td>$3,500,000</td>
+        </tr>
+        <tr>
+          <td>Loan Amount (70% LTV)</td>
+          <td>$2,450,000</td>
+        </tr>
+        <tr>
+          <td>Equity Required (30%)</td>
+          <td>$1,050,000</td>
+        </tr>
+        <tr>
+          <td>Interest Rate</td>
+          <td>6.5%</td>
+        </tr>
+        <tr>
+          <td>Amortization</td>
+          <td>25 years</td>
+        </tr>
+        <tr>
+          <td>Annual Debt Service</td>
+          <td>~$198,000</td>
+        </tr>
+        <tr>
+          <td>Day-One NOI</td>
+          <td>$280,000</td>
+        </tr>
+        <tr>
+          <td>Annual Cash Flow</td>
+          <td>$82,000</td>
+        </tr>
+        <tr>
+          <td>DSCR</td>
+          <td>1.41x</td>
+        </tr>
+        <tr>
+          <td>Cash-on-Cash Return</td>
+          <td>7.8% (day one)</td>
+        </tr>
+      </table>
+
+      <p>After value-add (stabilized NOI of $380k), annual cash flow jumps to $182k, pushing cash-on-cash above 15%. That is the trajectory we underwrite for.</p>
+
+      <p>For a deeper look at financing options, including <a href="/blog/dscr-loan-hotel/">DSCR loans</a>, <a href="/blog/sba-loan-hotel/">SBA 7(a) loans</a>, and <a href="/blog/seller-financing-hotel/">seller financing</a>, read our financing guides.</p>
+
+      <h2>Step 6: Model the Exit</h2>
+
+      <p>Every deal should have a clear exit strategy modeled from day one. We think through multiple exit scenarios:</p>
+
+      <ul>
+        <li><strong>Sale in Year 5:</strong> Stabilized NOI / exit cap rate = sale price. Subtract remaining loan balance and transaction costs. The difference is your equity created.</li>
+        <li><strong>Refinance in Year 3:</strong> If the property appreciates significantly, refinance to pull out equity while keeping the asset. This is a tax-deferred way to access your gains.</li>
+        <li><strong>Hold and cash flow:</strong> If the market does not support a favorable sale, can you hold the asset indefinitely on its cash flow? The DSCR should be strong enough to support this.</li>
+      </ul>
+
+      <p>Using our $3.5M example: stabilized NOI of $380k at a 7% exit cap in Year 5 yields a value of $5.4M. After paying off the remaining loan balance (approximately $2.2M after 5 years of amortization), you have roughly $3.2M in proceeds, representing approximately $1.2M in equity created above your original investment.</p>
+
+      <h2>The Quick Underwriting Sheet</h2>
+
+      <p>Before committing hours to a full pro forma, run every deal through this quick screening checklist. If it passes, do the deep dive. If it fails, move on.</p>
+
+      <ol>
+        <li><strong>Does it have day-one positive NOI?</strong> If no, pass.</li>
+        <li><strong>Is the asking price at or below 8% cap rate on current NOI?</strong> If significantly above, negotiate or pass.</li>
+        <li><strong>Does the submarket show 10+ years of RevPAR growth?</strong> If declining, pass.</li>
+        <li><strong>Can you identify at least 2 clear value-add levers?</strong> If not, the upside is limited.</li>
+        <li><strong>Does DSCR exceed 1.25x on day-one NOI?</strong> If not, the deal will be hard to finance.</li>
+        <li><strong>Is the property in a non-seasonal, drive-to market?</strong> Seasonal cash flow swings increase risk.</li>
+      </ol>
+
+      <p>This 60-second screen eliminates 80% of deals that would have wasted your time in a full analysis. Use it before opening your spreadsheet.</p>
+
+      <h2>Red Flags to Watch For</h2>
+
+      <p>After reviewing hundreds of deals across our community, these are the patterns that should raise immediate concern:</p>
+
+      <ul>
+        <li><strong>Declining RevPAR over 3+ years.</strong> A market or property losing momentum is fighting against you.</li>
+        <li><strong>Deferred maintenance exceeding 10% of purchase price.</strong> A property needing $400k in repairs on a $3M purchase eats your equity before you start.</li>
+        <li><strong>Single-source revenue dependency.</strong> If 70%+ of bookings come from one OTA or one corporate account, you have concentration risk.</li>
+        <li><strong>Environmental issues.</strong> Underground storage tanks, flood zones, contamination. These can be deal-killers with lenders.</li>
+        <li><strong>Seller cannot provide clean financials.</strong> If they do not have 2+ years of organized P&L statements, their actual performance is likely worse than what they are representing.</li>
+        <li><strong>Zoning restrictions that limit value-add.</strong> If you planned to add units or change use, verify zoning first.</li>
+        <li><strong>Unrealistic ADR assumptions.</strong> Always benchmark against CoStar. A property claiming $250 ADR in a $150 market needs serious scrutiny.</li>
+      </ul>
+
+      <h2>Sample Deal Walkthrough</h2>
+
+      <p>Let us walk through a real example using the framework. This is based on a deal structure from our <a href="/">community</a>.</p>
+
+      <h3>The Property</h3>
+      <p>A 10-room boutique hotel in an affluent secondary market, 90 minutes from a major metro. Currently owner-operated with dated interiors and limited online presence. Listed at $3.5M.</p>
+
+      <h3>Current Performance</h3>
+      <ul>
+        <li>ADR: $175</li>
+        <li>Occupancy: 55%</li>
+        <li>RevPAR: $96.25</li>
+        <li>Gross Revenue: $351,000 (10 rooms x $175 x 55% x 365)</li>
+        <li>Operating Expenses: 60% of revenue = $210,600</li>
+        <li>Current NOI: $140,400</li>
+        <li>Current Cap Rate at $3.5M asking: 4.0% (too high a price for this NOI)</li>
+      </ul>
+
+      <h3>The Negotiation</h3>
+      <p>At $140k NOI, this property is worth $1.65M at an 8.5% cap rate. The $3.5M ask is way off. But you dig deeper and find that CoStar shows the submarket ADR at $210 with 68% occupancy. The current owner is underperforming because of poor revenue management and no direct booking strategy.</p>
+
+      <h3>Stabilized Projection (Base Case, 12-18 Months)</h3>
+      <ul>
+        <li>ADR: $200 (moderate improvement, still below market)</li>
+        <li>Occupancy: 65%</li>
+        <li>Gross Revenue: $474,500</li>
+        <li>Operating Expenses: 58% = $275,210</li>
+        <li>Stabilized NOI: $199,290</li>
+      </ul>
+
+      <p>Now negotiate based on a blended analysis. Offer $2.35M (current NOI at 6% cap, giving the seller some credit for the upside). If accepted, your numbers improve dramatically. Add 4 casitas if zoning allows (at $25k NOI per unit), and your stabilized NOI jumps to $299k, yielding a $4.3M valuation at a 7% exit cap.</p>
+
+      <p>This is the kind of <a href="/blog/micro-resort-deal-analysis/">deal analysis</a> work we do every Thursday in our live deal review calls inside the <a href="/">Mastermind</a>. Real numbers, real properties, real feedback from operators who have closed these deals.</p>
+
+      <h2>Your Underwriting Toolkit</h2>
+
+      <p>You need three things to underwrite effectively:</p>
+
+      <ol>
+        <li><strong>A reliable underwriting model.</strong> A spreadsheet-based pro forma that models revenue, expenses, debt, and exit scenarios. We provide this inside the <a href="/challenge/">5-Day Micro Resort Buyer Challenge</a>.</li>
+        <li><strong>CoStar access.</strong> This is the primary data source for RevPAR trends, ADR benchmarks, and market-level performance. Your underwriting credibility, and your ability to raise capital, depends on professional data.</li>
+        <li><strong>An experienced underwriter to review your work.</strong> For your first 3 to 5 deals, have someone experienced pressure-test your assumptions. Wrong inputs produce confident but dangerous conclusions.</li>
+      </ol>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What metrics do I need to underwrite a micro resort deal?</h3>
+      <p>The core metrics are RevPAR (Revenue Per Available Room), ADR (Average Daily Rate), occupancy rate, NOI (Net Operating Income), cap rate, cash-on-cash return, and DSCR (Debt Service Coverage Ratio). Together, these tell you how much the property earns, what it is worth, and whether it can service debt while generating returns.</p>
+
+      <h3>What is a good cap rate for a micro resort?</h3>
+      <p>For acquisitions, target an 8 to 8.5% entry cap rate. This provides enough spread above your debt cost to generate cash flow from day one. On exit (after value-add improvements), you can model a compressed cap rate of 7 to 7.5%, which creates equity through appreciation.</p>
+
+      <h3>How do I build a pro forma for a hotel acquisition?</h3>
+      <p>Start with revenue modeling using ADR multiplied by occupancy multiplied by room count multiplied by 365 days. Then subtract operating expenses (typically 55 to 65% of revenue for small hotels). The result is your projected NOI. Layer in your debt service to calculate cash flow, then divide by your equity investment for cash-on-cash return.</p>
+
+      <h3>What DSCR do lenders require for hotel loans?</h3>
+      <p>Most lenders require a minimum DSCR of 1.25x, meaning the property's NOI must be at least 1.25 times the annual debt service. For conservative underwriting and stronger loan terms, target 1.35x or higher. <a href="/blog/dscr-loan-hotel/">DSCR loans</a> are particularly valuable because they qualify on the property's income rather than your personal W-2.</p>
+
+      <h3>What are the biggest red flags in hotel deal analysis?</h3>
+      <p>Key red flags include declining RevPAR trends over 3+ years, deferred maintenance exceeding 10% of purchase price, single-source revenue dependency (one OTA channel or one corporate account), environmental issues, zoning restrictions that limit value-add plans, and a seller who cannot provide at least 2 years of clean financial statements.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Ready to Acquire Your First Micro Resort?</h3>
+      <p>The Incredible Hospitality Mastermind is a private operator community for STR investors scaling into micro resorts and boutique hotels. Weekly expert calls. Live deal reviews. $23M+ in member deal volume.</p>
+      <a class="btn-primary" href="https://calendly.com/gideon-spencer/1-on-1-15-min-strategy-session-clone" target="_blank" rel="noopener" onclick="fbq('track', 'Lead');">
+        Book a Strategy Call &rarr;
+      </a>
+      <p class="cta-note">15 minutes. No pitch. Just clarity on whether this is the right fit.</p>
+      <p class="cta-note" style="margin-top:12px;"><a href="/challenge/" style="color:var(--gold);">Or start with the free 5-Day Challenge</a></p>
+    </div>
+  </article>
+
+  <footer>
+    <div style="max-width:720px; margin:0 auto; padding:0 24px;">
+      <p>&copy; 2026 Gideon Spencer | <a href="/">Incredible Hospitality Co</a></p>
+      <p style="margin-top:8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
