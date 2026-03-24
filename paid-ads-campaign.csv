@@ -1,0 +1,27 @@
+Task,Phase,Status,Acceptance Criteria
+Add Meta Pixel to landing page,Phase 0 — Foundation,Done,"Pixel 1711035122902345 in <head>; PageView fires on load"
+Add Lead event to CTA buttons,Phase 0 — Foundation,Done,"All 3 CTAs fire fbq Lead on click"
+Push pixel code to live site,Phase 0 — Foundation,Done,Pushed to staging; live site reflects changes
+Connect Facebook Pixel in Brayv,Phase 0 — Foundation,Done,Pixel shows as connected in Brayv integrations
+Finish landing page,Phase 0 — Foundation,Done,"Webinar page live at incrediblehospitalityco.com/webinar — all sections complete; mobile responsive"
+Build GHL lead capture form,Phase 0 — Foundation,Done,"GHL form DkKg6FYCTs4PSbdS5zYP embedded on /webinar and /challenge; captures name/email/phone"
+Update landing page CTAs to GHL form,Phase 0 — Foundation,In Progress,"Webinar + challenge pages: embedded form ✅ — index.html CTA buttons still link out to GHL directly, not embedded"
+Set up GHL post-registration automation,Phase 0 — Foundation,Done,"Workflow published: form submit → confirmation email (Zoom link) → 1-day wait → reminder email"
+Create Zoom meeting for webinar,Phase 0 — Foundation,Done,"Meeting ID 849 8542 3141 — needs to be rescheduled from March 20 to March 24 at 3pm CT"
+Reschedule Zoom meeting to March 24,Phase 0 — Foundation,To Do,"Manual update at zoom.us — move from Friday March 20 to Tuesday March 24 3:00 PM CT"
+Fix GHL workflow name + email copy,Phase 0 — Foundation,To Do,"Rename from '3-Day Challenge — Registration' to 'Webinar — Registration'; fix confirmation email copy (still says Hotel in 90 Days)"
+Rebuild 3-Day Challenge workflow,Phase 0 — Foundation,To Do,"Original workflow was overwritten — create new clean workflow for when 3-day challenge relaunches"
+Set up post-challenge application form,Phase 0 — Foundation,To Do,"4 qualifying questions live: portfolio size / capital / obstacle / why now"
+Set up GHL sales call booking calendar,Phase 0 — Foundation,To Do,Calendar live; confirmation auto-sends on booking
+Post webinar to existing audience,Phase 1 — Prove Funnel Organically,To Do,Posted to Instagram + LinkedIn + email list
+Get 10 people through full funnel,Phase 1 — Prove Funnel Organically,To Do,"10+ registered via GHL form; confirmation email received; nothing broken"
+Film talking head video,Phase 2 — Validate with Paid Traffic,To Do,"30s and 15s versions filmed; natural lighting; conversational delivery"
+Write ad copy,Phase 2 — Validate with Paid Traffic,To Do,3 headline variants + primary text variants written and saved
+Launch single Traffic campaign in Meta,Phase 2 — Validate with Paid Traffic,To Do,"Traffic objective; $25/day; pointing to incrediblehospitalityco.com/webinar; campaign live"
+Hit 500 unique landing page visitors,Phase 2 — Validate with Paid Traffic,To Do,500+ unique visitors confirmed in Meta Ads Manager
+Switch to Leads objective,Phase 3 — Split Test,To Do,Campaign optimizing for GHL form fills not page views
+Launch Brayv campaign,Phase 3 — Split Test,To Do,"Brayv ad live; $25/day; same audience as Meta campaign"
+Run split test 30 days,Phase 3 — Split Test,To Do,"Both campaigns unchanged 30 days; stats screenshot at Day 15 + Day 30"
+Declare winner,Phase 3 — Split Test,To Do,"Lower CPL campaign identified; decision documented; loser paused"
+Scale winning campaign to $50/day,Phase 4 — Scale,To Do,Budget doubled on winner; CPL stays within 20% of test period
+Launch retargeting campaign,Phase 4 — Scale,To Do,"$10/day targeting site visitors who did not convert; $27 training as offer"
