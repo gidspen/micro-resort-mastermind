@@ -233,17 +233,17 @@
       color: var(--gold-light);
     }
     .deliverables-list {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 40px;
+      max-width: 480px;
+      margin: 0 auto;
     }
     .deliverable-item {
       font-family: 'Arial', sans-serif;
       font-size: 14px;
       color: #c0bdb8;
       text-align: center;
-      max-width: 160px;
     }
     .deliverable-item .di-icon {
       font-size: 24px;
