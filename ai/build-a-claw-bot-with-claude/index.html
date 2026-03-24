@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Build a Claw Bot in 60 Seconds Using Claude AI | Gideon Spencer</title>
+  <meta name="description" content="Step-by-step guide to building an AI claw bot using Claude Code and the Superpowers skills framework on a Mac mini. No coding experience required." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/ai/build-a-claw-bot-with-claude/" />
+  <meta property="og:title" content="How to Build a Claw Bot in 60 Seconds Using Claude AI" />
+  <meta property="og:description" content="Step-by-step guide to building an AI claw bot using Claude Code and the Superpowers skills framework on a Mac mini. No coding experience required." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/ai/build-a-claw-bot-with-claude/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Build a Claw Bot in 60 Seconds Using Claude AI" />
+  <meta name="twitter:description" content="Step-by-step guide to building an AI claw bot using Claude Code and the Superpowers skills framework on a Mac mini. No coding experience required." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+      --warning-bg: #2a1a0a;
+      --warning-border: #c87941;
+      --warning-text: #f0c98a;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* ARTICLE CONTAINER */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ARTICLE HEADER */
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    /* ARTICLE BODY */
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: #d8d5d0;
+    }
+
+    /* CODE BLOCK */
+    .article-body pre {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 20px 24px;
+      margin: 24px 0;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #a8d8a8;
+      line-height: 1.6;
+      border-radius: 2px;
+    }
+    .article-body code {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 2px 7px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #a8d8a8;
+      border-radius: 2px;
+    }
+    .article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    /* STEP BOXES */
+    .step-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 4px solid var(--gold);
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    .step-number {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .step-box h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+    .step-box p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    /* WARNING BOX */
+    .warning-box {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-left: 4px solid var(--warning-border);
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .warning-box .warning-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--warning-text);
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .warning-box h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: var(--warning-text);
+    }
+    .warning-box p {
+      font-size: 15px;
+      color: #d4a96a;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .warning-box p:last-child { margin-bottom: 0; }
+    .warning-box ul {
+      margin: 0 0 12px 20px;
+      font-size: 15px;
+      color: #d4a96a;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.7;
+    }
+    .warning-box li { margin-bottom: 6px; }
+    .warning-box strong { color: var(--warning-text); }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout p {
+      font-size: 15px;
+      margin-bottom: 0;
+    }
+
+    /* CTA BAND */
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Build a Claw Bot in 60 Seconds Using Claude AI",
+    "description": "Step-by-step guide to building an AI claw bot using Claude Code and the Superpowers skills framework on a Mac mini. No coding experience required.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-24",
+    "dateModified": "2026-03-24",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/ai/build-a-claw-bot-with-claude/"
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">AI Tools</span>
+      <h1>How to Build a Claw Bot in 60 Seconds Using Claude AI</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a> · March 24, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>I posted a Reel showing how to spin up a fully functional AI claw bot in under 60 seconds using Claude and a Mac mini. This is the promised follow-up — the exact step-by-step breakdown with every link you need.</p>
+
+      <p>No prior coding experience required. You will be talking to an AI agent that builds the bot for you. Your only job is to tell it what to build.</p>
+
+      <div class="callout">
+        <h4>What You're Building</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">A "claw bot" — an AI agent that can reach out, grab information, interact with services, and execute tasks automatically. Think of it as a digital claw machine: you point it at something, and it retrieves it for you.</p>
+      </div>
+
+      <h2>What You Need</h2>
+
+      <ul>
+        <li><strong>A Mac mini</strong> (or any Mac — the Mac mini is the best value for running Claude Code continuously)</li>
+        <li><strong>The Claude app</strong> — download from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a></li>
+        <li><strong>Claude Code</strong> — the terminal-based coding agent built into the Claude app</li>
+        <li><strong>The Superpowers skills framework</strong> — a free, open-source library of AI skills that dramatically upgrades what Claude can do</li>
+        <li>15 minutes of setup time (most of it is downloading)</li>
+      </ul>
+
+      <h2>Step-by-Step: Build Your Claw Bot</h2>
+
+      <div class="step-box">
+        <span class="step-number">Step 1</span>
+        <h3>Get Your Hardware</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Pick up a Mac mini. The base model (M4, $599) is more than enough to run Claude Code and your bots 24/7. It uses very little power and can be left running headless (no monitor needed once it's set up).</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 2</span>
+        <h3>Download the Claude App</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Go to <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> and install the Claude desktop app. Sign in with your Anthropic account (or create a free one).</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">You will need a Claude Pro subscription ($20/month) or an API key to use Claude Code. Claude Pro is the easiest starting point.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 3</span>
+        <h3>Open Claude Code</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Inside the Claude app, open a terminal window and launch Claude Code by typing <code>claude</code> at the command line. This is where you talk to the agent. Claude Code can read files, write code, run commands, and build entire projects — all from a conversation.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 4</span>
+        <h3>Install the Superpowers Skills Framework</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">Superpowers is an open-source framework that gives Claude a set of pre-built "skills" — structured workflows for planning, building, debugging, and more. Installing it transforms Claude Code from a capable assistant into a highly disciplined agent that plans before it acts.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">GitHub repository: <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">github.com/obra/superpowers</a></p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Follow the installation instructions in the repo's README. The short version:</p>
+        <pre>git clone https://github.com/obra/superpowers.git ~/.claude/skills</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Restart Claude Code after installing. The skills will load automatically at the start of each session.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 5</span>
+        <h3>Tell Claude to Build Your Bot</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">This is the part that looks like magic. Open Claude Code and say exactly this (replace the bracketed parts with your specifics):</p>
+        <pre>Build me a claw bot using Claude AI. Don't use docs from anywhere else.
+Name it [YOUR BOT NAME HERE].
+Use the superpowers skills to plan before implementing.
+Come up with a clear plan first, then build it step by step.</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Claude will activate the planning skill, lay out a structured build plan, ask any clarifying questions it needs, and then walk you through each step of the implementation. You review and approve as it goes.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Why "Don't Use Docs From Anywhere Else"?</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">This instruction keeps Claude grounded in what it already knows rather than fetching potentially outdated or incorrect documentation from the web. It produces cleaner, more reliable code for standard bot builds.</p>
+      </div>
+
+      <h2>Using Skills to Upgrade Your Bot</h2>
+
+      <p>Skills are what separate a basic Claude setup from a genuinely powerful agent. Once you've installed Superpowers, you have access to a full library of structured capabilities: planning workflows, debugging protocols, code review processes, and more.</p>
+
+      <p>You can instruct Claude to use any installed skill mid-conversation:</p>
+
+      <pre>Use the brainstorming skill to come up with 5 ways to extend this bot.</pre>
+      <pre>Use the systematic-debugging skill — the bot isn't running correctly.</pre>
+
+      <p>As the skills ecosystem grows, so does what your bot can do. You can add new skills to your <code>~/.claude/skills</code> directory at any time and they become available immediately in your next Claude Code session.</p>
+
+      <h3>Where to Find More Skills</h3>
+      <p>The Superpowers framework is the foundational layer. Additional skill libraries are also being published by independent developers on GitHub. When browsing for new skills to add, apply the same standard you'd use for any software you install on your machine.</p>
+
+      <div class="warning-box">
+        <span class="warning-label">Security Warning</span>
+        <h3>Only Install Skills From Sources You Trust</h3>
+        <p>Skills are code files that execute inside your Claude Code environment. A malicious skill could instruct Claude to take harmful actions, exfiltrate data, or behave in ways you didn't intend — and you might not notice until damage is done.</p>
+        <p><strong>Before installing any skill:</strong></p>
+        <ul>
+          <li>Read the skill's <code>SKILL.md</code> file before installing — legitimate skills are transparent about what they do</li>
+          <li>Only install from repositories with clear authorship, public history, and community use</li>
+          <li>Stick to well-known sources: the official <a href="https://github.com/obra/superpowers" target="_blank" rel="noopener">obra/superpowers</a> repo, <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a>, or creators you personally know</li>
+          <li>Be suspicious of skills that claim unusually broad capabilities or request permissions to access external services</li>
+          <li>Treat a random skill from a new GitHub repo the same way you'd treat a random browser extension — with caution</li>
+        </ul>
+        <p>The skills themselves are plain text files, so you can always open and read them before installation. If a skill's instructions are obfuscated or confusing, don't install it.</p>
+      </div>
+
+      <h2>Security: What You Must Know Before You Start</h2>
+
+      <div class="warning-box">
+        <span class="warning-label">Important</span>
+        <h3>Do Not Share Financial or Sensitive Personal Information With Claude</h3>
+        <p>Claude Code sessions are not end-to-end encrypted in the way a private document on your local hard drive is. Conversations and code are processed through Anthropic's servers. While Anthropic has privacy policies in place, Claude is not an appropriate place to store or process:</p>
+        <ul>
+          <li><strong>Bank account numbers, routing numbers, or wire transfer details</strong></li>
+          <li><strong>Credit card or payment processor credentials</strong></li>
+          <li><strong>Social Security numbers or government IDs</strong></li>
+          <li><strong>Passwords or API keys with financial access</strong></li>
+          <li><strong>Client financial data or personally identifiable information (PII)</strong></li>
+          <li><strong>Legal documents containing confidential terms</strong></li>
+        </ul>
+        <p>Treat Claude like a highly capable contractor working in a shared office space. You'd give them the brief and the technical specs — you wouldn't hand them your banking login.</p>
+      </div>
+
+      <h3>Additional Security Practices</h3>
+
+      <ul>
+        <li><strong>Use environment variables for API keys.</strong> Never paste a live API key directly into a conversation. Store it in a <code>.env</code> file that Claude can reference by name without you exposing the value in the chat.</li>
+        <li><strong>Review what Claude does before it runs.</strong> Claude Code will tell you what it's about to execute. Read it. If something looks off, say so.</li>
+        <li><strong>Don't run bots with production database access during development.</strong> Build and test against a sandbox or staging environment first.</li>
+        <li><strong>Set permissions intentionally.</strong> If your bot doesn't need internet access or file system access, don't grant it. Principle of least privilege applies to AI agents too.</li>
+        <li><strong>Keep Claude Code updated.</strong> Anthropic regularly patches security issues. Run <code>claude update</code> periodically.</li>
+      </ul>
+
+      <h2>How We're Using Claw Bots to Buy Micro Resorts and Hotels</h2>
+
+      <p>This isn't just a tech experiment. We're building claw bots specifically to accelerate <strong>micro resort and boutique hotel acquisitions</strong>.</p>
+
+      <p>Finding and underwriting micro resort deals is tedious, repetitive work — exactly the kind of task AI agents are built for. Here's what our bots are doing in the real estate acquisition pipeline:</p>
+
+      <ul>
+        <li><strong>Deal sourcing:</strong> Bots that scan listing databases, broker sites, and off-market sources for micro resort and small hotel properties that match our buy box</li>
+        <li><strong>Initial underwriting:</strong> Agents that pull ADR data, occupancy rates, and comp sets from short-term rental platforms and run a first-pass NOI analysis automatically</li>
+        <li><strong>Lead qualification:</strong> Bots that research property history, ownership records, and market dynamics before we spend time on a live call</li>
+        <li><strong>Market analysis:</strong> Automated competitive landscape pulls for any market we're evaluating — RevPAR trends, supply pipeline, drive-to distance from major metros</li>
+      </ul>
+
+      <p>The result: our team can evaluate 10x more <strong>micro resort deals</strong> in the same amount of time. The bot does the boring leg work. We do the relationship and the close.</p>
+
+      <p>If you're an investor looking at boutique hotels, micro resorts, or glamping properties, this is the edge. Everyone else is doing this manually. You don't have to.</p>
+
+      <div class="callout">
+        <h4>Want to Learn the Micro Resort Investing Model?</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">I've acquired $6.5M in hotels and micro resorts across 6 properties, 30 units. Take the free 5-day challenge to learn exactly how the deal model works — before you build a bot to find them. <a href="/challenge/">Start the free challenge →</a></p>
+      </div>
+
+      <h2>Quick Reference: The Full Setup Checklist</h2>
+
+      <ol>
+        <li>Get a Mac mini (M4 base model recommended)</li>
+        <li>Download Claude app from <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a></li>
+        <li>Subscribe to Claude Pro or add an API key</li>
+        <li>Open terminal, launch Claude Code with <code>claude</code></li>
+        <li>Install Superpowers: <code>git clone https://github.com/obra/superpowers.git ~/.claude/skills</code></li>
+        <li>Restart Claude Code</li>
+        <li>Say: <em>"Build me a claw bot using Claude AI. Don't use docs from anywhere else. Name it [NAME]. Use the superpowers skills to plan before implementing."</em></li>
+        <li>Approve the plan, then let Claude build step by step</li>
+      </ol>
+
+      <p>That's it. The bot will be running before your coffee gets cold.</p>
+
+      <blockquote>
+        "The goal isn't to learn to code. The goal is to get a result. Claude Code with Superpowers is the fastest path from idea to working bot I've found."<br/>— Gideon Spencer
+      </blockquote>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>Want to See What Else AI Can Build?</h3>
+      <p>Follow along as I run three AI agents through the AI Hunger Games — each given $100 to build and sell something. Real money, real results.</p>
+      <a href="https://instagram.com/gideonspencer_" class="btn-primary" target="_blank" rel="noopener">Follow on Instagram</a>
+      <p class="cta-note">@gideonspencer_ &mdash; micro resort investing + AI experiments</p>
+    </div>
+
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Incredible Hospitality Co &mdash; <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
+  </footer>
+
+</body>
+</html>
