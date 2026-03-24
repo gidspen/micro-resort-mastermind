@@ -457,23 +457,24 @@
         btn.textContent = 'Sending...';
         err.style.display = 'none';
 
-        var formData = new FormData();
-        formData.append('email_address', email);
-        if (name) formData.append('fields[first_name]', name);
+        var params = new URLSearchParams();
+        params.append('email_address', email);
+        if (name) params.append('first_name', name);
 
         fetch('https://app.convertkit.com/forms/9243861/subscriptions', {
           method: 'POST',
-          body: formData
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString()
         })
         .then(function(res) {
-          if (res.ok || res.status === 200) {
+          // Kit returns 200 or 303 redirect - treat anything non-5xx as success
+          if (res.status < 500) {
             localStorage.setItem('ck_gate_unlocked', '1');
             document.getElementById('email-gate').classList.add('hidden');
             document.body.classList.remove('gated');
-            // Fire pixel Lead event
             if (typeof fbq !== 'undefined') { fbq('track', 'Lead'); }
           } else {
-            throw new Error('Bad response');
+            throw new Error('Server error');
           }
         })
         .catch(function() {
