@@ -122,18 +122,44 @@
     }
 
     /* CODE BLOCK */
+    .pre-wrapper {
+      position: relative;
+      margin: 24px 0;
+    }
     .article-body pre {
       background: #0a1410;
       border: 1px solid var(--dark-border);
-      padding: 20px 24px;
-      margin: 24px 0;
-      overflow-x: auto;
+      padding: 20px 52px 20px 24px;
+      margin: 0;
+      overflow-x: visible;
+      white-space: pre-wrap;
+      word-break: break-word;
       font-family: 'Courier New', monospace;
       font-size: 14px;
       color: #a8d8a8;
       line-height: 1.6;
       border-radius: 2px;
     }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+    .copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn.copied { color: #6fcf6f; border-color: #6fcf6f; }
     .article-body code {
       background: #0a1410;
       border: 1px solid var(--dark-border);
@@ -682,6 +708,31 @@ Come up with a clear plan first, then build it step by step.</pre>
   <footer>
     <p>&copy; 2026 Incredible Hospitality Co - <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
   </footer>
+
+  <script>
+    // Auto-wrap all <pre> blocks with copy button
+    document.querySelectorAll('.article-body pre').forEach(function(pre) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'pre-wrapper';
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(pre.innerText).then(function() {
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      wrapper.appendChild(btn);
+    });
+  </script>
 
 </body>
 </html>
