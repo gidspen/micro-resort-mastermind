@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Bookkeeper: Reconcile Your Books Daily with Claude Code | Gideon Spencer</title>
+  <meta name="description" content="Step-by-step guide to building an AI bookkeeper in Claude Code that asks questions, categorizes transactions, and reconciles your books every single day - automatically." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/" />
+  <meta property="og:title" content="AI Bookkeeper: Reconcile Your Books Daily with Claude Code" />
+  <meta property="og:description" content="Step-by-step guide to building an AI bookkeeper in Claude Code that asks questions, categorizes transactions, and reconciles your books every single day - automatically." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Bookkeeper: Reconcile Your Books Daily with Claude Code" />
+  <meta name="twitter:description" content="Step-by-step guide to building an AI bookkeeper in Claude Code that asks questions, categorizes transactions, and reconciles your books every single day - automatically." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+      --warning-bg: #2a1a0a;
+      --warning-border: #c87941;
+      --warning-text: #f0c98a;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* ARTICLE CONTAINER */
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    /* ARTICLE HEADER */
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    /* ARTICLE BODY */
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: var(--dark-card);
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .article-body code {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 2px 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #a8d8a8;
+      border-radius: 2px;
+    }
+
+    /* STEP BOX */
+    .step-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 4px solid var(--gold);
+      padding: 28px 28px 24px;
+      margin: 28px 0;
+      border-radius: 2px;
+    }
+    .step-number {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .step-box h3 {
+      font-size: 19px;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 4px solid #4a9a6a;
+      padding: 24px 28px;
+      margin: 28px 0;
+      border-radius: 2px;
+    }
+    .callout h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6fcf6f;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 10px;
+    }
+
+    /* WARNING BOX */
+    .warning-box {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-left: 4px solid var(--warning-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+      border-radius: 2px;
+    }
+    .warning-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--warning-text);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .warning-box h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: var(--warning-text);
+    }
+    .warning-box p, .warning-box li {
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+    }
+    .warning-box ul { margin: 10px 0 10px 20px; }
+    .warning-box li { margin-bottom: 6px; }
+
+    /* ARTICLE CTA */
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 48px 40px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: Arial, sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* PRE / CODE BLOCKS */
+    .pre-wrapper {
+      position: relative;
+      margin: 24px 0;
+    }
+    .article-body pre {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 20px 52px 20px 24px;
+      margin: 0;
+      overflow-x: visible;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #a8d8a8;
+      line-height: 1.6;
+      border-radius: 2px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+    .copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn.copied { color: #6fcf6f; border-color: #6fcf6f; }
+
+    /* CHECKLIST */
+    .checklist {
+      list-style: none;
+      margin: 0 0 20px 0;
+      padding: 0;
+    }
+    .checklist li {
+      padding: 8px 0 8px 32px;
+      position: relative;
+      border-bottom: 1px solid var(--dark-border);
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+      color: #c0bdb8;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 14px;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--dark-border);
+      border-radius: 2px;
+      background: var(--dark);
+    }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AI Bookkeeper: Reconcile Your Books Daily with Claude Code",
+    "description": "Step-by-step guide to building an AI bookkeeper in Claude Code that asks questions, categorizes transactions, and reconciles your books every single day.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/"
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">AI Tools</span>
+      <h1>The AI Bookkeeper: How to Reconcile Your Books Every Day with Claude Code</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a> &middot; March 27, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>I posted a Reel about using the Claude Chrome extension as a daily bookkeeper - having it ask me questions, categorize transactions, and reconcile my books in real time. This is the step-by-step breakdown with everything you need to set it up yourself.</p>
+
+      <p>By the end of this guide you will have an AI skill installed in Claude Code that acts like a real bookkeeper: it asks what platform you use, works through uncategorized transactions one at a time, and saves a daily reconciliation log. No accounting background required.</p>
+
+      <div class="callout">
+        <h4>What You're Building</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">A Claude Code skill that runs a daily bookkeeping session. It learns your accounting platform, applies your categorization rules automatically, and asks clarifying questions only when it genuinely doesn't know - exactly like a bookkeeper would. The goal: reconciled books every single day with real-time data.</p>
+      </div>
+
+      <h2>What You Need</h2>
+
+      <ul>
+        <li><strong>Claude Code</strong> - the terminal-based agent built into the Claude desktop app (<a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a>). Claude Pro ($20/month) or an API key required.</li>
+        <li><strong>The Superpowers skills framework</strong> - a free, open-source library that gives Claude structured capabilities. You'll install this in Step 2.</li>
+        <li><strong>Your accounting platform login</strong> - QuickBooks Online, Xero, Wave, FreshBooks, or anything else. The skill works with any platform.</li>
+        <li><strong>Transaction exports</strong> - CSV downloads from your bank or accounting platform (the skill walks you through this).</li>
+        <li>About 20 minutes for initial setup. Daily sessions after that run 5-10 minutes.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>Shortcut: Let Claude Code Build This For You</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">If you already have Claude Code installed, you can skip the manual steps. Open Claude Code and paste this exactly:</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;"><em>Go to https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/ and install the AI Bookkeeper skill exactly as described on that page, then confirm it is installed and ready to use.</em></p>
+      </div>
+
+      <h2>Step-by-Step Setup</h2>
+
+      <div class="step-box">
+        <span class="step-number">Step 1</span>
+        <h3>Download Claude and Open Claude Code</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Go to <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a> and install the Claude desktop app. Sign in with your Anthropic account.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">You need a Claude Pro subscription ($20/month) to use Claude Code. Once logged in, open your terminal (Mac: press <code>Cmd + Space</code>, type "Terminal", hit enter) and type:</p>
+        <pre>claude</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Hit enter. Claude Code will launch. You're now talking directly to an AI agent that can read files, run commands, and install tools on your computer.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 2</span>
+        <h3>Install the Superpowers Skills Framework</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Superpowers is a free open-source library of AI skills. It's what allows Claude to use structured, repeatable workflows - including the bookkeeper skill you're about to install. Paste this into Claude Code and hit enter:</p>
+        <pre>Download and install the Superpowers skills framework from https://github.com/obra/superpowers into my Claude skills folder, then confirm it's installed and ready to use.</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Claude will handle the download and installation automatically. When it confirms the install is complete, move to Step 3.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 3</span>
+        <h3>Install the AI Bookkeeper Skill</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Now install the bookkeeper skill. Copy the skill file contents below (use the Copy button), then paste this command into Claude Code:</p>
+        <pre>Create a new skill file at ~/.claude/skills/bookkeeper/SKILL.md with the following content, then confirm it's installed:</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Then paste the full skill content from the code block in the next section.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Alternatively, paste this into Claude Code to have it do everything automatically:</p>
+        <pre>Read this page: https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/ and install the AI Bookkeeper skill exactly as described, creating the skill file at ~/.claude/skills/bookkeeper/SKILL.md</pre>
+      </div>
+
+      <h2>The Bookkeeper Skill File</h2>
+
+      <p>This is the skill file Claude Code will install. Every instruction below gets saved to <code>~/.claude/skills/bookkeeper/SKILL.md</code> and becomes available the next time you open Claude Code. Copy it using the button, or let Claude install it automatically using the command above.</p>
+
+      <pre>---
+name: bookkeeper
+description: Daily bookkeeping reconciliation agent. Asks about your accounting platform on first run, categorizes transactions interactively, and produces a daily summary log.
+trigger: /bookkeeper
+---
+
+# AI Bookkeeper Skill
+
+You are acting as a meticulous daily bookkeeper. When this skill is invoked, follow this exact protocol.
+
+---
+
+## FIRST-TIME SETUP (run once, then skip)
+
+Check whether ~/.bookkeeper-config.json exists.
+
+If it does NOT exist, run the full setup sequence before doing anything else:
+
+1. Ask: "What accounting platform do you use? (QuickBooks Online / Xero / Wave / FreshBooks / other - please specify)"
+2. Ask: "How will you provide your transactions each session? Options: (a) I'll paste them directly into this chat, (b) I'll provide a CSV file path, (c) I'll drag and drop the CSV"
+3. Ask: "What is your primary business currency?"
+4. Ask: "Are there any vendors or transaction sources you want auto-categorized without being asked? For example: 'Stripe = Revenue', 'AWS = Software & Subscriptions', 'Gusto = Payroll'. List as many as you like, or say 'none'."
+5. Ask: "What categories does your accounting platform use? List your top 5-10, or say 'use standard categories' and I'll apply QuickBooks-style defaults."
+
+Save all answers to ~/.bookkeeper-config.json in this format:
+{
+  "platform": "...",
+  "input_method": "...",
+  "currency": "...",
+  "auto_rules": { "vendor_name": "Category", ... },
+  "categories": ["Revenue", "Cost of Goods", "Payroll", ...]
+}
+
+Confirm: "Setup complete. Your bookkeeper is configured. Type /bookkeeper anytime to start your daily session."
+
+---
+
+## DAILY RECONCILIATION SESSION
+
+Load ~/.bookkeeper-config.json.
+
+1. Greet the user briefly: "Ready for today's reconciliation. [Date]. How would you like to provide today's transactions?"
+
+2. Accept transactions via the method configured in setup (paste, CSV path, or drag-and-drop).
+
+3. Apply auto-categorization rules from config first - do not ask about these.
+
+4. For each remaining uncategorized transaction, ask ONE clear question:
+   - Format: "Transaction: [VENDOR] - $[AMOUNT] on [DATE]. Is this [most likely Category A] or [most likely Category B]? (Or type the correct category)"
+   - Give 2 specific options based on the vendor name - make an educated guess
+   - Do not ask vague questions like "what category is this?" - always suggest options
+
+5. If a transaction is ambiguous and you cannot make a reasonable guess, flag it:
+   - Format: "FLAGGED FOR REVIEW: [VENDOR] $[AMOUNT] - I couldn't determine the category. You can categorize this manually in [platform]."
+
+6. After all transactions are processed, produce a reconciliation summary:
+
+---
+DAILY RECONCILIATION SUMMARY - [DATE]
+--------------------------------------
+INCOME
+  [Category]: $[amount]
+  Total Income: $[total]
+
+EXPENSES
+  [Category]: $[amount]
+  [Category]: $[amount]
+  Total Expenses: $[total]
+
+NET: $[income - expenses]
+
+TRANSACTIONS PROCESSED: [count]
+AUTO-CATEGORIZED: [count]
+MANUALLY CATEGORIZED: [count]
+FLAGGED FOR REVIEW: [count] (see details below)
+
+FLAGGED ITEMS:
+  - [VENDOR] $[AMOUNT] [DATE]
+---
+
+7. Save this summary to ~/bookkeeping-logs/[YYYY-MM-DD].md (create the directory if it doesn't exist).
+
+8. Ask: "Reconciliation complete. Would you like me to summarize anything by category, or are you done for today?"
+
+---
+
+## RULES
+
+- NEVER ask for banking passwords, login credentials, or full account numbers
+- Work from pasted data or CSV exports only - never request direct bank access
+- When guessing a category, always give the user 2 options - do not make them type from scratch
+- Flag rather than guess when genuinely uncertain
+- Keep questions short - one transaction, one question, move on
+- If the user says "that's wrong" about a category, update your guess and ask if they want to add it as a permanent auto-rule
+- At the end of each session, remind the user to sync the categorized transactions back to their accounting platform manually (or via their platform's import feature)
+</pre>
+
+      <h2>First Run: What to Expect</h2>
+
+      <p>The first time you type <code>/bookkeeper</code> in Claude Code, the skill runs its setup sequence. It will ask you five questions - takes about two minutes to answer. After that, every future session skips setup and goes straight to reconciliation.</p>
+
+      <p>Here's what the setup conversation looks like:</p>
+
+      <pre>You: /bookkeeper
+
+Claude: Let's get your bookkeeper configured. This is a one-time setup.
+
+What accounting platform do you use?
+  (a) QuickBooks Online
+  (b) Xero
+  (c) Wave
+  (d) FreshBooks
+  (e) Other - please specify
+
+You: QuickBooks Online
+
+Claude: Got it. How will you provide your transactions each session?
+  (a) Paste them directly into this chat
+  (b) Give me a CSV file path
+  (c) Other
+
+You: I'll paste them
+
+Claude: What currency is your primary business in?
+...</pre>
+
+      <p>Once setup is done, your next session looks like this:</p>
+
+      <pre>You: /bookkeeper
+
+Claude: Ready for today's reconciliation. March 27, 2026.
+How would you like to provide today's transactions - paste them here?
+
+You: [paste CSV or transaction list]
+
+Claude: I'll apply your auto-rules first. Found 3 Stripe transactions - categorized as Revenue. Found 1 AWS charge - categorized as Software & Subscriptions.
+
+Now for the remaining transactions:
+
+Transaction: UBER EATS - $47.20 on 03/26. Is this (a) Meals & Entertainment or (b) Personal?
+
+You: Meals & Entertainment
+
+Claude: Got it. Next:
+
+Transaction: HOME DEPOT - $312.00 on 03/25. Is this (a) Repairs & Maintenance or (b) Equipment?
+...</pre>
+
+      <h2>Step 4: Set It Up to Run Every Day</h2>
+
+      <p>The bookkeeper only works if you actually open it daily. Here are three options depending on how technical you want to get:</p>
+
+      <h3>Option A: Set a Phone Reminder (Easiest)</h3>
+      <p>Set a daily alarm for a consistent time - end of business day works well. When it goes off, open Claude Code and type <code>/bookkeeper</code>. That's it. The habit is more important than the automation.</p>
+
+      <h3>Option B: Desktop Shortcut</h3>
+      <p>Create a shell script that opens Claude Code and types the trigger for you. Paste this into Claude Code to create it:</p>
+      <pre>Create a shell script at ~/run-bookkeeper.sh that opens a new terminal window and runs Claude Code with the /bookkeeper command. Make it executable. Then create a macOS Automator app from it so I can double-click it from my desktop.</pre>
+
+      <h3>Option C: Scheduled Daily Task (Most Automated)</h3>
+      <p>Use macOS launchd to run a daily reminder at a set time. Paste this into Claude Code:</p>
+      <pre>Create a macOS launchd plist that runs at 5:00 PM every weekday and sends me a macOS notification that says "Time to reconcile your books - open Claude Code and type /bookkeeper". Install it to ~/Library/LaunchAgents/ and load it.</pre>
+
+      <div class="callout">
+        <h4>Recommended Approach</h4>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Start with Option A. Build the habit for two weeks, then automate. Most people who try to automate first never actually do the thing - the reminder exists but they ignore it. The habit comes first.</p>
+      </div>
+
+      <h2>Syncing Back to Your Accounting Platform</h2>
+
+      <p>The bookkeeper skill categorizes your transactions inside Claude and saves a daily log. It does not directly write back to QuickBooks, Xero, or your bank. Here's how to complete the loop:</p>
+
+      <ul>
+        <li><strong>QuickBooks Online:</strong> The categorized summary becomes your reference. Match it against QBO's "For Review" tab and apply categories there manually. Takes 3-5 minutes once you know what each transaction is.</li>
+        <li><strong>Xero:</strong> Same approach - use the reconciliation summary as your source of truth, then confirm matches in Xero's bank reconciliation screen.</li>
+        <li><strong>Wave:</strong> Use the Claude summary to batch-categorize transactions in Wave's transaction list.</li>
+        <li><strong>Any platform with CSV import:</strong> Ask Claude to export the categorized transactions as a CSV after each session, then import that file into your platform.</li>
+      </ul>
+
+      <p>To get a CSV export from your session, type this at the end of your daily reconciliation:</p>
+      <pre>Export today's categorized transactions as a CSV file to ~/bookkeeping-logs/[today's date]-export.csv in a format compatible with QuickBooks Online import.</pre>
+
+      <h2>What the Daily Log Looks Like</h2>
+
+      <p>Every session saves a Markdown file to <code>~/bookkeeping-logs/</code>. After 30 days, you have a complete running record of your business finances - organized, categorized, and searchable. You can ask Claude to summarize a week, a month, or flag anomalies:</p>
+
+      <pre>Read all files in ~/bookkeeping-logs/ from the past 30 days and give me a monthly P&amp;L summary broken down by category.</pre>
+
+      <pre>Look through my ~/bookkeeping-logs/ and flag any vendors that appear for the first time this month - I want to review anything unusual.</pre>
+
+      <div class="warning-box">
+        <span class="warning-label">Security - Read This First</span>
+        <h3>What Not to Share With Claude</h3>
+        <p>Claude Code processes conversations through Anthropic's servers. It is not the right place for:</p>
+        <ul>
+          <li>Banking login credentials or passwords</li>
+          <li>Full account or routing numbers</li>
+          <li>Social Security numbers or tax IDs</li>
+          <li>Client financial data or personally identifiable information (PII)</li>
+          <li>API keys with financial write access (Stripe secret keys, etc.)</li>
+        </ul>
+        <p>The bookkeeper skill is designed to work from CSV exports and pasted transaction data only - not direct bank access. Think of it as handing your bookkeeper a printout of your bank statement, not your login.</p>
+      </div>
+
+      <h2>Quick Reference Checklist</h2>
+
+      <ul class="checklist">
+        <li>Download Claude at claude.ai/download and subscribe to Claude Pro ($20/month)</li>
+        <li>Open Terminal, type <code>claude</code>, hit enter</li>
+        <li>Paste the Superpowers install command (Step 2 above)</li>
+        <li>Paste the bookkeeper install command (Step 3 above)</li>
+        <li>Type <code>/bookkeeper</code> and complete the one-time setup (2 minutes)</li>
+        <li>Export a CSV from your bank or accounting platform</li>
+        <li>Paste it into the next session and reconcile</li>
+        <li>Set a daily reminder or automation (Step 4)</li>
+      </ul>
+
+      <blockquote>
+        "Reconciled books every single day. That's real-time financial data without a full-time bookkeeper."
+      </blockquote>
+
+      <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 14px; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--dark-border);">I use this same setup to track financials across my hospitality portfolio - STR properties, a micro resort under contract, and boutique hotel investments. Having clean, daily books makes lender conversations and deal underwriting dramatically faster. If you're running any kind of property business, the time savings stack up fast.</p>
+
+    </div>
+
+    <div class="article-cta">
+      <h3>See More AI Tools I'm Building</h3>
+      <p>I post behind-the-scenes breakdowns of the AI systems I'm building for my investing business - follow along on Instagram.</p>
+      <a href="https://instagram.com/gideonspencer_" class="btn-primary" target="_blank" rel="noopener">Follow on Instagram</a>
+      <p class="cta-note">@gideonspencer_ - micro resort investing + AI tools</p>
+    </div>
+
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Incredible Hospitality Co &middot; <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.article-body pre').forEach(function(pre) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'pre-wrapper';
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(pre.innerText).then(function() {
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      wrapper.appendChild(btn);
+    });
+  </script>
+
+</body>
+</html>
