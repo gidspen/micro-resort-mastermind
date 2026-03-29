@@ -409,16 +409,12 @@
     </div>
   </div>
 
-  <!-- ── EMAIL CAPTURE ── -->
+  <!-- ── MORE AGENTS ── -->
   <div class="cta-band">
     <h2>More Agents on the Way</h2>
-    <p>Deal Scout, Deal Analyzer, and Market Intelligence are building now. Drop your email and we'll tell you when each one drops.</p>
-    <form id="email-form" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;">
-      <input type="email" id="email-input" placeholder="your@email.com" required
-        style="padding:14px 20px;font-size:15px;border:1px solid var(--dark-border);background:#0a1410;color:var(--text);border-radius:4px;width:280px;outline:none;" />
-      <button type="submit" class="btn-primary" style="padding:14px 32px;">Notify Me</button>
-    </form>
-    <p class="cta-note" id="form-status">Or follow <a href="https://instagram.com/gideonspencer_" target="_blank" style="color:var(--gold)">@gideonspencer_</a> — new agents drop there first</p>
+    <p>Deal Scout, Deal Analyzer, and Market Intelligence are building now. Follow for updates — new agents drop there first.</p>
+    <a href="https://instagram.com/gideonspencer_" target="_blank" class="btn-primary">Follow @gideonspencer_</a>
+    <p class="cta-note">Or explore all available agents at <a href="/ai/incredible-ai/" style="color:var(--gold)">Incredible AI</a></p>
   </div>
 
   <footer>
@@ -438,28 +434,6 @@
       });
     }
 
-    document.getElementById('email-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      const status = document.getElementById('form-status');
-      const btn = this.querySelector('button');
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      try {
-        await fetch('https://mcp.incredibleai.pro/capture-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'bookkeeper-landing' })
-        });
-        status.textContent = "You're in. We'll reach out when new agents drop.";
-        status.style.color = '#4ade80';
-        this.style.display = 'none';
-      } catch(err) {
-        status.textContent = 'Something went wrong — try again.';
-        btn.textContent = 'Notify Me';
-        btn.disabled = false;
-      }
-    });
   </script>
 
 </body>
