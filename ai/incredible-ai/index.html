@@ -83,15 +83,49 @@
     }
 
     /* ── CONNECT BOX ── */
-    .connect-box {
-      background: #0a1410;
-      border: 1px solid var(--dark-border);
-      border-left: 4px solid var(--green);
-      border-radius: 6px;
-      padding: 24px 28px;
+    .connect-steps {
       max-width: 700px;
       margin: 0 auto 16px;
+    }
+    .connect-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .step-num {
+      background: var(--green);
+      color: #0a1410;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-body {
+      flex: 1;
+    }
+    .step-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .connect-box {
+      background: #0a1410;
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      padding: 16px 20px;
       text-align: left;
+      box-shadow: 0 0 18px rgba(74, 158, 95, 0.18);
     }
     .connect-label {
       font-size: 11px;
@@ -108,6 +142,16 @@
       word-break: break-all;
       line-height: 1.6;
     }
+    .step-after {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #a8d8a8;
+    }
+    .step-after .cmd-prompt { color: var(--muted); }
     .connect-note {
       font-size: 12px;
       color: var(--muted);
@@ -310,10 +354,24 @@
       Connect once. Every agent I build to run my business becomes yours — automatically.
     </p>
 
-    <div class="connect-box">
-      <span class="connect-label">Connect to Incredible AI — paste this into Claude Code</span>
-      <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
-      <div class="connect-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</div>
+    <div class="connect-steps">
+      <div class="connect-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <span class="step-label">Paste this into your Claude Code terminal</span>
+          <div class="connect-box">
+            <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
+            <div class="connect-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</div>
+          </div>
+        </div>
+      </div>
+      <div class="connect-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <span class="step-label">Start a new Claude session and type</span>
+          <div class="step-after"><span class="cmd-prompt">&gt; </span>get started</div>
+        </div>
+      </div>
     </div>
     <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a>. New agents added automatically as they are released.</p>
   </div>
