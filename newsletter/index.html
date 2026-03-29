@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F2LT2X06B8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F2LT2X06B8');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gideon's AI — Weekly AI for Hospitality Operators | Gideon Spencer</title>
+  <meta name="description" content="A free weekly newsletter from Gideon Spencer — real AI tools, experiments, and shortcuts for hospitality investors and operators who want to run leaner and move faster." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/newsletter/" />
+  <meta property="og:title" content="Gideon's AI — Weekly AI for Hospitality Operators" />
+  <meta property="og:description" content="Real AI tools, experiments, and shortcuts for hospitality investors and operators. Free weekly." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/newsletter/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gideon's AI — Weekly AI for Hospitality Operators" />
+  <meta name="twitter:description" content="Real AI tools, experiments, and shortcuts for hospitality investors and operators. Free weekly." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1711035122902345');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
+    }
+
+    /* UTILITY */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .gold { color: var(--gold); }
+    .section { padding: 80px 0; }
+    .section-sm { padding: 56px 0; }
+    hr.divider { border: none; border-top: 1px solid var(--dark-border); margin: 0; }
+
+    /* TOP BAR */
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 72px;
+      text-align: center;
+      background: radial-gradient(ellipse at top center, #173d36 0%, var(--dark) 70%);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      margin-bottom: 28px;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-tagline {
+      font-size: 22px;
+      color: var(--gold);
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: #c0bdb8;
+      max-width: 560px;
+      margin: 0 auto 48px;
+      font-family: 'Arial', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* INLINE FORM — hero */
+    .hero-form {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .form-fields input {
+      background: rgba(13,26,22,0.8);
+      border: 1px solid var(--dark-border);
+      color: var(--text);
+      padding: 15px 20px;
+      font-size: 15px;
+      font-family: 'Arial', sans-serif;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 2px;
+    }
+    .form-fields input:focus { border-color: var(--gold); }
+    .form-fields input::placeholder { color: rgba(240,235,227,0.4); }
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 17px 32px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      border-radius: 2px;
+      font-family: 'Arial', sans-serif;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+      margin-top: 10px;
+    }
+    .form-success {
+      display: none;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 28px 24px;
+      text-align: center;
+      border-radius: 2px;
+    }
+    .form-success h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+    .form-success p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+    }
+    .form-error {
+      display: none;
+      background: #2a1a0a;
+      border: 1px solid #c87941;
+      color: #f0c98a;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-family: 'Arial', sans-serif;
+      margin-top: 10px;
+      border-radius: 2px;
+    }
+
+    /* SECTION HEADERS */
+    .section-header { text-align: center; margin-bottom: 8px; }
+    .section-header h2 { font-size: 34px; margin-bottom: 12px; }
+    .section-header p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* WHAT'S INSIDE GRID */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    @media (max-width: 700px) {
+      .topics-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 701px) and (max-width: 900px) {
+      .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .topic-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 32px 26px;
+    }
+    .topic-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .topic-card .topic-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .topic-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .topic-card p {
+      font-size: 13px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* WHAT GIDEON IS BUILDING */
+    .experiments-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .experiment-item {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .experiment-number {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--dark-border);
+      font-family: 'Georgia', serif;
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .experiment-item h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .experiment-item p {
+      font-size: 14px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 120px; height: 144px; }
+    }
+    .about-photo {
+      width: 180px;
+      height: 216px;
+      overflow: hidden;
+      border: 1px solid var(--dark-border);
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content h2 { font-size: 26px; margin-bottom: 14px; }
+    .about-content p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+    .about-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .badge {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 7px 14px;
+      font-size: 12px;
+      font-family: 'Arial', sans-serif;
+      color: var(--gold);
+    }
+
+    /* BOTTOM SIGNUP */
+    .signup-block {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 60px 48px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    @media (max-width: 600px) {
+      .signup-block { padding: 40px 24px; }
+    }
+    .signup-block h2 { font-size: 30px; margin-bottom: 10px; }
+    .signup-block .signup-sub {
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+    .signup-block .hero-form { max-width: 420px; }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="https://incrediblehospitalityco.com/">Incredible Hospitality Co.</a> — Micro Resort Investing
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Free Weekly Newsletter</span>
+      <h1><em>Gideon's AI</em></h1>
+      <p class="hero-tagline">What I'm building, breaking, and betting on in AI — every week.</p>
+      <p class="hero-subtitle">
+        Real experiments. Actual tools. No hype. I run AI agents in my hospitality business and document what works — so you don't have to waste time figuring it out yourself.
+      </p>
+
+      <div class="hero-form" id="signup-top">
+        <div id="form-container-top">
+          <div class="form-fields">
+            <input type="text" id="first-name-top" placeholder="First name" autocomplete="given-name" />
+            <input type="email" id="email-top" placeholder="Email address" autocomplete="email" />
+          </div>
+          <button class="btn-primary" onclick="submitForm('top')">Get Gideon's AI Free →</button>
+          <div class="form-error" id="form-error-top"></div>
+          <p class="form-note">Weekly. Free. Unsubscribe anytime. No spam — ever.</p>
+        </div>
+        <div class="form-success" id="form-success-top">
+          <h3>You're in.</h3>
+          <p>First issue lands in your inbox this week. Check your spam folder if you don't see it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WHAT'S INSIDE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">What You'll Get</span>
+        <h2>AI That Actually Does Something</h2>
+        <p>Not a roundup of news you can find anywhere. This is what I'm running in my own business — and what I'm watching break.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <span class="topic-icon">⚙️</span>
+          <span class="topic-label">Tools & Workflows</span>
+          <h3>The Stack I'm Actually Using</h3>
+          <p>What AI tools are running in my business right now — revenue management, guest operations, deal research, bookkeeping — and how I've set them up.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-icon">🧪</span>
+          <span class="topic-label">Live Experiments</span>
+          <h3>What I'm Testing This Week</h3>
+          <p>Active experiments with real stakes. AI agents given $100 to build and sell products. New automations. Things I'm not sure will work yet.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">Operator Insights</span>
+          <h3>Shortcuts for Hospitality Operators</h3>
+          <p>Specific prompts, setups, and frameworks for hospitality investors and operators — things that cut hours out of your week, not just "AI tips."</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-icon">📉</span>
+          <span class="topic-label">Honest Failures</span>
+          <h3>What Didn't Work (And Why)</h3>
+          <p>The experiments that flopped, the tools that overpromised, the automations I had to rip out. Failure data is the most useful data.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-icon">🔭</span>
+          <span class="topic-label">What's Coming</span>
+          <h3>The Signal, Not the Noise</h3>
+          <p>My honest read on where AI is going for operators and investors — stripped of the VC hype cycle and grounded in what's actually deployable now.</p>
+        </div>
+        <div class="topic-card">
+          <span class="topic-icon">🏨</span>
+          <span class="topic-label">Hospitality-Specific</span>
+          <h3>Built for This Industry</h3>
+          <p>Everything filtered through the lens of hospitality — STRs, micro resorts, boutique hotels. Not generic "AI for business" content adapted from tech Twitter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- WHAT I'M BUILDING -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">The Current Experiments</span>
+        <h2>What Gideon Is Actually Running</h2>
+        <p>These are the active projects I'm documenting in the newsletter right now.</p>
+      </div>
+      <div class="experiments-list">
+        <div class="experiment-item">
+          <div class="experiment-number">01</div>
+          <div>
+            <h3>AI Hunger Games — $100 Each, May the Best Agent Win</h3>
+            <p>Three AI agents. Each given $100. Each tasked with building and selling a product. Fully documented week-by-week — what they built, what they charged, what sold, what failed. The newsletter is the only place getting the full breakdown.</p>
+          </div>
+        </div>
+        <div class="experiment-item">
+          <div class="experiment-number">02</div>
+          <div>
+            <h3>AI Bookkeeper for Hospitality Properties</h3>
+            <p>I built a daily AI bookkeeper that ingests PMS data and produces clean P&L summaries. Testing it on real properties. Sharing the build process, the prompts, and the failures — including the ones that sent incorrect reports.</p>
+          </div>
+        </div>
+        <div class="experiment-item">
+          <div class="experiment-number">03</div>
+          <div>
+            <h3>Replacing 3 Vendor Calls Per Week With AI</h3>
+            <p>Routine vendor negotiations, comp set pulls, and guest inquiry responses — I'm systematically replacing the ones that don't need a human. Tracking time saved and what falls through the cracks when you automate too aggressively.</p>
+          </div>
+        </div>
+        <div class="experiment-item">
+          <div class="experiment-number">04</div>
+          <div>
+            <h3>The AI Agent Org Chart</h3>
+            <p>I'm building a full AI org chart for a hospitality operator — each agent has a role, a scope, and tools. Documenting the architecture decisions, the handoffs, and the edge cases that still require humans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT GIDEON -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Who Writes This</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="../images/gideon-headshot.jpeg" alt="Gideon Spencer" />
+        </div>
+        <div class="about-content">
+          <h2>Gideon Spencer</h2>
+          <p>I'm a hospitality investor and operator — $9M in hospitality assets, a community of 38 hotel and micro resort operators, and a micro resort currently under contract. I've been building, breaking, and deploying AI in my business for the past year.</p>
+          <p>I write <em>Gideon's AI</em> because the hospitality AI content that exists is mostly written by people who've never run a property. I'm not writing about what AI <em>could</em> do. I'm writing about what it's doing — in my books, my deals, my operations, and my community — right now.</p>
+          <p>If you want the unfiltered operator's view of what AI is actually worth in this industry, this is it.</p>
+          <div class="about-badges">
+            <span class="badge">$9M Hospitality Portfolio</span>
+            <span class="badge">38-Property Community</span>
+            <span class="badge">200+ Investors Trained</span>
+            <span class="badge">86-Episode Podcast</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- BOTTOM SIGNUP -->
+  <section class="section" id="signup-bottom">
+    <div class="container">
+      <div class="signup-block">
+        <h2>Join <em style="color:var(--gold);">Gideon's AI</em></h2>
+        <p class="signup-sub">Weekly AI experiments from a hospitality operator. Free. No fluff.</p>
+        <div class="hero-form">
+          <div id="form-container-bottom">
+            <div class="form-fields">
+              <input type="text" id="first-name-bottom" placeholder="First name" autocomplete="given-name" />
+              <input type="email" id="email-bottom" placeholder="Email address" autocomplete="email" />
+            </div>
+            <button class="btn-primary" onclick="submitForm('bottom')">Get Gideon's AI Free →</button>
+            <div class="form-error" id="form-error-bottom"></div>
+            <p class="form-note">Weekly. Free. Unsubscribe anytime.</p>
+          </div>
+          <div class="form-success" id="form-success-bottom">
+            <h3>You're in.</h3>
+            <p>First issue lands in your inbox this week. Check your spam folder if you don't see it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Gideon Spencer | Incredible Hospitality Co.</p>
+      <p style="margin-top: 8px;">Questions? Email <a href="mailto:gideon@stonemontcap.com">gideon@stonemontcap.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // -----------------------------------------------------------------------
+    // KIT (CONVERTKIT) FORM INTEGRATION
+    // TODO: Replace KIT_FORM_ID_HERE with your actual Kit form ID.
+    //       Steps:
+    //         1. Go to Kit → Forms → Create a new form for "Gideon's AI"
+    //         2. Copy the form ID from the URL or embed code (e.g. 9876543)
+    //         3. Replace KIT_FORM_ID_HERE below with that number
+    //         4. Commit + push to deploy
+    // -----------------------------------------------------------------------
+    const KIT_FORM_ID = 'KIT_FORM_ID_HERE';
+
+    function submitForm(instance) {
+      const nameInput = document.getElementById('first-name-' + instance);
+      const emailInput = document.getElementById('email-' + instance);
+      const errorEl = document.getElementById('form-error-' + instance);
+      const successEl = document.getElementById('form-success-' + instance);
+      const containerEl = document.getElementById('form-container-' + instance);
+      const btn = containerEl.querySelector('.btn-primary');
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+
+      // Clear previous error
+      errorEl.style.display = 'none';
+      errorEl.textContent = '';
+
+      // Basic validation
+      if (!email || !email.includes('@')) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Disable button while submitting
+      btn.disabled = true;
+      btn.textContent = 'Subscribing...';
+
+      // If form ID hasn't been set yet, show a holding message
+      if (KIT_FORM_ID === 'KIT_FORM_ID_HERE') {
+        setTimeout(function() {
+          containerEl.style.display = 'none';
+          successEl.style.display = 'block';
+          fbq('track', 'Lead');
+        }, 800);
+        return;
+      }
+
+      fetch('https://app.convertkit.com/forms/' + KIT_FORM_ID + '/subscriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email_address=' + encodeURIComponent(email) +
+              (name ? '&first_name=' + encodeURIComponent(name) : '')
+      })
+      .then(function(res) {
+        if (res.ok || res.status === 200) {
+          containerEl.style.display = 'none';
+          successEl.style.display = 'block';
+          fbq('track', 'Lead');
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Get Gideon\'s AI Free →';
+        errorEl.textContent = 'Something went wrong. Please try again or email gideon@stonemontcap.com.';
+        errorEl.style.display = 'block';
+      });
+    }
+
+    // Allow Enter key to submit from email field
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const active = document.activeElement;
+        if (active && (active.id.startsWith('email-') || active.id.startsWith('first-name-'))) {
+          const instance = active.id.split('-').pop();
+          submitForm(instance);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
