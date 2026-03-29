@@ -463,22 +463,20 @@
 
       <div class="step-box">
         <span class="step-number">Step 4</span>
-        <h3>Install the AI Bookkeeper Skill</h3>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">A "skill" is a set of instructions that tells Claude exactly how to behave when it runs your bookkeeping. You install it once and it runs automatically from that point on.</p>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Copy the skill file below (use the Copy button), then go back to Claude Code and paste this command followed by the skill content:</p>
-        <pre>Create a new skill file at ~/.claude/skills/bookkeeper/SKILL.md with the content I'm about to paste, then confirm it's installed.</pre>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Then paste the full skill content from the section below.</p>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;"><strong style="color: var(--text);">Shortcut:</strong> Alternatively, paste just this one line into Claude Code and it will read this page and install everything automatically:</p>
-        <pre>Read https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/ and install the AI Bookkeeper skill exactly as described on that page, creating the skill file at ~/.claude/skills/bookkeeper/SKILL.md</pre>
+        <h3>Connect to Incredible AI</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Instead of installing a skill file manually, you connect directly to the Incredible AI platform. This gives you the Bookkeeper agent plus every other AI agent released in the future — automatically, with no reinstalls.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Paste this single command into Claude Code and press Enter:</p>
+        <pre>claude mcp add incredible-ai --transport sse https://mcp.incrediblehospitalityco.com/sse</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Claude Code will confirm the connection. You are now connected to Incredible AI. New agents will appear automatically as they are released — no action required on your end.</p>
       </div>
 
       <div class="step-box">
         <span class="step-number">Step 5</span>
         <h3>Run First-Time Setup</h3>
         <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Make sure you're logged into your accounting platform in Chrome, then type this in Claude Code and press Enter:</p>
-        <pre>/bookkeeper</pre>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">The first time you run it, Claude will ask you five quick questions to configure your setup - things like what platform you use, what vendors should be auto-categorized, and where to save your daily reports. Takes about two minutes.</p>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">After that, every daily run skips this setup and goes straight to reconciling your books.</p>
+        <pre>Run the bookkeeper</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">The first time you run it, Claude will ask you five quick questions to configure your setup — what platform you use, what vendors should be auto-categorized, and where to save your daily reports. Takes about two minutes.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">After that, every daily run skips setup and goes straight to reconciling your books.</p>
       </div>
 
       <div class="step-box">
@@ -486,19 +484,19 @@
         <h3>Set Up the Daily Schedule</h3>
         <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">This is what makes it fully automatic. The command below tells your Mac to run the bookkeeper every day at 6:00 PM. You can change the time to whatever works for you.</p>
         <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Paste this into Claude Code and press Enter:</p>
-        <pre>Set up a macOS launchd scheduled task that runs /bookkeeper via Claude Code every day at 6:00 PM. It should open Claude Code automatically, run the bookkeeper skill, and close when done. Install it to ~/Library/LaunchAgents/ and activate it. Confirm when it's running.</pre>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Claude will create the schedule file, install it, and confirm it's active. From this point on, your bookkeeper runs automatically every day at 6 PM - no action required from you.</p>
-        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;"><strong style="color: var(--text);">To trigger it manually anytime:</strong> Open Claude Code and type <code>/bookkeeper</code>. This is useful if you want to run an extra session mid-day or test that everything is working.</p>
+        <pre>Set up a macOS launchd scheduled task that runs "Run the bookkeeper" via Claude Code every day at 6:00 PM. It should open Claude Code automatically, run the bookkeeper agent, and close when done. Install it to ~/Library/LaunchAgents/ and activate it. Confirm when it's running.</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 8px;">Claude will create the schedule file, install it, and confirm it's active. From this point on, your bookkeeper runs automatically every day at 6 PM.</p>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;"><strong style="color: var(--text);">To trigger manually anytime:</strong> Open Claude Code and type <code>Run the bookkeeper</code>.</p>
       </div>
 
-      <h2>The Bookkeeper Skill File</h2>
+      <h2>How It Works</h2>
 
-      <p>This is the full skill file that gets installed in Step 4. Claude Code reads these instructions every time the bookkeeper runs. Copy it using the button, or let Claude install it automatically using the shortcut command in Step 4.</p>
+      <p>When you type <strong style="color: var(--text);">Run the bookkeeper</strong> in Claude Code, it connects to the Incredible AI platform, retrieves the full operating instructions for your bookkeeper agent, and executes them on your local machine using your Chrome browser. The agent logic lives on the Incredible AI server — so every time Gideon improves the bookkeeper or releases a new agent, your Claude automatically gets the update. Nothing to reinstall.</p>
 
       <pre>---
 name: bookkeeper
-description: Daily bookkeeping reconciliation agent. Uses Claude in Chrome to open the user's accounting platform, categorize transactions directly, and generate a daily report with what was done and any questions for the owner.
-trigger: /bookkeeper
+description: Served via Incredible AI MCP. Daily bookkeeping reconciliation agent.
+trigger: Run the bookkeeper
 ---
 
 # AI Bookkeeper Skill
