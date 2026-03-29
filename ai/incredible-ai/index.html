@@ -358,7 +358,7 @@
       <div class="connect-step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <span class="step-label">Paste this into your Claude Code terminal</span>
+          <span class="step-label">In the Claude Code app, run this command</span>
           <div class="connect-box">
             <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
             <div class="connect-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</div>
@@ -368,17 +368,19 @@
       <div class="connect-step">
         <div class="step-num">2</div>
         <div class="step-body">
-          <span class="step-label">Start a new Claude session and type</span>
-          <div class="step-after"><span class="cmd-prompt">&gt; </span>get started</div>
+          <span class="step-label">Restart the Claude Code app</span>
+          <div class="step-after" style="color:var(--muted);font-family:inherit;font-size:13px;">This activates the new connection</div>
+        </div>
+      </div>
+      <div class="connect-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <span class="step-label">Type this to launch your AI Bookkeeper</span>
+          <div class="step-after"><span class="cmd-prompt">&gt; </span>run bookkeeper</div>
         </div>
       </div>
     </div>
-    <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a>. New agents added automatically as they are released.</p>
-    <div style="max-width:700px;margin:-32px auto 56px;background:#0a1410;border:1px solid var(--gold);border-radius:6px;padding:16px 24px;text-align:center;">
-      <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);display:block;margin-bottom:10px;">After the command runs</span>
-      <span style="color:var(--cream);font-size:15px;">Restart Claude, then type</span>
-      <div style="font-family:'Courier New',monospace;font-size:16px;color:#a8d8a8;margin-top:8px;font-weight:700;">&gt; run bookkeeper</div>
-    </div>
+    <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:var(--gold)">Claude in Chrome</a> (paid plan). New agents added automatically.</p>
   </div>
 
   <!-- ── AGENT CATALOG ── -->
