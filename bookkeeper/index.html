@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F2LT2X06B8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F2LT2X06B8');
+  </script>
+  <!-- Facebook Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1711035122902345');
+    fbq('track', 'PageView');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Free AI Bookkeeper Setup | Incredible AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+      --green: #4ade80;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 48px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 16px 18px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--dark-border);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="email"]:focus {
+      border-color: var(--gold);
+    }
+
+    input[type="email"]::placeholder {
+      color: var(--muted);
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      background: var(--gold);
+      color: var(--dark);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover { opacity: 0.9; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .success {
+      display: none;
+      text-align: center;
+    }
+
+    .success .check {
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .success h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .success p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .error-msg {
+      color: #f87171;
+      font-size: 14px;
+      display: none;
+      margin-top: 4px;
+    }
+
+    .privacy {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Form state -->
+    <div id="formState">
+      <span class="emoji">🤖</span>
+      <h1>Get your free AI Bookkeeper setup</h1>
+      <p class="sub">Drop your email and I'll send the setup link + exactly what it does — takes 3 minutes to connect.</p>
+
+      <div class="form-group">
+        <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" />
+        <div class="error-msg" id="errorMsg">Please enter a valid email address.</div>
+        <button id="submitBtn" onclick="handleSubmit()">Send me the setup link →</button>
+      </div>
+
+      <p class="privacy">No spam. Unsubscribe anytime.</p>
+    </div>
+
+    <!-- Success state -->
+    <div class="success" id="successState">
+      <span class="check">✅</span>
+      <h2>Check your inbox!</h2>
+      <p>The setup link is on its way. While you wait — the bookkeeper connects to QuickBooks, Xero, Wave, or FreshBooks and categorizes your transactions automatically.</p>
+    </div>
+
+  </div>
+
+  <script>
+    async function handleSubmit() {
+      const emailInput = document.getElementById('emailInput');
+      const submitBtn = document.getElementById('submitBtn');
+      const errorMsg = document.getElementById('errorMsg');
+      const email = emailInput.value.trim();
+
+      // Basic validation
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorMsg.style.display = 'block';
+        return;
+      }
+      errorMsg.style.display = 'none';
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch('https://mcp.incredibleai.pro/capture-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'instagram_dm_link' })
+        });
+
+        if (response.ok) {
+          // Track conversion
+          if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'bookkeeper', event_label: 'instagram_dm_link' });
+
+          document.getElementById('formState').style.display = 'none';
+          document.getElementById('successState').style.display = 'block';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send me the setup link →';
+        errorMsg.textContent = 'Something went wrong — try again in a moment.';
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    // Allow Enter key to submit
+    document.getElementById('emailInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleSubmit();
+    });
+  </script>
+</body>
+</html>
