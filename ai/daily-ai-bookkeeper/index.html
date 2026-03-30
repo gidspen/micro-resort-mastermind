@@ -293,41 +293,75 @@
     footer a { color: var(--gold); text-decoration: none; }
 
     /* ── MOBILE EMAIL CAPTURE (Variant B) ── */
+    @keyframes pulse-border {
+      0%, 100% { box-shadow: 0 0 24px rgba(232, 213, 176, 0.2), 0 0 0 1px var(--gold); }
+      50% { box-shadow: 0 0 40px rgba(232, 213, 176, 0.45), 0 0 0 2px var(--gold); }
+    }
     .mobile-email-capture {
-      display: none; /* shown via JS when mobile + variant B */
+      display: none;
       max-width: 700px;
       margin: 0 auto 16px;
-      background: #0a1410;
-      border: 1px solid var(--green);
-      border-radius: 8px;
-      padding: 32px 28px;
+      background: linear-gradient(160deg, #111e18 0%, #0a1410 100%);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 40px 32px 36px;
       text-align: center;
-      box-shadow: 0 0 24px rgba(74, 158, 95, 0.15);
+      animation: pulse-border 3s ease-in-out infinite;
     }
     .mobile-email-capture .mec-eyebrow {
       display: inline-block;
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--muted);
-      margin-bottom: 16px;
+      color: var(--gold);
+      background: rgba(232,213,176,0.08);
+      border: 1px solid rgba(232,213,176,0.25);
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
     .mobile-email-capture h2 {
       font-family: 'Georgia', serif;
-      font-size: clamp(22px, 5vw, 30px);
+      font-size: clamp(26px, 6vw, 36px);
       color: var(--text);
-      margin-bottom: 12px;
-      line-height: 1.2;
+      margin-bottom: 14px;
+      line-height: 1.15;
     }
     .mobile-email-capture h2 span { color: var(--gold); }
     .mobile-email-capture .mec-sub {
-      font-size: 15px;
+      font-size: 16px;
       color: #9dbdaf;
-      line-height: 1.6;
+      line-height: 1.65;
       margin-bottom: 28px;
-      max-width: 440px;
+      max-width: 420px;
       margin-left: auto;
       margin-right: auto;
+    }
+    /* ── DESKTOP EMAIL CAPTURE ── */
+    .desktop-email-capture {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+      text-align: center;
+    }
+    .desktop-email-capture h2 {
+      font-family: 'Georgia', serif;
+      font-size: 26px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .desktop-email-capture p {
+      font-size: 15px;
+      color: #9dbdaf;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .desktop-form-wrap {
+      max-width: 440px;
+      margin: 0 auto;
     }
     /* Email capture form */
     .mec-form-wrap {
@@ -423,10 +457,10 @@
 
     <!-- Variant B: Mobile email capture (hidden by default, shown via JS) -->
     <div class="mobile-email-capture" id="mobile-email-capture">
-      <span class="mec-eyebrow">Desktop Required</span>
-      <h2>This tool runs on<br><span>your computer, not your phone.</span></h2>
+      <span class="mec-eyebrow">✦ 2,000+ business owners requested access</span>
+      <h2>Your books.<br><span>Done while you sleep.</span></h2>
       <p class="mec-sub">
-        The AI Bookkeeper requires Claude Code — a desktop app. Enter your email and we'll send the setup link straight to your inbox for when you're at your desk.
+        This runs on desktop — drop your email and we'll send the setup link straight to your inbox. Takes 3 minutes to get running.
       </p>
       <div class="mec-form-wrap">
         <form onsubmit="submitEmail(this, event, 'variant_b')">
@@ -478,7 +512,7 @@
       <div class="mobile-email-capture" style="display:block; box-shadow:none; border-color: var(--dark-border);">
         <span class="mec-eyebrow">At your desk later?</span>
         <h2>We'll send the<br><span>setup link to your inbox.</span></h2>
-        <p class="mec-sub">Takes 30 seconds to set up on desktop. Leave your email and we'll send it straight to you.</p>
+        <p class="mec-sub">Takes 3 minutes to set up on desktop. Drop your email and we'll send it straight to you.</p>
         <div class="mec-form-wrap">
           <form onsubmit="submitEmail(this, event, 'variant_a_anchor')">
             <input type="email" class="mec-email-input" placeholder="your@email.com" required />
@@ -544,6 +578,21 @@
         <p>Your platform needs transactions loaded before each run. Auto-syncing bank feeds work best. Manual imports? Run it weekly or on-demand.</p>
       </div>
     </div>
+  </div>
+
+  <!-- ── DESKTOP EMAIL CAPTURE ── -->
+  <div class="desktop-email-capture" id="desktop-email-capture">
+    <span class="section-label" style="display:block;margin-bottom:12px;">Not ready to set up right now?</span>
+    <h2>We'll send the setup link to your inbox.</h2>
+    <p>Drop your email — we'll send you the setup link and a quick walkthrough for when you're ready.</p>
+    <div class="desktop-form-wrap">
+      <form onsubmit="submitEmail(this, event, 'bookkeeper_page_desktop')">
+        <input type="email" class="mec-email-input" placeholder="your@email.com" required />
+        <button type="submit" class="mec-submit-btn">Send Me the Setup Link →</button>
+        <div class="mec-success" style="display:none">✓ Check your inbox — link is on its way.</div>
+      </form>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:12px;">No spam. Just the link when you're ready.</p>
   </div>
 
   <!-- ── MORE AGENTS ── -->
