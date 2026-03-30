@@ -421,6 +421,94 @@
       text-align: center;
     }
     .mobile-desktop-notice a { color: var(--gold); text-decoration: none; }
+
+    /* ── MOBILE POPUP ── */
+    .mobile-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,26,22,0.88);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 9999;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .mobile-popup-overlay.active { display: flex; }
+    .mobile-popup {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 20px 20px 0 0;
+      padding: 36px 28px 48px;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .mobile-popup .popup-icon { font-size: 40px; margin-bottom: 14px; display: block; }
+    .mobile-popup h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .mobile-popup p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .mobile-popup input[type=email] {
+      width: 100%;
+      padding: 15px 16px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--dark-border);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      margin-bottom: 10px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .mobile-popup input[type=email]:focus { border-color: var(--gold); }
+    .mobile-popup input[type=email]::placeholder { color: var(--muted); }
+    .popup-submit {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: none;
+      background: var(--gold);
+      color: var(--dark);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .popup-submit:hover { opacity: 0.9; }
+    .popup-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .popup-success {
+      display: none;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 17px;
+      padding: 14px 0;
+    }
+    .popup-dismiss {
+      display: block;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+      width: 100%;
+    }
   </style>
   <!-- Meta Pixel -->
   <script>
@@ -607,6 +695,21 @@
     <p>&copy; 2026 Incredible Hospitality Co &middot; <a href="/ai/">AI Tools</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
   </footer>
 
+  <!-- ── MOBILE POPUP ── -->
+  <div class="mobile-popup-overlay" id="mobilePopup">
+    <div class="mobile-popup">
+      <span class="popup-icon">📱</span>
+      <h3>On mobile? This needs a desktop.</h3>
+      <p>The AI Bookkeeper runs inside Claude on your computer. Drop your email and we'll send you the one-step setup for when you're at your desk.</p>
+      <form id="popupForm">
+        <input type="email" id="popupEmailInput" placeholder="your@email.com" required />
+        <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Setup →</button>
+        <div class="popup-success" id="popupSuccess">✓ Setup link is on its way — check your inbox.</div>
+      </form>
+      <button class="popup-dismiss" onclick="dismissPopup()">I'm on desktop — show me the steps</button>
+    </div>
+  </div>
+
   <script>
     function copyCmd(btn) {
       const cmd = btn.getAttribute('data-cmd');
@@ -620,54 +723,50 @@
       });
     }
 
-    // ── MOBILE EMAIL CAPTURE SPLIT TEST ──────────────────────────────────────
-    // Experiment: bookkeeper_mobile_v1
-    // Variant A (control): current page shown to everyone including mobile
-    // Variant B (treatment): mobile users see email capture instead of setup steps
-    // Assignment is 50/50, persisted in localStorage so same user sees same variant.
-    // ─────────────────────────────────────────────────────────────────────────
+    // ── MOBILE POPUP ──────────────────────────────────────────────────────────
     (function() {
       var isMobile = (
         window.innerWidth <= 767 ||
         /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       );
+      if (!isMobile) return;
+      if (localStorage.getItem('bk_popup_done')) return;
 
-      // Persist variant assignment
-      var variant = localStorage.getItem('bk_ab_v1');
-      if (!variant) {
-        variant = Math.random() < 0.5 ? 'b' : 'a';
-        localStorage.setItem('bk_ab_v1', variant);
-      }
+      setTimeout(function() {
+        document.getElementById('mobilePopup').classList.add('active');
+        if (typeof fbq === 'function') fbq('trackCustom', 'MobilePopupShown');
+        if (typeof gtag === 'function') gtag('event', 'mobile_popup_shown', { event_category: 'bookkeeper' });
+      }, 1000);
 
-      // Track assignment in GA for analysis
-      if (typeof gtag === 'function') {
-        gtag('event', 'ab_variant_seen', {
-          experiment_id: 'bookkeeper_mobile_v1',
-          variant: variant,
-          is_mobile: isMobile
+      document.getElementById('popupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('popupEmail').value.trim();
+        if (!email) return;
+        var btn = document.getElementById('popupSubmit');
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        fetch('https://mcp.incredibleai.pro/capture-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'mobile_popup' })
+        }).then(function() {
+          document.getElementById('popupEmailInput').style.display = 'none';
+          btn.style.display = 'none';
+          document.getElementById('popupSuccess').style.display = 'block';
+          localStorage.setItem('bk_popup_done', '1');
+          if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'mobile_popup' });
+          if (typeof gtag === 'function') gtag('event', 'mobile_popup_lead', { event_category: 'bookkeeper' });
+        }).catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Me the Setup →';
         });
-      }
-
-      if (isMobile && variant === 'b') {
-        // Treatment: show email capture, hide setup steps
-        var capture = document.getElementById('mobile-email-capture');
-        var steps   = document.getElementById('desktop-setup-steps');
-        if (capture) capture.style.display = 'block';
-        if (steps)   steps.style.display   = 'none';
-
-        // Track Pixel view of mobile capture variant
-        if (typeof fbq === 'function') {
-          fbq('trackCustom', 'MobileBookkeeperCapture', { variant: 'b' });
-        }
-      } else if (isMobile && variant === 'a') {
-        // Control on mobile: show subtle notice + anchor email form below steps
-        var notice = document.getElementById('mobile-desktop-notice');
-        var anchor = document.getElementById('mobile-signup-anchor');
-        if (notice) notice.style.display = 'block';
-        if (anchor) anchor.style.display = 'block';
-      }
-
+      });
     })();
+
+    function dismissPopup() {
+      document.getElementById('mobilePopup').classList.remove('active');
+      localStorage.setItem('bk_popup_done', '1');
+    }
 
     function submitEmail(form, e, source) {
       e.preventDefault();
