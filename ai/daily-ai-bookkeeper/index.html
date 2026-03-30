@@ -581,14 +581,21 @@
         <div class="step-num">2</div>
         <div class="step-body">
           <span class="step-label">Activate new connection</span>
-          <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);">Restart the Claude Code app</div>
+          <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);border-color:#e8d5b0;">
+            <strong style="color:#e8d5b0;">Fully quit and reopen Claude Code.</strong><br>
+            <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:6px;display:block;">The MCP connection won't activate until you restart. Cmd+Q, then reopen.</span>
+          </div>
         </div>
       </div>
       <div class="connect-step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <span class="step-label">Say this to Claude</span>
-          <div class="step-after"><span class="cmd-prompt">&gt; </span>run bookkeeper</div>
+          <span class="step-label">Start a new chat and type this</span>
+          <div class="connect-box" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <div class="connect-cmd" style="font-size:16px;font-weight:700;color:#4ade80;">run bookkeeper</div>
+            <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="run bookkeeper" style="flex-shrink:0;">Copy</button>
+          </div>
+          <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:6px;display:block;">Open a new conversation in Claude Code, paste this, and hit enter. Your bookkeeper kicks off immediately.</span>
         </div>
       </div>
     </div>
