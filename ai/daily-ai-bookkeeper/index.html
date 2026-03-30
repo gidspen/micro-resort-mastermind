@@ -291,6 +291,76 @@
       border-top: 1px solid var(--dark-border);
     }
     footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── MOBILE EMAIL CAPTURE (Variant B) ── */
+    .mobile-email-capture {
+      display: none; /* shown via JS when mobile + variant B */
+      max-width: 700px;
+      margin: 0 auto 16px;
+      background: #0a1410;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 0 24px rgba(74, 158, 95, 0.15);
+    }
+    .mobile-email-capture .mec-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .mobile-email-capture h2 {
+      font-family: 'Georgia', serif;
+      font-size: clamp(22px, 5vw, 30px);
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .mobile-email-capture h2 span { color: var(--gold); }
+    .mobile-email-capture .mec-sub {
+      font-size: 15px;
+      color: #9dbdaf;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* GHL iframe wrapper */
+    .mec-form-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .mec-form-wrap iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+      overflow: hidden;
+      display: block;
+    }
+    .mec-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+    /* Variant A mobile notice (subtle, doesn't gate content) */
+    .mobile-desktop-notice {
+      display: none; /* shown via JS when mobile + variant A */
+      background: #111e18;
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 0 auto 20px;
+      max-width: 700px;
+      font-size: 13px;
+      color: #9dbdaf;
+      text-align: center;
+    }
+    .mobile-desktop-notice a { color: var(--gold); text-decoration: none; }
   </style>
   <!-- Meta Pixel -->
   <script>
@@ -325,6 +395,30 @@
       Connect once. Your AI Bookkeeper opens your accounting platform, sorts your transactions using your rules, and recaps everything done — right in your chat.
     </p>
 
+    <!-- Variant B: Mobile email capture (hidden by default, shown via JS) -->
+    <div class="mobile-email-capture" id="mobile-email-capture">
+      <span class="mec-eyebrow">Desktop Required</span>
+      <h2>This tool runs on<br><span>your computer, not your phone.</span></h2>
+      <p class="mec-sub">
+        The AI Bookkeeper requires Claude Code — a desktop app. Enter your email and we'll send the setup link straight to your inbox for when you're at your desk.
+      </p>
+      <div class="mec-form-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/DkKg6FYCTs4PSbdS5zYP"
+          id="mec-ghl-form"
+          scrolling="no">
+        </iframe>
+      </div>
+      <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
+      <p class="mec-note">We'll email you the setup link + a quick walkthrough. No spam.</p>
+    </div>
+
+    <!-- Variant A: Subtle mobile notice (shown above steps, doesn't gate content) -->
+    <div class="mobile-desktop-notice" id="mobile-desktop-notice">
+      On mobile? This tool requires a desktop computer. <a href="#mobile-signup-anchor">Email yourself the link →</a>
+    </div>
+
+    <div id="desktop-setup-steps">
     <div class="connect-steps">
       <div class="connect-step">
         <div class="step-num">1</div>
@@ -352,6 +446,20 @@
       </div>
     </div>
     <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:var(--gold)">Claude in Chrome</a> (paid plan).</p>
+    </div><!-- /desktop-setup-steps -->
+
+    <!-- Variant A anchor: email capture below steps for mobile users who scrolled down -->
+    <div id="mobile-signup-anchor" style="margin-top: 32px; display:none;">
+      <div class="mobile-email-capture" style="display:block; box-shadow:none; border-color: var(--dark-border);">
+        <span class="mec-eyebrow">At your desk later?</span>
+        <h2>We'll send the<br><span>setup link to your inbox.</span></h2>
+        <p class="mec-sub">Takes 30 seconds to set up on desktop. Leave your email and we'll send it straight to you.</p>
+        <div class="mec-form-wrap">
+          <iframe src="https://api.leadconnectorhq.com/widget/form/DkKg6FYCTs4PSbdS5zYP" scrolling="no"></iframe>
+        </div>
+        <p class="mec-note">No spam. Just the link.</p>
+      </div>
+    </div>
   </div>
 
   <!-- ── WHAT IT DOES ── -->
@@ -434,6 +542,75 @@
       });
     }
 
+    // ── MOBILE EMAIL CAPTURE SPLIT TEST ──────────────────────────────────────
+    // Experiment: bookkeeper_mobile_v1
+    // Variant A (control): current page shown to everyone including mobile
+    // Variant B (treatment): mobile users see email capture instead of setup steps
+    // Assignment is 50/50, persisted in localStorage so same user sees same variant.
+    // ─────────────────────────────────────────────────────────────────────────
+    (function() {
+      var isMobile = (
+        window.innerWidth <= 767 ||
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      );
+
+      // Persist variant assignment
+      var variant = localStorage.getItem('bk_ab_v1');
+      if (!variant) {
+        variant = Math.random() < 0.5 ? 'b' : 'a';
+        localStorage.setItem('bk_ab_v1', variant);
+      }
+
+      // Track assignment in GA for analysis
+      if (typeof gtag === 'function') {
+        gtag('event', 'ab_variant_seen', {
+          experiment_id: 'bookkeeper_mobile_v1',
+          variant: variant,
+          is_mobile: isMobile
+        });
+      }
+
+      if (isMobile && variant === 'b') {
+        // Treatment: show email capture, hide setup steps
+        var capture = document.getElementById('mobile-email-capture');
+        var steps   = document.getElementById('desktop-setup-steps');
+        if (capture) capture.style.display = 'block';
+        if (steps)   steps.style.display   = 'none';
+
+        // Track Pixel view of mobile capture variant
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'MobileBookkeeperCapture', { variant: 'b' });
+        }
+      } else if (isMobile && variant === 'a') {
+        // Control on mobile: show subtle notice + anchor email form below steps
+        var notice = document.getElementById('mobile-desktop-notice');
+        var anchor = document.getElementById('mobile-signup-anchor');
+        if (notice) notice.style.display = 'block';
+        if (anchor) anchor.style.display = 'block';
+      }
+
+      // Listen for GHL form submission postMessage to fire Pixel Lead event
+      window.addEventListener('message', function(e) {
+        try {
+          var data = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
+          // GHL fires various postMessage events on form submit
+          if (
+            (data && data.type && data.type === 'form_submitted') ||
+            (typeof e.data === 'string' && e.data.indexOf('form_submitted') !== -1)
+          ) {
+            if (typeof fbq === 'function') {
+              fbq('track', 'Lead', { content_name: 'bookkeeper_mobile_email' });
+            }
+            if (typeof gtag === 'function') {
+              gtag('event', 'mobile_bookkeeper_lead', {
+                experiment_id: 'bookkeeper_mobile_v1',
+                variant: variant
+              });
+            }
+          }
+        } catch(err) {}
+      });
+    })();
   </script>
 
 </body>
