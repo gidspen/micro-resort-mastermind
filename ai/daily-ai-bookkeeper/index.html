@@ -651,7 +651,7 @@
       fetch('https://mcp.incredibleai.pro/capture-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'bookkeeper_page_desktop_gate' })
+        body: JSON.stringify({ email: email, source: 'bookkeeper_page_desktop_gate', ref: window._ghlRef || '' })
       }).catch(function() {});
       _revealSteps(_buildPersonalCmd(email, window._ghlRef || ''));
     }
@@ -699,7 +699,7 @@
         fetch('https://mcp.incredibleai.pro/capture-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, source: 'mobile_popup' })
+          body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '' })
         }).then(function() {
           document.getElementById('popupEmailInput').style.display = 'none';
           btn.style.display = 'none';
