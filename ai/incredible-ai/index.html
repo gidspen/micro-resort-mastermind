@@ -493,42 +493,86 @@
     <!-- POST-SUBMIT: steps revealed after email -->
     <div class="steps-locked" id="steps-revealed">
       <div class="next-steps-box">
-        <span class="ns-label">&#9679; You're in — here are your 3 steps</span>
+        <span class="ns-label">&#9679; You're in — pick your setup path</span>
 
-        <div class="ns-step">
-          <div class="ns-num">1</div>
-          <div class="ns-body">
-            <div class="ns-title">Paste this into Claude Code</div>
-            <div class="connect-box">
-              <button class="copy-btn-hero" id="cmd-copy-btn" onclick="copyPersonalCmd(this)">Copy</button>
-              <div class="connect-cmd" id="personal-cmd"></div>
+        <!-- PATH A: Easy — Claude.ai Web -->
+        <div style="background:#0a1410; border:1px solid var(--green); border-radius:8px; padding:18px 20px; margin-bottom:12px; box-shadow:0 0 14px rgba(74,222,128,0.1);">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+            <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--green);">⚡ Easiest — Claude.ai Web</span>
+            <span style="font-size:11px; color:var(--muted); background:#111e18; padding:3px 10px; border-radius:12px; border:1px solid var(--dark-border);">No terminal &nbsp;·&nbsp; No API key</span>
+          </div>
+
+          <div class="ns-step" style="margin-bottom:10px;">
+            <div class="ns-num">1</div>
+            <div class="ns-body">
+              <div class="ns-title">Open Claude.ai Settings → Integrations</div>
+              <div style="font-size:13px; color:#9dbdaf; margin-top:4px;">claude.ai → your avatar (top right) → Settings → Integrations</div>
+            </div>
+          </div>
+
+          <div class="ns-step" style="margin-bottom:10px;">
+            <div class="ns-num">2</div>
+            <div class="ns-body">
+              <div class="ns-title">Paste your personal connection URL</div>
+              <div class="connect-box" style="margin-top:6px;">
+                <button class="copy-btn-hero" id="url-copy-btn" onclick="copyPersonalUrl(this)">Copy</button>
+                <div class="connect-cmd" id="personal-url"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ns-step" style="margin-bottom:0;">
+            <div class="ns-num">3</div>
+            <div class="ns-body">
+              <div class="ns-title">Start a new chat and type</div>
+              <div class="run-bookkeeper-cmd" style="margin-top:6px;">
+                <strong>RUN BOOKKEEPER</strong>
+                <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="ns-step">
-          <div class="ns-num">2</div>
-          <div class="ns-body">
-            <div class="ns-title">Restart Claude Code when it says "Done"</div>
-            <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);">You'll see: <em style="color:var(--muted)">"Added incredible-ai as an HTTP MCP server"</em> — then close and reopen Claude.</div>
-          </div>
-        </div>
-
-        <div class="ns-step">
-          <div class="ns-num">3</div>
-          <div class="ns-body">
-            <div class="ns-title">Type this in Claude — your agent will start immediately</div>
-            <div class="run-bookkeeper-cmd">
-              <strong>RUN BOOKKEEPER</strong>
-              <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
+        <!-- PATH B: Claude Code (Advanced) -->
+        <details style="background:#111e18; border:1px solid var(--dark-border); border-radius:6px; overflow:hidden;">
+          <summary style="cursor:pointer; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); padding:14px 20px; list-style:none; display:flex; align-items:center; gap:8px;">
+            <span style="font-size:10px;">▸</span> Advanced — Claude Code (Terminal)
+          </summary>
+          <div style="padding:0 20px 18px; border-top:1px solid var(--dark-border);">
+            <div class="ns-step" style="margin-top:14px; margin-bottom:10px;">
+              <div class="ns-num">1</div>
+              <div class="ns-body">
+                <div class="ns-title">Paste this into your terminal</div>
+                <div class="connect-box" style="margin-top:6px;">
+                  <button class="copy-btn-hero" id="cmd-copy-btn" onclick="copyPersonalCmd(this)">Copy</button>
+                  <div class="connect-cmd" id="personal-cmd"></div>
+                </div>
+              </div>
+            </div>
+            <div class="ns-step" style="margin-bottom:10px;">
+              <div class="ns-num">2</div>
+              <div class="ns-body">
+                <div class="ns-title">Restart Claude Code when it says "Done"</div>
+                <div style="font-size:13px;color:#9dbdaf;margin-top:4px;">You'll see: <em style="color:var(--muted)">"Added incredible-ai as an HTTP MCP server"</em></div>
+              </div>
+            </div>
+            <div class="ns-step" style="margin-bottom:0;">
+              <div class="ns-num">3</div>
+              <div class="ns-body">
+                <div class="ns-title">Type this to start</div>
+                <div class="run-bookkeeper-cmd" style="margin-top:6px;">
+                  <strong>RUN BOOKKEEPER</strong>
+                  <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </details>
 
       </div>
     </div>
 
-    <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:var(--gold)">Claude in Chrome</a> (paid plan). New agents added automatically.</p>
+    <p class="connect-note">Free. Requires a <a href="https://claude.ai" target="_blank" style="color:var(--gold)">Claude Pro subscription</a> ($20/mo) — no API key needed. New agents added automatically.</p>
   </div>
 
   <!-- ── AGENT CATALOG ── -->
@@ -597,8 +641,8 @@
     <div class="how-grid">
       <div class="how-card">
         <div class="how-num">01</div>
-        <div class="how-title">Connect Once</div>
-        <div class="how-desc">Paste one command into Claude Code. You're connected to Incredible AI. Takes 30 seconds.</div>
+        <div class="how-title">Connect in 30 Seconds</div>
+        <div class="how-desc">Paste your personal URL into Claude.ai → Settings → Integrations. No terminal, no API key — just a Claude Pro subscription.</div>
       </div>
       <div class="how-card">
         <div class="how-num">02</div>
@@ -657,6 +701,15 @@
       });
     }
 
+    function copyPersonalUrl(btn) {
+      const url = document.getElementById('personal-url').textContent.trim();
+      navigator.clipboard.writeText(url).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
     async function submitEmail() {
       const emailEl = document.getElementById('gate-email');
       const btn = document.getElementById('gate-btn');
@@ -685,7 +738,9 @@
 
       const encoded = encodeURIComponent(email);
       const cmd = `claude mcp add incredible-ai --transport http "https://mcp.incredibleai.pro/mcp?email=${encoded}"`;
+      const url = `https://mcp.incredibleai.pro/mcp?email=${encoded}`;
       document.getElementById('personal-cmd').textContent = cmd;
+      document.getElementById('personal-url').textContent = url;
 
       document.getElementById('gate-section').style.display = 'none';
       document.getElementById('steps-revealed').style.display = 'block';
