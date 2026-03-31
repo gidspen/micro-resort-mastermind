@@ -437,7 +437,7 @@
       <form onsubmit="submitEmail(this,event,'mobile_hero')">
         <input type="email" class="email-input" placeholder="your@email.com" required style="margin-bottom:10px;" />
         <button type="submit" class="email-submit">Send Me the Setup Link →</button>
-        <div class="email-success">✓ Check your inbox — link is on its way.</div>
+        <div class="email-success">✓ Check your inbox — your personalized setup link is on its way. Open it on desktop and your command will be ready.</div>
       </form>
       <p class="email-note">No spam. Just the link.</p>
     </div>
@@ -450,7 +450,20 @@
       Requires <a href="https://claude.ai/download" target="_blank">Claude Code</a> (free) + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
     </p>
 
-    <div class="steps">
+    <!-- EMAIL GATE — shown until email submitted -->
+    <div id="email-gate-block" style="margin-bottom:28px;">
+      <div style="background:var(--green-bg);border:1px solid rgba(74,222,128,0.35);border-radius:10px;padding:22px 20px;">
+        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:10px;">Step 1 of 3 — Get your setup command</div>
+        <p style="font-size:14px;color:rgba(240,235,227,0.7);margin-bottom:14px;line-height:1.5;">Enter your email to generate your personal setup command. Takes 2 seconds.</p>
+        <div style="display:flex;gap:8px;">
+          <input type="email" id="gate-email-input" class="email-input" placeholder="your@email.com" style="margin-bottom:0;flex:1;" />
+          <button onclick="submitDesktopGate()" style="background:var(--green);color:#0a1f14;border:none;border-radius:6px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get Command →</button>
+        </div>
+        <div id="gate-error" style="font-size:12px;color:#f87171;margin-top:8px;display:none;"></div>
+      </div>
+    </div>
+
+    <div class="steps" id="steps-block" style="display:none;">
 
       <!-- STEP 1 -->
       <div class="step">
@@ -490,8 +503,8 @@
         <div class="step-content">
           <div class="step-title">In Claude, start a new chat and type this</div>
           <div class="run-block">
-            <span class="run-cmd">run bookkeeper</span>
-            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="run bookkeeper">Copy</button>
+            <span class="run-cmd" style="font-size:20px;font-weight:800;color:var(--green);letter-spacing:0.05em;"><strong>RUN BOOKKEEPER</strong></span>
+            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="RUN BOOKKEEPER">Copy</button>
           </div>
           <p class="step-note">Hit enter. The agent starts immediately.</p>
         </div>
@@ -573,26 +586,81 @@
       <form id="popupForm">
         <input type="email" id="popupEmailInput" placeholder="your@email.com" required />
         <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Setup →</button>
-        <div class="popup-success" id="popupSuccess">✓ Link is on its way — check your inbox.</div>
+        <div class="popup-success" id="popupSuccess">✓ Personalized setup link is on its way — open it on desktop and your command will be ready.</div>
       </form>
       <button class="popup-dismiss" onclick="dismissPopup()">I'm on desktop — show me the steps</button>
     </div>
   </div>
 
   <script>
-    // ── REF INJECTION ──────────────────────────────────────────────────────────
-    // GHL sends ?ref=CONTACT_ID in the DM link. We bake it into the MCP install
-    // command so that when they connect, the server can fire a GHL webhook back.
-    (function() {
-      var ref = new URLSearchParams(window.location.search).get('ref');
-      if (!ref) return;
+    // ── PARAM INJECTION ───────────────────────────────────────────────────────
+    // Builds personalized MCP command from ?email= and/or ?ref= URL params.
+    // ?email= comes from landing page gate or email links.
+    // ?ref= comes from GHL DM links (contact ID for webhook tracking).
+    function _buildPersonalCmd(email, ref) {
       var base = 'https://mcp.incredibleai.pro/mcp';
-      var cmd = 'claude mcp add incredible-ai --transport http "' + base + '?ref=' + encodeURIComponent(ref) + '"';
+      var params = [];
+      if (email) params.push('email=' + encodeURIComponent(email));
+      if (ref) params.push('ref=' + encodeURIComponent(ref));
+      var url = params.length ? base + '?' + params.join('&') : base;
+      var needsQuotes = params.length > 0;
+      return 'claude mcp add incredible-ai --transport http ' + (needsQuotes ? '"' + url + '"' : url);
+    }
+
+    function _applyCmd(cmd) {
       var btn = document.getElementById('install-cmd-btn');
       var display = document.getElementById('install-cmd-display');
       if (btn) btn.setAttribute('data-cmd', cmd);
       if (display) display.textContent = cmd;
+    }
+
+    function _revealSteps(cmd) {
+      _applyCmd(cmd);
+      var gate = document.getElementById('email-gate-block');
+      var steps = document.getElementById('steps-block');
+      if (gate) gate.style.display = 'none';
+      if (steps) steps.style.display = 'flex';
+      if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'desktop_gate' });
+      if (typeof gtag === 'function') gtag('event', 'email_capture', { event_category: 'bookkeeper', label: 'desktop_gate' });
+    }
+
+    // On load: check for ?email= → skip gate and show steps immediately
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var email = params.get('email');
+      var ref = params.get('ref');
+      if (email) {
+        _revealSteps(_buildPersonalCmd(email, ref));
+      } else if (ref) {
+        // ref only (GHL DM, no email yet) — show gate but pre-wire ref into eventual cmd
+        window._ghlRef = ref;
+      }
     })();
+
+    // ── DESKTOP EMAIL GATE ────────────────────────────────────────────────────
+    function submitDesktopGate() {
+      var input = document.getElementById('gate-email-input');
+      var errorEl = document.getElementById('gate-error');
+      var email = input.value.trim().toLowerCase();
+      if (!email || !email.includes('@')) {
+        errorEl.textContent = 'Please enter a valid email.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+      fetch('https://mcp.incredibleai.pro/capture-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'bookkeeper_page_desktop_gate' })
+      }).catch(function() {});
+      _revealSteps(_buildPersonalCmd(email, window._ghlRef || ''));
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && document.activeElement === document.getElementById('gate-email-input')) {
+        submitDesktopGate();
+      }
+    });
 
     // ── COPY ──────────────────────────────────────────────────────────────────
     function copyCmd(btn) {
@@ -600,10 +668,7 @@
       navigator.clipboard.writeText(cmd).then(function() {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
-        setTimeout(function() {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
+        setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
 
@@ -614,13 +679,11 @@
       if (!isMobile) return;
       if (localStorage.getItem('bk_popup_done')) return;
 
-      // Show mobile capture block, hide desktop steps
       var mc = document.getElementById('mobile-capture');
       var ds = document.getElementById('desktop-steps');
       if (mc) mc.style.display = 'block';
       if (ds) ds.style.display = 'none';
 
-      // Popup after 1s
       setTimeout(function() {
         document.getElementById('mobilePopup').classList.add('active');
         if (typeof fbq === 'function') fbq('trackCustom', 'MobilePopupShown');
