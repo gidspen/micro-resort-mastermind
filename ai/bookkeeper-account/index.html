@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — Incredible AI Bookkeeper</title>
+  <meta name="robots" content="noindex" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1a16; --surface: #111e18; --border: #1e3a2f;
+      --text: #f0ebe3; --muted: rgba(240,235,227,0.5);
+      --gold: #e8d5b0; --green: #4ade80; --green-bg: #0a1f14;
+      --red: #f87171;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+    a { color: var(--gold); text-decoration: none; }
+
+    nav { border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 700; color: var(--gold); letter-spacing: 0.04em; font-size: 13px; }
+
+    .page { max-width: 520px; margin: 0 auto; padding: 48px 24px; }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+    .page-sub { color: var(--muted); font-size: 13px; margin-bottom: 36px; }
+
+    /* ── LOOKUP FORM ── */
+    #lookup-section { display: block; }
+    .label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; padding: 11px 14px; outline: none; }
+    .input:focus { border-color: var(--gold); }
+    .input::placeholder { color: var(--muted); }
+    .btn { padding: 11px 20px; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.88; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    .btn-primary { background: var(--green); color: #0a1a10; width: 100%; margin-top: 10px; }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .error-msg { font-size: 12px; color: var(--red); margin-top: 8px; display: none; }
+
+    /* ── ACCOUNT SECTION ── */
+    #account-section { display: none; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+    .card-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 14px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-size: 12px; color: var(--muted); }
+    .info-value { font-size: 13px; font-weight: 600; color: var(--text); font-family: 'SF Mono', monospace; }
+    .info-value.email { font-family: inherit; font-weight: 400; }
+    .status-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .status-free { background: rgba(240,235,227,0.08); color: var(--muted); }
+    .status-active { background: rgba(74,222,128,0.12); color: var(--green); }
+    .status-cancelled { background: rgba(248,113,113,0.1); color: var(--red); }
+
+    .api-key-row { display: flex; align-items: center; gap: 8px; }
+    .api-key-val { font-size: 12px; font-family: 'SF Mono', monospace; color: var(--gold); background: rgba(232,213,176,0.06); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; flex: 1; word-break: break-all; }
+    .copy-btn { font-size: 11px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; cursor: pointer; white-space: nowrap; }
+    .copy-btn:hover { color: var(--gold); }
+    .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+    .upgrade-box { background: var(--green-bg); border: 1px solid rgba(74,222,128,0.2); border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+    .upgrade-box h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .upgrade-box p { font-size: 13px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
+    .upgrade-box .price { font-size: 24px; font-weight: 800; color: var(--green); margin-bottom: 4px; }
+    .upgrade-box .price span { font-size: 14px; font-weight: 400; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--border); padding: 20px 32px; text-align: center; font-size: 12px; color: var(--muted); margin-top: 48px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">INCREDIBLE AI</span>
+    <a href="/ai/" style="font-size:13px;color:var(--muted);">← AI Tools</a>
+  </nav>
+
+  <div class="page">
+    <h1>Your Account</h1>
+    <p class="page-sub">Manage your API key and billing for the AI Bookkeeper.</p>
+
+    <!-- LOOKUP -->
+    <div id="lookup-section">
+      <div style="margin-bottom:16px;">
+        <p class="label">Email address</p>
+        <input type="email" class="input" id="lookup-email" placeholder="your@email.com" />
+      </div>
+      <button class="btn btn-primary" id="lookup-btn">Find My Account</button>
+      <p class="error-msg" id="lookup-error"></p>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px;">
+        Don't have an account yet? <a href="/ai/daily-ai-bookkeeper/">Get started here →</a>
+      </p>
+    </div>
+
+    <!-- ACCOUNT -->
+    <div id="account-section">
+      <div class="card">
+        <p class="card-title">Account</p>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value email" id="acct-email"></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Plan</span>
+          <span class="status-badge" id="acct-status"></span>
+        </div>
+      </div>
+
+      <div class="card">
+        <p class="card-title">API Key</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">Paste this into the Chrome extension to activate it.</p>
+        <div class="api-key-row">
+          <span class="api-key-val" id="acct-key"></span>
+          <button class="copy-btn" id="copy-key-btn">Copy</button>
+        </div>
+      </div>
+
+      <!-- Upgrade CTA (shown when free) -->
+      <div class="upgrade-box" id="upgrade-box">
+        <h3>Upgrade to Pro</h3>
+        <div class="price">$29<span>/month</span></div>
+        <p>Unlimited bookkeeper runs. Works with QuickBooks, Xero, Wave, and FreshBooks. Cancel anytime.</p>
+        <button class="btn btn-primary" id="upgrade-btn" style="width:auto;padding:11px 28px;">Upgrade Now →</button>
+      </div>
+
+      <!-- Manage billing (shown when active) -->
+      <div id="billing-box" style="display:none;">
+        <button class="btn btn-secondary" id="manage-billing-btn">Manage Billing →</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 Incredible Hospitality Co</footer>
+
+  <script>
+    const API = "https://mcp.incredibleai.pro";
+
+    // Check for ?billing= param from Stripe redirect
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("billing") === "success") {
+      sessionStorage.setItem("billing_success", "1");
+    }
+
+    // ── LOOKUP ──
+    document.getElementById("lookup-btn").addEventListener("click", lookupAccount);
+    document.getElementById("lookup-email").addEventListener("keydown", e => {
+      if (e.key === "Enter") lookupAccount();
+    });
+
+    async function lookupAccount() {
+      const email = document.getElementById("lookup-email").value.trim().toLowerCase();
+      const err = document.getElementById("lookup-error");
+      err.style.display = "none";
+
+      if (!email || !email.includes("@")) {
+        err.textContent = "Enter a valid email address.";
+        err.style.display = "block";
+        return;
+      }
+
+      const btn = document.getElementById("lookup-btn");
+      btn.disabled = true;
+      btn.textContent = "Looking up...";
+
+      try {
+        const res = await fetch(`${API}/extension/auth`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        // Use the leads endpoint to look up by email
+        const accountRes = await fetch(`${API}/account/lookup`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        if (!accountRes.ok) {
+          throw new Error("No account found for that email. Make sure you used the same email to sign up.");
+        }
+
+        const data = await accountRes.json();
+        showAccount(data);
+
+      } catch (e) {
+        err.textContent = e.message || "Could not find account. Try again.";
+        err.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Find My Account";
+      }
+    }
+
+    function showAccount(data) {
+      document.getElementById("lookup-section").style.display = "none";
+      document.getElementById("account-section").style.display = "block";
+
+      document.getElementById("acct-email").textContent = data.email;
+      document.getElementById("acct-key").textContent = data.api_key;
+
+      const status = data.subscription_status || "free";
+      const badge = document.getElementById("acct-status");
+      badge.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+      badge.className = "status-badge status-" + (status === "active" ? "active" : status === "cancelled" ? "cancelled" : "free");
+
+      if (status === "active" || status === "trialing") {
+        document.getElementById("upgrade-box").style.display = "none";
+        document.getElementById("billing-box").style.display = "block";
+      }
+
+      // Store key for billing calls
+      window._apiKey = data.api_key;
+
+      if (sessionStorage.getItem("billing_success")) {
+        sessionStorage.removeItem("billing_success");
+        alert("✓ Subscription activated! Your account is now Pro.");
+      }
+    }
+
+    // ── COPY KEY ──
+    document.getElementById("copy-key-btn").addEventListener("click", () => {
+      const key = document.getElementById("acct-key").textContent;
+      navigator.clipboard.writeText(key).then(() => {
+        const btn = document.getElementById("copy-key-btn");
+        btn.textContent = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("copied"); }, 2000);
+      });
+    });
+
+    // ── UPGRADE ──
+    document.getElementById("upgrade-btn").addEventListener("click", async () => {
+      const btn = document.getElementById("upgrade-btn");
+      btn.disabled = true;
+      btn.textContent = "Loading...";
+      try {
+        const res = await fetch(`${API}/billing/create-checkout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ api_key: window._apiKey })
+        });
+        const data = await res.json();
+        if (data.checkout_url) window.location.href = data.checkout_url;
+        else throw new Error("Could not open checkout");
+      } catch (e) {
+        alert("Could not open checkout. Please try again.");
+        btn.disabled = false;
+        btn.textContent = "Upgrade Now →";
+      }
+    });
+
+    // ── MANAGE BILLING ──
+    document.getElementById("manage-billing-btn").addEventListener("click", async () => {
+      const btn = document.getElementById("manage-billing-btn");
+      btn.disabled = true;
+      btn.textContent = "Opening...";
+      try {
+        const res = await fetch(`${API}/billing/portal`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ api_key: window._apiKey })
+        });
+        const data = await res.json();
+        if (data.portal_url) window.location.href = data.portal_url;
+        else throw new Error();
+      } catch {
+        alert("Could not open billing portal. Please try again.");
+        btn.disabled = false;
+        btn.textContent = "Manage Billing →";
+      }
+    });
+  </script>
+</body>
+</html>

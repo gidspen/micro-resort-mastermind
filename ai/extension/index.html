@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Bookkeeper Chrome Extension — Early Access | Incredible AI</title>
+  <meta name="description" content="Categorize your QuickBooks, Xero, Wave, or FreshBooks transactions with AI — right inside your browser. No setup. No CLI. Just click." />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1a16; --surface: #111e18; --border: #1e3a2f;
+      --text: #f0ebe3; --muted: rgba(240,235,227,0.5);
+      --gold: #e8d5b0; --green: #4ade80; --green-bg: #0a1f14;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--gold); text-decoration: none; }
+    nav { border-bottom: 1px solid var(--border); padding: 14px 32px; display: flex; align-items: center; justify-content: space-between; }
+    nav .logo { font-weight: 700; color: var(--gold); letter-spacing: 0.04em; font-size: 13px; }
+    nav .nav-links a { color: var(--muted); font-size: 13px; margin-left: 24px; }
+
+    .hero { max-width: 560px; margin: 0 auto; padding: 72px 24px 48px; text-align: center; }
+    .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+    h1 { font-size: 36px; font-weight: 800; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    h1 span { color: var(--gold); }
+    .subtitle { font-size: 16px; color: var(--muted); margin-bottom: 40px; line-height: 1.6; }
+
+    .form-wrap { max-width: 400px; margin: 0 auto; }
+    .input-row { display: flex; gap: 8px; margin-bottom: 10px; }
+    .email-input { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 14px; padding: 12px 14px; outline: none; }
+    .email-input:focus { border-color: var(--gold); }
+    .email-input::placeholder { color: var(--muted); }
+    .submit-btn { background: var(--green); color: #0a1a10; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; padding: 12px 20px; cursor: pointer; white-space: nowrap; transition: opacity 0.15s; }
+    .submit-btn:hover { opacity: 0.88; }
+    .submit-btn:disabled { opacity: 0.5; cursor: default; }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; }
+    .success-msg { display: none; background: var(--green-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; color: var(--green); font-size: 14px; font-weight: 600; text-align: center; }
+
+    .features { max-width: 560px; margin: 0 auto; padding: 0 24px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .feature-icon { font-size: 20px; margin-bottom: 10px; }
+    .feature h3 { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .feature p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .platforms { max-width: 560px; margin: 0 auto; padding: 0 24px 72px; text-align: center; }
+    .platforms p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+    .platform-pills { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .pill { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--muted); }
+
+    footer { border-top: 1px solid var(--border); padding: 20px 32px; text-align: center; font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="logo">INCREDIBLE AI</span>
+    <div>
+      <a href="/ai/">AI Tools</a>
+      <a href="/ai/daily-ai-bookkeeper/" style="margin-left:24px;">MCP Version</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <p class="eyebrow">Chrome Extension — Early Access</p>
+    <h1>Your AI Bookkeeper,<br /><span>inside your browser</span></h1>
+    <p class="subtitle">No CLI. No setup. Open QuickBooks, click the extension, and your transactions are categorized in 60 seconds.</p>
+
+    <div class="form-wrap">
+      <div class="input-row">
+        <input type="email" class="email-input" id="email-input" placeholder="your@email.com" />
+        <button class="submit-btn" id="submit-btn">Get Early Access</button>
+      </div>
+      <p class="form-note">We'll notify you the moment it's live. No spam.</p>
+      <div class="success-msg" id="success-msg">
+        ✓ You're on the list. We'll email you when it's ready.
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>One click</h3>
+      <p>Open your accounting platform, click the extension. Done in under 60 seconds.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <h3>No credentials stored</h3>
+      <p>Works with your existing browser session. We never see your passwords.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🧠</div>
+      <h3>Learns your rules</h3>
+      <p>Remembers how you categorize recurring vendors and applies it automatically.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3>Daily recap</h3>
+      <p>Summary of what was categorized, flagged, and saved after every run.</p>
+    </div>
+  </div>
+
+  <div class="platforms">
+    <p>Works with</p>
+    <div class="platform-pills">
+      <span class="pill">QuickBooks</span>
+      <span class="pill">Xero</span>
+      <span class="pill">Wave</span>
+      <span class="pill">FreshBooks</span>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2026 Incredible Hospitality Co &middot; <a href="/ai/">AI Tools</a> &middot; <a href="/ai/daily-ai-bookkeeper/">MCP Version</a>
+  </footer>
+
+  <script>
+    document.getElementById("submit-btn").addEventListener("click", async () => {
+      const email = document.getElementById("email-input").value.trim().toLowerCase();
+      const btn = document.getElementById("submit-btn");
+      const success = document.getElementById("success-msg");
+
+      if (!email || !email.includes("@")) {
+        document.getElementById("email-input").style.borderColor = "#f87171";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Joining...";
+
+      try {
+        await fetch("https://mcp.incredibleai.pro/capture-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, source: "chrome_extension_waitlist" })
+        });
+      } catch (e) {}
+
+      document.querySelector(".input-row").style.display = "none";
+      document.querySelector(".form-note").style.display = "none";
+      success.style.display = "block";
+    });
+
+    document.getElementById("email-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") document.getElementById("submit-btn").click();
+    });
+  </script>
+</body>
+</html>
