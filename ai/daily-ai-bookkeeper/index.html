@@ -616,12 +616,12 @@
         <div class="connect-step">
           <div class="step-num">4</div>
           <div class="step-body">
-            <span class="step-label">Start a new conversation in Claude Code and type this</span>
+            <span class="step-label">In Claude Code, start a new chat and type exactly this</span>
             <div class="connect-box" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-              <div class="connect-cmd" style="font-size:18px;font-weight:700;color:#4ade80;letter-spacing:0.02em;">run bookkeeper</div>
+              <div class="connect-cmd" style="font-size:22px;font-weight:900;color:#4ade80;letter-spacing:0.04em;text-transform:uppercase;">RUN BOOKKEEPER</div>
               <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="run bookkeeper" style="flex-shrink:0;">Copy</button>
             </div>
-            <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:8px;display:block;">Hit enter. The bookkeeper starts immediately — it will ask for your email, confirm your platform, and handle everything else. First session takes about 5 minutes to set up. After that, it runs on its own.</span>
+            <span style="font-size:13px;color:rgba(240,235,227,0.85);margin-top:8px;display:block;font-weight:600;">Hit enter. That's it — the agent takes over from here.</span>
           </div>
         </div>
 
@@ -757,6 +757,23 @@
   </div>
 
   <script>
+    // Inject ?ref= from URL into the MCP install command so GHL-sourced
+    // visitors get a personalized link that ties their install back to their contact.
+    (function() {
+      const ref = new URLSearchParams(window.location.search).get('ref');
+      if (!ref) return;
+      const BASE = 'https://mcp.incredibleai.pro/mcp';
+      const personalizedCmd = `claude mcp add incredible-ai --transport http "${BASE}?ref=${encodeURIComponent(ref)}"`;
+      document.querySelectorAll('[data-cmd]').forEach(function(el) {
+        if (el.getAttribute('data-cmd').indexOf('mcp add') !== -1) {
+          el.setAttribute('data-cmd', personalizedCmd);
+          // Update the visible display text too
+          const display = el.parentElement && el.parentElement.querySelector('.connect-cmd');
+          if (display) display.textContent = personalizedCmd;
+        }
+      });
+    })();
+
     function copyCmd(btn) {
       const cmd = btn.getAttribute('data-cmd');
       navigator.clipboard.writeText(cmd).then(() => {
