@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F2LT2X06B8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,495 +18,378 @@
   <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
   <meta property="og:url" content="https://incrediblehospitalityco.com/ai/daily-ai-bookkeeper/" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --gold: #e8d5b0;
-      --gold-light: #f0ebe3;
-      --dark: #0d1a16;
-      --dark-card: #173d36;
-      --dark-border: #2a5a4a;
+      --bg: #0d1a16;
+      --surface: #111e18;
+      --border: #1e3a2f;
       --text: #f0ebe3;
-      --muted: rgba(240,235,227,0.55);
+      --muted: rgba(240,235,227,0.45);
+      --gold: #e8d5b0;
       --green: #4ade80;
-      --green-dim: #166534;
+      --green-bg: #0a1f14;
     }
 
     body {
-      background-color: var(--dark);
+      background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .topbar {
-      background: #173d36;
-      color: #f0ebe3;
-      text-align: center;
-      padding: 10px 24px;
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
-    .topbar a { color: var(--gold); text-decoration: none; }
-    .topbar a:hover { text-decoration: underline; }
+    nav .logo { font-weight: 700; color: var(--gold); letter-spacing: 0.04em; }
+    nav .nav-links { display: flex; gap: 24px; color: var(--muted); }
+    nav .nav-links a { color: var(--muted); font-size: 13px; }
 
     /* ── HERO ── */
     .hero {
-      max-width: 860px;
+      max-width: 640px;
       margin: 0 auto;
       padding: 72px 24px 56px;
       text-align: center;
     }
-    .hero-eyebrow {
+    .badge {
       display: inline-block;
       font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
       color: var(--green);
-      border: 1px solid var(--green-dim);
-      padding: 4px 14px;
+      border: 1px solid rgba(74,222,128,0.3);
       border-radius: 20px;
-      margin-bottom: 24px;
+      padding: 4px 14px;
+      margin-bottom: 28px;
     }
-    .hero h1 {
+    h1 {
       font-family: 'Georgia', serif;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
+      font-size: clamp(34px, 6vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
       color: var(--text);
+      margin-bottom: 20px;
     }
-    .hero h1 span { color: var(--gold); }
+    h1 em { color: var(--gold); font-style: normal; }
     .hero-sub {
       font-size: 17px;
-      color: #9dbdaf;
-      max-width: 560px;
-      margin: 0 auto 40px;
-      line-height: 1.7;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+      margin: 0 auto;
     }
 
-    /* ── CONNECT STEPS ── */
-    .connect-steps {
-      max-width: 700px;
-      margin: 0 auto 16px;
+    /* ── SETUP BLOCK ── */
+    .setup {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
     }
-    .connect-step {
+    .requires {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .requires a { color: rgba(240,235,227,0.6); text-decoration: underline; }
+
+    .steps { display: flex; flex-direction: column; gap: 4px; }
+
+    .step {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 0 16px;
+      align-items: start;
+    }
+    .step-connector {
       display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      margin-bottom: 12px;
+      flex-direction: column;
+      align-items: center;
     }
     .step-num {
-      background: var(--green);
-      color: #0a1410;
-      font-size: 11px;
-      font-weight: 700;
-      font-family: Arial, sans-serif;
-      width: 22px;
-      height: 22px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
+      background: var(--green);
+      color: #0a1f14;
+      font-size: 12px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin-top: 2px;
     }
-    .step-body { flex: 1; }
-    .step-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 6px;
-      display: block;
+    .step-line {
+      width: 1px;
+      flex: 1;
+      min-height: 20px;
+      background: var(--border);
+      margin: 4px 0;
     }
-    .connect-box {
-      background: #0a1410;
-      border: 1px solid var(--green);
-      border-radius: 6px;
-      padding: 16px 20px;
-      text-align: left;
-      box-shadow: 0 0 18px rgba(74, 158, 95, 0.18);
+    .step-content {
+      padding-bottom: 28px;
     }
-    .connect-cmd {
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      color: #a8d8a8;
-      word-break: break-all;
-      line-height: 1.6;
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      padding-top: 4px;
     }
-    .step-after {
-      background: #0a1410;
-      border: 1px solid var(--dark-border);
-      border-radius: 6px;
-      padding: 16px 20px;
+
+    /* code block */
+    .cmd-block {
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .cmd-text {
       font-family: 'Courier New', monospace;
       font-size: 13px;
-      color: #a8d8a8;
+      color: #a8e6c0;
+      word-break: break-all;
+      line-height: 1.5;
+      flex: 1;
     }
-    .step-after .cmd-prompt { color: var(--muted); }
-    .connect-note {
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 64px;
-    }
-    .copy-btn-hero {
-      float: right;
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      cursor: pointer;
-      color: var(--muted);
-      font-size: 11px;
-      font-family: Arial, sans-serif;
-      margin-left: 12px;
-      margin-top: -2px;
-      transition: color 0.2s, border-color 0.2s;
+    .copy-btn {
       flex-shrink: 0;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
     }
-    .copy-btn-hero:hover { color: var(--gold); border-color: var(--gold); }
-    .copy-btn-hero.copied { color: var(--green); border-color: var(--green); }
+    .copy-btn:hover { color: var(--text); border-color: var(--text); }
+    .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+    /* quit block */
+    .quit-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px;
+      color: rgba(240,235,227,0.7);
+      line-height: 1.5;
+    }
+    .quit-block strong { color: var(--gold); font-weight: 600; }
+
+    /* run block — the hero action */
+    .run-block {
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .run-cmd {
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: #a8e6c0;
+      letter-spacing: 0.01em;
+    }
+    .step-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      max-width: 600px;
+      margin: 0 auto 64px;
+      border: none;
+      border-top: 1px solid var(--border);
+    }
 
     /* ── WHAT IT DOES ── */
     .section {
-      max-width: 1000px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 0 24px 72px;
     }
     .section-label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       color: var(--gold);
+      font-weight: 600;
       display: block;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--border);
     }
-
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      gap: 12px;
     }
     .feature-card {
-      background: #111e18;
-      border: 1px solid var(--dark-border);
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 24px 22px;
+      padding: 22px 20px;
     }
-    .feature-icon {
-      font-size: 22px;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .feature-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .feature-desc {
-      font-size: 13px;
-      color: #9dbdaf;
-      line-height: 1.6;
-    }
+    .feature-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+    .feature-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .feature-desc { font-size: 13px; color: rgba(240,235,227,0.55); line-height: 1.6; }
 
-    /* ── REQUIREMENTS ── */
+    /* ── REQUIREMENTS SECTION ── */
     .req-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
     }
-    .req-item {
-      background: #111e18;
-      border: 1px solid var(--dark-border);
+    .req-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 22px;
+      padding: 18px 20px;
     }
-    .req-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .req-name {
+      font-size: 13px;
+      font-weight: 700;
       color: var(--gold);
-      display: block;
+      margin-bottom: 4px;
+    }
+    .req-desc {
+      font-size: 13px;
+      color: rgba(240,235,227,0.55);
+      line-height: 1.55;
+    }
+    .req-desc a { color: rgba(240,235,227,0.65); text-decoration: underline; }
+
+    /* ── EMAIL CAPTURE ── */
+    .email-section {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      text-align: center;
+    }
+    .email-section h2 {
+      font-family: 'Georgia', serif;
+      font-size: 24px;
+      color: var(--text);
       margin-bottom: 8px;
     }
-    .req-item p {
-      font-size: 13px;
-      color: #9dbdaf;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .req-item a { color: var(--gold); text-decoration: none; }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      background: var(--dark-card);
-      border-top: 1px solid var(--dark-border);
-      border-bottom: 1px solid var(--dark-border);
-      padding: 56px 24px;
-      text-align: center;
-    }
-    .cta-band h2 {
-      font-family: 'Georgia', serif;
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-    .cta-band p {
+    .email-section p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .email-input {
+      width: 100%;
+      padding: 13px 16px;
       font-size: 15px;
-      color: #9dbdaf;
-      margin-bottom: 28px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .btn-primary {
-      display: inline-block;
-      background: var(--gold);
-      color: #0d1a16;
-      padding: 16px 40px;
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .cta-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
-
-    footer {
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
-      border-top: 1px solid var(--dark-border);
-    }
-    footer a { color: var(--gold); text-decoration: none; }
-
-    /* ── MOBILE EMAIL CAPTURE (Variant B) ── */
-    @keyframes pulse-border {
-      0%, 100% { box-shadow: 0 0 24px rgba(232, 213, 176, 0.2), 0 0 0 1px var(--gold); }
-      50% { box-shadow: 0 0 40px rgba(232, 213, 176, 0.45), 0 0 0 2px var(--gold); }
-    }
-    .mobile-email-capture {
-      display: none;
-      max-width: 700px;
-      margin: 0 auto 16px;
-      background: linear-gradient(160deg, #111e18 0%, #0a1410 100%);
-      border: 1px solid var(--gold);
-      border-radius: 12px;
-      padding: 40px 32px 36px;
-      text-align: center;
-      animation: pulse-border 3s ease-in-out infinite;
-    }
-    .mobile-email-capture .mec-eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      background: rgba(232,213,176,0.08);
-      border: 1px solid rgba(232,213,176,0.25);
-      padding: 5px 16px;
-      border-radius: 20px;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-    .mobile-email-capture h2 {
-      font-family: 'Georgia', serif;
-      font-size: clamp(26px, 6vw, 36px);
-      color: var(--text);
-      margin-bottom: 14px;
-      line-height: 1.15;
-    }
-    .mobile-email-capture h2 span { color: var(--gold); }
-    .mobile-email-capture .mec-sub {
-      font-size: 16px;
-      color: #9dbdaf;
-      line-height: 1.65;
-      margin-bottom: 28px;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* ── DESKTOP EMAIL CAPTURE ── */
-    .desktop-email-capture {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 72px;
-      text-align: center;
-    }
-    .desktop-email-capture h2 {
-      font-family: 'Georgia', serif;
-      font-size: 26px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #0a1410;
       color: var(--text);
       margin-bottom: 10px;
     }
-    .desktop-email-capture p {
-      font-size: 15px;
-      color: #9dbdaf;
-      margin-bottom: 24px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .desktop-form-wrap {
-      max-width: 440px;
-      margin: 0 auto;
-    }
-    /* Email capture form */
-    .mec-form-wrap {
-      border-radius: 6px;
-    }
-    .mec-email-input {
+    .email-input::placeholder { color: var(--muted); }
+    .email-input:focus { outline: none; border-color: var(--green); }
+    .email-submit {
       width: 100%;
-      padding: 14px 18px;
-      font-size: 15px;
-      border-radius: 6px;
-      border: 1px solid var(--dark-border);
-      background: #0d1a16;
-      color: var(--text);
-      margin-bottom: 10px;
-      box-sizing: border-box;
-    }
-    .mec-email-input::placeholder { color: var(--muted); }
-    .mec-email-input:focus { outline: none; border-color: var(--green); }
-    .mec-submit-btn {
-      width: 100%;
-      padding: 15px;
+      padding: 14px;
       background: var(--gold);
       color: #0d1a16;
-      font-size: 15px;
-      font-weight: bold;
+      font-size: 14px;
+      font-weight: 700;
       letter-spacing: 0.04em;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: opacity 0.2s;
     }
-    .mec-submit-btn:hover { background: var(--gold-light); }
-    .mec-submit-btn:disabled { opacity: 0.6; cursor: default; }
-    .mec-success {
-      color: var(--green);
-      font-size: 15px;
-      padding: 14px 0 4px;
-      font-weight: 500;
-    }
-    .mec-note {
+    .email-submit:hover { opacity: 0.88; }
+    .email-submit:disabled { opacity: 0.5; cursor: default; }
+    .email-success { display: none; color: var(--green); font-size: 15px; padding: 12px 0; font-weight: 600; }
+    .email-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
       font-size: 12px;
       color: var(--muted);
-      margin-top: 14px;
-      line-height: 1.5;
     }
-    /* Variant A mobile notice (subtle, doesn't gate content) */
-    .mobile-desktop-notice {
-      display: none; /* shown via JS when mobile + variant A */
-      background: #111e18;
-      border: 1px solid var(--dark-border);
-      border-radius: 6px;
-      padding: 14px 18px;
-      margin: 0 auto 20px;
-      max-width: 700px;
-      font-size: 13px;
-      color: #9dbdaf;
-      text-align: center;
-    }
-    .mobile-desktop-notice a { color: var(--gold); text-decoration: none; }
 
     /* ── MOBILE POPUP ── */
-    .mobile-popup-overlay {
+    .popup-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(13,26,22,0.88);
+      background: rgba(13,26,22,0.9);
       backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
       z-index: 9999;
       align-items: flex-end;
       justify-content: center;
     }
-    .mobile-popup-overlay.active { display: flex; }
-    .mobile-popup {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
+    .popup-overlay.active { display: flex; }
+    .popup {
+      background: #1a3028;
+      border: 1px solid var(--border);
       border-radius: 20px 20px 0 0;
-      padding: 36px 28px 48px;
+      padding: 40px 28px 52px;
       width: 100%;
       max-width: 480px;
       text-align: center;
-      animation: slideUp 0.3s ease;
+      animation: slideUp 0.28s ease;
     }
-    @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .popup-icon { font-size: 36px; margin-bottom: 12px; display: block; }
+    .popup h3 { font-size: 20px; font-weight: 800; color: var(--gold); margin-bottom: 8px; line-height: 1.25; }
+    .popup p { font-size: 14px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+    .popup input[type=email] {
+      width: 100%; padding: 14px 16px; font-size: 16px; border-radius: 8px;
+      border: 1px solid var(--border); background: rgba(255,255,255,0.05);
+      color: var(--text); margin-bottom: 10px; outline: none;
     }
-    .mobile-popup .popup-icon { font-size: 40px; margin-bottom: 14px; display: block; }
-    .mobile-popup h3 {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--gold);
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
-    .mobile-popup p {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .mobile-popup input[type=email] {
-      width: 100%;
-      padding: 15px 16px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid var(--dark-border);
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-      margin-bottom: 10px;
-      outline: none;
-      box-sizing: border-box;
-    }
-    .mobile-popup input[type=email]:focus { border-color: var(--gold); }
-    .mobile-popup input[type=email]::placeholder { color: var(--muted); }
+    .popup input[type=email]:focus { border-color: var(--gold); }
+    .popup input[type=email]::placeholder { color: var(--muted); }
     .popup-submit {
-      width: 100%;
-      padding: 15px;
-      font-size: 16px;
-      font-weight: 700;
-      border-radius: 10px;
-      border: none;
-      background: var(--gold);
-      color: var(--dark);
-      cursor: pointer;
-      transition: opacity 0.2s;
+      width: 100%; padding: 14px; font-size: 15px; font-weight: 700;
+      border-radius: 8px; border: none; background: var(--gold);
+      color: #0d1a16; cursor: pointer;
     }
-    .popup-submit:hover { opacity: 0.9; }
     .popup-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-    .popup-success {
-      display: none;
-      color: var(--green);
-      font-weight: 700;
-      font-size: 17px;
-      padding: 14px 0;
-    }
+    .popup-success { display: none; color: var(--green); font-weight: 700; font-size: 16px; padding: 12px 0; }
     .popup-dismiss {
-      display: block;
-      margin-top: 18px;
-      font-size: 13px;
-      color: var(--muted);
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-decoration: underline;
-      width: 100%;
+      display: block; margin-top: 16px; font-size: 13px; color: var(--muted);
+      background: none; border: none; cursor: pointer; text-decoration: underline; width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .run-cmd { font-size: 20px; }
+      h1 { font-size: 32px; }
     }
   </style>
   <!-- Meta Pixel -->
@@ -529,212 +411,153 @@
 </head>
 <body>
 
-  <div class="topbar">
-    <a href="/">Incredible Hospitality Co</a> &nbsp;|&nbsp;
-    <a href="/ai/">AI Tools</a> &nbsp;|&nbsp;
-    <a href="/challenge/">Free Challenge</a>
-  </div>
+  <nav>
+    <span class="logo">Incredible AI</span>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/ai/">All Agents</a>
+    </div>
+  </nav>
 
   <!-- ── HERO ── -->
-  <div class="hero">
-    <span class="hero-eyebrow">&#9679; Now Live</span>
-    <h1>Your Books.<br><span>Done While You Sleep.</span></h1>
+  <div class="hero" id="hero">
+    <span class="badge">&#9679; Live Now</span>
+    <h1>Your Books.<br><em>Done While You Sleep.</em></h1>
     <p class="hero-sub">
-      Connect once. Your AI Bookkeeper opens your accounting platform, sorts your transactions using your rules, and recaps everything done — right in your chat.
+      Your AI Bookkeeper opens your accounting platform, categorizes transactions by your rules, and recaps everything — automatically.
     </p>
+  </div>
 
-    <!-- Variant B: Mobile email capture (hidden by default, shown via JS) -->
-    <div class="mobile-email-capture" id="mobile-email-capture">
-      <span class="mec-eyebrow">✦ 2,000+ business owners requested access</span>
-      <h2>Your books.<br><span>Done while you sleep.</span></h2>
-      <p class="mec-sub">
-        This runs on desktop — drop your email and we'll send the setup link straight to your inbox. Takes 3 minutes to get running.
-      </p>
-      <div class="mec-form-wrap">
-        <form onsubmit="submitEmail(this, event, 'variant_b')">
-          <input type="email" class="mec-email-input" placeholder="your@email.com" required />
-          <button type="submit" class="mec-submit-btn">Send Me the Setup Link →</button>
-          <div class="mec-success" style="display:none">✓ Check your inbox — link is on its way.</div>
-        </form>
-      </div>
-      <p class="mec-note">We'll email you the setup link + a quick walkthrough. No spam.</p>
-    </div>
-
-    <!-- Variant A: Subtle mobile notice (shown above steps, doesn't gate content) -->
-    <div class="mobile-desktop-notice" id="mobile-desktop-notice">
-      On mobile? This tool requires a desktop computer. <a href="#mobile-signup-anchor">Email yourself the link →</a>
-    </div>
-
-    <div id="desktop-setup-steps">
-
-      <!-- ── BEFORE YOU START ── -->
-      <div style="max-width:700px;margin:0 auto 20px;text-align:center;">
-        <p style="font-size:11px;color:rgba(240,235,227,0.4);line-height:1.6;">Requires <a href="https://claude.ai/download" target="_blank" style="color:rgba(240,235,227,0.55);text-decoration:underline;">Claude Code</a> (free desktop app) + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:rgba(240,235,227,0.55);text-decoration:underline;">Claude in Chrome extension</a> + a paid Claude plan ($20/mo)</p>
-      </div>
-
-      <!-- ── SETUP STEPS ── -->
-      <div class="connect-steps">
-
-        <!-- STEP 1 -->
-        <div class="connect-step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <span class="step-label">Open Claude Code and paste this command</span>
-            <div class="connect-box">
-              <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
-              <div class="connect-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</div>
-            </div>
-            <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:8px;display:block;">Hit enter. You'll see: <em>"Done. Added incredible-ai as an HTTP MCP server…"</em> — that's confirmation it worked.</span>
-          </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="connect-step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <span class="step-label">Fully quit Claude Code, then reopen it</span>
-            <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);border-color:var(--gold);">
-              <strong style="color:var(--gold);">Mac: Press Cmd+Q. Windows: Close from the taskbar.</strong>
-              <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:6px;display:block;">Don't just close the window — the bookkeeper won't connect until Claude Code is fully restarted. Once it's back open, proceed to step 3.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="connect-step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <span class="step-label">Open Chrome and log in to your accounting platform</span>
-            <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);">
-              Open <strong style="color:var(--text);">Google Chrome</strong> and log in to your QuickBooks, Xero, Wave, or FreshBooks account. Keep it open — the bookkeeper will take it from there.
-              <span style="font-size:12px;color:rgba(240,235,227,0.55);margin-top:6px;display:block;">The bookkeeper works inside your existing browser session. It cannot log in for you, so make sure you're already signed in before the next step.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="connect-step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <span class="step-label">In Claude Code, start a new chat and type exactly this</span>
-            <div class="connect-box" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-              <div class="connect-cmd" style="font-size:22px;font-weight:900;color:#4ade80;letter-spacing:0.04em;text-transform:uppercase;">RUN BOOKKEEPER</div>
-              <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="run bookkeeper" style="flex-shrink:0;">Copy</button>
-            </div>
-            <span style="font-size:13px;color:rgba(240,235,227,0.85);margin-top:8px;display:block;font-weight:600;">Hit enter. That's it — the agent takes over from here.</span>
-          </div>
-        </div>
-
-      </div><!-- /connect-steps -->
-
-      <!-- ── WHAT HAPPENS NEXT ── -->
-      <div style="max-width:700px;margin:4px auto 24px;background:#111e18;border:1px solid var(--dark-border);border-radius:8px;padding:20px 24px;">
-        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--green);margin-bottom:14px;font-weight:700;">What Happens After You Type "run bookkeeper"</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="display:flex;gap:12px;font-size:13px;color:#9dbdaf;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;min-width:20px;">1.</span><span>It asks for your email to build your personalized bookkeeper profile.</span></div>
-          <div style="display:flex;gap:12px;font-size:13px;color:#9dbdaf;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;min-width:20px;">2.</span><span>Asks which platform you're on and whether you're doing your own books or managing client accounts.</span></div>
-          <div style="display:flex;gap:12px;font-size:13px;color:#9dbdaf;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;min-width:20px;">3.</span><span>Asks how often you want it to run — daily, a few times a week, or weekly. Sets up your automatic schedule silently in the background.</span></div>
-          <div style="display:flex;gap:12px;font-size:13px;color:#9dbdaf;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;min-width:20px;">4.</span><span>Opens your accounting platform in Chrome and starts categorizing transactions immediately. You'll get a full recap in your chat when it's done.</span></div>
-          <div style="display:flex;gap:12px;font-size:13px;color:#9dbdaf;"><span style="color:var(--gold);font-weight:700;flex-shrink:0;min-width:20px;">5.</span><span>Every session after that is fully automatic — no setup, no commands. It just runs on schedule.</span></div>
-        </div>
-      </div>
-
-    </div><!-- /desktop-setup-steps -->
-
-    <!-- Variant A anchor: email capture below steps for mobile users who scrolled down -->
-    <div id="mobile-signup-anchor" style="margin-top: 32px; display:none;">
-      <div class="mobile-email-capture" style="display:block; box-shadow:none; border-color: var(--dark-border);">
-        <span class="mec-eyebrow">At your desk later?</span>
-        <h2>We'll send the<br><span>setup link to your inbox.</span></h2>
-        <p class="mec-sub">Takes 3 minutes to set up on desktop. Drop your email and we'll send it straight to you.</p>
-        <div class="mec-form-wrap">
-          <form onsubmit="submitEmail(this, event, 'variant_a_anchor')">
-            <input type="email" class="mec-email-input" placeholder="your@email.com" required />
-            <button type="submit" class="mec-submit-btn">Send Me the Setup Link →</button>
-            <div class="mec-success" style="display:none">✓ Check your inbox — link is on its way.</div>
-          </form>
-        </div>
-        <p class="mec-note">No spam. Just the link.</p>
-      </div>
+  <!-- ── MOBILE EMAIL CAPTURE ── -->
+  <div id="mobile-capture" style="display:none;max-width:560px;margin:0 auto 32px;padding:0 24px;">
+    <div style="background:linear-gradient(160deg,#111e18,#0a1410);border:1px solid var(--gold);border-radius:12px;padding:36px 28px;text-align:center;">
+      <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:rgba(232,213,176,0.08);border:1px solid rgba(232,213,176,0.2);border-radius:20px;padding:4px 14px;margin-bottom:18px;">This runs on desktop</span>
+      <h2 style="font-family:'Georgia',serif;font-size:clamp(24px,5vw,30px);margin-bottom:12px;line-height:1.15;">We'll send the setup link to your inbox.</h2>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:24px;">Takes 3 minutes to set up when you're at your computer.</p>
+      <form onsubmit="submitEmail(this,event,'mobile_hero')">
+        <input type="email" class="email-input" placeholder="your@email.com" required style="margin-bottom:10px;" />
+        <button type="submit" class="email-submit">Send Me the Setup Link →</button>
+        <div class="email-success">✓ Check your inbox — link is on its way.</div>
+      </form>
+      <p class="email-note">No spam. Just the link.</p>
     </div>
   </div>
+
+  <!-- ── SETUP STEPS ── -->
+  <div class="setup" id="desktop-steps">
+
+    <p class="requires">
+      Requires <a href="https://claude.ai/download" target="_blank">Claude Code</a> (free) + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
+    </p>
+
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="step-connector">
+          <div class="step-num">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Paste this command into Claude Code</div>
+          <div class="cmd-block">
+            <span class="cmd-text" id="install-cmd-display">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</span>
+            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp" id="install-cmd-btn">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="step-connector">
+          <div class="step-num">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">Quit Claude completely, then reopen it</div>
+          <div class="quit-block">
+            <strong>Mac:</strong> Cmd+Q &nbsp;&nbsp; <strong>Windows:</strong> Right-click taskbar → Quit
+          </div>
+          <p class="step-note">Don't just close the window — the agent won't load until Claude fully restarts.</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="step-connector">
+          <div class="step-num">3</div>
+        </div>
+        <div class="step-content">
+          <div class="step-title">In Claude, start a new chat and type this</div>
+          <div class="run-block">
+            <span class="run-cmd">run bookkeeper</span>
+            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="run bookkeeper">Copy</button>
+          </div>
+          <p class="step-note">Hit enter. The agent starts immediately.</p>
+        </div>
+      </div>
+
+    </div><!-- /steps -->
+  </div><!-- /setup -->
+
+  <hr class="divider" />
 
   <!-- ── WHAT IT DOES ── -->
   <div class="section">
     <span class="section-label">What It Does</span>
     <div class="feature-grid">
-
       <div class="feature-card">
         <span class="feature-icon">🔒</span>
-        <div class="feature-title">Your Financial Data Never Leaves Your Control</div>
-        <p class="feature-desc">The bookkeeper runs entirely on your machine, inside your own browser. We never connect to your bank, store your credentials, or see your numbers. Your data stays between you and your accounting platform — period.</p>
+        <div class="feature-title">Your Data Never Leaves Your Machine</div>
+        <p class="feature-desc">Runs inside your own browser. We never connect to your bank or see your numbers.</p>
       </div>
-
       <div class="feature-card">
         <span class="feature-icon">⚡</span>
         <div class="feature-title">Set It Once. It Runs Itself.</div>
-        <p class="feature-desc">Connect once, say "run bookkeeper," and your transactions are categorized while you're focused on deals. No spreadsheets, no manual entry, no hiring a bookkeeper at $500/month to do work AI can handle overnight.</p>
+        <p class="feature-desc">Say "run bookkeeper" and transactions are categorized while you focus on other things.</p>
       </div>
-
       <div class="feature-card">
         <span class="feature-icon">💡</span>
-        <div class="feature-title">Finds Tax Savings Automatically</div>
-        <p class="feature-desc">After every session, it flags deductible expenses, 1099 thresholds, and timing moves that could lower your tax bill. Simple callouts, plain English. Money you would have left on the table.</p>
+        <div class="feature-title">Catches Tax Savings</div>
+        <p class="feature-desc">After every session it flags deductible expenses, 1099 thresholds, and timing moves.</p>
       </div>
-
       <div class="feature-card">
         <span class="feature-icon">📋</span>
-        <div class="feature-title">Full Recap After Every Run</div>
-        <p class="feature-desc">Every session ends with a plain-English summary in your chat — what was categorized, what needs your review, and anything flagged. You stay in control without having to dig into the books yourself.</p>
+        <div class="feature-title">Full Recap Every Run</div>
+        <p class="feature-desc">Plain-English summary in your chat — what was done, what needs review, what was flagged.</p>
       </div>
-
     </div>
   </div>
 
   <!-- ── REQUIREMENTS ── -->
-  <div class="section" style="padding-bottom:56px;">
+  <div class="section" style="padding-bottom:48px;">
     <span class="section-label">What You Need</span>
     <div class="req-grid">
-      <div class="req-item">
-        <span class="req-label">Claude Code</span>
-        <p>The free app from Anthropic. Download at <a href="https://claude.ai/download" target="_blank">claude.ai/download</a>. A paid Claude plan ($20/mo) is required to use Claude Code and the Chrome extension.</p>
+      <div class="req-card">
+        <div class="req-name">Claude Code</div>
+        <p class="req-desc">Free desktop app. <a href="https://claude.ai/download" target="_blank">claude.ai/download</a>. Requires a paid Claude plan ($20/mo).</p>
       </div>
-      <div class="req-item">
-        <span class="req-label">Claude in Chrome</span>
-        <p>The Chrome extension that lets your AI agent operate inside your accounting platform. Install from the <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Chrome Web Store</a>. Requires Google Chrome.</p>
+      <div class="req-card">
+        <div class="req-name">Claude in Chrome</div>
+        <p class="req-desc">Chrome extension that lets the agent operate inside your accounting platform. <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Install here.</a></p>
       </div>
-      <div class="req-item">
-        <span class="req-label">Accounting Platform</span>
-        <p>Works with QuickBooks Online, Xero, Wave, and FreshBooks. You stay logged in — the bookkeeper picks up from there. It cannot log in for you.</p>
-      </div>
-      <div class="req-item">
-        <span class="req-label">Transactions in Your Platform</span>
-        <p>Your platform needs transactions loaded before each run. Auto-syncing bank feeds work best. Manual imports? Run it weekly or on-demand.</p>
+      <div class="req-card">
+        <div class="req-name">Accounting Platform</div>
+        <p class="req-desc">Works with QuickBooks Online, Xero, Wave, and FreshBooks. Stay logged in — the agent picks up from there.</p>
       </div>
     </div>
   </div>
 
-  <!-- ── DESKTOP EMAIL CAPTURE ── -->
-  <div class="desktop-email-capture" id="desktop-email-capture">
-    <span class="section-label" style="display:block;margin-bottom:12px;">Not ready to set up right now?</span>
-    <h2>We'll send the setup link to your inbox.</h2>
-    <p>Drop your email — we'll send you the setup link and a quick walkthrough for when you're ready.</p>
-    <div class="desktop-form-wrap">
-      <form onsubmit="submitEmail(this, event, 'bookkeeper_page_desktop')">
-        <input type="email" class="mec-email-input" placeholder="your@email.com" required />
-        <button type="submit" class="mec-submit-btn">Send Me the Setup Link →</button>
-        <div class="mec-success" style="display:none">✓ Check your inbox — link is on its way.</div>
-      </form>
-    </div>
-    <p style="font-size:12px;color:var(--muted);margin-top:12px;">No spam. Just the link when you're ready.</p>
-  </div>
-
-  <!-- ── MORE AGENTS ── -->
-  <div class="cta-band">
-    <h2>More Agents on the Way</h2>
-    <p>Deal Scout, Deal Analyzer, and Market Intelligence are building now. Follow for updates — new agents drop there first.</p>
-    <a href="https://instagram.com/gideonspencer_" target="_blank" class="btn-primary">Follow @gideonspencer_</a>
-    <p class="cta-note">Or explore all available agents at <a href="/ai/incredible-ai/" style="color:var(--gold)">Incredible AI</a></p>
+  <!-- ── EMAIL CAPTURE ── -->
+  <div class="email-section" id="desktop-email">
+    <h2>Not ready right now?</h2>
+    <p>Drop your email and we'll send the setup link when you're ready.</p>
+    <form onsubmit="submitEmail(this,event,'bookkeeper_page_desktop')">
+      <input type="email" class="email-input" placeholder="your@email.com" required />
+      <button type="submit" class="email-submit">Send Me the Setup Link →</button>
+      <div class="email-success">✓ Check your inbox — link is on its way.</div>
+    </form>
+    <p class="email-note">No spam. Just the link.</p>
   </div>
 
   <footer>
@@ -742,59 +565,62 @@
   </footer>
 
   <!-- ── MOBILE POPUP ── -->
-  <div class="mobile-popup-overlay" id="mobilePopup">
-    <div class="mobile-popup">
+  <div class="popup-overlay" id="mobilePopup">
+    <div class="popup">
       <span class="popup-icon">📱</span>
-      <h3>On mobile? This needs a desktop.</h3>
-      <p>The AI Bookkeeper runs inside Claude on your computer. Drop your email and we'll send you the one-step setup for when you're at your desk.</p>
+      <h3>This runs on a desktop.</h3>
+      <p>Drop your email and we'll send the setup link for when you're at your computer.</p>
       <form id="popupForm">
         <input type="email" id="popupEmailInput" placeholder="your@email.com" required />
         <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Setup →</button>
-        <div class="popup-success" id="popupSuccess">✓ Setup link is on its way — check your inbox.</div>
+        <div class="popup-success" id="popupSuccess">✓ Link is on its way — check your inbox.</div>
       </form>
       <button class="popup-dismiss" onclick="dismissPopup()">I'm on desktop — show me the steps</button>
     </div>
   </div>
 
   <script>
-    // Inject ?ref= from URL into the MCP install command so GHL-sourced
-    // visitors get a personalized link that ties their install back to their contact.
+    // ── REF INJECTION ──────────────────────────────────────────────────────────
+    // GHL sends ?ref=CONTACT_ID in the DM link. We bake it into the MCP install
+    // command so that when they connect, the server can fire a GHL webhook back.
     (function() {
-      const ref = new URLSearchParams(window.location.search).get('ref');
+      var ref = new URLSearchParams(window.location.search).get('ref');
       if (!ref) return;
-      const BASE = 'https://mcp.incredibleai.pro/mcp';
-      const personalizedCmd = `claude mcp add incredible-ai --transport http "${BASE}?ref=${encodeURIComponent(ref)}"`;
-      document.querySelectorAll('[data-cmd]').forEach(function(el) {
-        if (el.getAttribute('data-cmd').indexOf('mcp add') !== -1) {
-          el.setAttribute('data-cmd', personalizedCmd);
-          // Update the visible display text too
-          const display = el.parentElement && el.parentElement.querySelector('.connect-cmd');
-          if (display) display.textContent = personalizedCmd;
-        }
-      });
+      var base = 'https://mcp.incredibleai.pro/mcp';
+      var cmd = 'claude mcp add incredible-ai --transport http "' + base + '?ref=' + encodeURIComponent(ref) + '"';
+      var btn = document.getElementById('install-cmd-btn');
+      var display = document.getElementById('install-cmd-display');
+      if (btn) btn.setAttribute('data-cmd', cmd);
+      if (display) display.textContent = cmd;
     })();
 
+    // ── COPY ──────────────────────────────────────────────────────────────────
     function copyCmd(btn) {
-      const cmd = btn.getAttribute('data-cmd');
-      navigator.clipboard.writeText(cmd).then(() => {
+      var cmd = btn.getAttribute('data-cmd');
+      navigator.clipboard.writeText(cmd).then(function() {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
-        setTimeout(() => {
+        setTimeout(function() {
           btn.textContent = 'Copy';
           btn.classList.remove('copied');
         }, 2000);
       });
     }
 
-    // ── MOBILE POPUP ──────────────────────────────────────────────────────────
+    // ── MOBILE DETECTION ─────────────────────────────────────────────────────
     (function() {
-      var isMobile = (
-        window.innerWidth <= 767 ||
-        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-      );
+      var isMobile = window.innerWidth <= 767 ||
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (!isMobile) return;
       if (localStorage.getItem('bk_popup_done')) return;
 
+      // Show mobile capture block, hide desktop steps
+      var mc = document.getElementById('mobile-capture');
+      var ds = document.getElementById('desktop-steps');
+      if (mc) mc.style.display = 'block';
+      if (ds) ds.style.display = 'none';
+
+      // Popup after 1s
       setTimeout(function() {
         document.getElementById('mobilePopup').classList.add('active');
         if (typeof fbq === 'function') fbq('trackCustom', 'MobilePopupShown');
@@ -803,11 +629,10 @@
 
       document.getElementById('popupForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        var email = document.getElementById('popupEmail').value.trim();
+        var email = document.getElementById('popupEmailInput').value.trim();
         if (!email) return;
         var btn = document.getElementById('popupSubmit');
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
+        btn.disabled = true; btn.textContent = 'Sending…';
         fetch('https://mcp.incredibleai.pro/capture-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -819,10 +644,7 @@
           localStorage.setItem('bk_popup_done', '1');
           if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'mobile_popup' });
           if (typeof gtag === 'function') gtag('event', 'mobile_popup_lead', { event_category: 'bookkeeper' });
-        }).catch(function() {
-          btn.disabled = false;
-          btn.textContent = 'Send Me the Setup →';
-        });
+        }).catch(function() { btn.disabled = false; btn.textContent = 'Send Me the Setup →'; });
       });
     })();
 
@@ -834,26 +656,21 @@
     function submitEmail(form, e, source) {
       e.preventDefault();
       var email = form.querySelector('input[type=email]').value;
-      var btn = form.querySelector('.mec-submit-btn');
-      var success = form.querySelector('.mec-success');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
+      var btn = form.querySelector('.email-submit');
+      var success = form.querySelector('.email-success');
+      btn.textContent = 'Sending…'; btn.disabled = true;
       fetch('https://mcp.incredibleai.pro/capture-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, source: source || 'bookkeeper_page' })
       }).then(function() {
-        form.querySelector('.mec-email-input').style.display = 'none';
+        form.querySelector('.email-input').style.display = 'none';
         btn.style.display = 'none';
         success.style.display = 'block';
-        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'bookkeeper_mobile_email' });
-        if (typeof gtag === 'function') gtag('event', 'mobile_bookkeeper_lead', { experiment_id: 'bookkeeper_mobile_v1', source: source });
-      }).catch(function() {
-        btn.textContent = 'Send Me the Setup Link →';
-        btn.disabled = false;
-      });
+        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: source });
+        if (typeof gtag === 'function') gtag('event', 'email_capture', { event_category: 'bookkeeper', label: source });
+      }).catch(function() { btn.disabled = false; btn.textContent = 'Send Me the Setup Link →'; });
     }
   </script>
-
 </body>
 </html>
