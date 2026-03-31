@@ -184,6 +184,116 @@
     .copy-btn-hero:hover { color: var(--gold); border-color: var(--gold); }
     .copy-btn-hero.copied { color: var(--green); border-color: var(--green); }
 
+    /* ── EMAIL GATE ── */
+    .email-gate {
+      background: #0a1410;
+      border: 1px solid var(--green);
+      border-radius: 6px;
+      padding: 20px 22px;
+      text-align: left;
+      box-shadow: 0 0 18px rgba(74, 158, 95, 0.18);
+    }
+    .email-gate p {
+      font-size: 13px;
+      color: #9dbdaf;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .email-row {
+      display: flex;
+      gap: 8px;
+    }
+    .email-input {
+      flex: 1;
+      background: #0d1a16;
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-input:focus { border-color: var(--green); }
+    .email-input::placeholder { color: var(--muted); }
+    .email-submit {
+      background: var(--green);
+      color: #0a1410;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .email-submit:hover { opacity: 0.85; }
+    .email-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .email-error { font-size: 12px; color: #f87171; margin-top: 8px; display: none; }
+
+    /* ── POST-SUBMIT STATE ── */
+    .steps-locked { display: none; }
+    .next-steps-box {
+      background: #0a1410;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      padding: 24px 24px 20px;
+      margin-top: 0;
+      box-shadow: 0 0 24px rgba(74, 222, 128, 0.15);
+    }
+    .next-steps-box .ns-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .ns-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .ns-step:last-child { margin-bottom: 0; }
+    .ns-num {
+      background: var(--green);
+      color: #0a1410;
+      font-size: 11px;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .ns-body { flex: 1; }
+    .ns-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .run-bookkeeper-cmd {
+      background: #0d1a16;
+      border: 2px solid var(--green);
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
     /* ── SECTION ── */
     .section {
       max-width: 1000px;
@@ -362,32 +472,62 @@
       Connect once. Every agent I build to run my business becomes yours — automatically.
     </p>
 
-    <div class="connect-steps">
+    <!-- STEP 1: Email gate -->
+    <div class="connect-steps" id="gate-section">
       <div class="connect-step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <span class="step-label">Paste this into Claude Code</span>
-          <div class="connect-box">
-            <button class="copy-btn-hero" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
-            <div class="connect-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</div>
+          <span class="step-label">Enter your email to get your setup command</span>
+          <div class="email-gate">
+            <p>I'll generate your personal setup command and send you a setup guide.</p>
+            <div class="email-row">
+              <input class="email-input" id="gate-email" type="email" placeholder="you@example.com" autocomplete="email" />
+              <button class="email-submit" id="gate-btn" onclick="submitEmail()">Get Command →</button>
+            </div>
+            <div class="email-error" id="gate-error"></div>
           </div>
         </div>
       </div>
-      <div class="connect-step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <span class="step-label">Activate new connection</span>
-          <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--cream);">Restart the Claude Code app</div>
+    </div>
+
+    <!-- POST-SUBMIT: steps revealed after email -->
+    <div class="steps-locked" id="steps-revealed">
+      <div class="next-steps-box">
+        <span class="ns-label">&#9679; You're in — here are your 3 steps</span>
+
+        <div class="ns-step">
+          <div class="ns-num">1</div>
+          <div class="ns-body">
+            <div class="ns-title">Paste this into Claude Code</div>
+            <div class="connect-box">
+              <button class="copy-btn-hero" id="cmd-copy-btn" onclick="copyPersonalCmd(this)">Copy</button>
+              <div class="connect-cmd" id="personal-cmd"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="connect-step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <span class="step-label">Say this to Claude</span>
-          <div class="step-after"><span class="cmd-prompt">&gt; </span>run bookkeeper</div>
+
+        <div class="ns-step">
+          <div class="ns-num">2</div>
+          <div class="ns-body">
+            <div class="ns-title">Restart Claude Code when it says "Done"</div>
+            <div class="step-after" style="font-family:inherit;font-size:14px;color:var(--text);">You'll see: <em style="color:var(--muted)">"Added incredible-ai as an HTTP MCP server"</em> — then close and reopen Claude.</div>
+          </div>
         </div>
+
+        <div class="ns-step">
+          <div class="ns-num">3</div>
+          <div class="ns-body">
+            <div class="ns-title">Type this in Claude — your agent will start immediately</div>
+            <div class="run-bookkeeper-cmd">
+              <strong>RUN BOOKKEEPER</strong>
+              <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
     <p class="connect-note">Free. Requires <a href="https://claude.ai/download" target="_blank" style="color:var(--gold)">Claude Code</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:var(--gold)">Claude in Chrome</a> (paid plan). New agents added automatically.</p>
   </div>
 
@@ -496,12 +636,68 @@
       navigator.clipboard.writeText(cmd).then(() => {
         btn.textContent = 'Copied!';
         btn.classList.add('copied');
-        setTimeout(() => {
-          btn.textContent = 'Copy';
-          btn.classList.remove('copied');
-        }, 2000);
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
+
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    function copyPersonalCmd(btn) {
+      const cmd = document.getElementById('personal-cmd').textContent.trim();
+      navigator.clipboard.writeText(cmd).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    async function submitEmail() {
+      const emailEl = document.getElementById('gate-email');
+      const btn = document.getElementById('gate-btn');
+      const errorEl = document.getElementById('gate-error');
+      const email = emailEl.value.trim().toLowerCase();
+
+      if (!email || !email.includes('@')) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+      errorEl.style.display = 'none';
+
+      try {
+        await fetch('https://mcp.incredibleai.pro/capture-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'incredible-ai-page' })
+        });
+      } catch (e) {
+        // non-blocking — proceed even if capture fails
+      }
+
+      const encoded = encodeURIComponent(email);
+      const cmd = `claude mcp add incredible-ai --transport http "https://mcp.incredibleai.pro/mcp?email=${encoded}"`;
+      document.getElementById('personal-cmd').textContent = cmd;
+
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('steps-revealed').style.display = 'block';
+
+      if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'incredible-ai-gate' });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && document.activeElement === document.getElementById('gate-email')) {
+        submitEmail();
+      }
+    });
   </script>
 
 </body>
