@@ -447,17 +447,17 @@
   <div class="setup" id="desktop-steps">
 
     <p class="requires">
-      Requires <a href="https://claude.ai/download" target="_blank">Claude Code</a> (free) + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
+      Requires <a href="https://claude.ai/download" target="_blank">Claude desktop app</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
     </p>
 
     <!-- EMAIL GATE — shown until email submitted -->
     <div id="email-gate-block" style="margin-bottom:28px;">
       <div style="background:var(--green-bg);border:1px solid rgba(74,222,128,0.35);border-radius:10px;padding:22px 20px;">
-        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:10px;">Step 1 of 3 — Get your setup command</div>
-        <p style="font-size:14px;color:rgba(240,235,227,0.7);margin-bottom:14px;line-height:1.5;">Enter your email to generate your personal setup command. Takes 2 seconds.</p>
+        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:10px;">Step 1 of 3 — Get your connector URL</div>
+        <p style="font-size:14px;color:rgba(240,235,227,0.7);margin-bottom:14px;line-height:1.5;">Enter your email to generate your personal URL. Takes 2 seconds.</p>
         <div style="display:flex;gap:8px;">
           <input type="email" id="gate-email-input" class="email-input" placeholder="your@email.com" style="margin-bottom:0;flex:1;" />
-          <button onclick="submitDesktopGate()" style="background:var(--green);color:#0a1f14;border:none;border-radius:6px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get Command →</button>
+          <button onclick="submitDesktopGate()" style="background:var(--green);color:#0a1f14;border:none;border-radius:6px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get URL →</button>
         </div>
         <div id="gate-error" style="font-size:12px;color:#f87171;margin-top:8px;display:none;"></div>
       </div>
@@ -472,10 +472,10 @@
           <div class="step-line"></div>
         </div>
         <div class="step-content">
-          <div class="step-title">Paste this command into Claude Code</div>
+          <div class="step-title">Open Claude → profile icon → Settings → Connectors → Add custom connector → paste:</div>
           <div class="cmd-block">
-            <span class="cmd-text" id="install-cmd-display">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</span>
-            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp" id="install-cmd-btn">Copy</button>
+            <span class="cmd-text" id="install-cmd-display">https://mcp.incredibleai.pro/mcp</span>
+            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="https://mcp.incredibleai.pro/mcp" id="install-cmd-btn">Copy</button>
           </div>
         </div>
       </div>
@@ -487,11 +487,8 @@
           <div class="step-line"></div>
         </div>
         <div class="step-content">
-          <div class="step-title">Quit Claude completely, then reopen it</div>
-          <div class="quit-block">
-            <strong>Mac:</strong> Cmd+Q &nbsp;&nbsp; <strong>Windows:</strong> Right-click taskbar → Quit
-          </div>
-          <p class="step-note">Don't just close the window — the agent won't load until Claude fully restarts.</p>
+          <div class="step-title">Download the Claude in Chrome extension</div>
+          <p class="step-note">It lets the agent operate inside your accounting platform directly. <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" style="color:var(--green);">Install here →</a></p>
         </div>
       </div>
 
@@ -501,10 +498,10 @@
           <div class="step-num">3</div>
         </div>
         <div class="step-content">
-          <div class="step-title">In Claude, start a new chat and type this</div>
+          <div class="step-title">Start a new chat in Claude and type:</div>
           <div class="run-block">
-            <span class="run-cmd" style="font-size:20px;font-weight:800;color:var(--green);letter-spacing:0.05em;"><strong>RUN BOOKKEEPER</strong></span>
-            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="RUN BOOKKEEPER">Copy</button>
+            <span class="run-cmd" style="font-size:20px;font-weight:800;color:var(--green);letter-spacing:0.05em;"><strong>bookkeeper</strong></span>
+            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="bookkeeper">Copy</button>
           </div>
           <p class="step-note">Hit enter. The agent starts immediately.</p>
         </div>
@@ -602,9 +599,7 @@
       var params = [];
       if (email) params.push('email=' + encodeURIComponent(email));
       if (ref) params.push('ref=' + encodeURIComponent(ref));
-      var url = params.length ? base + '?' + params.join('&') : base;
-      var needsQuotes = params.length > 0;
-      return 'claude mcp add incredible-ai --transport http ' + (needsQuotes ? '"' + url + '"' : url);
+      return params.length ? base + '?' + params.join('&') : base;
     }
 
     function _applyCmd(cmd) {
