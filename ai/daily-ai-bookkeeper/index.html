@@ -508,6 +508,20 @@
       </div>
 
     </div><!-- /steps -->
+
+    <!-- Advanced: Claude Code terminal setup -->
+    <details style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+      <summary style="cursor:pointer;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);padding:14px 18px;list-style:none;display:flex;align-items:center;gap:8px;"><span style="font-size:10px;">▸</span> Advanced — Claude Code (Terminal)</summary>
+      <div style="padding:0 18px 18px;border-top:1px solid var(--border);">
+        <p style="font-size:13px;color:var(--muted);margin:14px 0 10px;">If you use Claude Code, paste this in your terminal instead of steps 1–2 above:</p>
+        <div class="cmd-block">
+          <span class="cmd-text">claude mcp add incredible-ai --transport http "https://mcp.incredibleai.pro/mcp"</span>
+          <button class="copy-btn" onclick="copyCmd(this)" data-cmd='claude mcp add incredible-ai --transport http "https://mcp.incredibleai.pro/mcp"'>Copy</button>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:10px;">Restart Claude Code, then type <strong style="color:var(--green);">bookkeeper</strong> in a new chat.</p>
+      </div>
+    </details>
+
   </div><!-- /setup -->
 
   <hr class="divider" />
