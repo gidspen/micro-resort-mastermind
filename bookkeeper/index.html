@@ -154,6 +154,28 @@
       font-size: 12px;
       color: var(--muted);
     }
+
+    .install-block {
+      margin-top: 20px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid var(--dark-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: left;
+    }
+
+    .install-block p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .install-cmd {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--green);
+      word-break: break-all;
+    }
   </style>
 </head>
 <body>
@@ -179,6 +201,10 @@
       <span class="check">✅</span>
       <h2>Check your inbox!</h2>
       <p>The setup link is on its way. While you wait — the bookkeeper connects to QuickBooks, Xero, Wave, or FreshBooks and categorizes your transactions automatically.</p>
+      <div class="install-block">
+        <p>Or install directly in Claude now:</p>
+        <span class="install-cmd">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</span>
+      </div>
     </div>
 
   </div>
