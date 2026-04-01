@@ -450,6 +450,16 @@
       Requires <a href="https://claude.ai/download" target="_blank">Claude desktop app</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
     </p>
 
+    <!-- CLI INSTALL OPTION -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:16px;">
+      <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:8px;">Claude Code CLI — fastest install:</p>
+      <div class="cmd-block">
+        <span class="cmd-text">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</span>
+        <button class="copy-btn" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">Then open a new chat and type <strong style="color:var(--green);">bookkeeper</strong>. Or use the connector UI below.</p>
+    </div>
+
     <!-- EMAIL GATE — shown until email submitted -->
     <div id="email-gate-block" style="margin-bottom:28px;">
       <div style="background:var(--green-bg);border:1px solid rgba(74,222,128,0.35);border-radius:10px;padding:22px 20px;">
