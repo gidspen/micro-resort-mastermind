@@ -493,81 +493,34 @@
     <!-- POST-SUBMIT: steps revealed after email -->
     <div class="steps-locked" id="steps-revealed">
       <div class="next-steps-box">
-        <span class="ns-label">&#9679; You're in — pick your setup path</span>
+        <span class="ns-label">&#9679; You're in — here's how to connect</span>
 
-        <!-- PATH A: Easy — Claude.ai Web -->
-        <div style="background:#0a1410; border:1px solid var(--green); border-radius:8px; padding:18px 20px; margin-bottom:12px; box-shadow:0 0 14px rgba(74,222,128,0.1);">
-          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-            <span style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--green);">⚡ Easiest — Claude.ai Web</span>
-            <span style="font-size:11px; color:var(--muted); background:#111e18; padding:3px 10px; border-radius:12px; border:1px solid var(--dark-border);">No terminal &nbsp;·&nbsp; No API key</span>
+        <div class="ns-step" style="margin-bottom:10px;">
+          <div class="ns-num">1</div>
+          <div class="ns-body">
+            <div class="ns-title">Navigate to the connector page</div>
+            <div style="font-size:13px; color:#9dbdaf; margin-top:4px;">claude.ai → your profile icon (top right) → Settings → Integrations → Add custom connector</div>
           </div>
+        </div>
 
-          <div class="ns-step" style="margin-bottom:10px;">
-            <div class="ns-num">1</div>
-            <div class="ns-body">
-              <div class="ns-title">Open Claude.ai Settings → Integrations</div>
-              <div style="font-size:13px; color:#9dbdaf; margin-top:4px;">claude.ai → your avatar (top right) → Settings → Integrations</div>
-            </div>
-          </div>
-
-          <div class="ns-step" style="margin-bottom:10px;">
-            <div class="ns-num">2</div>
-            <div class="ns-body">
-              <div class="ns-title">Paste your personal connection URL</div>
-              <div class="connect-box" style="margin-top:6px;">
-                <button class="copy-btn-hero" id="url-copy-btn" onclick="copyPersonalUrl(this)">Copy</button>
-                <div class="connect-cmd" id="personal-url"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ns-step" style="margin-bottom:0;">
-            <div class="ns-num">3</div>
-            <div class="ns-body">
-              <div class="ns-title">Start a new chat and type</div>
-              <div class="run-bookkeeper-cmd" style="margin-top:6px;">
-                <strong>RUN BOOKKEEPER</strong>
-                <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
-              </div>
+        <div class="ns-step" style="margin-bottom:10px;">
+          <div class="ns-num">2</div>
+          <div class="ns-body">
+            <div class="ns-title">Paste your personal URL and click Add</div>
+            <div class="connect-box" style="margin-top:6px;">
+              <button class="copy-btn-hero" id="url-copy-btn" onclick="copyPersonalUrl(this)">Copy</button>
+              <div class="connect-cmd" id="personal-url"></div>
             </div>
           </div>
         </div>
 
-        <!-- PATH B: Claude Code (Advanced) -->
-        <details style="background:#111e18; border:1px solid var(--dark-border); border-radius:6px; overflow:hidden;">
-          <summary style="cursor:pointer; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); padding:14px 20px; list-style:none; display:flex; align-items:center; gap:8px;">
-            <span style="font-size:10px;">▸</span> Advanced — Claude Code (Terminal)
-          </summary>
-          <div style="padding:0 20px 18px; border-top:1px solid var(--dark-border);">
-            <div class="ns-step" style="margin-top:14px; margin-bottom:10px;">
-              <div class="ns-num">1</div>
-              <div class="ns-body">
-                <div class="ns-title">Paste this into your terminal</div>
-                <div class="connect-box" style="margin-top:6px;">
-                  <button class="copy-btn-hero" id="cmd-copy-btn" onclick="copyPersonalCmd(this)">Copy</button>
-                  <div class="connect-cmd" id="personal-cmd"></div>
-                </div>
-              </div>
-            </div>
-            <div class="ns-step" style="margin-bottom:10px;">
-              <div class="ns-num">2</div>
-              <div class="ns-body">
-                <div class="ns-title">Restart Claude Code when it says "Done"</div>
-                <div style="font-size:13px;color:#9dbdaf;margin-top:4px;">You'll see: <em style="color:var(--muted)">"Added incredible-ai as an HTTP MCP server"</em></div>
-              </div>
-            </div>
-            <div class="ns-step" style="margin-bottom:0;">
-              <div class="ns-num">3</div>
-              <div class="ns-body">
-                <div class="ns-title">Type this to start</div>
-                <div class="run-bookkeeper-cmd" style="margin-top:6px;">
-                  <strong>RUN BOOKKEEPER</strong>
-                  <button class="copy-btn-hero" style="float:none;margin:0;" onclick="copyText('RUN BOOKKEEPER', this)">Copy</button>
-                </div>
-              </div>
-            </div>
+        <div class="ns-step" style="margin-bottom:0;">
+          <div class="ns-num">3</div>
+          <div class="ns-body">
+            <div class="ns-title">You're connected</div>
+            <div style="font-size:13px; color:#9dbdaf; margin-top:4px;">More agents coming soon — new ones drop weekly. Follow <a href="https://instagram.com/gideonspencer_" target="_blank" style="color:var(--gold);">@gideonspencer_</a> to see each one first.</div>
           </div>
-        </details>
+        </div>
 
       </div>
     </div>
