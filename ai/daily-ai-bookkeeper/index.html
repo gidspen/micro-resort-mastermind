@@ -54,14 +54,20 @@
       font-size: 13px;
     }
     nav .logo { font-weight: 700; color: var(--gold); letter-spacing: 0.04em; }
-    nav .nav-links { display: flex; gap: 24px; color: var(--muted); }
+    nav .nav-links { display: flex; gap: 24px; }
     nav .nav-links a { color: var(--muted); font-size: 13px; }
 
-    /* ── HERO ── */
-    .hero {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 72px 24px 56px;
+    /* ── GATE SECTION ── */
+    .gate-section {
+      min-height: calc(100vh - 49px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+    .gate-inner {
+      max-width: 520px;
+      width: 100%;
       text-align: center;
     }
     .badge {
@@ -78,38 +84,122 @@
     }
     h1 {
       font-family: 'Georgia', serif;
-      font-size: clamp(34px, 6vw, 54px);
+      font-size: clamp(34px, 6vw, 52px);
       line-height: 1.08;
       letter-spacing: -0.02em;
       color: var(--text);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     h1 em { color: var(--gold); font-style: normal; }
     .hero-sub {
       font-size: 17px;
       color: var(--muted);
       line-height: 1.65;
-      max-width: 480px;
-      margin: 0 auto;
+      margin-bottom: 40px;
     }
-
-    /* ── SETUP BLOCK ── */
-    .setup {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 24px 64px;
+    .gate-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
     }
-    .requires {
-      text-align: center;
+    .gate-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .email-input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .email-input::placeholder { color: var(--muted); }
+    .email-input:focus { outline: none; border-color: var(--green); }
+    .email-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--gold);
+      color: #0d1a16;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .email-submit:hover { opacity: 0.88; }
+    .email-submit:disabled { opacity: 0.5; cursor: default; }
+    .gate-note {
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 40px;
-      line-height: 1.8;
+      margin-top: 14px;
     }
-    .requires a { color: rgba(240,235,227,0.6); text-decoration: underline; }
+    .gate-error {
+      display: none;
+      color: #f87171;
+      font-size: 13px;
+      margin-top: 10px;
+    }
 
+    /* ── SETUP STEPS SECTION ── */
+    .setup-section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 56px 24px 64px;
+    }
+    .setup-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .setup-heading h2 {
+      font-family: 'Georgia', serif;
+      font-size: clamp(26px, 4vw, 34px);
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .setup-heading p {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    /* ── LINK BOX ── */
+    .link-box {
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 40px;
+    }
+    .link-box-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .link-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .link-text {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #a8e6c0;
+      word-break: break-all;
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    /* ── STEPS ── */
     .steps { display: flex; flex-direction: column; gap: 4px; }
-
     .step {
       display: grid;
       grid-template-columns: 40px 1fr;
@@ -122,12 +212,12 @@
       align-items: center;
     }
     .step-num {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--green);
       color: #0a1f14;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -137,22 +227,75 @@
     .step-line {
       width: 1px;
       flex: 1;
-      min-height: 20px;
+      min-height: 24px;
       background: var(--border);
-      margin: 4px 0;
+      margin: 6px 0;
     }
-    .step-content {
-      padding-bottom: 28px;
-    }
+    .step-content { padding-bottom: 32px; }
     .step-title {
-      font-size: 15px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 700;
       color: var(--text);
-      margin-bottom: 10px;
-      padding-top: 4px;
+      margin-bottom: 8px;
+      padding-top: 5px;
+      line-height: 1.3;
+    }
+    .step-body {
+      font-size: 14px;
+      color: rgba(240,235,227,0.65);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .step-body strong { color: var(--text); font-weight: 600; }
+    .step-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.5;
     }
 
-    /* code block */
+    /* path breadcrumb */
+    .path-crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 14px;
+      font-size: 13px;
+      color: var(--text);
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .path-crumb .sep { color: var(--muted); }
+    .path-crumb .crumb-last { color: var(--gold); font-weight: 600; }
+
+    /* ── TAB VISUAL ── */
+    .tab-visual {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 2px;
+      margin-top: 14px;
+    }
+    .tab-pill {
+      padding: 6px 16px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .tab-pill.active {
+      background: #fff;
+      color: #1a1a1a;
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+    }
+
+    /* ── CMD BLOCKS ── */
     .cmd-block {
       background: var(--green-bg);
       border: 1px solid rgba(74,222,128,0.25);
@@ -163,13 +306,22 @@
       justify-content: space-between;
       gap: 12px;
     }
-    .cmd-text {
+    .run-block {
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.3);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .run-cmd {
       font-family: 'Courier New', monospace;
-      font-size: 13px;
+      font-size: 20px;
+      font-weight: 700;
       color: #a8e6c0;
-      word-break: break-all;
-      line-height: 1.5;
-      flex: 1;
+      letter-spacing: 0.01em;
     }
     .copy-btn {
       flex-shrink: 0;
@@ -186,43 +338,6 @@
     }
     .copy-btn:hover { color: var(--text); border-color: var(--text); }
     .copy-btn.copied { color: var(--green); border-color: var(--green); }
-
-    /* quit block */
-    .quit-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-size: 14px;
-      color: rgba(240,235,227,0.7);
-      line-height: 1.5;
-    }
-    .quit-block strong { color: var(--gold); font-weight: 600; }
-
-    /* run block — the hero action */
-    .run-block {
-      background: var(--green-bg);
-      border: 1px solid rgba(74,222,128,0.3);
-      border-radius: 8px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .run-cmd {
-      font-family: 'Courier New', monospace;
-      font-size: 18px;
-      font-weight: 700;
-      color: #a8e6c0;
-      letter-spacing: 0.01em;
-    }
-    .step-note {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 8px;
-      line-height: 1.5;
-    }
 
     /* ── DIVIDER ── */
     .divider {
@@ -264,7 +379,7 @@
     .feature-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .feature-desc { font-size: 13px; color: rgba(240,235,227,0.55); line-height: 1.6; }
 
-    /* ── REQUIREMENTS SECTION ── */
+    /* ── REQUIREMENTS ── */
     .req-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -276,62 +391,9 @@
       border-radius: 8px;
       padding: 18px 20px;
     }
-    .req-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-    .req-desc {
-      font-size: 13px;
-      color: rgba(240,235,227,0.55);
-      line-height: 1.55;
-    }
+    .req-name { font-size: 13px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+    .req-desc { font-size: 13px; color: rgba(240,235,227,0.55); line-height: 1.55; }
     .req-desc a { color: rgba(240,235,227,0.65); text-decoration: underline; }
-
-    /* ── EMAIL CAPTURE ── */
-    .email-section {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-      text-align: center;
-    }
-    .email-section h2 {
-      font-family: 'Georgia', serif;
-      font-size: 24px;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .email-section p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
-    .email-input {
-      width: 100%;
-      padding: 13px 16px;
-      font-size: 15px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: #0a1410;
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .email-input::placeholder { color: var(--muted); }
-    .email-input:focus { outline: none; border-color: var(--green); }
-    .email-submit {
-      width: 100%;
-      padding: 14px;
-      background: var(--gold);
-      color: #0d1a16;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .email-submit:hover { opacity: 0.88; }
-    .email-submit:disabled { opacity: 0.5; cursor: default; }
-    .email-success { display: none; color: var(--green); font-size: 15px; padding: 12px 0; font-weight: 600; }
-    .email-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
 
     /* ── FOOTER ── */
     footer {
@@ -347,7 +409,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(13,26,22,0.9);
+      background: rgba(13,26,22,0.92);
       backdrop-filter: blur(4px);
       z-index: 9999;
       align-items: flex-end;
@@ -381,15 +443,27 @@
       color: #0d1a16; cursor: pointer;
     }
     .popup-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-    .popup-success { display: none; color: var(--green); font-weight: 700; font-size: 16px; padding: 12px 0; }
+    .popup-success { display: none; padding: 12px 0; }
+    .popup-success-text { color: var(--green); font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+    .popup-link-box {
+      background: var(--green-bg);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .popup-link-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+    .popup-link-url { font-family: 'Courier New', monospace; font-size: 11px; color: #a8e6c0; word-break: break-all; line-height: 1.5; }
     .popup-dismiss {
       display: block; margin-top: 16px; font-size: 13px; color: var(--muted);
       background: none; border: none; cursor: pointer; text-decoration: underline; width: 100%;
     }
 
     @media (max-width: 600px) {
-      .run-cmd { font-size: 20px; }
+      .gate-box { padding: 24px 20px; }
       h1 { font-size: 32px; }
+      .run-cmd { font-size: 18px; }
     }
   </style>
   <!-- Meta Pixel -->
@@ -419,107 +493,112 @@
     </div>
   </nav>
 
-  <!-- ── HERO ── -->
-  <div class="hero" id="hero">
-    <span class="badge">&#9679; Live Now</span>
-    <h1>Your Books.<br><em style="white-space:nowrap;">Done While You Sleep.</em></h1>
-    <p class="hero-sub">
-      Your AI Bookkeeper opens your accounting platform, categorizes transactions by your rules, and recaps everything — automatically.
-    </p>
-  </div>
-
-  <!-- ── MOBILE EMAIL CAPTURE ── -->
-  <div id="mobile-capture" style="display:none;max-width:560px;margin:0 auto 32px;padding:0 24px;">
-    <div style="background:linear-gradient(160deg,#111e18,#0a1410);border:1px solid var(--gold);border-radius:12px;padding:36px 28px;text-align:center;">
-      <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:rgba(232,213,176,0.08);border:1px solid rgba(232,213,176,0.2);border-radius:20px;padding:4px 14px;margin-bottom:18px;">This runs on desktop</span>
-      <h2 style="font-family:'Georgia',serif;font-size:clamp(24px,5vw,30px);margin-bottom:12px;line-height:1.15;">We'll send the setup link to your inbox.</h2>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:24px;">Takes 3 minutes to set up when you're at your computer.</p>
-      <form onsubmit="submitEmail(this,event,'mobile_hero')">
-        <input type="email" class="email-input" placeholder="your@email.com" required style="margin-bottom:10px;" />
-        <button type="submit" class="email-submit">Send Me the Setup Link →</button>
-        <div class="email-success" id="mobile-hero-success">✓ Saved! Open this link on your desktop to get started:</div>
-      </form>
-      <p class="email-note">No spam. Just the link.</p>
+  <!-- ── FULL PAGE GATE ── -->
+  <div class="gate-section" id="gate-section">
+    <div class="gate-inner">
+      <span class="badge">&#9679; Free Setup</span>
+      <h1>Your Books.<br><em>Done While You Sleep.</em></h1>
+      <p class="hero-sub">Enter your email to get your personal setup link.<br>4 steps — about 3 minutes.</p>
+      <div class="gate-box">
+        <p class="gate-label">Your email generates a unique link tied to your account.</p>
+        <input type="email" id="gate-email" class="email-input" placeholder="your@email.com" />
+        <button class="email-submit" id="gate-btn" onclick="submitGate()">Get My Setup Link →</button>
+        <p id="gate-error" class="gate-error">Something went wrong — please try again.</p>
+        <p class="gate-note">No spam. Unsubscribe anytime.</p>
+      </div>
     </div>
   </div>
 
-  <!-- ── SETUP STEPS ── -->
-  <div class="setup" id="desktop-steps">
+  <!-- ── SETUP STEPS (revealed after email) ── -->
+  <div id="steps-section" style="display:none;">
+    <div class="setup-section">
 
-    <p class="requires">
-      Requires <a href="https://claude.ai/download" target="_blank">Claude desktop app</a> + <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank">Claude in Chrome</a> + a paid Claude plan ($20/mo)
-    </p>
-
-    <!-- CLI INSTALL OPTION -->
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:16px;">
-      <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:8px;">Claude Code CLI — fastest install:</p>
-      <div class="cmd-block">
-        <span class="cmd-text">claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp</span>
-        <button class="copy-btn" onclick="copyCmd(this)" data-cmd="claude mcp add incredible-ai --transport http https://mcp.incredibleai.pro/mcp">Copy</button>
+      <div class="setup-heading">
+        <h2>You're all set — follow these 4 steps.</h2>
+        <p>Takes about 3 minutes. No technical experience needed.</p>
       </div>
-      <p style="font-size:12px;color:var(--muted);margin-top:8px;">Then open a new chat and type <strong style="color:var(--green);">bookkeeper</strong>. Or use the connector UI below.</p>
-    </div>
 
-    <!-- EMAIL GATE — shown until email submitted -->
-    <div id="email-gate-block" style="margin-bottom:28px;">
-      <div style="background:var(--green-bg);border:1px solid rgba(74,222,128,0.35);border-radius:10px;padding:22px 20px;">
-        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);margin-bottom:10px;">Step 1 of 3 — Get your connector URL</div>
-        <p style="font-size:14px;color:rgba(240,235,227,0.7);margin-bottom:14px;line-height:1.5;">Enter your email to generate your personal URL. Takes 2 seconds.</p>
-        <div style="display:flex;gap:8px;">
-          <input type="email" id="gate-email-input" class="email-input" placeholder="your@email.com" style="margin-bottom:0;flex:1;" />
-          <button onclick="submitDesktopGate()" style="background:var(--green);color:#0a1f14;border:none;border-radius:6px;padding:10px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get URL →</button>
-        </div>
-        <div id="gate-error" style="font-size:12px;color:#f87171;margin-top:8px;display:none;"></div>
-      </div>
-    </div>
-
-    <div class="steps" id="steps-block" style="display:none;">
-
-      <!-- STEP 1 -->
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">1</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-content">
-          <div class="step-title">Navigate to the connector page</div>
-          <p class="step-note">claude.ai → your profile icon (top right) → Settings → Integrations → Add custom connector</p>
+      <!-- PERSONAL LINK -->
+      <div class="link-box">
+        <div class="link-box-label">Your personal setup link</div>
+        <div class="link-row">
+          <span class="link-text" id="link-display"></span>
+          <button class="copy-btn" onclick="copyLink(this)">Copy</button>
         </div>
       </div>
 
-      <!-- STEP 2 -->
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">2</div>
-          <div class="step-line"></div>
-        </div>
-        <div class="step-content">
-          <div class="step-title">Paste your URL in the connector field and click Add:</div>
-          <div class="cmd-block">
-            <span class="cmd-text" id="install-cmd-display">https://mcp.incredibleai.pro/mcp</span>
-            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="https://mcp.incredibleai.pro/mcp" id="install-cmd-btn">Copy</button>
+      <div class="steps">
+
+        <!-- STEP 1 -->
+        <div class="step">
+          <div class="step-connector">
+            <div class="step-num">1</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Open Claude → Settings → Connectors</div>
+            <p class="step-body">In the Claude desktop app, click your <strong>profile icon</strong> in the top right corner, then follow this path:</p>
+            <div class="path-crumb">
+              <span>Settings</span>
+              <span class="sep">›</span>
+              <span>Connectors</span>
+              <span class="sep">›</span>
+              <span class="crumb-last">Add custom connector</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- STEP 3 -->
-      <div class="step">
-        <div class="step-connector">
-          <div class="step-num">3</div>
-        </div>
-        <div class="step-content">
-          <div class="step-title">Open a new chat and type:</div>
-          <div class="run-block">
-            <span class="run-cmd" style="font-size:20px;font-weight:800;color:var(--green);letter-spacing:0.05em;"><strong>bookkeeper</strong></span>
-            <button class="copy-btn" onclick="copyCmd(this)" data-cmd="bookkeeper">Copy</button>
+        <!-- STEP 2 -->
+        <div class="step">
+          <div class="step-connector">
+            <div class="step-num">2</div>
+            <div class="step-line"></div>
           </div>
-          <p class="step-note">Hit enter. The agent starts immediately.</p>
+          <div class="step-content">
+            <div class="step-title">Paste your setup link and save</div>
+            <p class="step-body">Copy your personal link below and paste it into the connector URL field.</p>
+            <div class="cmd-block">
+              <span class="link-text" id="link-display-2"></span>
+              <button class="copy-btn" onclick="copyLink(this)">Copy</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </div><!-- /steps -->
+        <!-- STEP 3 -->
+        <div class="step">
+          <div class="step-connector">
+            <div class="step-num">3</div>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Go to Claude Cowork and start a new chat</div>
+            <p class="step-body">At the top center of the Claude app, click <strong>Cowork</strong>.</p>
+            <div class="tab-visual">
+              <span class="tab-pill">Chat</span>
+              <span class="tab-pill active">Cowork</span>
+              <span class="tab-pill">Code</span>
+            </div>
+          </div>
+        </div>
 
-  </div><!-- /setup -->
+        <!-- STEP 4 -->
+        <div class="step">
+          <div class="step-connector">
+            <div class="step-num">4</div>
+          </div>
+          <div class="step-content">
+            <div class="step-title">Type this and hit enter</div>
+            <div class="run-block">
+              <span class="run-cmd">bookkeeper</span>
+              <button class="copy-btn" onclick="copyCmd(this)" data-cmd="bookkeeper">Copy</button>
+            </div>
+            <p class="step-note">Your AI Bookkeeper takes it from there.</p>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div><!-- /setup-section -->
+  </div><!-- /steps-section -->
 
   <hr class="divider" />
 
@@ -555,8 +634,8 @@
     <span class="section-label">What You Need</span>
     <div class="req-grid">
       <div class="req-card">
-        <div class="req-name">Claude Code</div>
-        <p class="req-desc">Free desktop app. <a href="https://claude.ai/download" target="_blank">claude.ai/download</a>. Requires a paid Claude plan ($20/mo).</p>
+        <div class="req-name">Claude Desktop App</div>
+        <p class="req-desc">Free download at <a href="https://claude.ai/download" target="_blank">claude.ai/download</a>. Requires a paid Claude plan ($20/mo).</p>
       </div>
       <div class="req-card">
         <div class="req-name">Claude in Chrome</div>
@@ -569,18 +648,6 @@
     </div>
   </div>
 
-  <!-- ── EMAIL CAPTURE ── -->
-  <div class="email-section" id="desktop-email">
-    <h2>Not ready right now?</h2>
-    <p>Drop your email and we'll send the setup link when you're ready.</p>
-    <form onsubmit="submitEmail(this,event,'bookkeeper_page_desktop')">
-      <input type="email" class="email-input" placeholder="your@email.com" required />
-      <button type="submit" class="email-submit">Send Me the Setup Link →</button>
-      <div class="email-success" id="desktop-email-success">✓ Here's your setup link — open it on desktop:<br><a id="desktop-email-link" href="#" target="_blank" style="word-break:break-all;color:var(--gold);"></a></div>
-    </form>
-    <p class="email-note">No spam. Just the link.</p>
-  </div>
-
   <footer>
     <p>&copy; 2026 Incredible Hospitality Co &middot; <a href="/ai/">AI Tools</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
   </footer>
@@ -588,115 +655,125 @@
   <!-- ── MOBILE POPUP ── -->
   <div class="popup-overlay" id="mobilePopup">
     <div class="popup">
-      <span class="popup-icon">📱</span>
-      <h3>This runs on a desktop.</h3>
-      <p>Drop your email and we'll send the setup link for when you're at your computer.</p>
+      <span class="popup-icon">💻</span>
+      <h3>You'll need your desktop for this.</h3>
+      <p>Drop your email and we'll send your setup link — open it at your computer and you'll be ready in 4 steps.</p>
       <form id="popupForm">
         <input type="email" id="popupEmailInput" placeholder="your@email.com" required />
-        <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Setup →</button>
-        <div class="popup-success" id="popupSuccess">✓ Here's your setup link — open it on desktop:<br><a id="popup-link" href="#" target="_blank" style="word-break:break-all;color:var(--gold);font-size:13px;"></a></div>
+        <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Link →</button>
+        <div class="popup-success" id="popupSuccess">
+          <p class="popup-success-text">✓ Got it! Here's your setup link:</p>
+          <div class="popup-link-box">
+            <p class="popup-link-label">Open this on your desktop</p>
+            <p class="popup-link-url" id="popup-link-url"></p>
+          </div>
+          <p style="font-size:12px;color:var(--muted);">Copy it, bookmark it, or we'll email it too.</p>
+        </div>
       </form>
       <button class="popup-dismiss" onclick="dismissPopup()">I'm on desktop — show me the steps</button>
     </div>
   </div>
 
   <script>
-    // ── PARAM INJECTION ───────────────────────────────────────────────────────
-    // Builds personalized MCP command from ?email= and/or ?ref= URL params.
-    // ?email= comes from landing page gate or email links.
-    // ?ref= comes from GHL DM links (contact ID for webhook tracking).
-    function _buildPersonalCmd(email, ref) {
+    // ── URL HELPERS ──────────────────────────────────────────────────────────
+    function _buildUrl(email, ref) {
       var base = 'https://mcp.incredibleai.pro/mcp';
       var params = [];
       if (email) params.push('email=' + encodeURIComponent(email));
-      if (ref) params.push('ref=' + encodeURIComponent(ref));
+      if (ref)   params.push('ref='   + encodeURIComponent(ref));
       return params.length ? base + '?' + params.join('&') : base;
     }
 
-    function _applyCmd(cmd) {
-      var btn = document.getElementById('install-cmd-btn');
-      var display = document.getElementById('install-cmd-display');
-      if (btn) btn.setAttribute('data-cmd', cmd);
-      if (display) display.textContent = cmd;
+    function _setLinks(url) {
+      window._personalUrl = url;
+      var d1 = document.getElementById('link-display');
+      var d2 = document.getElementById('link-display-2');
+      if (d1) d1.textContent = url;
+      if (d2) d2.textContent = url;
     }
 
-    function _revealSteps(cmd) {
-      _applyCmd(cmd);
-      var gate = document.getElementById('email-gate-block');
-      var steps = document.getElementById('steps-block');
-      if (gate) gate.style.display = 'none';
-      if (steps) steps.style.display = 'flex';
-      if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'desktop_gate' });
-      if (typeof gtag === 'function') gtag('event', 'email_capture', { event_category: 'bookkeeper', label: 'desktop_gate' });
+    // ── REVEAL STEPS ────────────────────────────────────────────────────────
+    function revealSteps(url) {
+      _setLinks(url);
+      document.getElementById('gate-section').style.display = 'none';
+      document.getElementById('steps-section').style.display = 'block';
+      window.scrollTo(0, 0);
     }
 
-    // On load: check for ?email= → skip gate and show steps immediately
+    // ── GATE SUBMIT ──────────────────────────────────────────────────────────
+    function submitGate() {
+      var email = (document.getElementById('gate-email').value || '').trim();
+      var errorEl = document.getElementById('gate-error');
+      errorEl.style.display = 'none';
+      if (!email || !/\S+@\S+\.\S+/.test(email)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      var btn = document.getElementById('gate-btn');
+      btn.textContent = 'Generating…'; btn.disabled = true;
+      fetch('https://mcp.incredibleai.pro/capture-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'bookkeeper_gate', ref: window._ghlRef || '' })
+      }).then(function() {
+        var url = _buildUrl(email, window._ghlRef || '');
+        revealSteps(url);
+        if (typeof fbq  === 'function') fbq('track', 'Lead', { content_name: 'bookkeeper_gate' });
+        if (typeof gtag === 'function') gtag('event', 'email_capture', { event_category: 'bookkeeper', label: 'gate' });
+      }).catch(function() {
+        btn.disabled = false; btn.textContent = 'Get My Setup Link →';
+        errorEl.textContent = 'Something went wrong — please try again.';
+        errorEl.style.display = 'block';
+      });
+    }
+
+    // Allow enter key in email input
+    document.getElementById('gate-email').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') submitGate();
+    });
+
+    // ── ON LOAD: check for ?email= param ────────────────────────────────────
     (function() {
       var params = new URLSearchParams(window.location.search);
-      var email = params.get('email');
-      var ref = params.get('ref');
+      var email  = params.get('email');
+      var ref    = params.get('ref');
       if (email) {
-        _revealSteps(_buildPersonalCmd(email, ref));
+        revealSteps(_buildUrl(email, ref));
       } else if (ref) {
-        // ref only (GHL DM, no email yet) — show gate but pre-wire ref into eventual cmd
         window._ghlRef = ref;
       }
     })();
 
-    // ── DESKTOP EMAIL GATE ────────────────────────────────────────────────────
-    function submitDesktopGate() {
-      var input = document.getElementById('gate-email-input');
-      var errorEl = document.getElementById('gate-error');
-      var email = input.value.trim().toLowerCase();
-      if (!email || !email.includes('@')) {
-        errorEl.textContent = 'Please enter a valid email.';
-        errorEl.style.display = 'block';
-        return;
-      }
-      errorEl.style.display = 'none';
-      fetch('https://mcp.incredibleai.pro/capture-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'bookkeeper_page_desktop_gate', ref: window._ghlRef || '' })
-      }).catch(function() {});
-      _revealSteps(_buildPersonalCmd(email, window._ghlRef || ''));
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && document.activeElement === document.getElementById('gate-email-input')) {
-        submitDesktopGate();
-      }
-    });
-
-    // ── COPY ──────────────────────────────────────────────────────────────────
-    function copyCmd(btn) {
-      var cmd = btn.getAttribute('data-cmd');
-      navigator.clipboard.writeText(cmd).then(function() {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
+    // ── COPY FUNCTIONS ───────────────────────────────────────────────────────
+    function copyLink(btn) {
+      var url = window._personalUrl || document.getElementById('link-display').textContent;
+      navigator.clipboard.writeText(url).then(function() {
+        btn.textContent = 'Copied!'; btn.classList.add('copied');
         setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
       });
     }
 
-    // ── MOBILE DETECTION ─────────────────────────────────────────────────────
+    function copyCmd(btn) {
+      var cmd = btn.getAttribute('data-cmd') || '';
+      navigator.clipboard.writeText(cmd).then(function() {
+        btn.textContent = 'Copied!'; btn.classList.add('copied');
+        setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    // ── MOBILE POPUP ─────────────────────────────────────────────────────────
     (function() {
-      var isMobile = window.innerWidth <= 767 ||
-        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      if (!isMobile) return;
-      if (localStorage.getItem('bk_popup_done')) return;
-
-      var mc = document.getElementById('mobile-capture');
-      var ds = document.getElementById('desktop-steps');
-      if (mc) mc.style.display = 'block';
-      if (ds) ds.style.display = 'none';
-
-      setTimeout(function() {
+      var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+      if (isMobile && !localStorage.getItem('bk_popup_done')) {
         document.getElementById('mobilePopup').classList.add('active');
-        if (typeof fbq === 'function') fbq('trackCustom', 'MobilePopupShown');
-        if (typeof gtag === 'function') gtag('event', 'mobile_popup_shown', { event_category: 'bookkeeper' });
-      }, 1000);
+      }
+    })();
 
-      document.getElementById('popupForm').addEventListener('submit', function(e) {
+    (function() {
+      var form = document.getElementById('popupForm');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
         e.preventDefault();
         var email = document.getElementById('popupEmailInput').value.trim();
         if (!email) return;
@@ -707,44 +784,21 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '' })
         }).then(function() {
-          var cmd = _buildPersonalCmd(email, window._ghlRef || '');
-          var link = document.getElementById('popup-link');
-          if (link) { link.href = cmd; link.textContent = cmd; }
+          var url = _buildUrl(email, window._ghlRef || '');
+          document.getElementById('popup-link-url').textContent = url;
           document.getElementById('popupEmailInput').style.display = 'none';
           btn.style.display = 'none';
           document.getElementById('popupSuccess').style.display = 'block';
           localStorage.setItem('bk_popup_done', '1');
-          if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'mobile_popup' });
+          if (typeof fbq  === 'function') fbq('track', 'Lead', { content_name: 'mobile_popup' });
           if (typeof gtag === 'function') gtag('event', 'mobile_popup_lead', { event_category: 'bookkeeper' });
-        }).catch(function() { btn.disabled = false; btn.textContent = 'Send Me the Setup →'; });
+        }).catch(function() { btn.disabled = false; btn.textContent = 'Send Me the Link →'; });
       });
     })();
 
     function dismissPopup() {
       document.getElementById('mobilePopup').classList.remove('active');
       localStorage.setItem('bk_popup_done', '1');
-    }
-
-    function submitEmail(form, e, source) {
-      e.preventDefault();
-      var email = form.querySelector('input[type=email]').value.trim();
-      var btn = form.querySelector('.email-submit');
-      var success = form.querySelector('.email-success');
-      btn.textContent = 'Sending…'; btn.disabled = true;
-      fetch('https://mcp.incredibleai.pro/capture-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: source || 'bookkeeper_page', ref: window._ghlRef || '' })
-      }).then(function() {
-        var cmd = _buildPersonalCmd(email, window._ghlRef || '');
-        var link = success.querySelector('a');
-        if (link) { link.href = cmd; link.textContent = cmd; }
-        form.querySelector('.email-input').style.display = 'none';
-        btn.style.display = 'none';
-        success.style.display = 'block';
-        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: source });
-        if (typeof gtag === 'function') gtag('event', 'email_capture', { event_category: 'bookkeeper', label: source });
-      }).catch(function() { btn.disabled = false; btn.textContent = 'Send Me the Setup Link →'; });
     }
   </script>
 </body>
