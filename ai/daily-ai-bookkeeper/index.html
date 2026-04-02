@@ -437,7 +437,7 @@
       <form onsubmit="submitEmail(this,event,'mobile_hero')">
         <input type="email" class="email-input" placeholder="your@email.com" required style="margin-bottom:10px;" />
         <button type="submit" class="email-submit">Send Me the Setup Link →</button>
-        <div class="email-success">✓ Check your inbox — your personalized setup link is on its way. Open it on desktop and your command will be ready.</div>
+        <div class="email-success" id="mobile-hero-success">✓ Saved! Open this link on your desktop to get started:</div>
       </form>
       <p class="email-note">No spam. Just the link.</p>
     </div>
@@ -576,7 +576,7 @@
     <form onsubmit="submitEmail(this,event,'bookkeeper_page_desktop')">
       <input type="email" class="email-input" placeholder="your@email.com" required />
       <button type="submit" class="email-submit">Send Me the Setup Link →</button>
-      <div class="email-success">✓ Check your inbox — link is on its way.</div>
+      <div class="email-success" id="desktop-email-success">✓ Here's your setup link — open it on desktop:<br><a id="desktop-email-link" href="#" target="_blank" style="word-break:break-all;color:var(--gold);"></a></div>
     </form>
     <p class="email-note">No spam. Just the link.</p>
   </div>
@@ -594,7 +594,7 @@
       <form id="popupForm">
         <input type="email" id="popupEmailInput" placeholder="your@email.com" required />
         <button type="submit" class="popup-submit" id="popupSubmit">Send Me the Setup →</button>
-        <div class="popup-success" id="popupSuccess">✓ Personalized setup link is on its way — open it on desktop and your command will be ready.</div>
+        <div class="popup-success" id="popupSuccess">✓ Here's your setup link — open it on desktop:<br><a id="popup-link" href="#" target="_blank" style="word-break:break-all;color:var(--gold);font-size:13px;"></a></div>
       </form>
       <button class="popup-dismiss" onclick="dismissPopup()">I'm on desktop — show me the steps</button>
     </div>
@@ -707,6 +707,9 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '' })
         }).then(function() {
+          var cmd = _buildPersonalCmd(email, window._ghlRef || '');
+          var link = document.getElementById('popup-link');
+          if (link) { link.href = cmd; link.textContent = cmd; }
           document.getElementById('popupEmailInput').style.display = 'none';
           btn.style.display = 'none';
           document.getElementById('popupSuccess').style.display = 'block';
@@ -724,15 +727,18 @@
 
     function submitEmail(form, e, source) {
       e.preventDefault();
-      var email = form.querySelector('input[type=email]').value;
+      var email = form.querySelector('input[type=email]').value.trim();
       var btn = form.querySelector('.email-submit');
       var success = form.querySelector('.email-success');
       btn.textContent = 'Sending…'; btn.disabled = true;
       fetch('https://mcp.incredibleai.pro/capture-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: source || 'bookkeeper_page' })
+        body: JSON.stringify({ email: email, source: source || 'bookkeeper_page', ref: window._ghlRef || '' })
       }).then(function() {
+        var cmd = _buildPersonalCmd(email, window._ghlRef || '');
+        var link = success.querySelector('a');
+        if (link) { link.href = cmd; link.textContent = cmd; }
         form.querySelector('.email-input').style.display = 'none';
         btn.style.display = 'none';
         success.style.display = 'block';
