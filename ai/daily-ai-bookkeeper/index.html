@@ -518,15 +518,6 @@
         <p>Takes about 3 minutes. No technical experience needed.</p>
       </div>
 
-      <!-- PERSONAL LINK -->
-      <div class="link-box">
-        <div class="link-box-label">Your personal setup link</div>
-        <div class="link-row">
-          <span class="link-text" id="link-display"></span>
-          <button class="copy-btn" onclick="copyLink(this)">Copy</button>
-        </div>
-      </div>
-
       <div class="steps">
 
         <!-- STEP 1 -->
@@ -686,9 +677,7 @@
 
     function _setLinks(url) {
       window._personalUrl = url;
-      var d1 = document.getElementById('link-display');
       var d2 = document.getElementById('link-display-2');
-      if (d1) d1.textContent = url;
       if (d2) d2.textContent = url;
     }
 
