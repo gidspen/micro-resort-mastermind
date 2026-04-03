@@ -500,7 +500,7 @@
       <h1>Your Books.<br><em>Done&nbsp;While&nbsp;You&nbsp;Sleep.</em></h1>
       <p class="hero-sub">Enter your email to get your personal setup link.<br>4 steps — about 3 minutes.</p>
       <div class="gate-box">
-        <p class="gate-label">Your email generates a unique link tied to your account.</p>
+        <p class="gate-label">Enter your email to get started. You'll authenticate securely in the next step.</p>
         <input type="email" id="gate-email" class="email-input" placeholder="your@email.com" />
         <button class="email-submit" id="gate-btn" onclick="submitGate()">Get My Setup Link →</button>
         <p id="gate-error" class="gate-error">Something went wrong — please try again.</p>
@@ -669,11 +669,7 @@
   <script>
     // ── URL HELPERS ──────────────────────────────────────────────────────────
     function _buildUrl(email, ref) {
-      var base = 'https://mcp.incredibleai.pro/mcp';
-      var params = [];
-      if (email) params.push('email=' + encodeURIComponent(email));
-      if (ref)   params.push('ref='   + encodeURIComponent(ref));
-      return params.length ? base + '?' + params.join('&') : base;
+      return 'https://mcp.incredibleai.pro/mcp';
     }
 
     function _setLinks(url) {
