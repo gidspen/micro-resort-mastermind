@@ -705,7 +705,7 @@
       fetch('https://mcp.incredibleai.pro/capture-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'bookkeeper_gate', ref: window._ghlRef || '', ga_cid: _getGaCid() })
+        body: JSON.stringify({ email: email, source: 'bookkeeper_gate', ref: window._ghlRef || '', ga_cid: _getGaCid(), mc_sub: window._mcSub || null })
       }).then(function() {
         var url = _buildUrl(email, window._ghlRef || '');
         revealSteps(url);
@@ -736,6 +736,8 @@
       var params = new URLSearchParams(window.location.search);
       var email  = params.get('email');
       var ref    = params.get('ref');
+      var mcSub  = params.get('mc_sub');
+      if (mcSub) { window._mcSub = mcSub; }
       if (email) {
         revealSteps(_buildUrl(email, ref));
       } else if (ref) {
@@ -780,7 +782,7 @@
         fetch('https://mcp.incredibleai.pro/capture-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '', ga_cid: _getGaCid() })
+          body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '', ga_cid: _getGaCid(), mc_sub: window._mcSub || null })
         }).then(function() {
           var url = _buildUrl(email, window._ghlRef || '');
           document.getElementById('popup-link-url').textContent = url;
