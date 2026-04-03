@@ -705,7 +705,7 @@
       fetch('https://mcp.incredibleai.pro/capture-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, source: 'bookkeeper_gate', ref: window._ghlRef || '' })
+        body: JSON.stringify({ email: email, source: 'bookkeeper_gate', ref: window._ghlRef || '', ga_cid: _getGaCid() })
       }).then(function() {
         var url = _buildUrl(email, window._ghlRef || '');
         revealSteps(url);
@@ -722,6 +722,14 @@
     document.getElementById('gate-email').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') submitGate();
     });
+
+    // ── GA4 CLIENT ID ────────────────────────────────────────────────────────
+    function _getGaCid() {
+      try {
+        var match = document.cookie.match(/_ga=GA\d+\.\d+\.(\d+\.\d+)/);
+        return match ? match[1] : null;
+      } catch(e) { return null; }
+    }
 
     // ── ON LOAD: check for ?email= param ────────────────────────────────────
     (function() {
@@ -772,7 +780,7 @@
         fetch('https://mcp.incredibleai.pro/capture-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '' })
+          body: JSON.stringify({ email: email, source: 'mobile_popup', ref: window._ghlRef || '', ga_cid: _getGaCid() })
         }).then(function() {
           var url = _buildUrl(email, window._ghlRef || '');
           document.getElementById('popup-link-url').textContent = url;
