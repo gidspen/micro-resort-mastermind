@@ -493,24 +493,24 @@
     </div>
   </nav>
 
-  <!-- ── FULL PAGE GATE ── -->
-  <div class="gate-section" id="gate-section">
+  <!-- ── MOBILE GATE (shown only on mobile) ── -->
+  <div class="gate-section" id="gate-section" style="display:none;">
     <div class="gate-inner">
       <span class="badge">&#9679; Free Setup</span>
       <h1>Your Books.<br><em>Done&nbsp;While&nbsp;You&nbsp;Sleep.</em></h1>
-      <p class="hero-sub">Enter your email to get your personal setup link.<br>4 steps — about 3 minutes.</p>
+      <p class="hero-sub">Drop your email and we'll send you the setup link to open on your computer.</p>
       <div class="gate-box">
-        <p class="gate-label">Enter your email to get started. You'll authenticate securely in the next step.</p>
+        <p class="gate-label">Setup takes 3 minutes on desktop. We'll email you the link.</p>
         <input type="email" id="gate-email" class="email-input" placeholder="your@email.com" />
-        <button class="email-submit" id="gate-btn" onclick="submitGate()">Get My Setup Link →</button>
+        <button class="email-submit" id="gate-btn" onclick="submitGate()">Send Me the Link →</button>
         <p id="gate-error" class="gate-error">Something went wrong — please try again.</p>
         <p class="gate-note">No spam. Unsubscribe anytime.</p>
       </div>
     </div>
   </div>
 
-  <!-- ── SETUP STEPS (revealed after email) ── -->
-  <div id="steps-section" style="display:none;">
+  <!-- ── SETUP STEPS (shown on desktop, revealed after email on mobile) ── -->
+  <div id="steps-section">
     <div class="setup-section">
 
       <div class="setup-heading">
@@ -581,8 +581,8 @@
           <div class="step-content">
             <div class="step-title">Type this and hit enter</div>
             <div class="run-block">
-              <span class="run-cmd">bookkeeper</span>
-              <button class="copy-btn" onclick="copyCmd(this)" data-cmd="bookkeeper">Copy</button>
+              <span class="run-cmd">run bookkeeper</span>
+              <button class="copy-btn" onclick="copyCmd(this)" data-cmd="run bookkeeper">Copy</button>
             </div>
             <p class="step-note">Your AI Bookkeeper takes it from there.</p>
           </div>
@@ -736,8 +736,14 @@
       if (mcSub) { window._mcSub = mcSub; }
       if (email) {
         revealSteps(_buildUrl(email, ref));
-      } else if (ref) {
-        window._ghlRef = ref;
+      } else {
+        if (ref) window._ghlRef = ref;
+        var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+        if (isMobile) {
+          document.getElementById('gate-section').style.display = '';
+          document.getElementById('steps-section').style.display = 'none';
+        }
+        // desktop: steps-section is already visible, gate stays hidden
       }
     })();
 
