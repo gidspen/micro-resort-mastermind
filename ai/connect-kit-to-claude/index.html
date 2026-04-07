@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F2LT2X06B8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F2LT2X06B8');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Connect Kit to Claude Desktop (Step-by-Step) | Gideon Spencer</title>
+  <meta name="description" content="Step-by-step guide to connecting your Kit email account to Claude Desktop using MCP. Manage subscribers, send broadcasts, and tag contacts by just asking Claude." />
+  <link rel="canonical" href="https://incrediblehospitalityco.com/ai/connect-kit-to-claude/" />
+  <meta property="og:title" content="How to Connect Kit to Claude Desktop (Step-by-Step)" />
+  <meta property="og:description" content="Step-by-step guide to connecting your Kit email account to Claude Desktop using MCP. Manage subscribers, send broadcasts, and tag contacts by just asking Claude." />
+  <meta property="og:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <meta property="og:url" content="https://incrediblehospitalityco.com/ai/connect-kit-to-claude/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Connect Kit to Claude Desktop (Step-by-Step)" />
+  <meta name="twitter:description" content="Step-by-step guide to connecting your Kit email account to Claude Desktop using MCP. Manage subscribers, send broadcasts, and tag contacts by just asking Claude." />
+  <meta name="twitter:image" content="https://incrediblehospitalityco.com/images/gideon-headshot.jpeg" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #e8d5b0;
+      --gold-light: #f0ebe3;
+      --dark: #0d1a16;
+      --dark-card: #173d36;
+      --dark-border: #2a5a4a;
+      --text: #f0ebe3;
+      --muted: rgba(240,235,227,0.55);
+      --warning-bg: #2a1a0a;
+      --warning-border: #c87941;
+      --warning-text: #f0c98a;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--text);
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      background: #173d36;
+      color: #f0ebe3;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+    .topbar a:hover { text-decoration: underline; }
+
+    .article-container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article-header { margin-bottom: 48px; }
+    .article-eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: 'Arial', sans-serif;
+    }
+    .article-meta a { color: var(--gold); text-decoration: none; }
+
+    .article-body h2 {
+      font-size: 26px;
+      margin: 48px 0 16px;
+      line-height: 1.2;
+    }
+    .article-body h3 {
+      font-size: 20px;
+      margin: 36px 0 12px;
+      line-height: 1.3;
+      color: var(--gold-light);
+    }
+    .article-body p {
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .article-body ul, .article-body ol {
+      margin: 0 0 20px 24px;
+      font-size: 16px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .article-body li { margin-bottom: 8px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--gold); text-decoration: underline; }
+
+    .pre-wrapper {
+      position: relative;
+      margin: 24px 0;
+    }
+    .article-body pre {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 20px 52px 20px 24px;
+      margin: 0;
+      overflow-x: visible;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #a8d8a8;
+      line-height: 1.6;
+      border-radius: 2px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s, border-color 0.2s;
+      user-select: none;
+    }
+    .copy-btn:hover { color: var(--gold); border-color: var(--gold); }
+    .copy-btn.copied { color: #6fcf6f; border-color: #6fcf6f; }
+    .article-body code {
+      background: #0a1410;
+      border: 1px solid var(--dark-border);
+      padding: 2px 7px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #a8d8a8;
+      border-radius: 2px;
+    }
+    .article-body pre code {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .step-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-left: 4px solid var(--gold);
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    .step-number {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .step-box h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+    .step-box ol, .step-box ul {
+      margin: 8px 0 0 20px;
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .step-box li { margin-bottom: 6px; }
+
+    .warning-box {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      border-left: 4px solid var(--warning-border);
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .warning-box .warning-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--warning-text);
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .warning-box h3 {
+      font-size: 18px;
+      margin: 0 0 12px;
+      color: var(--warning-text);
+    }
+    .warning-box p {
+      font-size: 15px;
+      color: #d4a96a;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .warning-box p:last-child { margin-bottom: 0; }
+    .warning-box ul {
+      margin: 0 0 12px 20px;
+      font-size: 15px;
+      color: #d4a96a;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.7;
+    }
+    .warning-box li { margin-bottom: 6px; }
+    .warning-box strong { color: var(--warning-text); }
+
+    .callout {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .callout h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+    .callout ul {
+      margin: 0 0 0 20px;
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.8;
+    }
+    .callout li { margin-bottom: 6px; }
+
+    .article-cta {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    .article-cta h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .article-cta p {
+      font-size: 15px;
+      color: #c0bdb8;
+      font-family: 'Arial', sans-serif;
+      margin-bottom: 24px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: #0d1a16;
+      padding: 16px 40px;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .cta-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 12px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--dark-border);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1711035122902345');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1711035122902345&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Connect Kit to Claude Desktop (Step-by-Step)",
+    "description": "Step-by-step guide to connecting your Kit email account to Claude Desktop using MCP. Manage subscribers, send broadcasts, and tag contacts by just asking Claude.",
+    "author": {
+      "@type": "Person",
+      "name": "Gideon Spencer"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Incredible Hospitality Co"
+    },
+    "datePublished": "2026-04-07",
+    "dateModified": "2026-04-07",
+    "mainEntityOfPage": "https://incrediblehospitalityco.com/ai/connect-kit-to-claude/"
+  }
+  </script>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/">Incredible Hospitality Co</a> | <a href="/blog/">Blog</a> | <a href="/challenge/">Free Challenge</a>
+  </div>
+
+  <article class="article-container">
+    <header class="article-header">
+      <span class="article-eyebrow">AI Tools</span>
+      <h1>How to Connect Kit to Claude Desktop (Step-by-Step)</h1>
+      <div class="article-meta">
+        By <a href="/">Gideon Spencer</a> &middot; April 7, 2026
+      </div>
+    </header>
+
+    <div class="article-body">
+
+      <p>MCP (Model Context Protocol) lets Claude connect directly to your tools - so instead of copying and pasting between apps, you just ask Claude to do the thing. Once Kit is connected, you can send broadcasts, add subscribers, pull stats, and tag contacts without ever opening the Kit dashboard. It takes about 10 minutes and no coding experience is required.</p>
+
+      <div class="callout">
+        <h4>What You'll Be Able to Do</h4>
+        <ul>
+          <li>Send broadcasts directly from Claude</li>
+          <li>Add and tag subscribers by asking in plain English</li>
+          <li>Pull subscriber counts and list stats on demand</li>
+          <li>Create and manage sequences without touching Kit</li>
+        </ul>
+      </div>
+
+      <h2>Before You Start</h2>
+
+      <p>Make sure you have:</p>
+      <ul>
+        <li><strong>Claude Desktop</strong> installed on your Mac - not the browser version at claude.ai. Download at <a href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download</a></li>
+        <li>A <strong>Kit account</strong></li>
+      </ul>
+
+      <h2>The Steps</h2>
+
+      <div class="step-box">
+        <span class="step-number">Step 1</span>
+        <h3>Get Your Kit API Key</h3>
+        <ol style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 8px 0 0 20px; line-height: 1.8;">
+          <li>Log into your Kit dashboard at <a href="https://app.kit.com" target="_blank" rel="noopener">app.kit.com</a></li>
+          <li>Click your profile icon (top right) - Settings</li>
+          <li>In the left sidebar, click <strong>Developer</strong></li>
+          <li>Click <strong>API Keys</strong> - <strong>Create API key</strong></li>
+          <li>Name it <code>Claude Desktop</code> and click Create</li>
+          <li>Copy the key - it starts with <code>kit_</code></li>
+        </ol>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 2</span>
+        <h3>Open Your Claude Config File</h3>
+        <ol style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 8px 0 0 20px; line-height: 1.8;">
+          <li>Press <code>Cmd + Space</code>, type <strong>Terminal</strong>, hit Enter</li>
+          <li>Paste this command and hit Enter:</li>
+        </ol>
+        <pre style="margin-top: 12px;">open ~/Library/Application\ Support/Claude/</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 12px 0 0;">A folder opens. Find <code>claude_desktop_config.json</code>, right-click it - <strong>Open With</strong> - <strong>TextEdit</strong>.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 3</span>
+        <h3>Add the Kit Connection</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">Find the very last <code>}</code> at the bottom of the file. Add a comma after the <code>}</code> just above it, then paste this block right before that final closing <code>}</code>:</p>
+        <pre>  ,
+  "mcpServers": {
+    "kit": {
+      "command": "npx",
+      "args": ["-y", "kit-mcp-server"],
+      "env": {
+        "KIT_API_KEY": "kit_PASTE_YOUR_KEY_HERE"
+      }
+    }
+  }</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 12px 0 0;">Replace <code>kit_PASTE_YOUR_KEY_HERE</code> with your actual API key from Step 1. Keep the quotes around it.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 4</span>
+        <h3>Save the File</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Press <code>Cmd + S</code>. If TextEdit asks about the format, choose <strong>plain text</strong>.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 5</span>
+        <h3>Restart Claude Desktop</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Press <code>Cmd + Q</code> to fully quit Claude - just closing the window is not enough. Then reopen it from your Dock or Applications folder.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 6</span>
+        <h3>Confirm It Worked</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 0;">Go to <strong>Claude - Settings - Developer</strong>. You should see <strong>kit</strong> listed with a green dot.</p>
+      </div>
+
+      <div class="step-box">
+        <span class="step-number">Step 7</span>
+        <h3>Test It</h3>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin-bottom: 12px;">Open a new Claude chat and type:</p>
+        <pre>"List my Kit broadcasts"</pre>
+        <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 12px 0 8px;">If Claude responds with your broadcasts, you're connected. Other things you can ask:</p>
+        <ul style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 15px; margin: 0 0 0 20px; line-height: 1.8;">
+          <li>"How many subscribers do I have?"</li>
+          <li>"Add [email] to my list with the tag 'mastermind-lead'"</li>
+          <li>"Create a broadcast with subject [X] and this body: [paste copy]"</li>
+          <li>"Show me everyone tagged 'webinar-attendee'"</li>
+        </ul>
+      </div>
+
+      <h2>Troubleshooting</h2>
+
+      <div class="warning-box">
+        <span class="warning-label">Common Issue</span>
+        <h3>"Could not load app settings" popup</h3>
+        <p>Something is wrong with the file. Most likely a missing comma. Re-do Step 3 and make sure you added a comma after the second-to-last <code style="color: #f0c98a; background: rgba(0,0,0,0.3); padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 13px;">}</code> before pasting the Kit block.</p>
+      </div>
+
+      <div class="warning-box">
+        <span class="warning-label">Common Issue</span>
+        <h3>Kit shows "failed" in Developer settings</h3>
+        <p>Click <strong>View Logs</strong> and look for the error:</p>
+        <ul>
+          <li><strong>404 Not Found</strong> - wrong package name. It must be exactly <code style="color: #f0c98a; background: rgba(0,0,0,0.3); padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 13px;">kit-mcp-server</code></li>
+          <li><strong>401 or unauthorized</strong> - bad API key. Create a new one in Kit and update the file</li>
+          <li><strong>INFO: usage: mcp</strong> - same fix, wrong package name</li>
+        </ul>
+      </div>
+
+      <div class="warning-box">
+        <span class="warning-label">Common Issue</span>
+        <h3>TextEdit saved as .rtf</h3>
+        <p>Go to <strong>Format - Make Plain Text</strong>, then save again.</p>
+      </div>
+
+      <div class="article-cta">
+        <h3>Follow for More AI Tools</h3>
+        <p>I share new AI setups and automations on Instagram. Follow along as we build live.</p>
+        <a href="https://instagram.com/gideonspencer_" class="btn-primary" target="_blank" rel="noopener">Follow @gideonspencer_</a>
+        <p class="cta-note">New tools dropped regularly</p>
+      </div>
+
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 Incredible Hospitality Co &middot; <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/challenge/">Free Challenge</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.article-body pre').forEach(function(pre) {
+      var wrapper = document.createElement('div');
+      wrapper.className = 'pre-wrapper';
+      pre.parentNode.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(pre.innerText).then(function() {
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      wrapper.appendChild(btn);
+    });
+  </script>
+
+</body>
+</html>
