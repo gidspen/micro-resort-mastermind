@@ -370,12 +370,13 @@
 
     <div class="article-body">
 
-      <p>MCP (Model Context Protocol) lets Claude connect directly to your tools - so instead of copying and pasting between apps, you just ask Claude to do the thing. Once Kit is connected, you can send broadcasts, add subscribers, pull stats, and tag contacts without ever opening the Kit dashboard. It takes about 10 minutes and no coding experience is required.</p>
+      <p>Imagine telling Claude "write me a newsletter about how interest rates dropping make this a great time to refinance properties, then schedule it to go out Thursday morning" - and it just does it. That's what this setup unlocks. In about 10 minutes you can connect your Kit email account directly to Claude, so writing, sending, and scheduling newsletters becomes a conversation. No coding required.</p>
 
       <div class="callout">
         <h4>What You'll Be Able to Do</h4>
         <ul>
-          <li>Send broadcasts directly from Claude</li>
+          <li>Write and send newsletters by just describing what you want</li>
+          <li>Schedule broadcasts to go out at a specific date and time</li>
           <li>Add and tag subscribers by asking in plain English</li>
           <li>Pull subscriber counts and list stats on demand</li>
           <li>Create and manage sequences without touching Kit</li>
@@ -467,10 +468,13 @@
 
       <h2>Troubleshooting</h2>
 
+      <p style="color: #c0bdb8; font-family: Arial, sans-serif; font-size: 16px; margin-bottom: 24px;">Stuck? The fastest way to fix it is to ask Claude directly. Open a new chat and paste whichever message matches your situation - Claude will walk you through it.</p>
+
       <div class="warning-box">
         <span class="warning-label">Common Issue</span>
         <h3>"Could not load app settings" popup</h3>
         <p>Something is wrong with the file. Most likely a missing comma. Re-do Step 3 and make sure you added a comma after the second-to-last <code style="color: #f0c98a; background: rgba(0,0,0,0.3); padding: 1px 5px; font-family: 'Courier New', monospace; font-size: 13px;">}</code> before pasting the Kit block.</p>
+        <p><strong>Tell Claude:</strong> "I'm setting up the Kit MCP and getting a 'could not load app settings' error when I restart Claude Desktop. Here's what my config file looks like: [paste the file contents]. What's wrong?"</p>
       </div>
 
       <div class="warning-box">
@@ -482,12 +486,14 @@
           <li><strong>401 or unauthorized</strong> - bad API key. Create a new one in Kit and update the file</li>
           <li><strong>INFO: usage: mcp</strong> - same fix, wrong package name</li>
         </ul>
+        <p style="margin-top: 12px;"><strong>Tell Claude:</strong> "I'm trying to connect Kit to Claude Desktop and it shows 'failed' in my Developer settings. Here's what the logs say: [paste the log text]. Help me fix it."</p>
       </div>
 
       <div class="warning-box">
         <span class="warning-label">Common Issue</span>
         <h3>TextEdit saved as .rtf</h3>
         <p>Go to <strong>Format - Make Plain Text</strong>, then save again.</p>
+        <p><strong>Tell Claude:</strong> "I edited my claude_desktop_config.json in TextEdit but I think it saved in the wrong format. How do I fix it?"</p>
       </div>
 
       <div class="article-cta">
