@@ -313,7 +313,7 @@
     <h2>Mastermind Members Only</h2>
     <p>Enter the password shared by Gideon to access this deal breakdown.</p>
     <input type="password" id="pw-input" placeholder="Password" />
-    <button onclick="checkPassword()">Enter &rarr;</button>
+    <button id="pw-btn">Enter &rarr;</button>
     <div class="gate-error" id="gate-error">Incorrect password. Try again.</div>
   </div>
 </div>
@@ -391,9 +391,24 @@
     <!-- SECTION 2: HOW WE FOUND IT -->
     <section class="section">
       <span class="eyebrow">02 &mdash; How We Found It</span>
-      <div class="placeholder">
-        <!-- GIDEON: Fill in your deal sourcing story here. How did this come across your desk? Was it on-market, a broker relationship, direct outreach? What made you look twice? -->
-        [Gideon to add sourcing story]
+      <p>This was a true off-market find. My two partners and I split the country into territories and were actively sourcing deals. We got in touch with this seller directly &mdash; she wanted $8.4M. We ran the numbers, told her it didn't work at that price, and walked away.</p>
+      <p>Then she had health issues. That changed everything. Suddenly she was motivated to sell and willing to negotiate. Because we'd kept the relationship warm, we were the ones she called back. We came in at $5.9M &mdash; $2.5M below her original ask &mdash; and she took it.</p>
+
+      <div class="two-col">
+        <div class="col-card">
+          <h3>The CoStar Discrepancy</h3>
+          <p>One of the edges we had in negotiation: we discovered CoStar's revenue data for the market was off. When we ran our own analysis, we found the market was generating roughly 5% more revenue than what CoStar showed.</p>
+          <p>That 5% matters. It meant we could underwrite higher revenue than competing buyers who took the CoStar numbers at face value &mdash; which meant we could justify paying more while still hitting our return targets.</p>
+        </div>
+        <div class="col-card">
+          <h3>The Human Element</h3>
+          <p>The seller lived in the house next door. She wasn't just selling a hotel &mdash; she was retiring from her life's work and her home. We structured the deal so she could stay on the property through the end of the year.</p>
+          <p>That flexibility mattered to her more than squeezing the last dollar out of the price. Understanding what the other side actually needs is how you get deals done that others can't.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        Patience is a strategy. We walked away, stayed in touch, and were ready when the situation changed. The best off-market deals don't close on your timeline &mdash; they close when the seller is ready.
       </div>
     </section>
 
@@ -513,63 +528,35 @@
       </div>
     </section>
 
-    <!-- SECTION 6: PERMITTING & LAND USE -->
+    <!-- SECTION 6: LESSONS LEARNED -->
     <section class="section">
-      <span class="eyebrow">06 &mdash; Permitting &amp; Land Use</span>
-      <p>The duplex (296 1st St) sits adjacent to the permitted hotel in a city actively tightening STR rules. We needed to legitimize its use &mdash; and figure out how to navigate a city council that wasn't obviously friendly to the plan.</p>
-
-      <div class="two-col" style="margin-bottom: 24px;">
-        <div class="col-card">
-          <h3>Old Approach (Pre-AI)</h3>
-          <ul>
-            <li>Hire a consultant</li>
-            <li>Hope they know the room</li>
-            <li>Guess at how council members feel</li>
-            <li>Show up and find out</li>
-          </ul>
+      <span class="eyebrow">06 &mdash; Lessons Learned</span>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4CB;</div>
+          <h3>Get Ahead of Permitting</h3>
+          <p>We would have hired a land use consultant earlier in the process. Getting in front of entitlement questions before you're under pressure is cheaper and faster than reacting to enforcement risk mid-project.</p>
         </div>
-        <div class="col-card">
-          <h3>What We Did This Time</h3>
-          <ul>
-            <li>Fed council meeting minutes into AI</li>
-            <li>Identified not just voting likelihood, but sentiment</li>
-            <li>Understood which arguments each member responds to</li>
-            <li>Walked in knowing the temperature of the room</li>
-          </ul>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F916;</div>
+          <h3>Use AI for Regulatory Sentiment</h3>
+          <p>We fed city council meeting minutes into AI to understand not just how members would vote, but how they felt and what language resonated with each of them. We walked in knowing the temperature of the room. That's not something a consultant can give you the same way.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F3AF;</div>
+          <h3>Define Role Ownership Up Front</h3>
+          <p>On a multi-partner deal, be ruthlessly clear about who owns what &mdash; and group responsibilities by category, not by task. The goal is minimum overlap between partners.</p>
         </div>
       </div>
 
       <div class="callout">
-        Using AI to analyze council meeting minutes was phenomenal. We didn't just know if they would or wouldn't approve &mdash; we understood how people felt about it and what language resonated with each member. That's a legitimate edge.
-      </div>
-
-      <p>We engaged two consultants with opposing strategies: Erik (aggressive rezone path &mdash; $30-40K, 6-12 months, strong long-term insulation) vs. Heidi Jones at Meraki Land Use Consulting (conservative path &mdash; pressure-test with a council member first before spending). The AI analysis helped us evaluate which path to take with actual data instead of guesswork.</p>
-    </section>
-
-    <!-- SECTION 7: LESSONS LEARNED -->
-    <section class="section">
-      <span class="eyebrow">07 &mdash; Lessons Learned</span>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F4CB;</div>
-          <h3>Hire the Permitting Consultant Earlier</h3>
-          <p>Before AI was available, we would have gone back and hired a consultant earlier in the permitting process. Getting ahead of the entitlement question saves time and money downstream.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#x1F916;</div>
-          <h3>Use AI for Regulatory Intelligence</h3>
-          <p>This is now a standard part of our diligence process. Reading meeting minutes manually doesn't give you the same picture that AI analysis of sentiment patterns does.</p>
-        </div>
-      </div>
-      <div class="placeholder">
-        <!-- GIDEON: Add 1-2 more operational or deal-structure lessons you'd tell yourself on day one. What would you do differently? What surprised you? -->
-        [Gideon to add additional lessons learned]
+        Roles that seem separate will eventually collide. Legal structure and capital raising look independent until you're drafting investor documents &mdash; then suddenly both partners are in the same lane. Design the team structure so that happens as rarely as possible, and name a single person accountable for the outcome of each category.
       </div>
     </section>
 
-    <!-- SECTION 8: KEY TAKEAWAYS -->
+    <!-- SECTION 7: KEY TAKEAWAYS -->
     <section class="section">
-      <span class="eyebrow">08 &mdash; Key Takeaways for Active Deal Buyers</span>
+      <span class="eyebrow">07 &mdash; Key Takeaways for Active Deal Buyers</span>
       <div class="takeaway-grid">
         <div class="takeaway-card">
           <div class="takeaway-num">01</div>
@@ -598,7 +585,7 @@
   function checkPassword() {
     const input = document.getElementById('pw-input').value;
     if (input === PASSWORD) {
-      sessionStorage.setItem('solvang_unlocked', '1');
+      try { sessionStorage.setItem('solvang_unlocked', '1'); } catch(e) {}
       document.getElementById('gate').style.display = 'none';
       document.getElementById('content').style.display = 'block';
     } else {
@@ -607,15 +594,18 @@
   }
 
   // Allow Enter key to submit
+  document.getElementById('pw-btn').addEventListener('click', checkPassword);
   document.getElementById('pw-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') checkPassword();
   });
 
   // Auto-unlock if already authenticated this session
-  if (sessionStorage.getItem('solvang_unlocked') === '1') {
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-  }
+  try {
+    if (sessionStorage.getItem('solvang_unlocked') === '1') {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }
+  } catch(e) {}
 </script>
 
 </body>
